@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日式极简风格 Demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Serif JP', 'Hiragino Mincho Pro', serif;
+      background: #f5f5dc;
+      color: #2f4f4f;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 100px 40px;
+    }
+    .ma {
+      text-align: center;
+      padding: 80px 0;
+    }
+    .ma h1 {
+      font-size: 120px;
+      font-weight: 300;
+      color: #8b7355;
+      letter-spacing: 0.5em;
+    }
+    .ma p {
+      font-size: 18px;
+      margin-top: 40px;
+      color: #666;
+    }
+    .circle {
+      width: 200px;
+      height: 200px;
+      border: 2px solid #8b7355;
+      border-radius: 50%;
+      margin: 60px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .circle-inner {
+      width: 100px;
+      height: 100px;
+      background: #2f4f4f;
+      border-radius: 50%;
+    }
+    @media (max-width: 768px) {
+      .container { padding: 60px 20px; }
+      .ma { padding: 40px 0; }
+      .ma h1 { font-size: 60px; letter-spacing: 0.3em; }
+      .ma p { font-size: 14px; }
+      .circle { width: 120px; height: 120px; }
+      .circle-inner { width: 60px; height: 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="ma">
+      <h1>間</h1>
+      <p>The space between. The pause that gives meaning.</p>
+      <div class="circle">
+        <div class="circle-inner"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

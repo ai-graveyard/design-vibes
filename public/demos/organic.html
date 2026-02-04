@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organic Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+    body { font-family: 'Nunito', sans-serif; }
+    .blob {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+  </style>
+</head>
+<body class="bg-green-50">
+  <div class="w-full h-screen flex items-center justify-center p-8">
+    <div class="relative">
+      <div class="blob w-64 h-64 bg-green-400 absolute -top-8 -left-8 opacity-50"></div>
+      <div class="blob w-48 h-48 bg-yellow-300 absolute top-16 right-8 opacity-60" style="border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;"></div>
+      <div class="relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 max-w-sm">
+        <h2 class="text-2xl font-bold text-green-800 mb-4">Natural Flow</h2>
+        <p class="text-green-700">Organic shapes inspired by nature. Soft, flowing, and alive.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

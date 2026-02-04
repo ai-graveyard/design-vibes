@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新粗野主义风格 Demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
+      background: #fff;
+      color: #000;
+    }
+    .nav {
+      padding: 20px 40px;
+      border-bottom: 3px solid #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav h1 {
+      font-size: 24px;
+      font-weight: 900;
+    }
+    .nav-links a {
+      color: #000;
+      text-decoration: none;
+      margin-left: 30px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border: 3px solid #000;
+      box-shadow: 4px 4px 0 #000;
+      transition: all 0.2s;
+    }
+    .nav-links a:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0 #000;
+    }
+    .hero {
+      padding: 100px 40px;
+      text-align: center;
+    }
+    .hero h2 {
+      font-size: 80px;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+    }
+    .hero p {
+      font-size: 24px;
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    .btn-primary {
+      display: inline-block;
+      padding: 16px 40px;
+      background: #FF6B35;
+      color: #000;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 18px;
+      border: 3px solid #000;
+      box-shadow: 6px 6px 0 #000;
+      transition: all 0.2s;
+    }
+    .btn-primary:hover {
+      transform: translate(3px, 3px);
+      box-shadow: 3px 3px 0 #000;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      padding: 80px 40px;
+      background: #f5f5f5;
+      border-top: 3px solid #000;
+    }
+    .feature {
+      background: #fff;
+      padding: 40px;
+      border: 3px solid #000;
+      box-shadow: 6px 6px 0 #000;
+    }
+    .feature h3 {
+      font-size: 24px;
+      font-weight: 900;
+      margin-bottom: 15px;
+    }
+    .feature p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .cta-section {
+      padding: 100px 40px;
+      text-align: center;
+      background: #004E89;
+      color: #fff;
+      border-top: 3px solid #000;
+    }
+    .cta-section h2 {
+      font-size: 48px;
+      font-weight: 900;
+      margin-bottom: 30px;
+    }
+    .btn-white {
+      display: inline-block;
+      padding: 16px 40px;
+      background: #fff;
+      color: #000;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 18px;
+      border: 3px solid #000;
+      box-shadow: 6px 6px 0 #000;
+    }
+    footer {
+      padding: 40px;
+      text-align: center;
+      border-top: 3px solid #000;
+      font-weight: 700;
+    }
+    @media (max-width: 768px) {
+      .hero h2 { font-size: 40px; }
+      .features { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <h1>NEO.BRUTAL</h1>
+    <div class="nav-links">
+      <a href="#">Work</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <h2>Modern<br>Brutalism</h2>
+    <p>Clean, bold, and intentionally raw. The modern take on brutalist web design.</p>
+    <a href="#" class="btn-primary">Get Started</a>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <h3>Bold Colors</h3>
+      <p>High contrast palettes that demand attention.</p>
+    </div>
+    <div class="feature">
+      <h3>Hard Shadows</h3>
+      <p>No blur, just solid offsets for depth.</p>
+    </div>
+    <div class="feature">
+      <h3>Thick Borders</h3>
+      <p>Clear boundaries with heavy strokes.</p>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Ready to go brutal?</h2>
+    <a href="#" class="btn-white">Start Building</a>
+  </section>
+
+  <footer>
+    © 2025 NEO.BRUTAL — BUILT WITH ATTITUDE
+  </footer>
+</body>
+</html>

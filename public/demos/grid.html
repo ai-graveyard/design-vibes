@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-white">
+  <div class="w-full h-screen flex items-center justify-center p-8">
+    <div class="grid grid-cols-4 grid-rows-4 gap-2 w-64 h-64">
+      <div class="bg-black col-span-2 row-span-2"></div>
+      <div class="bg-gray-200"></div>
+      <div class="bg-gray-200"></div>
+      <div class="bg-gray-200"></div>
+      <div class="bg-gray-200"></div>
+      <div class="bg-gray-800 col-span-2"></div>
+      <div class="bg-gray-200"></div>
+      <div class="bg-gray-200"></div>
+      <div class="bg-red-500"></div>
+      <div class="bg-gray-200"></div>
+      <div class="bg-gray-200"></div>
+      <div class="bg-gray-200"></div>
+    </div>
+  </div>
+</body>
+</html>

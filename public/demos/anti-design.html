@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>反设计风格 Demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background: repeating-linear-gradient(45deg, #ff0, #ff0 10px, #0ff 10px, #0ff 20px);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .chaos {
+      padding: 40px;
+    }
+    .chaos h1 {
+      font-size: 60px;
+      color: #f0f;
+      text-shadow: 5px 5px 0 #0f0;
+      transform: rotate(-5deg);
+      margin-bottom: 30px;
+    }
+    .chaos p {
+      font-size: 20px;
+      background: #f00;
+      color: #ff0;
+      padding: 20px;
+      transform: rotate(3deg);
+      display: inline-block;
+    }
+    .box {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: #0f0;
+      top: 200px;
+      right: 50px;
+      transform: rotate(15deg);
+    }
+    .box2 {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: #f0f;
+      bottom: 100px;
+      left: 50px;
+      border-radius: 50%;
+    }
+    @media (max-width: 768px) {
+      .chaos { padding: 20px; }
+      .chaos h1 { font-size: 40px; }
+      .chaos p { font-size: 16px; }
+      .box { width: 60px; height: 60px; top: 150px; right: 20px; }
+      .box2 { width: 50px; height: 50px; bottom: 50px; left: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="chaos">
+    <h1>ANTI<br>DESIGN</h1>
+    <p>Rules are meant to be broken.</p>
+  </div>
+  <div class="box"></div>
+  <div class="box2"></div>
+</body>
+</html>

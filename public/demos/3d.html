@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .cube-face {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 2px solid rgba(0,0,0,0.1);
+    }
+    .cube-3d {
+      transform-style: preserve-3d;
+      transform: rotateX(-20deg) rotateY(45deg);
+    }
+    .front { transform: translateZ(50px); background: rgba(99, 102, 241, 0.8); }
+    .back { transform: translateZ(-50px) rotateY(180deg); background: rgba(99, 102, 241, 0.6); }
+    .right { transform: translateX(50px) rotateY(90deg); background: rgba(99, 102, 241, 0.7); }
+    .left { transform: translateX(-50px) rotateY(-90deg); background: rgba(99, 102, 241, 0.7); }
+    .top { transform: translateY(-50px) rotateX(90deg); background: rgba(99, 102, 241, 0.9); }
+    .bottom { transform: translateY(50px) rotateX(-90deg); background: rgba(99, 102, 241, 0.5); }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div class="w-full h-screen flex flex-col items-center justify-center p-8">
+    <div class="relative w-40 h-40 mb-8" style="perspective: 400px;">
+      <div class="cube-3d relative w-full h-full">
+        <div class="cube-face front"></div>
+        <div class="cube-face back"></div>
+        <div class="cube-face right"></div>
+        <div class="cube-face left"></div>
+        <div class="cube-face top"></div>
+        <div class="cube-face bottom"></div>
+      </div>
+    </div>
+    <h2 class="text-2xl font-bold text-gray-800">3D Depth</h2>
+    <p class="text-gray-600">Dimensional design experience</p>
+  </div>
+</body>
+</html>

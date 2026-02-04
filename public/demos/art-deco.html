@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>装饰艺术风格 Demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Playfair Display', 'Times New Roman', serif;
+      background: #000;
+      color: #ffd700;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .deco {
+      text-align: center;
+      padding: 80px;
+      border: 4px solid #ffd700;
+      position: relative;
+    }
+    .deco::before, .deco::after {
+      content: '◆';
+      position: absolute;
+      font-size: 30px;
+      color: #c0c0c0;
+    }
+    .deco::before { top: 20px; left: 20px; }
+    .deco::after { bottom: 20px; right: 20px; }
+    .deco h1 {
+      font-size: 72px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .deco p {
+      font-size: 18px;
+      color: #c0c0c0;
+      letter-spacing: 0.5em;
+    }
+    @media (max-width: 768px) {
+      .deco { padding: 40px 20px; }
+      .deco h1 { font-size: 36px; letter-spacing: 0.2em; }
+      .deco p { font-size: 14px; letter-spacing: 0.3em; }
+      .deco::before, .deco::after { font-size: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="deco">
+    <h1>Art Deco</h1>
+    <p>Glamour & Geometry</p>
+  </div>
+</body>
+</html>

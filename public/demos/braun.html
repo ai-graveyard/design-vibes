@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Braun Style Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-white">
+  <div class="w-full h-screen flex flex-col">
+    <div class="grid grid-cols-12 gap-0 h-full">
+      <div class="col-span-4 flex items-center justify-center border-r bg-gray-100 border-gray-200">
+        <div class="text-center">
+          <div class="w-24 h-24 rounded-full mb-4 mx-auto bg-black"></div>
+          <div class="text-xs uppercase tracking-widest text-gray-500">Braun</div>
+        </div>
+      </div>
+      <div class="col-span-8 p-6 flex flex-col justify-center bg-white">
+        <div class="grid grid-cols-3 gap-4">
+          <div class="aspect-square flex items-center justify-center bg-gray-50 border border-gray-200">
+            <div class="w-8 h-8 bg-gray-300"></div>
+          </div>
+          <div class="aspect-square flex items-center justify-center bg-gray-50 border border-gray-200">
+            <div class="w-8 h-8 bg-gray-300"></div>
+          </div>
+          <div class="aspect-square flex items-center justify-center bg-gray-50 border border-gray-200">
+            <div class="w-8 h-8 bg-gray-300"></div>
+          </div>
+        </div>
+        <div class="mt-4 text-xs uppercase tracking-wider text-gray-400">
+          Less, but better — Dieter Rams
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

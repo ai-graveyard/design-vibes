@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swiss Style Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-white">
+  <div class="w-full h-screen flex flex-col p-4">
+    <div class="flex-1 grid grid-cols-3 grid-rows-3 gap-1">
+      <div class="col-span-2 row-span-2 flex items-end p-4 bg-black">
+        <span class="text-2xl font-bold uppercase tracking-tighter text-white">Typo</span>
+      </div>
+      <div class="bg-red-600 flex items-center justify-center">
+        <span class="text-white text-4xl font-black">A</span>
+      </div>
+      <div class="flex items-center justify-center border-2 bg-white border-black">
+        <span class="text-2xl font-bold text-black">grid</span>
+      </div>
+      <div class="bg-yellow-400 col-span-2 flex items-center justify-end p-2">
+        <span class="text-black text-xs font-bold uppercase">Swiss Style</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

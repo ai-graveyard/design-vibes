@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geometric Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+    body { font-family: 'Space Grotesk', sans-serif; }
+  </style>
+</head>
+<body class="bg-white">
+  <div class="w-full h-screen flex items-center justify-center p-8">
+    <div class="relative w-80 h-80">
+      <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-16 border-r-16 border-b-32 border-l-transparent border-r-transparent border-b-red-500"></div>
+      <div class="absolute top-1/4 left-0 w-24 h-24 bg-blue-500"></div>
+      <div class="absolute top-1/4 right-0 w-24 h-24 rounded-full bg-yellow-400"></div>
+      <div class="absolute bottom-0 left-1/4 w-0 h-0 border-l-20 border-r-20 border-b-40 border-l-transparent border-r-transparent border-b-green-500 transform rotate-180"></div>
+      <div class="absolute bottom-0 right-1/4 w-20 h-20 bg-purple-500 transform rotate-45"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+        <p class="font-bold text-2xl">GEO</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

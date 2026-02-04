@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyberpunk Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&display=swap');
+    body { font-family: 'Orbitron', sans-serif; }
+    .neon-text {
+      text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+    }
+    .neon-border {
+      box-shadow: 0 0 10px #00ffff, inset 0 0 10px #00ffff;
+    }
+  </style>
+</head>
+<body class="bg-black">
+  <div class="w-full h-screen flex flex-col items-center justify-center p-8">
+    <div class="border-2 border-cyan-400 p-8 neon-border">
+      <h1 class="text-4xl font-black text-fuchsia-500 neon-text mb-4">CYBERPUNK</h1>
+      <div class="flex gap-4 mb-4">
+        <div class="w-4 h-4 bg-cyan-400 animate-pulse"></div>
+        <div class="w-4 h-4 bg-fuchsia-500 animate-pulse" style="animation-delay: 0.2s;"></div>
+        <div class="w-4 h-4 bg-yellow-400 animate-pulse" style="animation-delay: 0.4s;"></div>
+      </div>
+      <p class="text-cyan-400 text-sm">SYSTEM OVERRIDE // ACCESS GRANTED</p>
+    </div>
+    <div class="mt-8 grid grid-cols-3 gap-2">
+      <div class="w-16 h-16 bg-gradient-to-br from-fuchsia-600 to-purple-800"></div>
+      <div class="w-16 h-16 bg-gradient-to-br from-cyan-600 to-blue-800"></div>
+      <div class="w-16 h-16 bg-gradient-to-br from-yellow-600 to-orange-800"></div>
+    </div>
+  </div>
+</body>
+</html>

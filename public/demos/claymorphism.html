@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>粘土拟态风格 Demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .clay-card {
+      background: #ffb6c1;
+      padding: 50px;
+      border-radius: 40px;
+      box-shadow: 
+        0 20px 40px rgba(255,182,193,0.4),
+        inset 0 -10px 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .clay-card h1 {
+      color: #fff;
+      font-size: 48px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    .clay-btn {
+      display: inline-block;
+      padding: 15px 40px;
+      background: #87ceeb;
+      color: #fff;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 18px;
+      box-shadow: 
+        0 10px 20px rgba(135,206,235,0.4),
+        inset 0 -5px 10px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+    @media (max-width: 768px) {
+      body { padding: 20px; }
+      .clay-card { padding: 30px 20px; border-radius: 30px; }
+      .clay-card h1 { font-size: 32px; }
+      .clay-card p { font-size: 14px; }
+      .clay-btn { padding: 12px 30px; font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="clay-card">
+    <h1>Clay UI</h1>
+    <p style="color: #fff; font-size: 18px;">Soft, rounded, and playful.</p>
+    <a href="#" class="clay-btn">Explore</a>
+  </div>
+</body>
+</html>

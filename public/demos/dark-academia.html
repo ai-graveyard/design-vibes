@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>暗黑学院风格 Demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Crimson Text', 'Times New Roman', serif;
+      background: #2f4f4f;
+      color: #f5f5dc;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .academia {
+      max-width: 600px;
+      text-align: center;
+      padding: 60px;
+      border: 2px solid #8b4513;
+      background: rgba(0,0,0,0.3);
+    }
+    .academia h1 {
+      font-size: 48px;
+      font-style: italic;
+      margin-bottom: 30px;
+      color: #f5f5dc;
+    }
+    .academia p {
+      font-size: 20px;
+      line-height: 1.8;
+      color: #d2b48c;
+    }
+    .academia .quote {
+      margin-top: 30px;
+      font-size: 16px;
+      color: #8b4513;
+      font-style: italic;
+    }
+    @media (max-width: 768px) {
+      body { padding: 20px; }
+      .academia { padding: 30px 20px; }
+      .academia h1 { font-size: 28px; }
+      .academia p { font-size: 14px; }
+      .academia .quote { font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="academia">
+    <h1>Dark Academia</h1>
+    <p>"Sapere aude" — Dare to know. The pursuit of knowledge in the shadows of ancient libraries.</p>
+    <div class="quote">— Horace</div>
+  </div>
+</body>
+</html>

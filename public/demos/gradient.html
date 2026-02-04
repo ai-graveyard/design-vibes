@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gradient Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .gradient-text {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  </style>
+</head>
+<body class="bg-white">
+  <div class="w-full h-screen flex flex-col items-center justify-center p-8">
+    <h1 class="text-5xl font-extrabold gradient-text mb-8">Gradient</h1>
+    <div class="grid grid-cols-3 gap-4">
+      <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-500"></div>
+      <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-500"></div>
+      <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500"></div>
+      <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-green-400 to-emerald-600"></div>
+      <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-orange-400 to-red-500"></div>
+      <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500"></div>
+    </div>
+  </div>
+</body>
+</html>

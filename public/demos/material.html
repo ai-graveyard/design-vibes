@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Material Design Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+    body { font-family: 'Roboto', sans-serif; }
+    .elevation-1 { box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .elevation-2 { box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+    .elevation-3 { box-shadow: 0 8px 16px rgba(0,0,0,0.2); }
+  </style>
+</head>
+<body class="bg-gray-100">
+  <div class="w-full h-screen flex items-center justify-center p-8">
+    <div class="bg-white rounded-lg elevation-2 p-6 max-w-sm w-full">
+      <div class="h-32 bg-indigo-500 rounded-lg mb-4 elevation-1"></div>
+      <h2 class="text-xl font-medium text-gray-800 mb-2">Material Card</h2>
+      <p class="text-gray-600 text-sm mb-4">Elevation, shadow, and depth create hierarchy.</p>
+      <div class="flex gap-2">
+        <button class="px-4 py-2 bg-indigo-500 text-white rounded text-sm font-medium elevation-1">ACTION</button>
+        <button class="px-4 py-2 text-indigo-500 text-sm font-medium">CANCEL</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

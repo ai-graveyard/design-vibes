@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>动态字体风格 Demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Impact', 'Arial Black', sans-serif;
+      background: #000;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .kinetic {
+      text-align: center;
+    }
+    .kinetic h1 {
+      font-size: 120px;
+      text-transform: uppercase;
+      animation: kinetic 3s ease-in-out infinite;
+    }
+    @keyframes kinetic {
+      0%, 100% { 
+        transform: scale(1) rotate(0deg);
+        letter-spacing: 0;
+      }
+      25% { 
+        transform: scale(1.1) rotate(-2deg);
+        letter-spacing: 20px;
+      }
+      50% { 
+        transform: scale(0.9) rotate(2deg);
+        letter-spacing: -10px;
+      }
+      75% { 
+        transform: scale(1.05) rotate(-1deg);
+        letter-spacing: 10px;
+      }
+    }
+    @media (max-width: 768px) {
+      .kinetic h1 { font-size: 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="kinetic">
+    <h1>MOVE</h1>
+  </div>
+</body>
+</html>

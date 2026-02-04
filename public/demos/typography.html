@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typography Demo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@400;600&display=swap');
+    .serif { font-family: 'Playfair Display', serif; }
+    .sans { font-family: 'Source Sans Pro', sans-serif; }
+  </style>
+</head>
+<body class="bg-white">
+  <div class="w-full h-screen flex items-center justify-center p-8">
+    <div class="max-w-lg">
+      <p class="sans text-xs uppercase tracking-widest text-gray-500 mb-4">Typography First</p>
+      <h1 class="serif text-5xl font-bold text-black mb-4 leading-tight">
+        Words have <em class="italic">power</em>
+      </h1>
+      <p class="sans text-gray-600 leading-relaxed mb-6">
+        Great typography is invisible. It lets the content shine through 
+        without drawing attention to itself. The best type is the type 
+        you don't notice.
+      </p>
+      <div class="flex gap-8 text-sm sans">
+        <span class="text-gray-400">Aa</span>
+        <span class="text-gray-400 font-semibold">Aa</span>
+        <span class="serif text-gray-400 italic">Aa</span>
+        <span class="serif text-gray-400 font-bold">Aa</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

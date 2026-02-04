@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>极繁主义风格 Demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Georgia', serif;
+      background: 
+        repeating-linear-gradient(45deg, #ff1493 0, #ff1493 20px, #00ff00 20px, #00ff00 40px),
+        repeating-linear-gradient(-45deg, #ffd700 0, #ffd700 20px, #ff4500 20px, #ff4500 40px);
+      background-blend-mode: overlay;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+    .max-card {
+      background: rgba(255,255,255,0.9);
+      padding: 60px;
+      border: 10px solid #000;
+      box-shadow: 20px 20px 0 #ff1493, -20px -20px 0 #00ff00;
+      text-align: center;
+    }
+    .max-card h1 {
+      font-size: 60px;
+      color: #000;
+      text-shadow: 3px 3px 0 #ffd700;
+      margin-bottom: 20px;
+    }
+    .max-card p {
+      font-size: 20px;
+      color: #333;
+    }
+    @media (max-width: 768px) {
+      body { padding: 20px; }
+      .max-card { padding: 30px 20px; border-width: 6px; box-shadow: 10px 10px 0 #ff1493, -10px -10px 0 #00ff00; }
+      .max-card h1 { font-size: 32px; }
+      .max-card p { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="max-card">
+    <h1>MORE IS MORE</h1>
+    <p>Why have less when you can have everything?</p>
+  </div>
+</body>
+</html>
