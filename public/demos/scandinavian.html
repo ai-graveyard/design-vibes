@@ -1,72 +1,483 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>斯堪的纳维亚风格 Demo</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      background: #f5f5f5;
-      color: #333;
-    }
-    .hero {
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px;
-    }
-    .content {
-      max-width: 600px;
-      text-align: center;
-    }
-    .content h1 {
-      font-size: 48px;
-      font-weight: 300;
-      color: #5a6b5c;
-      margin-bottom: 20px;
-    }
-    .content p {
-      font-size: 18px;
-      color: #666;
-      line-height: 1.8;
-    }
-    .colors {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 60px;
-    }
-    .color {
-      width: 80px;
-      height: 80px;
-      border-radius: 8px;
-    }
-    .color:nth-child(1) { background: #d4c4b7; }
-    .color:nth-child(2) { background: #8b9a7c; }
-    .color:nth-child(3) { background: #e8dcc4; }
-    @media (max-width: 768px) {
-      .hero { padding: 40px 20px; }
-      .content h1 { font-size: 32px; }
-      .content p { font-size: 14px; }
-      .colors { gap: 10px; margin-top: 40px; }
-      .color { width: 50px; height: 50px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scandinavian · Design Vibes</title>
+<style>
+:root{
+  --cream:#f6f3ed;
+  --card:#ffffff;
+  --linen:#e8dcc4;
+  --wood:#d4c4b7;
+  --wood-deep:#b3987d;
+  --sage:#8b9a7c;
+  --sage-soft:#a9b5a3;
+  --ink:#3e3a33;
+  --ink-soft:#7d766a;
+  --glow:rgba(255,222,160,.55);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+  --serif:Georgia,"Palatino Linotype","Songti SC",serif;
+  --r:28px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:var(--sans);
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1140px;margin:0 auto;padding:0 32px}
+.kicker{
+  font-size:12px;font-weight:600;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--sage);
+}
+
+/* ---------- Header ---------- */
+header{padding:26px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:10px;font-size:19px;font-weight:700;letter-spacing:-.01em}
+.brand i{
+  width:14px;height:14px;border-radius:50%;
+  background:radial-gradient(at 35% 30%,var(--sage-soft),var(--sage));
+}
+.nav ul{display:flex;gap:32px;list-style:none}
+.nav ul a{
+  font-size:14px;color:var(--ink-soft);transition:color .3s;
+}
+.nav ul a:hover{color:var(--ink)}
+.cart{
+  font-size:13.5px;font-weight:600;
+  background:var(--card);border:1px solid rgba(62,58,51,.12);
+  padding:9px 20px;border-radius:999px;
+  transition:box-shadow .3s,transform .3s;
+}
+.cart:hover{box-shadow:0 8px 20px rgba(62,58,51,.10);transform:translateY(-1px)}
+
+/* ---------- Hero ---------- */
+.hero{
+  display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);
+  gap:56px;align-items:center;
+  padding:52px 0 96px;
+}
+.hero h1{
+  font-size:clamp(40px,5.2vw,64px);
+  font-weight:700;letter-spacing:-.02em;line-height:1.06;
+  margin-top:18px;
+}
+.hero h1 em{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  color:var(--sage);
+}
+.hero .lede{
+  margin-top:22px;font-size:17px;color:var(--ink-soft);max-width:42ch;
+}
+.hero-cta{margin-top:36px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.btn{
+  display:inline-block;background:var(--sage);color:#fff;
+  font-size:15px;font-weight:600;padding:15px 34px;border-radius:999px;
+  box-shadow:0 10px 24px -8px rgba(139,154,124,.55);
+  transition:background .3s,transform .3s,box-shadow .3s;
+}
+.btn:hover{background:#7c8b6e;transform:translateY(-2px);box-shadow:0 14px 28px -8px rgba(139,154,124,.6)}
+.quiet{
+  font-size:15px;font-weight:600;color:var(--ink);
+  border-bottom:2px solid var(--wood);padding-bottom:2px;
+  transition:border-color .3s;
+}
+.quiet:hover{border-color:var(--sage)}
+
+/* ---------- Room scene (pure CSS) ---------- */
+.scene{
+  position:relative;border-radius:var(--r);
+  min-height:480px;overflow:hidden;
+  background:linear-gradient(165deg,#efe5cf 0%,var(--linen) 55%,#dcccab 100%);
+  box-shadow:0 30px 60px -30px rgba(120,100,70,.45);
+}
+.sun{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(112deg,rgba(255,250,236,.9) 0%,rgba(255,250,236,0) 46%),
+    radial-gradient(58% 46% at 80% 16%,rgba(255,236,196,.75),transparent 70%);
+}
+.floor{
+  position:absolute;left:0;right:0;bottom:0;height:27%;
+  background:linear-gradient(180deg,#d9c6a8,#cbb491);
+  border-top:2px solid rgba(255,255,255,.5);
+}
+.rug{
+  position:absolute;bottom:5%;left:9%;width:64%;height:15%;
+  border-radius:50%;
+  background:radial-gradient(closest-side,var(--sage-soft),#9cab94 78%,transparent 79%);
+  opacity:.85;
+}
+/* armchair */
+.chair{position:absolute;bottom:16%;left:17%;width:190px;height:260px}
+.chair .back{
+  position:absolute;top:0;left:15px;width:160px;height:158px;
+  border-radius:80px 80px 26px 26px;
+  background:linear-gradient(160deg,#98a789,#7e8d6f);
+  box-shadow:inset 0 10px 16px rgba(255,255,255,.22),inset 0 -12px 18px rgba(62,58,51,.14);
+}
+.chair .seat{
+  position:absolute;top:128px;left:0;width:190px;height:52px;border-radius:26px;
+  background:linear-gradient(180deg,#8fa080,#75846a);
+  box-shadow:inset 0 6px 10px rgba(255,255,255,.25),0 6px 14px -6px rgba(62,58,51,.35);
+}
+.chair .leg{
+  position:absolute;top:176px;width:9px;height:72px;border-radius:5px;
+  background:linear-gradient(180deg,var(--wood-deep),#93764e);
+}
+.chair .leg.a{left:24px;transform:rotate(7deg)}
+.chair .leg.b{left:64px}
+.chair .leg.c{right:64px}
+.chair .leg.d{right:24px;transform:rotate(-7deg)}
+/* floor lamp */
+.lamp{position:absolute;bottom:17%;right:13%;width:130px;height:315px}
+.lamp .pole{
+  position:absolute;left:50%;top:64px;bottom:6px;width:6px;margin-left:-3px;
+  border-radius:3px;background:linear-gradient(180deg,#a98c66,#8f7350);
+}
+.lamp .base{
+  position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:74px;height:12px;border-radius:50%;background:#8f7350;
+}
+.lamp .shade{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:118px;height:82px;border-radius:59px 59px 14px 14px;
+  background:linear-gradient(180deg,#f0e2c4,#ddc79d);
+  box-shadow:inset 0 -14px 18px rgba(255,214,140,.55),0 8px 18px -8px rgba(120,100,70,.4);
+}
+.lamp .light{
+  position:absolute;top:66px;left:50%;transform:translateX(-50%);
+  width:190px;height:190px;border-radius:50%;
+  background:radial-gradient(closest-side,var(--glow),transparent 72%);
+  animation:glowpulse 5.5s ease-in-out infinite;
+}
+@keyframes glowpulse{0%,100%{opacity:.95}50%{opacity:.55}}
+/* side table + vase */
+.table{position:absolute;bottom:18%;left:52%;width:110px;height:150px}
+.table .top{
+  position:absolute;top:56px;left:0;width:110px;height:14px;border-radius:8px;
+  background:linear-gradient(180deg,#e0d0b6,#c9b28c);
+}
+.table .tleg{
+  position:absolute;top:68px;width:7px;height:76px;border-radius:4px;
+  background:#a08258;
+}
+.table .tleg.a{left:14px;transform:rotate(6deg)}
+.table .tleg.b{right:14px;transform:rotate(-6deg)}
+.vase{
+  position:absolute;top:6px;left:50%;transform:translateX(-50%);
+  width:34px;height:52px;
+  border-radius:16px 16px 15px 15px/8px 8px 26px 26px;
+  background:linear-gradient(160deg,#f7f2e8,#ddd2be);
+}
+.stem{
+  position:absolute;top:-26px;left:50%;width:2px;height:36px;
+  background:#7e8d6f;transform:rotate(8deg);transform-origin:bottom;
+}
+.stem::after{
+  content:"";position:absolute;top:-4px;left:-7px;width:16px;height:9px;
+  border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
+  background:var(--sage-soft);transform:rotate(-24deg);
+}
+
+/* ---------- Products ---------- */
+.products{padding:20px 0 40px}
+.sec-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:36px}
+.sec-head h2{font-size:clamp(28px,3.4vw,38px);font-weight:700;letter-spacing:-.015em;margin-top:10px}
+.sec-head .all{font-size:14.5px;font-weight:600;color:var(--sage);white-space:nowrap}
+.sec-head .all:hover{text-decoration:underline}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{
+  background:var(--card);border-radius:var(--r);padding:16px 16px 24px;
+  box-shadow:0 2px 6px rgba(62,58,51,.05),0 16px 32px -18px rgba(62,58,51,.18);
+  transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 4px 10px rgba(62,58,51,.06),0 26px 44px -18px rgba(62,58,51,.26);
+}
+.thumb{
+  border-radius:20px;height:210px;position:relative;overflow:hidden;
+  display:flex;align-items:flex-end;justify-content:center;
+}
+.thumb.linen{background:linear-gradient(160deg,#f0e6cf,var(--linen))}
+.thumb.sage{background:linear-gradient(160deg,#bcc6b4,var(--sage-soft))}
+.thumb.wood{background:linear-gradient(160deg,#e3d5c8,var(--wood))}
+/* mini chair */
+.m-chair{position:relative;width:96px;height:120px;margin-bottom:22px}
+.m-chair .b{position:absolute;top:0;left:8px;width:80px;height:74px;border-radius:40px 40px 12px 12px;background:linear-gradient(160deg,#98a789,#7e8d6f)}
+.m-chair .s{position:absolute;top:60px;left:0;width:96px;height:26px;border-radius:13px;background:#75846a}
+.m-chair .l1,.m-chair .l2{position:absolute;top:84px;width:6px;height:36px;border-radius:3px;background:var(--wood-deep)}
+.m-chair .l1{left:14px;transform:rotate(8deg)}
+.m-chair .l2{right:14px;transform:rotate(-8deg)}
+/* mini lamp */
+.m-lamp{position:relative;width:90px;height:130px;margin-bottom:20px}
+.m-lamp .p{position:absolute;left:50%;top:30px;bottom:4px;width:5px;margin-left:-2.5px;border-radius:3px;background:#8f7350}
+.m-lamp .sh{position:absolute;top:0;left:50%;transform:translateX(-50%);width:64px;height:42px;border-radius:32px 32px 8px 8px;background:linear-gradient(180deg,#f0e2c4,#ddc79d)}
+.m-lamp .ba{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:44px;height:8px;border-radius:50%;background:#8f7350}
+.m-lamp .gl{position:absolute;top:30px;left:50%;transform:translateX(-50%);width:80px;height:80px;border-radius:50%;background:radial-gradient(closest-side,var(--glow),transparent 70%)}
+/* mini table */
+.m-table{position:relative;width:100px;height:120px;margin-bottom:22px}
+.m-table .t{position:absolute;top:46px;left:0;width:100px;height:11px;border-radius:6px;background:linear-gradient(180deg,#efe3cd,#d3bd98)}
+.m-table .k1,.m-table .k2{position:absolute;top:56px;width:6px;height:56px;border-radius:3px;background:#a08258}
+.m-table .k1{left:12px;transform:rotate(6deg)}
+.m-table .k2{right:12px;transform:rotate(-6deg)}
+.m-table .v{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:26px;height:40px;border-radius:12px 12px 11px 11px/6px 6px 20px 20px;background:linear-gradient(160deg,#ffffff,#ddd2be)}
+.m-table .st{position:absolute;top:-12px;left:50%;width:2px;height:24px;background:#7e8d6f;transform:rotate(9deg);transform-origin:bottom}
+.m-table .st::after{content:"";position:absolute;top:-3px;left:-6px;width:13px;height:8px;border-radius:50%/60% 60% 40% 40%;background:var(--sage-soft);transform:rotate(-24deg)}
+.card h3{margin-top:18px;font-size:17.5px;font-weight:700;padding:0 8px}
+.card .mat{font-size:13.5px;color:var(--ink-soft);padding:0 8px;margin-top:3px}
+.card .row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 8px 0;
+}
+.card .price{font-size:16px;font-weight:700}
+.card .add{
+  font-size:13px;font-weight:600;color:var(--sage);
+  border:1.5px solid var(--sage-soft);border-radius:999px;padding:7px 16px;
+  transition:background .3s,color .3s;
+}
+.card .add:hover{background:var(--sage);color:#fff}
+
+/* ---------- Hygge banner ---------- */
+.banner{padding:72px 0 8px}
+.banner-in{
+  background:linear-gradient(150deg,var(--sage) 0%,#7c8b6e 100%);
+  border-radius:var(--r);color:#fdfcf8;
+  padding:64px 56px;position:relative;overflow:hidden;
+}
+.banner-in::after{
+  content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;
+  border-radius:50%;background:rgba(255,255,255,.10);
+}
+.banner-in::before{
+  content:"";position:absolute;right:40px;bottom:-90px;width:200px;height:200px;
+  border-radius:50%;background:rgba(255,255,255,.07);
+}
+.banner p.big{
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(22px,3vw,32px);line-height:1.4;max-width:26ch;
+}
+.banner p.small{margin-top:16px;font-size:14.5px;opacity:.85}
+
+/* ---------- Values ---------- */
+.values{padding:88px 0 96px}
+.values h2{font-size:clamp(28px,3.4vw,38px);font-weight:700;letter-spacing:-.015em;margin-top:10px;max-width:22ch}
+.v-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px}
+.v-cell{
+  background:var(--card);border-radius:var(--r);padding:32px 30px 36px;
+  box-shadow:0 2px 6px rgba(62,58,51,.05);
+  transition:transform .35s cubic-bezier(.22,1,.36,1);
+}
+.v-cell:hover{transform:translateY(-4px)}
+.v-cell .dot{
+  width:42px;height:42px;border-radius:14px;margin-bottom:20px;
+  display:flex;align-items:center;justify-content:center;
+}
+.v-cell .dot i{width:16px;height:16px;border-radius:50%}
+.v-cell:nth-child(1) .dot{background:#f0e6cf}.v-cell:nth-child(1) .dot i{background:var(--wood-deep)}
+.v-cell:nth-child(2) .dot{background:#e4e9df}.v-cell:nth-child(2) .dot i{background:var(--sage)}
+.v-cell:nth-child(3) .dot{background:#f6e9d2}.v-cell:nth-child(3) .dot i{background:#d9a86a}
+.v-cell h3{font-size:17px;font-weight:700}
+.v-cell p{margin-top:8px;font-size:14.5px;color:var(--ink-soft)}
+
+/* ---------- Footer ---------- */
+footer{background:#efeae1;border-top:1px solid rgba(62,58,51,.08);padding:56px 0 48px}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px}
+.foot h4{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:14px}
+.foot ul{list-style:none}
+.foot li{margin-bottom:9px}
+.foot a{font-size:14.5px;color:var(--ink-soft);transition:color .3s}
+.foot a:hover{color:var(--ink)}
+.foot .about p{font-size:14.5px;color:var(--ink-soft);max-width:30ch;margin-top:12px}
+.legal{
+  margin-top:44px;padding-top:22px;border-top:1px solid rgba(62,58,51,.1);
+  font-size:13px;color:var(--ink-soft);
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+
+/* ---------- Responsive ---------- */
+@media(max-width:940px){
+  .hero{grid-template-columns:1fr;gap:44px;padding-bottom:72px}
+  .scene{min-height:420px}
+  .cards,.v-grid{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr 1fr}
+  .nav ul{display:none}
+}
+@media(max-width:480px){
+  .wrap{padding:0 20px}
+  .scene{min-height:340px}
+  .chair{left:8%;transform:scale(.82);transform-origin:bottom left}
+  .lamp{right:4%;transform:scale(.82);transform-origin:bottom right}
+  .table{left:48%;transform:scale(.85);transform-origin:bottom center}
+  .banner-in{padding:44px 28px}
+  .foot{grid-template-columns:1fr}
+  .hero{padding-top:28px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
 </head>
 <body>
-  <section class="hero">
-    <div class="content">
-      <h1>Hygge Living</h1>
-      <p>Comfort, warmth, and simplicity. Design that feels like home.</p>
-      <div class="colors">
-        <div class="color"></div>
-        <div class="color"></div>
-        <div class="color"></div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top"><i></i>Birkelund</a>
+    <nav>
+      <ul>
+        <li><a href="#shop">Living</a></li>
+        <li><a href="#shop">Lighting</a></li>
+        <li><a href="#shop">Tables</a></li>
+        <li><a href="#values">Our wood</a></li>
+        <li><a href="#values">Journal</a></li>
+      </ul>
+    </nav>
+    <a class="cart" href="#shop">Basket · 0</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap">
+    <div>
+      <span class="kicker">Spring collection · In stock</span>
+      <h1>A home that <em>hugs back.</em></h1>
+      <p class="lede">Furniture shaped for low winter sun and long summer evenings — solid oak, undyed wool, and nothing you'll ever want to replace.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#shop">Shop the collection</a>
+        <a class="quiet" href="#values">How we build</a>
+      </div>
+    </div>
+    <div class="scene" aria-hidden="true">
+      <div class="sun"></div>
+      <div class="floor"></div>
+      <div class="rug"></div>
+      <div class="chair">
+        <div class="leg a"></div><div class="leg b"></div><div class="leg c"></div><div class="leg d"></div>
+        <div class="back"></div><div class="seat"></div>
+      </div>
+      <div class="table">
+        <div class="tleg a"></div><div class="tleg b"></div>
+        <div class="top"></div>
+        <div class="vase"><div class="stem"></div></div>
+      </div>
+      <div class="lamp">
+        <div class="light"></div><div class="pole"></div><div class="base"></div><div class="shade"></div>
       </div>
     </div>
   </section>
+
+  <section class="products wrap" id="shop">
+    <div class="sec-head">
+      <div>
+        <span class="kicker">Most loved</span>
+        <h2>Pieces for the quiet hours</h2>
+      </div>
+      <a class="all" href="#top">View all 24 →</a>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="thumb linen">
+          <div class="m-chair"><div class="b"></div><div class="s"></div><div class="l1"></div><div class="l2"></div></div>
+        </div>
+        <h3>Bo armchair</h3>
+        <p class="mat">Wool bouclé · solid oak legs</p>
+        <div class="row"><span class="price">€ 690</span><a class="add" href="#shop">Add to basket</a></div>
+      </div>
+      <div class="card">
+        <div class="thumb sage">
+          <div class="m-lamp"><div class="gl"></div><div class="p"></div><div class="ba"></div><div class="sh"></div></div>
+        </div>
+        <h3>Lys floor lamp</h3>
+        <p class="mat">Pleated linen shade · ash stem</p>
+        <div class="row"><span class="price">€ 240</span><a class="add" href="#shop">Add to basket</a></div>
+      </div>
+      <div class="card">
+        <div class="thumb wood">
+          <div class="m-table"><div class="k1"></div><div class="k2"></div><div class="t"></div><div class="v"><div class="st"></div></div></div>
+        </div>
+        <h3>Eik side table</h3>
+        <p class="mat">Oiled oak · stoneware vase included</p>
+        <div class="row"><span class="price">€ 320</span><a class="add" href="#shop">Add to basket</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="banner wrap">
+    <div class="banner-in">
+      <p class="big">"Hygge isn't something you buy. It's the hour the lamp comes on — we just make the lamp."</p>
+      <p class="small">Mette Birkelund, founder</p>
+    </div>
+  </section>
+
+  <section class="values wrap" id="values">
+    <span class="kicker">Why it lasts</span>
+    <h2>Built slowly, in small batches, by six workshops in the North</h2>
+    <div class="v-grid">
+      <div class="v-cell">
+        <div class="dot"><i></i></div>
+        <h3>Honest materials</h3>
+        <p>Certified oak and ash, undyed wool, linen woven within a day's drive of the workshop.</p>
+      </div>
+      <div class="v-cell">
+        <div class="dot"><i></i></div>
+        <h3>Made to be kept</h3>
+        <p>Every joint is repairable and every cover replaceable. Spare parts, for as long as we exist.</p>
+      </div>
+      <div class="v-cell">
+        <div class="dot"><i></i></div>
+        <h3>Light, above all</h3>
+        <p>Rounded forms and warm finishes, shaped to gather whatever daylight the season allows.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="about">
+        <a class="brand" href="#top"><i></i>Birkelund</a>
+        <p>Furniture for slow living, drawn and built in Bergen since 1987.</p>
+      </div>
+      <div>
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#shop">Seating</a></li>
+          <li><a href="#shop">Lighting</a></li>
+          <li><a href="#shop">Tables</a></li>
+          <li><a href="#shop">Textiles</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="#values">Our wood</a></li>
+          <li><a href="#values">Workshops</a></li>
+          <li><a href="#values">Care guides</a></li>
+          <li><a href="#values">Journal</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li><a href="#top">Bergen showroom</a></li>
+          <li><a href="#top">Copenhagen corner</a></li>
+          <li><a href="#top">Open Tue – Sat</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Birkelund Studio AS</span>
+      <span>Delivery across the Nordics · 10-year joinery guarantee</span>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>

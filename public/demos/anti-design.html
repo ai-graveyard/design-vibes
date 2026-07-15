@@ -1,68 +1,299 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>反设计风格 Demo</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Comic Sans MS', cursive;
-      background: repeating-linear-gradient(45deg, #ff0, #ff0 10px, #0ff 10px, #0ff 20px);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-    .chaos {
-      padding: 40px;
-    }
-    .chaos h1 {
-      font-size: 60px;
-      color: #f0f;
-      text-shadow: 5px 5px 0 #0f0;
-      transform: rotate(-5deg);
-      margin-bottom: 30px;
-    }
-    .chaos p {
-      font-size: 20px;
-      background: #f00;
-      color: #ff0;
-      padding: 20px;
-      transform: rotate(3deg);
-      display: inline-block;
-    }
-    .box {
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      background: #0f0;
-      top: 200px;
-      right: 50px;
-      transform: rotate(15deg);
-    }
-    .box2 {
-      position: absolute;
-      width: 80px;
-      height: 80px;
-      background: #f0f;
-      bottom: 100px;
-      left: 50px;
-      border-radius: 50%;
-    }
-    @media (max-width: 768px) {
-      .chaos { padding: 20px; }
-      .chaos h1 { font-size: 40px; }
-      .chaos p { font-size: 16px; }
-      .box { width: 60px; height: 60px; top: 150px; right: 20px; }
-      .box2 { width: 50px; height: 50px; bottom: 50px; left: 20px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anti-Design · Design Vibes</title>
+<style>
+:root{
+  --green:#89FC00;
+  --magenta:#FF00FF;
+  --red:#FF0000;
+  --blue:#0000FF;
+  --yellow:#FFFF00;
+  --ink:#000000;
+  --paper:#FFFFFF;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+  --serif:Georgia,"Times New Roman",serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{overflow-x:clip}
+body{
+  background:var(--green);
+  color:var(--ink);
+  font-family:var(--sans);
+  line-height:1.45;
+  overflow-x:clip;
+}
+::selection{background:var(--magenta);color:var(--paper)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+/* ---------- header ---------- */
+.warnbar{
+  background:var(--ink);color:var(--green);font-family:var(--mono);
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  text-align:center;padding:6px 10px;
+}
+header .wrap{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 26px;padding-top:20px;padding-bottom:8px}
+.brand{
+  font-family:var(--serif);font-style:italic;font-weight:700;
+  font-size:clamp(1.5rem,3.4vw,2rem);letter-spacing:-.02em;
+  transform:rotate(-2deg);display:inline-block;
+}
+.brand sup{font-family:var(--mono);font-style:normal;font-size:.45em;color:var(--red)}
+header nav{display:flex;flex-wrap:wrap;gap:4px 20px;margin-left:auto;align-items:baseline}
+header nav a{color:var(--ink);font-size:15px;display:inline-block;transition:transform .12s ease,background .12s ease}
+header nav a:nth-child(1){font-family:var(--mono);transform:rotate(2deg)}
+header nav a:nth-child(2){font-family:var(--serif);font-style:italic;transform:rotate(-3deg) translateY(3px)}
+header nav a:nth-child(3){font-weight:900;text-transform:uppercase;transform:rotate(1deg);color:var(--blue)}
+header nav a:nth-child(4){font-family:var(--mono);text-decoration:line-through;transform:rotate(-1deg)}
+header nav a:nth-child(5){font-size:12px;transform:rotate(4deg) translateY(-4px);color:var(--red)}
+header nav a:hover{background:var(--magenta);color:var(--paper);transform:rotate(0deg) scale(1.06)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:44px 0 56px}
+.hero h1{font-weight:900;line-height:.82;text-transform:uppercase;letter-spacing:-.04em}
+.hero h1 span{display:block}
+.w1{
+  font-size:clamp(3.4rem,12.5vw,8.6rem);
+  transform:rotate(-4deg);
+}
+.w2{
+  font-family:var(--mono);font-weight:700;
+  font-size:clamp(2rem,7vw,4.6rem);
+  color:var(--paper);background:var(--ink);
+  width:max-content;max-width:100%;padding:2px 18px;
+  transform:rotate(2.5deg);margin:-14px 0 0 clamp(20px,14vw,190px);
+}
+.w3{
+  font-size:clamp(2.6rem,10.5vw,7.2rem);
+  color:var(--magenta);
+  -webkit-text-stroke:2px var(--ink);
+  transform:rotate(-1.5deg);
+  margin:-8px 0 0 clamp(4px,4vw,60px);
+}
+.w3 sup{font-size:.25em;-webkit-text-stroke:0;color:var(--ink)}
+.footnote{
+  font-family:var(--mono);font-size:12px;margin:26px 0 0 clamp(4px,4vw,64px);
+  transform:rotate(-1deg);width:max-content;max-width:90%;
+}
+.hero-note{
+  position:relative;background:var(--paper);border:3px solid var(--ink);
+  max-width:430px;padding:16px 18px;font-size:15.5px;
+  margin:26px 0 0 auto;transform:rotate(1.4deg);
+  box-shadow:-6px 8px 0 var(--magenta);
+}
+.hero-note b{background:var(--yellow)}
+/* scattered props */
+.stamp{
+  position:absolute;right:8%;top:34px;width:104px;height:104px;z-index:4;
+  border:5px solid var(--red);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-weight:700;font-size:30px;color:var(--red);
+  transform:rotate(14deg);background:transparent;
+  animation:wobble 5s ease-in-out infinite;
+}
+.postit{
+  position:absolute;left:58%;top:150px;background:var(--yellow);border:2.5px solid var(--ink);
+  font-family:var(--mono);font-size:11.5px;padding:10px 12px;transform:rotate(6deg);
+  box-shadow:4px 4px 0 rgba(0,0,0,.85);max-width:170px;
+}
+.cursor{position:absolute;font-family:var(--mono);font-size:11px;font-weight:700;animation:drift 7s ease-in-out infinite alternate}
+.cursor svg{display:block;width:24px;height:24px}
+.cursor span{
+  display:inline-block;border:2px solid var(--ink);padding:2px 8px;margin:-3px 0 0 17px;
+  background:var(--magenta);color:var(--paper);
+}
+.cur-a{left:16%;top:56%}
+.cur-b{right:15%;bottom:10px;animation-delay:-3.5s}
+.cur-b span{background:var(--blue)}
+.squiggle{position:absolute;left:2%;top:96px;width:150px;height:36px;transform:rotate(-8deg)}
+
+/* ---------- work ---------- */
+.work{padding:10px 0 60px}
+.work h2,.process h2{
+  display:inline-block;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;
+  font-size:clamp(1.7rem,4.6vw,2.7rem);
+  background:var(--yellow);border:3px solid var(--ink);padding:4px 16px;
+  transform:rotate(-1.2deg);box-shadow:5px 5px 0 var(--ink);margin-bottom:8px;
+}
+.work .aside{font-family:var(--mono);font-size:12px;margin:10px 0 34px;transform:rotate(.6deg);width:max-content;max-width:100%}
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:start}
+.case{
+  border:3px solid var(--ink);padding:22px 20px 26px;position:relative;
+  transition:transform .15s ease,box-shadow .15s ease;
+}
+.case:hover{transform:rotate(0deg) translateY(-6px);box-shadow:0 10px 0 var(--ink)}
+.case .no{font-family:var(--mono);font-size:11px;letter-spacing:.12em;display:block;margin-bottom:12px}
+.case h3{font-size:21px;line-height:1.15;margin-bottom:10px}
+.case p{font-size:14.5px}
+.case-1{background:var(--paper);transform:rotate(-2deg);margin-top:34px}
+.case-1 h3{font-family:var(--serif);font-style:italic}
+.case-2{background:var(--magenta);color:var(--paper);transform:rotate(1.6deg)}
+.case-2 .no{color:var(--yellow)}
+.case-2 h3{font-weight:900;text-transform:uppercase}
+.case-3{background:var(--blue);color:var(--paper);transform:rotate(-1deg);margin-top:58px}
+.case-3 h3{font-family:var(--mono);font-weight:700}
+.case-3 .no{color:var(--green)}
+
+/* ---------- process ---------- */
+.process{padding:20px 0 90px;position:relative}
+.process-box{
+  background:var(--paper);border:3px solid var(--ink);max-width:560px;
+  padding:30px 30px 34px;transform:rotate(.8deg);position:relative;
+  box-shadow:10px -8px 0 var(--red);margin-top:26px;
+}
+.process ol{list-style:none;font-size:18px}
+.process li{padding:9px 0;border-bottom:2px dashed var(--ink)}
+.process li:last-child{border-bottom:0}
+.process li i{
+  font-style:normal;font-family:var(--mono);font-weight:700;font-size:13px;
+  display:inline-block;min-width:2.4em;color:var(--red);
+}
+.process li:nth-child(2) i{color:var(--blue)}
+.process li:nth-child(4){font-family:var(--serif);font-style:italic}
+.process li:nth-child(3){text-transform:uppercase;font-weight:800;font-size:15px;letter-spacing:.04em}
+.approved{
+  position:absolute;right:-16px;top:-26px;
+  font-family:var(--mono);font-weight:700;font-size:15px;color:var(--paper);
+  background:var(--red);border:3px solid var(--ink);padding:8px 14px;
+  transform:rotate(8deg);animation:wobble 6s ease-in-out infinite;
+}
+.big-asterisk{
+  position:absolute;right:6%;bottom:30px;font-size:130px;line-height:1;
+  color:var(--magenta);font-family:var(--serif);
+  transform:rotate(12deg);user-select:none;
+}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:var(--green);font-family:var(--mono)}
+footer .wrap{padding-top:26px;padding-bottom:40px}
+footer p{font-size:12.5px;line-height:2}
+footer a{color:var(--magenta)}
+footer a:hover{background:var(--green);color:var(--ink)}
+footer .flip{display:inline-block;transform:rotate(180deg);font-size:11px;color:var(--paper)}
+
+@keyframes wobble{0%,100%{transform:rotate(10deg)}50%{transform:rotate(16deg)}}
+@keyframes drift{from{translate:0 0}to{translate:14px -10px}}
+
+/* ---------- responsive ---------- */
+@media (max-width:820px){
+  .cases{grid-template-columns:1fr;gap:30px}
+  .case-1,.case-3{margin-top:0}
+  .case-3{margin-left:8%}
+  .case-2{margin-right:8%}
+  .stamp{right:3%;top:-20px;bottom:auto;width:76px;height:76px;font-size:22px;border-width:4px}
+  .postit{left:auto;right:6%;top:auto;bottom:56px}
+  .hero{padding-bottom:150px}
+  .hero-note{margin-top:34px}
+  .cur-a,.cur-b{display:none}
+  .big-asterisk{font-size:90px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
 </head>
 <body>
-  <div class="chaos">
-    <h1>ANTI<br>DESIGN</h1>
-    <p>Rules are meant to be broken.</p>
+
+<header>
+  <div class="warnbar">warning: this website contains choices &middot; viewer discretion advised-ish</div>
+  <div class="wrap">
+    <p class="brand">studio wrong<sup>&trade;</sup></p>
+    <nav aria-label="Main">
+      <a href="#work">work</a>
+      <a href="#process">the process</a>
+      <a href="#work">SHOP</a>
+      <a href="#process">pricing (lol)</a>
+      <a href="#contact">contact??</a>
+    </nav>
   </div>
-  <div class="box"></div>
-  <div class="box2"></div>
+</header>
+
+<main>
+
+  <section class="hero wrap" aria-label="Intro">
+    <svg class="squiggle" viewBox="0 0 150 36" aria-hidden="true">
+      <path d="M4,20 Q20,2 36,20 T68,20 T100,20 T132,20" fill="none" stroke="#0000FF" stroke-width="5" stroke-linecap="round"/>
+    </svg>
+
+    <h1>
+      <span class="w1">Rules</span>
+      <span class="w2">are just</span>
+      <span class="w3">suggestions<sup>*</sup></span>
+    </h1>
+    <p class="footnote">*not legal advice. barely design advice.</p>
+
+    <div class="stamp" aria-hidden="true">NO.</div>
+
+    <p class="postit" aria-hidden="true">todo:<br>&mdash; fix kerning (never)<br>&mdash; center the div (why)</p>
+
+    <p class="hero-note">
+      Studio Wrong is a creative practice. We heard about grids and decided
+      they were <b>gossip</b>. Clients arrive with briefs; they leave with
+      <b>consequences</b>. Everyone is thrilled, eventually.
+    </p>
+
+    <div class="cursor cur-a" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M4 2 L4 20 L9 15 L13 22 L16.5 20 L12.5 13 L19 13 Z" fill="#000" stroke="#fff" stroke-width="1.6"/></svg>
+      <span>you</span>
+    </div>
+    <div class="cursor cur-b" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M4 2 L4 20 L9 15 L13 22 L16.5 20 L12.5 13 L19 13 Z" fill="#000" stroke="#fff" stroke-width="1.6"/></svg>
+      <span>also you</span>
+    </div>
+  </section>
+
+  <section class="work wrap" id="work" aria-labelledby="work-title">
+    <h2 id="work-title">Selected work</h2>
+    <p class="aside">(the unselected work escaped and is doing fine)</p>
+    <div class="cases">
+      <article class="case case-1">
+        <span class="no">CASE 004</span>
+        <h3>Rebrand for a soup startup</h3>
+        <p>They asked us to make the logo bigger. We made it bigger AND smaller, simultaneously. Sales of the medium soup tripled.</p>
+      </article>
+      <article class="case case-2">
+        <span class="no">CASE 002</span>
+        <h3>Helvetica, but angry</h3>
+        <p>A poster series where the type files a formal complaint. Sold out in one afternoon, which we consider a red flag.</p>
+      </article>
+      <article class="case case-3">
+        <span class="no">CASE 7&frac12;</span>
+        <h3>Website for a band that broke up mid-project</h3>
+        <p>The site outlived the band. It now hosts their group chat screenshots as an archive. The drummer left a five-star review.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="process wrap" id="process" aria-labelledby="process-title">
+    <h2 id="process-title">Our process</h2>
+    <div class="process-box">
+      <span class="approved">APPROVED?</span>
+      <ol>
+        <li><i>1.</i> vibes</li>
+        <li><i>2.</i> more vibes</li>
+        <li><i>5.</i> PANIC (scheduled, 3&ndash;4pm)</li>
+        <li><i>3.</i> undo, undo, keep</li>
+        <li><i>12.</i> invoice</li>
+      </ol>
+    </div>
+    <span class="big-asterisk" aria-hidden="true">*</span>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <p>
+      studio wrong &middot; second floor, ask for the door that sticks<br>
+      commissions: open. taste: negotiable. alignment: a social construct.<br>
+      <a href="#work">see the work again</a> &middot; <a href="#process">re-read the process</a> &middot; est. whenever
+      <br><span class="flip">you're still reading? hire us.</span>
+    </p>
+  </div>
+</footer>
+
 </body>
 </html>

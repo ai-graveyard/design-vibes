@@ -1,30 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Memphis Style Demo</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
-    body { font-family: 'Inter', sans-serif; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memphis · Design Vibes</title>
+<style>
+:root{
+  --cream:#FFF8EC;
+  --pink:#FF69B4;
+  --teal:#00CED1;
+  --gold:#FFD700;
+  --tomato:#FF6347;
+  --ink:#000000;
+  --paper:#FFFFFF;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{overflow-x:clip}
+body{
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--sans);
+  line-height:1.5;
+  overflow-x:clip;
+}
+::selection{background:var(--gold)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* ---------- nav ---------- */
+.nav{background:var(--cream);border-bottom:4px solid var(--ink)}
+.nav .wrap{display:flex;align-items:center;gap:26px;padding-top:16px;padding-bottom:16px}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink);font-weight:900;font-size:23px;letter-spacing:.02em}
+.logo .d{width:15px;height:15px;border-radius:50%;border:3px solid var(--ink);display:inline-block}
+.logo .d1{background:var(--pink)}
+.logo .d2{background:var(--teal);margin-left:-14px}
+.logo .d3{background:var(--gold);margin-left:-14px}
+.nav-links{display:flex;gap:22px;list-style:none;margin-left:auto}
+.nav-links a{
+  color:var(--ink);text-decoration:none;font-weight:800;font-size:13.5px;
+  text-transform:uppercase;letter-spacing:.08em;padding:3px 6px;border:3px solid transparent;
+  transition:border-color .12s ease,background .12s ease,transform .12s ease;
+}
+.nav-links a:hover{border-color:var(--ink);background:var(--gold);transform:rotate(-2deg)}
+.pill{
+  display:inline-block;text-decoration:none;color:var(--ink);
+  border:3.5px solid var(--ink);border-radius:999px;background:var(--pink);
+  font-weight:900;font-size:14.5px;padding:10px 22px;letter-spacing:.04em;text-transform:uppercase;
+  box-shadow:4px 4px 0 var(--ink);
+  transition:transform .14s ease,box-shadow .14s ease,background .14s ease;
+}
+.pill:hover{transform:translate(-2px,-2px) rotate(-1.5deg);box-shadow:7px 7px 0 var(--ink)}
+.pill.gold{background:var(--gold)}
+.pill.teal{background:var(--teal)}
+
+/* ---------- hero ---------- */
+.hero{position:relative}
+.hero .wrap{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;
+  padding-top:64px;padding-bottom:70px;
+}
+.eyebrow{
+  font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  margin-bottom:18px;display:flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:"";width:34px;height:0;border-top:4px solid var(--ink)}
+.hero h1{
+  font-size:clamp(2.6rem,6.4vw,4.7rem);
+  font-weight:900;line-height:1.02;letter-spacing:-.02em;text-transform:uppercase;
+}
+.hero h1 .blk{display:inline-block;border:4px solid var(--ink);padding:0 12px;margin:3px 0}
+.hero h1 .b1{background:var(--gold);transform:rotate(-2deg);box-shadow:5px 5px 0 var(--ink)}
+.hero h1 .b2{background:var(--paper)}
+.hero h1 .b3{background:var(--pink);transform:rotate(1.6deg);box-shadow:-5px 5px 0 var(--ink)}
+.hero p.sub{margin:24px 0 30px;font-size:18.5px;max-width:44ch;font-weight:500}
+.hero .row{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.hero .fine{margin-top:22px;font-family:var(--mono);font-size:12.5px;letter-spacing:.06em}
+.hero .fine b{border-bottom:4px solid var(--teal)}
+
+.hero-art{position:relative;min-height:380px}
+.hero-art svg{width:100%;height:auto;display:block;overflow:visible}
+.f1{animation:bob 6s ease-in-out infinite alternate}
+.f2{animation:bob 7s ease-in-out infinite alternate;animation-delay:-2s}
+.f3{animation:bob 5s ease-in-out infinite alternate;animation-delay:-3.4s}
+@keyframes bob{from{transform:translateY(0)}to{transform:translateY(-12px)}}
+
+/* ---------- zig band ---------- */
+.band{background:var(--teal);border-top:4px solid var(--ink);border-bottom:4px solid var(--ink);padding:10px 0}
+.band svg{display:block;width:100%;height:16px}
+
+/* ---------- products ---------- */
+.products{padding:70px 0 78px}
+.k{
+  font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  display:inline-block;border:3px solid var(--ink);border-radius:999px;background:var(--paper);
+  padding:5px 16px;margin-bottom:16px;box-shadow:3px 3px 0 var(--ink);
+}
+.products h2,.creed h2{
+  font-size:clamp(1.9rem,4.4vw,2.9rem);font-weight:900;letter-spacing:-.01em;
+  text-transform:uppercase;margin-bottom:42px;line-height:1.05;
+}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.prod{
+  background:var(--paper);border:3.5px solid var(--ink);padding:0 0 24px;
+  transition:transform .16s ease,box-shadow .16s ease;position:relative;
+}
+.prod:nth-child(1){box-shadow:8px 8px 0 var(--pink)}
+.prod:nth-child(2){box-shadow:8px 8px 0 var(--teal)}
+.prod:nth-child(3){box-shadow:8px 8px 0 var(--gold)}
+.prod:hover{transform:rotate(-1.6deg) translateY(-5px)}
+.prod figure{border-bottom:3.5px solid var(--ink);background:var(--cream);padding:18px 18px 12px}
+.prod figure svg{display:block;width:100%;height:150px;overflow:visible}
+.prod .body{padding:18px 20px 0}
+.prod h3{font-size:20px;font-weight:900;text-transform:uppercase;letter-spacing:.02em}
+.prod .price{font-family:var(--mono);font-size:13px;margin:6px 0 10px;letter-spacing:.02em}
+.prod p{font-size:14.5px}
+.prod .tag{
+  position:absolute;top:-14px;right:14px;background:var(--tomato);color:var(--paper);
+  border:3px solid var(--ink);border-radius:999px;font-family:var(--mono);
+  font-size:11px;font-weight:700;letter-spacing:.1em;padding:3px 11px;transform:rotate(5deg);
+}
+.prod:nth-child(2) .tag{background:var(--pink);color:var(--ink);transform:rotate(-4deg)}
+.prod:nth-child(3) .tag{background:var(--teal);color:var(--ink)}
+
+/* ---------- creed ---------- */
+.creed{
+  background:var(--tomato);border-top:4px solid var(--ink);border-bottom:4px solid var(--ink);
+  background-image:radial-gradient(rgba(255,255,255,.35) 2.4px,transparent 2.6px);
+  background-size:30px 30px;
+}
+.creed .wrap{padding-top:64px;padding-bottom:64px;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center}
+.creed h2{margin-bottom:12px;max-width:20ch}
+.creed h2 mark{
+  background:var(--gold);border:3px solid var(--ink);padding:0 8px;box-shadow:4px 4px 0 var(--ink);
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;
+}
+.creed p{font-family:var(--mono);font-size:13px;letter-spacing:.04em}
+.creed svg{width:120px;height:120px;overflow:visible}
+
+/* ---------- footer ---------- */
+footer{background:var(--cream)}
+footer .zz{display:block;width:100%;height:16px;margin-top:-2px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px 36px;align-items:center;padding-top:26px;padding-bottom:36px}
+footer .logo{font-size:19px}
+footer nav{display:flex;gap:18px}
+footer nav a{
+  color:var(--ink);font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.08em;
+  text-decoration:none;border-bottom:3px solid var(--pink);
+  transition:background .12s ease;
+}
+footer nav a:nth-child(2){border-color:var(--teal)}
+footer nav a:nth-child(3){border-color:var(--gold)}
+footer nav a:hover{background:var(--gold)}
+footer p{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;margin-left:auto}
+
+/* ---------- responsive ---------- */
+@media (max-width:880px){
+  .products.wrap{padding-left:24px;padding-right:24px}
+  .nav-links{display:none}
+  .hero .wrap{grid-template-columns:1fr;gap:52px;padding-top:44px;padding-bottom:56px}
+  .hero-art{min-height:0}
+  .grid3{grid-template-columns:1fr;gap:34px}
+  .creed .wrap{grid-template-columns:1fr;gap:28px}
+  .creed svg{width:92px;height:92px}
+  footer p{margin-left:0}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
 </head>
-<body class="bg-white">
-  <div class="w-full h-screen flex items-center justify-center p-4 bg-pink-100">
-    <div class="relative w-64 h-64">
-      <div class="absolute top-0 left-0 w-16 h-16 bg-cyan-400 rounded-full border-4 border-black"></div>
-      <div class="absolute top-8 right-0 w-12 h-12 bg-yellow-400 border-4 border-black"></div>
-      <div class="absolute bottom-8 left-4 w-20 h-20 bg-pink-500 border-4 border-black"></div>
-      <div class="absolute bottom-0 right-8 w-16 h-16 bg-green-400 transform rotate-12 border-4 border-black"></div>
-      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <div class="w-24 h-24 bg-white border-4 border-black flex items-center justify-center">
-          <span class="font-black text-xl text-black">WOW</span>
-        </div>
-      </div>
-      <div class="absolute top-4 left-1/2 w-8 h-8 bg-black"></div>
-      <div class="absolute bottom-4 right-4 w-6 h-6 bg-purple-500 rounded-full"></div>
-    </div>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">
+      <span class="d d1"></span><span class="d d2"></span><span class="d d3"></span>
+      TUTTI
+    </a>
+    <ul class="nav-links">
+      <li><a href="#lineup">The lineup</a></li>
+      <li><a href="#creed">The creed</a></li>
+      <li><a href="#lineup">Showroom</a></li>
+    </ul>
+    <a class="pill" href="#lineup">Shop loud</a>
   </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Milano attitude &middot; est. whenever &middot; batch no. 81</p>
+        <h1>
+          <span class="blk b1">Objects</span><br>
+          <span class="blk b2">with</span>
+          <span class="blk b3">opinions</span>
+        </h1>
+        <p class="sub">
+          Furniture and friends in clashing colors. Every TUTTI piece is wrong
+          on purpose and right on arrival &mdash; squiggles included, restraint
+          sold separately.
+        </p>
+        <div class="row">
+          <a class="pill gold" href="#lineup">Browse the lineup</a>
+          <a class="pill teal" href="#creed">Read the creed</a>
+        </div>
+        <p class="fine"><b>ships flat</b> &middot; ARRIVES LOUD &middot; assembly is a group activity</p>
+      </div>
+
+      <figure class="hero-art" aria-label="Geometric composition of dots, zigzags and springs">
+        <svg viewBox="0 0 420 380">
+          <defs>
+            <pattern id="dots" width="18" height="18" patternUnits="userSpaceOnUse">
+              <circle cx="4" cy="4" r="3.2" fill="#000"/>
+            </pattern>
+            <pattern id="dotsW" width="16" height="16" patternUnits="userSpaceOnUse">
+              <circle cx="4" cy="4" r="2.8" fill="#FFF8EC"/>
+            </pattern>
+          </defs>
+          <g class="f1">
+            <circle cx="150" cy="140" r="104" fill="#00CED1" stroke="#000" stroke-width="4"/>
+            <circle cx="150" cy="140" r="104" fill="url(#dotsW)" stroke="none"/>
+          </g>
+          <g class="f2">
+            <polygon points="300,58 392,218 208,218" fill="#FFD700" stroke="#000" stroke-width="4" stroke-linejoin="round"/>
+          </g>
+          <g class="f3">
+            <path d="M64,300 a52,52 0 0 1 104,0 z" fill="#FF69B4" stroke="#000" stroke-width="4" transform="rotate(-14 116 288)"/>
+          </g>
+          <polyline points="200,300 224,268 248,300 272,268 296,300 320,268 344,300" fill="none" stroke="#000" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M14,84 Q30,44 46,84 T78,84 T110,84" fill="none" stroke="#FF6347" stroke-width="6" stroke-linecap="round"/>
+          <g stroke="#000" stroke-width="4" fill="none">
+            <ellipse cx="352" cy="118" rx="26" ry="10" transform="rotate(24 352 118)"/>
+            <ellipse cx="360" cy="100" rx="26" ry="10" transform="rotate(24 360 100)"/>
+            <ellipse cx="368" cy="82" rx="26" ry="10" transform="rotate(24 368 82)"/>
+          </g>
+          <circle cx="52" cy="196" r="12" fill="#FF6347" stroke="#000" stroke-width="4"/>
+          <circle cx="392" cy="286" r="9" fill="#FF69B4" stroke="#000" stroke-width="4"/>
+          <rect x="20" y="330" width="34" height="34" fill="url(#dots)" stroke="#000" stroke-width="3.5" transform="rotate(12 37 347)"/>
+        </svg>
+      </figure>
+    </div>
+  </section>
+
+  <div class="band" aria-hidden="true">
+    <svg viewBox="0 0 1200 16" preserveAspectRatio="none">
+      <polyline points="0,14 30,2 60,14 90,2 120,14 150,2 180,14 210,2 240,14 270,2 300,14 330,2 360,14 390,2 420,14 450,2 480,14 510,2 540,14 570,2 600,14 630,2 660,14 690,2 720,14 750,2 780,14 810,2 840,14 870,2 900,14 930,2 960,14 990,2 1020,14 1050,2 1080,14 1110,2 1140,14 1170,2 1200,14" fill="none" stroke="#000" stroke-width="4"/>
+    </svg>
+  </div>
+
+  <section class="products wrap" id="lineup" aria-labelledby="lineup-title">
+    <span class="k">New for &rsquo;26</span>
+    <h2 id="lineup-title">The lineup</h2>
+    <div class="grid3">
+      <article class="prod">
+        <span class="tag">LOUD</span>
+        <figure aria-label="Wobble lamp illustration">
+          <svg viewBox="0 0 300 150">
+            <polygon points="150,128 96,144 204,144" fill="#FFD700" stroke="#000" stroke-width="4" stroke-linejoin="round"/>
+            <polyline points="150,128 138,108 162,88 138,68 154,54" fill="none" stroke="#000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="158" cy="34" r="22" fill="#00CED1" stroke="#000" stroke-width="4"/>
+            <circle cx="152" cy="28" r="4" fill="#FFF8EC"/>
+            <circle cx="228" cy="40" r="7" fill="#FF69B4" stroke="#000" stroke-width="3.5"/>
+            <path d="M52,44 Q64,20 76,44 T100,44" fill="none" stroke="#FF6347" stroke-width="4.5" stroke-linecap="round"/>
+          </svg>
+        </figure>
+        <div class="body">
+          <h3>Wobble lamp</h3>
+          <p class="price">$140 &middot; one bulb, three feelings</p>
+          <p>Leans 9&deg; to the left, like everyone interesting. Casts a glow best described as &ldquo;gelato at midnight.&rdquo;</p>
+        </div>
+      </article>
+
+      <article class="prod">
+        <span class="tag">BOING</span>
+        <figure aria-label="Spring stool illustration">
+          <svg viewBox="0 0 300 150">
+            <ellipse cx="150" cy="42" rx="62" ry="20" fill="#FF69B4" stroke="#000" stroke-width="4"/>
+            <g fill="none" stroke="#000" stroke-width="4.5">
+              <ellipse cx="150" cy="74" rx="40" ry="12"/>
+              <ellipse cx="150" cy="94" rx="34" ry="11"/>
+              <ellipse cx="150" cy="112" rx="28" ry="10"/>
+            </g>
+            <rect x="118" y="126" width="64" height="12" fill="#00CED1" stroke="#000" stroke-width="4"/>
+            <circle cx="52" cy="110" r="9" fill="#FFD700" stroke="#000" stroke-width="3.5"/>
+            <polyline points="226,120 240,102 254,120 268,102" fill="none" stroke="#000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </figure>
+        <div class="body">
+          <h3>Boing stool</h3>
+          <p class="price">$95 &middot; seats one optimist</p>
+          <p>Industrial spring, party hat upholstery. Rated for four hours of strong opinions about espresso.</p>
+        </div>
+      </article>
+
+      <article class="prod">
+        <span class="tag">84% DOTS</span>
+        <figure aria-label="Dotto shelf illustration">
+          <svg viewBox="0 0 300 150">
+            <defs>
+              <pattern id="dots2" width="16" height="16" patternUnits="userSpaceOnUse">
+                <circle cx="4" cy="4" r="2.8" fill="#000"/>
+              </pattern>
+            </defs>
+            <rect x="70" y="26" width="160" height="26" fill="#FFD700" stroke="#000" stroke-width="4" transform="rotate(-3 150 39)"/>
+            <rect x="70" y="76" width="160" height="26" fill="#FFF8EC" stroke="#000" stroke-width="4" transform="rotate(2 150 89)"/>
+            <rect x="70" y="76" width="160" height="26" fill="url(#dots2)" stroke="none" transform="rotate(2 150 89)"/>
+            <polygon points="150,108 122,144 178,144" fill="#00CED1" stroke="#000" stroke-width="4" stroke-linejoin="round"/>
+            <circle cx="252" cy="60" r="10" fill="#FF6347" stroke="#000" stroke-width="3.5"/>
+            <circle cx="48" cy="48" r="7" fill="#FF69B4" stroke="#000" stroke-width="3.5"/>
+          </svg>
+        </figure>
+        <div class="body">
+          <h3>Dotto shelf</h3>
+          <p class="price">$180 &middot; holds books, prefers trinkets</p>
+          <p>Two shelves that refuse to be parallel. Your paperbacks will learn to live a little.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="creed" id="creed" aria-labelledby="creed-title">
+    <div class="wrap">
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="50" fill="#FFD700" stroke="#000" stroke-width="4"/>
+        <circle cx="60" cy="60" r="26" fill="#FF69B4" stroke="#000" stroke-width="4"/>
+        <circle cx="60" cy="60" r="8" fill="#000"/>
+        <polyline points="8,14 24,2 40,14 56,2" fill="none" stroke="#000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div>
+        <h2 id="creed-title">Good taste is a rental. <mark>We bought the building.</mark></h2>
+        <p>&mdash; the TUTTI creed, stitched onto every cushion since batch one</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <svg class="zz" viewBox="0 0 1200 16" preserveAspectRatio="none" aria-hidden="true">
+    <polyline points="0,2 30,14 60,2 90,14 120,2 150,14 180,2 210,14 240,2 270,14 300,2 330,14 360,2 390,14 420,2 450,14 480,2 510,14 540,2 570,14 600,2 630,14 660,2 690,14 720,2 750,14 780,2 810,14 840,2 870,14 900,2 930,14 960,2 990,14 1020,2 1050,14 1080,2 1110,14 1140,2 1170,14 1200,2" fill="none" stroke="#000" stroke-width="4"/>
+  </svg>
+  <div class="wrap">
+    <a class="logo" href="#top">
+      <span class="d d1"></span><span class="d d2"></span><span class="d d3"></span>
+      TUTTI
+    </a>
+    <nav aria-label="Footer">
+      <a href="#lineup">Lineup</a>
+      <a href="#creed">Creed</a>
+      <a href="#top">Care guide</a>
+    </nav>
+    <p>&copy; 2026 TUTTI WORKSHOP &middot; MILANO-ISH &middot; colors may shout in person</p>
+  </div>
+</footer>
+
 </body>
 </html>

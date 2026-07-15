@@ -1,120 +1,319 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bento 网格风格 Demo</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
-      background: #f5f5f7;
-      color: #1d1d1f;
-      padding: 40px 20px;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    h1 {
-      font-size: 48px;
-      font-weight: 600;
-      margin-bottom: 40px;
-      text-align: center;
-    }
-    .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: 200px;
-      gap: 20px;
-    }
-    .bento-item {
-      background: #fff;
-      border-radius: 24px;
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .bento-item:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-    }
-    .bento-item.large {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-    .bento-item.wide {
-      grid-column: span 2;
-    }
-    .bento-item.tall {
-      grid-row: span 2;
-    }
-    .bento-item.blue { background: linear-gradient(135deg, #007AFF, #5856D6); color: #fff; }
-    .bento-item.green { background: linear-gradient(135deg, #34C759, #30D158); color: #fff; }
-    .bento-item.orange { background: linear-gradient(135deg, #FF9500, #FF6B00); color: #fff; }
-    .bento-item.purple { background: linear-gradient(135deg, #AF52DE, #BF5AF2); color: #fff; }
-    .bento-item h3 {
-      font-size: 24px;
-      font-weight: 600;
-    }
-    .bento-item p {
-      font-size: 16px;
-      opacity: 0.9;
-    }
-    .bento-item .icon {
-      width: 60px;
-      height: 60px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-    }
-    @media (max-width: 768px) {
-      .bento-grid { grid-template-columns: repeat(2, 1fr); }
-      .bento-item.large { grid-column: span 2; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bento Grid · Design Vibes</title>
+<style>
+:root{
+  --bg:#F0F0F0;
+  --card:#FFFFFF;
+  --dark:#1E1E1E;
+  --ink:#000000;
+  --ink-soft:#515154;
+  --on-dark:#F5F5F7;
+  --on-dark-soft:#A1A1A6;
+  --accent:#007AFF;
+  --violet:#7D4CFF;
+  --edge:rgba(0,0,0,.07);
+  --edge-dark:rgba(255,255,255,.10);
+  --radius:24px;
+  --sans:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.5;font-size:16px;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+svg{display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+
+/* ===== Nav ===== */
+header{position:sticky;top:0;z-index:20;background:rgba(240,240,240,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--edge)}
+.nav{display:flex;align-items:center;height:56px;gap:28px}
+.brand{font-weight:700;font-size:1.05rem;letter-spacing:-.02em}
+.brand span{color:var(--accent)}
+.links{margin-left:auto;display:flex;gap:24px;font-size:.86rem;font-weight:500;color:var(--ink-soft)}
+.links a{transition:color .2s}
+.links a:hover{color:var(--ink)}
+.pill{background:var(--accent);color:#fff;font-weight:600;font-size:.84rem;padding:8px 18px;border-radius:999px;transition:opacity .2s,transform .2s}
+.pill:hover{opacity:.85;transform:scale(1.03)}
+
+/* ===== Hero ===== */
+.hero{text-align:center;padding:68px 0 40px}
+.eyebrow{display:inline-block;color:var(--accent);font-weight:600;font-size:.92rem;margin-bottom:10px}
+h1{font-size:clamp(2.6rem,6vw,4.4rem);font-weight:700;letter-spacing:-.035em;line-height:1.04}
+.tagline{font-size:clamp(1.05rem,2vw,1.35rem);color:var(--ink-soft);font-weight:500;max-width:34em;margin:14px auto 0}
+
+/* ===== Bento grid ===== */
+.bento-sec{padding:36px 0 40px}
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:168px;grid-auto-flow:dense;gap:16px}
+.cell{background:var(--card);border:1px solid var(--edge);border-radius:var(--radius);padding:26px;position:relative;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:transform .25s ease,box-shadow .25s ease}
+.cell:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.08)}
+.c22{grid-column:span 2;grid-row:span 2}
+.c21{grid-column:span 2}
+.c12{grid-row:span 2}
+.cell.dark{background:var(--dark);border-color:var(--edge-dark);color:var(--on-dark)}
+.cell.grad{background:linear-gradient(140deg,var(--accent) 10%,var(--violet) 90%);border:0;color:#fff}
+.k{font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:auto}
+.dark .k{color:var(--on-dark-soft)}
+.grad .k{color:rgba(255,255,255,.75)}
+.big{font-size:clamp(2.6rem,4.6vw,4rem);font-weight:700;letter-spacing:-.04em;line-height:1}
+.huge{font-size:clamp(3.4rem,6vw,5.2rem)}
+.sub{font-size:.95rem;color:var(--ink-soft);font-weight:500;margin-top:8px}
+.dark .sub{color:var(--on-dark-soft)}
+.grad .sub{color:rgba(255,255,255,.82)}
+.grad-text{background:linear-gradient(90deg,#6EC1FF,#B48CFF);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* hero cell */
+.feature-line{font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:700;letter-spacing:-.03em;line-height:1.15;margin-top:10px}
+.feature-line em{font-style:normal;color:var(--accent)}
+
+/* bar chart hint */
+.bars{display:flex;align-items:flex-end;gap:10px;height:46px;flex:none;margin-top:14px}
+.bars i{flex:1;background:#3A3A3C;border-radius:5px 5px 2px 2px}
+.bars i.hi{background:var(--accent)}
+.chart-cell .big{font-size:2.3rem}
+
+/* battery cell */
+.batt{width:30px;height:16px;border:2px solid currentColor;border-radius:4px;position:relative;opacity:.5;margin-bottom:10px}
+.batt::before{content:"";position:absolute;inset:2px;right:8px;background:currentColor;border-radius:1px}
+.batt::after{content:"";position:absolute;right:-6px;top:4px;width:3px;height:6px;background:currentColor;border-radius:0 2px 2px 0}
+
+/* toggle */
+.switch{position:relative;display:inline-block;width:58px;height:34px;margin-top:14px}
+.switch input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;z-index:2}
+.track{position:absolute;inset:0;background:#D5D5DA;border-radius:999px;transition:background .25s}
+.track::after{content:"";position:absolute;top:3px;left:3px;width:28px;height:28px;background:#fff;border-radius:50%;box-shadow:0 2px 5px rgba(0,0,0,.2);transition:transform .25s}
+.switch input:checked ~ .track{background:var(--accent)}
+.switch input:checked ~ .track::after{transform:translateX(24px)}
+
+/* finishes */
+.dots{display:flex;gap:12px;margin-top:16px}
+.dots i{width:30px;height:30px;border-radius:50%;border:1px solid var(--edge);transition:transform .2s}
+.cell:hover .dots i{transform:scale(1.08)}
+
+/* donut */
+.ring-cell{flex-direction:row;align-items:center;gap:22px}
+.ring{flex:none}
+.ring text{font:700 26px var(--sans);letter-spacing:-1px;fill:var(--ink)}
+.spark{width:30px;height:30px;margin-bottom:10px}
+
+/* ===== Specs ===== */
+.specs{padding:48px 0 20px}
+h2{font-size:clamp(1.7rem,3.2vw,2.4rem);font-weight:700;letter-spacing:-.03em;text-align:center;margin-bottom:34px}
+.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.spec{background:var(--card);border:1px solid var(--edge);border-radius:20px;padding:24px}
+.spec b{display:block;font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.spec li{list-style:none;font-size:.95rem;font-weight:500;color:var(--ink-soft);padding:7px 0;border-bottom:1px solid var(--edge)}
+.spec li:last-child{border-bottom:0}
+.spec li strong{color:var(--ink);font-weight:600}
+
+/* ===== CTA ===== */
+.cta{text-align:center;padding:70px 0 84px}
+.cta h2{margin-bottom:8px}
+.cta p{color:var(--ink-soft);font-size:1.05rem;margin-bottom:26px}
+.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.pill.big-pill{font-size:1rem;padding:13px 30px}
+.link{color:var(--accent);font-weight:600;font-size:1rem;display:inline-flex;align-items:center;gap:6px;padding:13px 6px}
+.link:hover{text-decoration:underline}
+
+/* ===== Footer ===== */
+footer{border-top:1px solid var(--edge);padding:26px 0 34px;font-size:.8rem;color:var(--ink-soft)}
+.foot{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.foot a{margin-left:18px}
+.foot a:hover{color:var(--ink)}
+
+@media (max-width:900px){
+  .links{display:none}
+  .bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+  .spec-grid{grid-template-columns:1fr}
+}
+@media (max-width:480px){
+  .wrap{padding:0 18px}
+  .hero{padding:52px 0 28px}
+  .bento{grid-template-columns:1fr 1fr;gap:12px;grid-auto-rows:166px}
+  .cell{padding:20px;border-radius:20px}
+  .ring-cell{gap:14px}
+  .ring{width:84px;height:84px}
+  .switch{width:46px;height:26px;margin-top:4px}
+  .switch .track::after{width:20px;height:20px}
+  .switch input:checked ~ .track::after{transform:translateX(20px)}
+  .cell:has(.switch){padding-bottom:12px}
+  .cell:has(.switch) .sub{margin-top:4px}
+  .grad .spark{width:22px;height:22px;margin-bottom:6px}
+  .grad .big{font-size:1.5rem!important}
+  .grad .sub{margin-top:4px}
+  .cell.grad{padding-bottom:14px}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>Bento Grid</h1>
-    <div class="bento-grid">
-      <div class="bento-item large blue">
-        <div class="icon">📱</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">aero<span>·</span>14</a>
+    <nav class="links" aria-label="Main">
+      <a href="#highlights">Highlights</a>
+      <a href="#specs">Specs</a>
+      <a href="#buy">Compare</a>
+    </nav>
+    <a class="pill" href="#buy">Pre-order</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Introducing</span>
+      <h1>Aero 14</h1>
+      <p class="tagline">One kilogram of quiet power. The featherweight flagship, rebuilt from the shell in.</p>
+    </div>
+  </section>
+
+  <section class="bento-sec" id="highlights">
+    <div class="wrap bento">
+
+      <article class="cell c22">
+        <span class="k">Carbon-weave shell</span>
         <div>
-          <h3>Product</h3>
-          <p>The main feature card with more space for content.</p>
+          <div class="big huge">1.02<span style="font-size:.35em;font-weight:600"> kg</span></div>
+          <p class="feature-line">Light where it counts.<br><em>Rigid where it matters.</em></p>
+          <p class="sub">A woven monocoque body, milled in a single pass and balanced to disappear in your bag.</p>
         </div>
-      </div>
-      <div class="bento-item green">
-        <div class="icon">⚡</div>
-        <h3>Fast</h3>
-      </div>
-      <div class="bento-item orange">
-        <div class="icon">🎨</div>
-        <h3>Design</h3>
-      </div>
-      <div class="bento-item tall purple">
-        <div class="icon">🔒</div>
+      </article>
+
+      <article class="cell c21 dark chart-cell">
+        <span class="k">M-class silicon</span>
+        <div class="big">2.6× <span style="font-size:.5em;font-weight:600;color:var(--on-dark-soft)">faster</span></div>
+        <div class="bars" aria-hidden="true">
+          <i style="height:12px"></i><i style="height:18px"></i><i style="height:15px"></i><i style="height:24px"></i><i style="height:30px"></i><i style="height:27px"></i><i class="hi" style="height:46px"></i>
+        </div>
+      </article>
+
+      <article class="cell c12">
+        <span class="k">All-day battery</span>
         <div>
-          <h3>Secure</h3>
-          <p>Your data is protected with end-to-end encryption.</p>
+          <div class="batt" aria-hidden="true"></div>
+          <div class="big huge">22h</div>
+          <p class="sub">One charge, two time zones. Top up 50% in 18 minutes.</p>
         </div>
-      </div>
-      <div class="bento-item wide">
-        <h3>Statistics</h3>
-        <p>View your analytics and insights in real-time.</p>
-      </div>
-      <div class="bento-item">
-        <h3>Users</h3>
-        <p>10K+</p>
+      </article>
+
+      <article class="cell grad">
+        <span class="k">Neural core</span>
+        <div>
+          <svg class="spark" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/></svg>
+          <div class="big" style="font-size:2rem">40 TOPS</div>
+          <p class="sub">Entirely on-device.</p>
+        </div>
+      </article>
+
+      <article class="cell">
+        <span class="k">Focus mode</span>
+        <div>
+          <label class="switch">
+            <input type="checkbox" checked aria-label="Focus mode">
+            <span class="track"></span>
+          </label>
+          <p class="sub">One switch. Zero pings.</p>
+        </div>
+      </article>
+
+      <article class="cell c21 dark">
+        <span class="k">14.2″ display</span>
+        <div class="big grad-text" style="font-size:clamp(1.7rem,3vw,2.4rem)">3.2K OLED · 120Hz</div>
+        <p class="sub">Every frame, velvet smooth. 1,600 nits when the sun disagrees.</p>
+      </article>
+
+      <article class="cell">
+        <span class="k">Fanless</span>
+        <div>
+          <div class="big">0 dB</div>
+          <p class="sub">Silence, engineered in.</p>
+        </div>
+      </article>
+
+      <article class="cell">
+        <span class="k">Finishes</span>
+        <div>
+          <div class="dots" aria-hidden="true">
+            <i style="background:#2C2C2E"></i><i style="background:#D8D8DC"></i><i style="background:#3A6FF7"></i><i style="background:#E8DCC8"></i>
+          </div>
+          <p class="sub">Four ways to say hello.</p>
+        </div>
+      </article>
+
+      <article class="cell c21 ring-cell">
+        <svg class="ring" width="104" height="104" viewBox="0 0 120 120" aria-hidden="true">
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#E8E8EA" stroke-width="12"/>
+          <circle cx="60" cy="60" r="50" fill="none" stroke="var(--accent)" stroke-width="12" stroke-linecap="round" stroke-dasharray="289 315" transform="rotate(-90 60 60)"/>
+          <text x="60" y="69" text-anchor="middle">92%</text>
+        </svg>
+        <div>
+          <span class="k" style="margin-bottom:6px;display:block">Recycled aluminium</span>
+          <p class="sub" style="margin-top:0">Beautiful today, reborn tomorrow. The greenest Aero yet.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="specs" id="specs">
+    <div class="wrap">
+      <h2>The short spec sheet</h2>
+      <div class="spec-grid">
+        <div class="spec">
+          <b>Performance</b>
+          <ul>
+            <li><strong>A10 Pro</strong> 10-core silicon</li>
+            <li><strong>32 GB</strong> unified memory</li>
+            <li><strong>2 TB</strong> whisper-fast storage</li>
+          </ul>
+        </div>
+        <div class="spec">
+          <b>Display</b>
+          <ul>
+            <li><strong>14.2″</strong> 3.2K OLED panel</li>
+            <li><strong>120Hz</strong> adaptive refresh</li>
+            <li><strong>1,600 nits</strong> peak brightness</li>
+          </ul>
+        </div>
+        <div class="spec">
+          <b>Connections</b>
+          <ul>
+            <li><strong>Wi-Fi 7</strong> + Bluetooth 6</li>
+            <li><strong>3× USB4</strong> ports</li>
+            <li><strong>Snap-pin</strong> magnetic charging</li>
+          </ul>
+        </div>
       </div>
     </div>
+  </section>
+
+  <section class="cta" id="buy">
+    <div class="wrap">
+      <h2>Arrives 14 March.</h2>
+      <p>Pre-order today. Unbox the quietest laptop you have ever heard.</p>
+      <div class="cta-row">
+        <a class="pill big-pill" href="#top">Pre-order from $1,499</a>
+        <a class="link" href="#specs">Compare models ›</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Aero Computing. Designed quietly in Oslo.</span>
+    <span>
+      <a href="#top">Privacy</a>
+      <a href="#top">Terms</a>
+      <a href="#top">Support</a>
+    </span>
   </div>
+</footer>
+
 </body>
 </html>

@@ -1,41 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Braun Style Demo</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-    body { font-family: 'Inter', sans-serif; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Braun / Dieter Rams · Design Vibes</title>
+<style>
+:root{
+  --u:8px;                 /* 8pt base unit */
+  --bg:#f2f2f2;
+  --panel:#ffffff;
+  --ink:#1a1a1a;
+  --gray:#808080;
+  --line:#c9c9c9;
+  --metal-hi:#f6f6f6;
+  --metal-lo:#dcdcdc;
+  --accent:#e8500a;        /* the one functional colour */
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--ink);
+  font-size:14px;line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 calc(var(--u)*4)}
+.label{
+  font-size:11px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gray);
+}
+.num{color:var(--accent);font-variant-numeric:tabular-nums}
+
+/* ---------- Header ---------- */
+header{background:var(--bg);border-bottom:1px solid var(--line)}
+.nav{
+  height:calc(var(--u)*8);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.mark{display:flex;align-items:center;gap:calc(var(--u)*1.5)}
+.mark i{width:var(--u);height:var(--u);background:var(--accent)}
+.mark b{font-size:15px;font-weight:700;letter-spacing:.22em}
+.nav ul{display:flex;gap:calc(var(--u)*4);list-style:none}
+.nav a{
+  font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gray);transition:color .12s linear;
+}
+.nav a:hover{color:var(--ink)}
+.nav a.on{color:var(--ink);border-bottom:2px solid var(--accent);padding-bottom:2px}
+
+/* ---------- Section scaffolding ---------- */
+section{border-bottom:1px solid var(--line)}
+.sec-head{
+  display:flex;align-items:baseline;gap:calc(var(--u)*2);
+  padding:calc(var(--u)*4) 0 calc(var(--u)*3);
+  border-bottom:1px solid var(--line);
+}
+.sec-head .idx{
+  font-family:var(--mono);font-size:12px;color:var(--accent);
+}
+.sec-head .right{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--gray)}
+
+/* ---------- 01 Hero ---------- */
+.hero{padding:calc(var(--u)*8) 0 calc(var(--u)*10)}
+.hero h1{
+  font-size:clamp(32px,4.6vw,56px);
+  font-weight:600;line-height:1.1;letter-spacing:-.01em;
+  max-width:22ch;
+}
+.hero .lede{
+  margin-top:calc(var(--u)*3);max-width:52ch;color:var(--gray);font-size:15px;
+}
+.hero-grid{
+  display:grid;grid-template-columns:5fr 7fr;gap:calc(var(--u)*8);
+  align-items:end;
+}
+.hero-cta{
+  margin-top:calc(var(--u)*5);display:flex;gap:calc(var(--u)*2);
+}
+.btn{
+  display:inline-block;font-size:11px;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;padding:calc(var(--u)*1.5) calc(var(--u)*3);
+  border:1px solid var(--ink);transition:background .12s linear,color .12s linear;
+}
+.btn:hover{background:var(--ink);color:#fff}
+.btn.solid{background:var(--ink);color:#fff}
+.btn.solid:hover{background:var(--accent);border-color:var(--accent)}
+
+/* ---------- Instrument panel (pure CSS) ---------- */
+.machine{padding:calc(var(--u)*2) 0 calc(var(--u)*1)}
+.panel{
+  background:linear-gradient(180deg,var(--metal-hi),var(--metal-lo));
+  border:1px solid var(--line);border-radius:4px;
+  box-shadow:0 1px 0 #fff inset,0 calc(var(--u)*2) calc(var(--u)*4) rgba(0,0,0,.10);
+  padding:calc(var(--u)*4) calc(var(--u)*5) calc(var(--u)*3);
+}
+.panel-top{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:calc(var(--u)*3);
+}
+.panel-top .model{font-family:var(--mono);font-size:12px;letter-spacing:.1em}
+.led{
+  width:var(--u);height:var(--u);border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 6px 1px rgba(232,80,10,.6);
+  animation:led 3s linear infinite;
+}
+@keyframes led{0%,88%,100%{opacity:1}92%{opacity:.35}}
+.controls{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:calc(var(--u)*4);flex-wrap:wrap;
+}
+.dial-unit{text-align:center}
+.dial-unit .label{display:block;margin-top:calc(var(--u)*1.5);font-size:9px}
+.ticks{
+  position:relative;border-radius:50%;margin:0 auto;
+  background:repeating-conic-gradient(var(--gray) 0 1.2deg,transparent 1.2deg 30deg);
+  display:flex;align-items:center;justify-content:center;
+}
+.ticks.big{width:152px;height:152px}
+.ticks.small{width:104px;height:104px}
+.dial{
+  border-radius:50%;position:relative;cursor:pointer;
+  background:
+    radial-gradient(closest-side,#efefef 0 62%,transparent 62%),
+    conic-gradient(#f7f7f7 0deg,#d4d4d4 80deg,#efefef 160deg,#cfcfcf 250deg,#f7f7f7 360deg);
+  box-shadow:0 2px 4px rgba(0,0,0,.22),0 0 0 1px rgba(0,0,0,.06),inset 0 1px 1px #fff;
+  transition:transform .2s linear;
+}
+.dial:hover{transform:rotate(18deg)}
+.ticks.big .dial{width:120px;height:120px}
+.ticks.small .dial{width:76px;height:76px}
+.dial::after{
+  content:"";position:absolute;left:50%;top:7px;width:4px;height:24px;
+  margin-left:-2px;border-radius:2px;background:var(--ink);
+}
+.ticks.big .dial::after{background:var(--accent);height:30px}
+.switches{display:flex;gap:calc(var(--u)*3);align-items:flex-end}
+.sw-unit{text-align:center}
+.sw-unit .label{display:block;margin-top:calc(var(--u)*1.5);font-size:9px}
+.switch{
+  width:calc(var(--u)*4);height:calc(var(--u)*7);margin:0 auto;
+  border:1px solid var(--line);border-radius:3px;background:#fafafa;
+  position:relative;cursor:pointer;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.14);
+}
+.switch i{
+  position:absolute;left:3px;right:3px;top:3px;height:calc(var(--u)*3);
+  background:linear-gradient(#ffffff,#d6d6d6);
+  border-radius:2px;box-shadow:0 1px 2px rgba(0,0,0,.3);
+  transition:top .12s linear;
+}
+.switch.on i{top:calc(100% - var(--u)*3 - 3px)}
+.switch:hover i{top:calc(100% - var(--u)*3 - 3px)}
+.switch.on:hover i{top:3px}
+.vents{
+  margin-top:calc(var(--u)*4);height:calc(var(--u)*3);
+  background:repeating-linear-gradient(90deg,#c6c6c6 0 2px,transparent 2px 8px);
+}
+.caption{
+  padding:calc(var(--u)*2) 0 calc(var(--u)*6);
+  font-family:var(--mono);font-size:11px;color:var(--gray);
+}
+
+/* ---------- 02 Specification ---------- */
+.specs{padding-bottom:calc(var(--u)*8)}
+.spec-table{margin-top:calc(var(--u)*2)}
+.row{
+  display:grid;grid-template-columns:2fr 3fr;
+  padding:calc(var(--u)*2) 0;
+  border-bottom:1px solid var(--line);
+  transition:background .12s linear;
+}
+.row:hover{background:#ececec}
+.row dt{
+  font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gray);align-self:center;
+}
+.row dd{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums}
+
+/* ---------- 03 Principles ---------- */
+.principles{padding-bottom:calc(var(--u)*10)}
+.quote{
+  padding:calc(var(--u)*8) 0 calc(var(--u)*7);
+  border-bottom:1px solid var(--line);
+}
+.quote p{
+  font-size:clamp(28px,4vw,44px);font-weight:600;letter-spacing:-.01em;
+}
+.quote .rule{
+  width:calc(var(--u)*6);height:calc(var(--u)/2);
+  background:var(--accent);margin-bottom:calc(var(--u)*3);
+}
+.p-grid{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:0;border-left:1px solid var(--line);
+}
+.p-cell{
+  border-right:1px solid var(--line);
+  padding:calc(var(--u)*4) calc(var(--u)*3) calc(var(--u)*5);
+  transition:background .12s linear;
+}
+.p-cell:hover{background:#ececec}
+.p-cell .idx{
+  font-family:var(--mono);font-size:12px;color:var(--accent);
+  display:block;margin-bottom:calc(var(--u)*2);
+}
+.p-cell h3{font-size:16px;font-weight:600;margin-bottom:var(--u)}
+.p-cell p{font-size:13px;color:var(--gray)}
+
+/* ---------- Footer ---------- */
+footer{padding:calc(var(--u)*4) 0 calc(var(--u)*6)}
+.foot{
+  display:flex;justify-content:space-between;gap:calc(var(--u)*2);
+  flex-wrap:wrap;font-size:11px;color:var(--gray);
+  font-family:var(--mono);
+}
+.foot a:hover{color:var(--ink)}
+
+/* ---------- Responsive ---------- */
+@media(max-width:880px){
+  .hero-grid{grid-template-columns:1fr}
+  .nav ul{gap:calc(var(--u)*2)}
+  .p-grid{grid-template-columns:1fr}
+  .p-cell{border-right:none;border-bottom:1px solid var(--line)}
+}
+@media(max-width:480px){
+  .wrap{padding:0 calc(var(--u)*2)}
+  .nav ul li:nth-child(n+3){display:none}
+  .controls{justify-content:center}
+  .row{grid-template-columns:1fr;gap:4px}
+  .panel{padding:calc(var(--u)*3) calc(var(--u)*2) calc(var(--u)*2)}
+  .hero{padding:calc(var(--u)*5) 0 calc(var(--u)*6)}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
 </head>
-<body class="bg-white">
-  <div class="w-full h-screen flex flex-col">
-    <div class="grid grid-cols-12 gap-0 h-full">
-      <div class="col-span-4 flex items-center justify-center border-r bg-gray-100 border-gray-200">
-        <div class="text-center">
-          <div class="w-24 h-24 rounded-full mb-4 mx-auto bg-black"></div>
-          <div class="text-xs uppercase tracking-widest text-gray-500">Braun</div>
-        </div>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="mark" href="#p"><i></i><b>MODUL</b></a>
+    <nav>
+      <ul>
+        <li><a class="on" href="#p">Product</a></li>
+        <li><a href="#s">Specification</a></li>
+        <li><a href="#d">Design</a></li>
+        <li><a href="#d">Service</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section id="p">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="idx">01</span>
+        <span class="label">Product</span>
+        <span class="right">M&nbsp;200 — Control Amplifier</span>
       </div>
-      <div class="col-span-8 p-6 flex flex-col justify-center bg-white">
-        <div class="grid grid-cols-3 gap-4">
-          <div class="aspect-square flex items-center justify-center bg-gray-50 border border-gray-200">
-            <div class="w-8 h-8 bg-gray-300"></div>
+      <div class="hero">
+        <div class="hero-grid">
+          <div>
+            <h1>Every control does exactly one thing.</h1>
+            <p class="lede">The M&nbsp;200 amplifies a signal. It does not interpret it, flatter it, or decorate it. Two rotary controls, three switches, one indicator — nothing that is not necessary.</p>
+            <div class="hero-cta">
+              <a class="btn solid" href="#s">Order — 940&nbsp;€</a>
+              <a class="btn" href="#s">Data sheet</a>
+            </div>
           </div>
-          <div class="aspect-square flex items-center justify-center bg-gray-50 border border-gray-200">
-            <div class="w-8 h-8 bg-gray-300"></div>
+          <div class="machine" aria-hidden="true">
+            <div class="panel">
+              <div class="panel-top">
+                <span class="model">M 200</span>
+                <span class="led"></span>
+              </div>
+              <div class="controls">
+                <div class="dial-unit">
+                  <div class="ticks big"><div class="dial"></div></div>
+                  <span class="label">Volume</span>
+                </div>
+                <div class="dial-unit">
+                  <div class="ticks small"><div class="dial"></div></div>
+                  <span class="label">Balance</span>
+                </div>
+                <div class="dial-unit">
+                  <div class="ticks small"><div class="dial"></div></div>
+                  <span class="label">Source</span>
+                </div>
+                <div class="switches">
+                  <div class="sw-unit"><div class="switch on"><i></i></div><span class="label">Power</span></div>
+                  <div class="sw-unit"><div class="switch"><i></i></div><span class="label">Mono</span></div>
+                  <div class="sw-unit"><div class="switch"><i></i></div><span class="label">Filter</span></div>
+                </div>
+              </div>
+              <div class="vents"></div>
+            </div>
+            <p class="caption">Fig. 1 — Front panel. Machined aluminium, 4&nbsp;mm, matt anodised.</p>
           </div>
-          <div class="aspect-square flex items-center justify-center bg-gray-50 border border-gray-200">
-            <div class="w-8 h-8 bg-gray-300"></div>
-          </div>
-        </div>
-        <div class="mt-4 text-xs uppercase tracking-wider text-gray-400">
-          Less, but better — Dieter Rams
         </div>
       </div>
     </div>
+  </section>
+
+  <section id="s" class="specs">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="idx">02</span>
+        <span class="label">Specification</span>
+        <span class="right">DIN 45500</span>
+      </div>
+      <dl class="spec-table">
+        <div class="row"><dt>Output power</dt><dd>2 × 60 W (8 Ω)</dd></div>
+        <div class="row"><dt>Frequency response</dt><dd>20 Hz — 22 kHz, ±0.5 dB</dd></div>
+        <div class="row"><dt>Distortion</dt><dd>&lt; 0.05 % THD at rated output</dd></div>
+        <div class="row"><dt>Signal-to-noise</dt><dd>96 dB (A-weighted)</dd></div>
+        <div class="row"><dt>Inputs</dt><dd>4 × line, 1 × phono (MM)</dd></div>
+        <div class="row"><dt>Dimensions W×H×D</dt><dd>440 × 88 × 312 mm</dd></div>
+        <div class="row"><dt>Weight</dt><dd>7.2 kg</dd></div>
+        <div class="row"><dt>Service life</dt><dd>Parts stocked 25 years</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="d" class="principles">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="idx">03</span>
+        <span class="label">Design</span>
+        <span class="right">Working principles</span>
+      </div>
+      <div class="quote">
+        <div class="rule"></div>
+        <p>Less, but better.</p>
+      </div>
+      <div class="p-grid">
+        <div class="p-cell">
+          <span class="idx">3.1</span>
+          <h3>Honest</h3>
+          <p>The M&nbsp;200 does not promise more than it delivers. Its specifications are measured, not marketed.</p>
+        </div>
+        <div class="p-cell">
+          <span class="idx">3.2</span>
+          <h3>Useful</h3>
+          <p>Nothing on the panel is decoration. When a function is removed, its control is removed with it.</p>
+        </div>
+        <div class="p-cell">
+          <span class="idx">3.3</span>
+          <h3>Long-lived</h3>
+          <p>Designed to be repaired, not replaced. Every fastener is reachable with one standard tool.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>MODUL Werke · Ulm</span>
+    <span><a href="#p">Catalogue</a> &nbsp;/&nbsp; <a href="#s">Service manuals</a> &nbsp;/&nbsp; <a href="#d">Dealers</a></span>
+    <span>Est. 1958 — © 2026</span>
   </div>
+</footer>
+
 </body>
 </html>

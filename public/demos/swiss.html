@@ -1,31 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Swiss Style Demo</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
-    body { font-family: 'Inter', sans-serif; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swiss Style · Design Vibes</title>
+<style>
+:root{
+  --bg:#FFFFFF;
+  --fg:#000000;
+  --accent:#FF0000;
+  --gold:#FFD700;
+  --blue:#0000FF;
+  --hair:#000000;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);
+  color:var(--fg);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+.grid12{display:grid;grid-template-columns:repeat(12,1fr);column-gap:1.25rem}
+.mono{font-family:var(--mono);font-size:.6875rem;letter-spacing:.02em;text-transform:uppercase}
+
+/* ---------- header ---------- */
+header{
+  border-bottom:2px solid var(--hair);
+  padding:1rem 1.5rem;
+  align-items:baseline;
+}
+.brand{grid-column:1/span 3;font-weight:700;font-size:1.125rem;letter-spacing:-.02em;white-space:nowrap}
+.brand em{font-style:normal;color:var(--accent)}
+.head-note{grid-column:4/span 5;font-family:var(--mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.02em}
+nav{grid-column:9/span 4;display:flex;gap:1.5rem;justify-content:flex-end}
+nav a{
+  font-size:.8125rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;
+  border-bottom:2px solid transparent;transition:color .15s,border-color .15s;
+}
+nav a:hover{color:var(--accent);border-color:var(--accent)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:2.5rem 1.5rem 3rem;overflow:hidden}
+.vlabel{
+  grid-column:1;grid-row:1/span 3;
+  writing-mode:vertical-rl;transform:rotate(180deg);
+  font-family:var(--mono);font-size:.6875rem;text-transform:uppercase;
+  letter-spacing:.14em;align-self:start;justify-self:start;
+  border-left:2px solid var(--fg);padding-left:.6rem;
+}
+.hero h1{
+  grid-column:2/span 11;grid-row:1;
+  font-size:clamp(4rem,15.5vw,12.4rem);
+  line-height:.84;font-weight:700;letter-spacing:-.045em;
+  text-transform:uppercase;
+}
+.hero h1 .l2{display:block;margin-left:.09em}
+.hero h1 .num{color:var(--accent)}
+.sq{
+  display:inline-block;width:.62em;height:.62em;background:var(--accent);
+  margin-left:.12em;transform:translateY(-.06em);
+  transition:transform .3s cubic-bezier(.2,0,.2,1);
+}
+.hero h1:hover .sq{transform:translateY(-.06em) rotate(90deg)}
+.rule{
+  grid-column:2/span 11;grid-row:2;
+  height:6px;background:var(--accent);margin:2.25rem 0 1.75rem;
+  transform-origin:left center;animation:rule-in 1s cubic-bezier(.2,0,.1,1) both;
+}
+@keyframes rule-in{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.meta{grid-column:2/span 11;grid-row:3;align-items:start}
+.meta>div{grid-column:span 3;border-top:1px solid var(--hair);padding-top:.5rem}
+.meta>div:last-child{grid-column:11/span 2;text-align:right;border-top:0;padding-top:.5rem}
+.meta dt{font-family:var(--mono);font-size:.625rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.35rem}
+.meta dd{font-size:1rem;font-weight:700;letter-spacing:-.01em}
+.meta .dot{display:inline-block;width:.55em;height:.55em;margin-right:.4em}
+.pageno{font-family:var(--mono);font-size:.6875rem}
+
+/* ---------- sections ---------- */
+section{border-top:2px solid var(--hair);padding:2.75rem 1.5rem 3.5rem}
+.sec-head{margin-bottom:2.25rem;align-items:baseline}
+.sec-no{grid-column:1/span 2;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;letter-spacing:-.04em;line-height:1}
+.sec-title{grid-column:3/span 6;font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:700;letter-spacing:-.02em}
+.sec-side{grid-column:10/span 3;text-align:right}
+
+.prog{row-gap:2.5rem}
+.prog article{border-top:1px solid var(--hair);padding-top:1rem}
+.prog article:nth-child(1){grid-column:1/span 4}
+.prog article:nth-child(2){grid-column:6/span 4}
+.prog article:nth-child(3){grid-column:10/span 3}
+.prog article:nth-child(4){grid-column:3/span 4}
+.prog article:nth-child(5){grid-column:8/span 5}
+.prog .k{font-family:var(--mono);font-size:.625rem;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:.9rem}
+.prog h3{font-size:1.55rem;font-weight:700;letter-spacing:-.025em;line-height:1.05;margin-bottom:.7rem;transition:color .15s}
+.prog article:hover h3{color:var(--accent)}
+.prog p{font-size:.9375rem;max-width:34ch}
+
+/* exhibitors table */
+.exh{border-top:2px solid var(--hair)}
+.exh li{
+  display:grid;grid-template-columns:4rem 1fr 12rem 8rem 4rem;
+  column-gap:1.25rem;align-items:baseline;
+  border-bottom:1px solid var(--hair);padding:.8rem 0;
+  transition:background .15s,color .15s;
+}
+.exh li:hover{background:var(--fg);color:var(--bg)}
+.exh li:hover .no{color:var(--accent)}
+.exh .no{font-family:var(--mono);font-size:.6875rem}
+.exh .name{font-size:1.25rem;font-weight:700;letter-spacing:-.02em}
+.exh .city,.exh .hall{font-size:.875rem}
+.exh .pg{font-family:var(--mono);font-size:.6875rem;text-align:right}
+
+/* visit / tickets */
+.visit{background:var(--accent);color:var(--bg);border-top:0}
+.visit h2{
+  grid-column:1/span 8;
+  font-size:clamp(2.4rem,6vw,4.6rem);font-weight:700;letter-spacing:-.04em;line-height:.95;
+  text-transform:uppercase;
+}
+.visit .hours{grid-column:9/span 4;border-top:1px solid var(--bg);padding-top:.6rem}
+.visit .hours p{display:flex;justify-content:space-between;font-size:.9375rem;padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,.4)}
+.btn{
+  display:inline-block;margin-top:2rem;padding:1rem 2.2rem;
+  background:var(--fg);color:var(--bg);
+  font-size:.875rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  transition:background .15s,color .15s;
+}
+.btn:hover{background:var(--bg);color:var(--fg)}
+
+/* ---------- footer ---------- */
+footer{background:var(--fg);color:var(--bg);padding:2.5rem 1.5rem;row-gap:2rem}
+footer .f-brand{grid-column:1/span 3;font-weight:700;font-size:1.125rem;letter-spacing:-.02em}
+footer .f-brand em{font-style:normal;color:var(--accent)}
+footer .f-col{grid-column:span 3}
+footer .f-col p{font-size:.8125rem;line-height:1.6}
+footer .f-col .mono{opacity:.7;display:block;margin-bottom:.5rem}
+footer .f-end{grid-column:1/-1;display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.3);padding-top:1rem}
+footer a:hover{color:var(--accent)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+/* ---------- mobile ---------- */
+@media (max-width:760px){
+  .grid12{grid-template-columns:repeat(4,1fr);column-gap:.75rem}
+  header{padding:.9rem 1rem}
+  .brand{grid-column:1/span 2}
+  .head-note{display:none}
+  nav{grid-column:3/span 2;gap:.9rem}
+  nav a{font-size:.6875rem}
+  .hero{padding:1.75rem 1rem 2.25rem}
+  .vlabel{writing-mode:horizontal-tb;transform:none;grid-column:1/-1;grid-row:auto;
+    border-left:0;border-top:2px solid var(--fg);padding:.4rem 0 0;margin-bottom:1.25rem}
+  .hero h1{grid-column:1/-1;grid-row:auto;font-size:clamp(4.2rem,24vw,7rem)}
+  .rule{grid-column:1/-1;grid-row:auto;margin:1.5rem 0 1.25rem}
+  .meta{grid-column:1/-1;grid-row:auto;row-gap:1.1rem}
+  .meta>div{grid-column:span 2}
+  .meta>div:last-child{grid-column:span 2;text-align:left;border-top:1px solid var(--hair)}
+  section{padding:2rem 1rem 2.5rem}
+  .sec-no{grid-column:1/-1;margin-bottom:.4rem}
+  .sec-title{grid-column:1/-1}
+  .sec-side{grid-column:1/-1;text-align:left;margin-top:.4rem}
+  .prog article{grid-column:1/-1!important}
+  .exh li{grid-template-columns:2.5rem 1fr 5.5rem}
+  .exh .hall,.exh .pg{display:none}
+  .exh .name{font-size:1.05rem}
+  .visit h2{grid-column:1/-1}
+  .visit .hours{grid-column:1/-1;margin-top:1.5rem}
+  footer .f-brand,footer .f-col{grid-column:1/-1}
+  footer .f-end{flex-direction:column;gap:.5rem}
+}
+</style>
 </head>
-<body class="bg-white">
-  <div class="w-full h-screen flex flex-col p-4">
-    <div class="flex-1 grid grid-cols-3 grid-rows-3 gap-1">
-      <div class="col-span-2 row-span-2 flex items-end p-4 bg-black">
-        <span class="text-2xl font-bold uppercase tracking-tighter text-white">Typo</span>
-      </div>
-      <div class="bg-red-600 flex items-center justify-center">
-        <span class="text-white text-4xl font-black">A</span>
-      </div>
-      <div class="flex items-center justify-center border-2 bg-white border-black">
-        <span class="text-2xl font-bold text-black">grid</span>
-      </div>
-      <div class="bg-yellow-400 col-span-2 flex items-center justify-end p-2">
-        <span class="text-black text-xs font-bold uppercase">Swiss Style</span>
-      </div>
+<body>
+
+<header class="grid12">
+  <div class="brand">NF<em>—</em>26</div>
+  <div class="head-note">Internationale Ausstellung für Typografie und Gestaltung</div>
+  <nav>
+    <a href="#programme">Programme</a>
+    <a href="#exhibitors">Exhibitors</a>
+    <a href="#visit">Visit</a>
+  </nav>
+</header>
+
+<section class="hero grid12" style="border-top:0">
+  <span class="vlabel">Halle 4 — Zürich West · Entrance C</span>
+  <h1>Neue<span class="l2">Form <span class="num">26</span><span class="sq" aria-hidden="true"></span></span></h1>
+  <div class="rule" aria-hidden="true"></div>
+  <dl class="meta grid12">
+    <div>
+      <dt><span class="dot" style="background:var(--accent)"></span>Dates</dt>
+      <dd>12–28 September 2026</dd>
     </div>
+    <div>
+      <dt><span class="dot" style="background:var(--gold)"></span>Venue</dt>
+      <dd>Halle 4, Zürich-West</dd>
+    </div>
+    <div>
+      <dt><span class="dot" style="background:var(--blue)"></span>Coordinates</dt>
+      <dd>47°22′N 8°31′E</dd>
+    </div>
+    <div>
+      <dt>Sheet</dt>
+      <dd class="pageno">P.01 / 04</dd>
+    </div>
+  </dl>
+</section>
+
+<section id="programme">
+  <div class="sec-head grid12">
+    <div class="sec-no">01</div>
+    <h2 class="sec-title">Programme — five rooms, one grid</h2>
+    <div class="sec-side mono">P.02 / 04</div>
   </div>
+  <div class="prog grid12">
+    <article>
+      <span class="k">Room A — Ground floor</span>
+      <h3>Type as Image</h3>
+      <p>Letterforms enlarged until they stop reading and start standing. Sixty posters, none illustrated, all typographic.</p>
+    </article>
+    <article>
+      <span class="k">Room B — Ground floor</span>
+      <h3>The Grid Is a Decision</h3>
+      <p>Working layouts, column studies and paste-ups showing structure decided before content arrives.</p>
+    </article>
+    <article>
+      <span class="k">Room C — Mezzanine</span>
+      <h3>Objective Photography</h3>
+      <p>The camera as measuring instrument. No retouching, no sentiment, full caption discipline.</p>
+    </article>
+    <article>
+      <span class="k">Room D — Mezzanine</span>
+      <h3>Red as Signal</h3>
+      <p>One accent colour, used once per page. A study of restraint across four decades of timetables and wayfinding.</p>
+    </article>
+    <article>
+      <span class="k">Room E — Print workshop</span>
+      <h3>Setting by Hand, Daily 14:00</h3>
+      <p>A working composing room. Visitors set one line of metal type and pull their own proof on the flatbed press.</p>
+    </article>
+  </div>
+</section>
+
+<section id="exhibitors">
+  <div class="sec-head grid12">
+    <div class="sec-no">02</div>
+    <h2 class="sec-title">Exhibitors — 48 studios, 12 countries</h2>
+    <div class="sec-side mono">Selection · Sheet P.03 / 04</div>
+  </div>
+  <ul class="exh" style="list-style:none">
+    <li><span class="no">001</span><span class="name">Atelier Brechbühl</span><span class="city">Basel</span><span class="hall">Hall 4.1</span><span class="pg">A—01</span></li>
+    <li><span class="no">002</span><span class="name">Studio Marthaler</span><span class="city">Genève</span><span class="hall">Hall 4.1</span><span class="pg">A—02</span></li>
+    <li><span class="no">003</span><span class="name">Büro Achermann</span><span class="city">Luzern</span><span class="hall">Hall 4.2</span><span class="pg">B—01</span></li>
+    <li><span class="no">004</span><span class="name">Kollektiv Raster</span><span class="city">Wien</span><span class="hall">Hall 4.2</span><span class="pg">B—02</span></li>
+    <li><span class="no">005</span><span class="name">Vandermeer &amp; Zoon</span><span class="city">Rotterdam</span><span class="hall">Hall 4.3</span><span class="pg">C—01</span></li>
+    <li><span class="no">006</span><span class="name">Officina Lineare</span><span class="city">Milano</span><span class="hall">Hall 4.3</span><span class="pg">C—02</span></li>
+    <li><span class="no">007</span><span class="name">Presse Normale</span><span class="city">Lyon</span><span class="hall">Hall 4.4</span><span class="pg">D—01</span></li>
+    <li><span class="no">008</span><span class="name">Satzbau Nord</span><span class="city">Hamburg</span><span class="hall">Hall 4.4</span><span class="pg">D—02</span></li>
+  </ul>
+</section>
+
+<section id="visit" class="visit grid12">
+  <h2>Admission free.<br>Reserve a slot,<br>bring nothing else.</h2>
+  <div class="hours">
+    <p><span>Tue–Fri</span><span>10:00 — 20:00</span></p>
+    <p><span>Sat</span><span>10:00 — 22:00</span></p>
+    <p><span>Sun</span><span>10:00 — 18:00</span></p>
+    <p><span>Mon</span><span>Closed</span></p>
+    <a class="btn" href="#visit">Reserve — Sept 2026</a>
+  </div>
+</section>
+
+<footer class="grid12">
+  <div class="f-brand">NF<em>—</em>26</div>
+  <div class="f-col">
+    <span class="mono">Address</span>
+    <p>Halle 4, Gleisfeldstrasse 26<br>8005 Zürich-West</p>
+  </div>
+  <div class="f-col">
+    <span class="mono">Position</span>
+    <p>47°22′N 8°31′E<br>Alt. 408 m</p>
+  </div>
+  <div class="f-col">
+    <span class="mono">Enquiries</span>
+    <p>desk at neueform26 dot ch<br>Composed on a 12-column grid</p>
+  </div>
+  <div class="f-end mono">
+    <span>© 2026 Neue Form Biennale, Zürich</span>
+    <span>P.04 / 04 — End of sheet</span>
+  </div>
+</footer>
+
 </body>
 </html>

@@ -1,5 +1,6 @@
 import { useAppStore } from '../store/appStore';
 import { translations } from '../data/translations';
+import { designStyles } from '../data/styles';
 
 export function Footer() {
   const { theme, language } = useAppStore();
@@ -18,7 +19,7 @@ export function Footer() {
               DV
             </span>
             <span className={`hidden sm:inline text-[10px] uppercase tracking-[0.2em] ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
-              DESIGNVIBES
+              DESIGN VIBES
             </span>
           </div>
 
@@ -31,7 +32,7 @@ export function Footer() {
           {/* Stats & Links */}
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
-              <span className="text-2xl font-black text-[#FF9F1C]">24</span>
+              <span className="text-2xl font-black text-[#FF9F1C] tabular-nums">{designStyles.length}</span>
               <span className={`text-[10px] uppercase tracking-wider ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
                 STYLES
               </span>

@@ -1,52 +1,323 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>双色调风格 Demo</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Helvetica Neue', sans-serif;
-      background: #1e3a8a;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .duotone-container {
-      text-align: center;
-      padding: 60px;
-      background: linear-gradient(135deg, #1e3a8a 0%, #f97316 100%);
-      min-height: 100vh;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .duotone-container h1 {
-      font-size: 100px;
-      font-weight: 900;
-      color: #fff;
-      mix-blend-mode: overlay;
-      letter-spacing: -0.05em;
-    }
-    .duotone-container p {
-      font-size: 24px;
-      color: rgba(255,255,255,0.8);
-      margin-top: 20px;
-    }
-    @media (max-width: 768px) {
-      .duotone-container h1 { font-size: 48px; }
-      .duotone-container p { font-size: 16px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Duotone · Design Vibes</title>
+<style>
+:root{
+  --navy:#1A1A2E;
+  --navy-dark:#10101F;
+  --navy-light:#2A2A4A;
+  --orange:#FF6B35;
+  --orange-light:#FF8F66;
+  --orange-pale:#FFE1D2;
+  --orange-dark:#C9481A;
+  --sans:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono:ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--orange-pale);font-family:var(--sans);overflow-x:hidden}
+::selection{background:var(--orange);color:var(--navy)}
+
+/* ── header ───────────────────────────── */
+header{position:sticky;top:0;z-index:30;display:flex;align-items:center;
+  justify-content:space-between;padding:1rem 2rem;background:var(--navy);
+  border-bottom:2px solid var(--orange)}
+.logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--orange-pale)}
+.logo i{width:26px;height:26px;border-radius:50%;
+  background:linear-gradient(135deg,var(--orange) 50%,var(--orange-pale) 50%)}
+.logo b{font-size:1rem;font-weight:900;letter-spacing:.28em;text-transform:uppercase}
+nav{display:flex;gap:1.8rem;align-items:center}
+nav a{color:var(--orange-pale);text-decoration:none;font-size:.74rem;
+  letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+  border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+nav a:hover{color:var(--orange);border-color:var(--orange)}
+.pill{padding:.55rem 1.4rem;background:var(--orange);color:var(--navy);
+  font-size:.72rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+  text-decoration:none;transition:background .25s,color .25s,transform .25s}
+.pill:hover{background:var(--orange-pale);transform:translateY(-2px)}
+
+/* ── hero: split blocks ───────────────── */
+.hero{position:relative;height:78vh;min-height:520px;overflow:hidden}
+.hero .block-a{position:absolute;inset:0;background:var(--navy)}
+.hero .block-b{position:absolute;inset:0;background:var(--orange);
+  clip-path:polygon(66% 0,100% 0,100% 100%,50% 100%)}
+.hero-titles{position:absolute;inset:0;display:grid;place-items:center}
+.hero-titles h1{font-size:clamp(3.2rem,12vw,10rem);font-weight:900;
+  letter-spacing:.02em;line-height:.9;text-transform:uppercase;white-space:nowrap}
+.t-base{color:var(--orange)}
+.t-over{position:absolute;color:var(--navy);
+  clip-path:polygon(66% 0,100% 0,100% 100%,50% 100%)}
+.t-over-wrap{position:absolute;inset:0;display:grid;place-items:center;
+  clip-path:polygon(66% 0,100% 0,100% 100%,50% 100%)}
+.hero-meta{position:absolute;left:2rem;bottom:2.2rem;font-family:var(--mono);
+  font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;color:var(--orange-light);
+  line-height:2.1}
+.hero-meta b{color:var(--orange-pale);font-weight:400}
+.hero-tag{position:absolute;right:2rem;bottom:2.2rem;text-align:right;
+  color:var(--navy);font-weight:800;font-size:.8rem;letter-spacing:.18em;
+  text-transform:uppercase;line-height:1.9}
+.hero-kicker{position:absolute;left:2rem;top:2rem;font-family:var(--mono);
+  font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--orange)}
+.dotfield{position:absolute;left:0;bottom:0;top:0;width:38%;opacity:.5;
+  background-image:radial-gradient(var(--navy-light) 1.4px,transparent 1.5px);
+  background-size:14px 14px;pointer-events:none}
+.hero-titles h1{animation:rise 1s cubic-bezier(.2,.9,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(36px)}}
+
+/* ── program ──────────────────────────── */
+section{padding:0}
+.sec-inner{max-width:1180px;margin:0 auto;padding:4.5rem 2rem}
+.sec-label{display:flex;align-items:center;gap:1rem;font-family:var(--mono);
+  font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--orange);
+  margin-bottom:2.6rem}
+.sec-label::after{content:"";flex:1;height:2px;background:var(--orange)}
+.rows{display:flex;flex-direction:column}
+.row{display:grid;grid-template-columns:110px 1fr auto;gap:1.6rem;align-items:center;
+  padding:1.7rem 1.4rem;border-top:2px solid var(--navy-light);text-decoration:none;
+  color:var(--orange-pale);transition:background .25s,color .25s}
+.row:last-child{border-bottom:2px solid var(--navy-light)}
+.row .no{font-family:var(--mono);font-size:2rem;color:var(--orange);transition:color .25s}
+.row h3{font-size:clamp(1.2rem,2.6vw,1.9rem);font-weight:900;letter-spacing:.04em;text-transform:uppercase}
+.row p{font-size:.82rem;color:var(--orange-light);margin-top:.3rem;transition:color .25s}
+.row .when{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;
+  color:var(--orange-light);text-transform:uppercase;transition:color .25s}
+.row:hover{background:var(--orange);color:var(--navy)}
+.row:hover .no,.row:hover p,.row:hover .when{color:var(--navy)}
+
+/* ── works ────────────────────────────── */
+.works-band{background:var(--navy-dark)}
+.works{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
+.work{position:relative;display:block;text-decoration:none;color:var(--orange-pale);
+  transition:transform .35s}
+.work:hover{transform:translateY(-8px)}
+.frame{position:relative;overflow:hidden;border:2px solid var(--orange)}
+.frame svg{display:block;width:100%;height:auto}
+.frame::after{content:"";position:absolute;inset:0;opacity:.35;
+  background-image:radial-gradient(var(--navy-dark) 1px,transparent 1.15px);
+  background-size:6px 6px;pointer-events:none;transition:opacity .35s}
+.work:hover .frame::after{opacity:.12}
+.work figcaption{display:flex;justify-content:space-between;gap:1rem;
+  padding:.9rem .2rem 0;font-size:.8rem;letter-spacing:.06em}
+.work figcaption b{font-weight:800;text-transform:uppercase;letter-spacing:.12em}
+.work figcaption span{font-family:var(--mono);color:var(--orange);font-size:.7rem;letter-spacing:.18em}
+
+/* ── tickets ──────────────────────────── */
+.tickets-band{background:var(--orange)}
+.tickets-band .sec-label{color:var(--navy)}
+.tickets-band .sec-label::after{background:var(--navy)}
+.tix-head{color:var(--navy);font-size:clamp(2rem,5vw,3.6rem);font-weight:900;
+  text-transform:uppercase;letter-spacing:.02em;line-height:1.02;max-width:18ch;margin-bottom:2.8rem}
+.tix{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;max-width:860px}
+.tik{padding:2rem 1.8rem;display:flex;flex-direction:column;gap:.9rem;
+  border:3px solid var(--navy);transition:transform .3s}
+.tik:hover{transform:translateY(-6px)}
+.tik.dark{background:var(--navy);color:var(--orange-pale)}
+.tik.light{background:var(--orange);color:var(--navy)}
+.tik .kind{font-family:var(--mono);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase}
+.tik .amt{font-size:3rem;font-weight:900;line-height:1}
+.tik ul{list-style:none;font-size:.82rem;line-height:2}
+.tik.dark li::before{content:"— ";color:var(--orange)}
+.tik.light li::before{content:"— ";color:var(--navy)}
+.tik .go{margin-top:auto;align-self:flex-start;text-decoration:none;
+  font-weight:800;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;
+  padding:.7rem 1.5rem;transition:transform .2s,opacity .2s}
+.tik.dark .go{background:var(--orange);color:var(--navy)}
+.tik.light .go{background:var(--navy);color:var(--orange-pale)}
+.tik .go:hover{transform:translate(3px,-3px)}
+
+/* ── footer ───────────────────────────── */
+footer{background:var(--navy-dark);border-top:2px solid var(--orange);
+  padding:2.4rem 2rem;display:flex;justify-content:space-between;gap:1.2rem;
+  flex-wrap:wrap;font-family:var(--mono);font-size:.68rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--orange-light)}
+footer a{color:var(--orange);text-decoration:none}
+footer a:hover{color:var(--orange-pale)}
+
+/* ── responsive ───────────────────────── */
+@media (max-width:900px){
+  .works{grid-template-columns:1fr}
+  .tix{grid-template-columns:1fr}
+  .row{grid-template-columns:64px 1fr;gap:1rem}
+  .row .when{grid-column:2;justify-self:start}
+  .row .no{font-size:1.4rem}
+}
+@media (max-width:640px){
+  header{padding:.9rem 1.25rem}
+  nav a{display:none}
+  .hero{height:64vh;min-height:430px}
+  .hero .block-b{clip-path:polygon(0 72%,100% 52%,100% 100%,0 100%)}
+  .t-over-wrap{clip-path:polygon(0 72%,100% 52%,100% 100%,0 100%)}
+  .hero-titles h1{font-size:clamp(2.6rem,13vw,4rem)}
+  .hero-kicker{left:1.25rem}
+  .hero-meta{left:1.25rem;bottom:auto;top:4.4rem}
+  .hero-tag{right:1.25rem;bottom:1.6rem}
+  .dotfield{display:none}
+  .sec-inner{padding:3.2rem 1.25rem}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  html{scroll-behavior:auto}
+}
+</style>
 </head>
 <body>
-  <div class="duotone-container">
-    <h1>DUOTONE</h1>
-    <p>Two colors. Maximum impact.</p>
-  </div>
+<header>
+  <a class="logo" href="#top" aria-label="Nocturne Festival home">
+    <i aria-hidden="true"></i><b>Nocturne</b>
+  </a>
+  <nav aria-label="Primary">
+    <a href="#program">Program</a>
+    <a href="#works">Works</a>
+    <a class="pill" href="#tickets">Get Passes</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero" aria-label="Nocturne Photography Festival">
+    <div class="block-a" aria-hidden="true"></div>
+    <div class="block-b" aria-hidden="true"></div>
+    <div class="dotfield" aria-hidden="true"></div>
+    <p class="hero-kicker">A festival of night photography</p>
+    <div class="hero-titles">
+      <h1 class="t-base">Nocturne</h1>
+      <div class="t-over-wrap" aria-hidden="true"><h1 class="t-over">Nocturne</h1></div>
+    </div>
+    <p class="hero-meta"><b>Oct 09 — 17</b><br>Harbor District · Pier 4 warehouses</p>
+    <p class="hero-tag">Two colors.<br>Zero daylight.</p>
+  </section>
+
+  <section id="program">
+    <div class="sec-inner">
+      <p class="sec-label">Program</p>
+      <div class="rows">
+        <a class="row" href="#tickets">
+          <span class="no">01</span>
+          <span><h3>Opening Night</h3><p>Large-scale projections on the grain silo, scored live.</p></span>
+          <span class="when">Thu · 21:00</span>
+        </a>
+        <a class="row" href="#tickets">
+          <span class="no">02</span>
+          <span><h3>Darkroom Live</h3><p>Prints developed on stage, sold while still wet.</p></span>
+          <span class="when">Fri · 22:30</span>
+        </a>
+        <a class="row" href="#tickets">
+          <span class="no">03</span>
+          <span><h3>Street Light Walks</h3><p>Guided shoots through the harbor's sodium-lamp alleys.</p></span>
+          <span class="when">Sat · 23:00</span>
+        </a>
+        <a class="row" href="#tickets">
+          <span class="no">04</span>
+          <span><h3>Closing Auction</h3><p>Fifty prints, one night, no reserve prices.</p></span>
+          <span class="when">Sun · 20:00</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="works" class="works-band">
+    <div class="sec-inner">
+      <p class="sec-label">Featured Works</p>
+      <div class="works">
+        <figure class="work">
+          <div class="frame">
+            <svg viewBox="0 0 400 300" role="img" aria-label="Mountain ridge at night">
+              <defs>
+                <linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#FF8F66"/><stop offset=".55" stop-color="#FF6B35"/>
+                  <stop offset="1" stop-color="#C9481A"/>
+                </linearGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#sky1)"/>
+              <circle cx="300" cy="80" r="34" fill="#FFE1D2"/>
+              <path d="M0 210 80 130l50 46 70-78 62 66 48-38 90 84v90H0z" fill="#2A2A4A"/>
+              <path d="M0 246 70 196l64 40 76-56 78 50 52-30 60 44v56H0z" fill="#1A1A2E"/>
+            </svg>
+          </div>
+          <figcaption><b>Ridgeline, 2 a.m.</b><span>M. Okafor</span></figcaption>
+        </figure>
+        <figure class="work">
+          <div class="frame">
+            <svg viewBox="0 0 400 300" role="img" aria-label="Portrait in profile">
+              <defs>
+                <linearGradient id="sky2" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#FF6B35"/><stop offset="1" stop-color="#C9481A"/>
+                </linearGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#sky2)"/>
+              <circle cx="118" cy="84" r="26" fill="#FFE1D2" opacity=".85"/>
+              <path d="M236 46c-30 2-48 22-50 48-1 14 3 24-4 34-5 6-5 12 3 14 2 1 4 3 4 7 0 5 3 7 8 7 2 7 8 12 15 14 3 8 1 15-9 20-26 12-50 18-60 36-7 13-9 30-9 74h150V162c8-6 13-15 14-28 2-26-10-56-62-88z" fill="#1A1A2E"/>
+            </svg>
+          </div>
+          <figcaption><b>The Usher</b><span>R. Vane</span></figcaption>
+        </figure>
+        <figure class="work">
+          <div class="frame">
+            <svg viewBox="0 0 400 300" role="img" aria-label="Harbor skyline at night">
+              <defs>
+                <linearGradient id="sky3" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#1A1A2E"/><stop offset="1" stop-color="#2A2A4A"/>
+                </linearGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#sky3)"/>
+              <circle cx="86" cy="70" r="28" fill="#FF8F66"/>
+              <g fill="#10101F">
+                <rect x="20" y="150" width="44" height="150"/><rect x="76" y="120" width="36" height="180"/>
+                <rect x="124" y="164" width="52" height="136"/><rect x="188" y="104" width="40" height="196"/>
+                <rect x="240" y="140" width="34" height="160"/><rect x="286" y="88" width="48" height="212"/>
+                <rect x="346" y="158" width="38" height="142"/>
+              </g>
+              <g fill="#FF6B35">
+                <rect x="84" y="132" width="6" height="8"/><rect x="98" y="150" width="6" height="8"/>
+                <rect x="196" y="116" width="6" height="8"/><rect x="210" y="140" width="6" height="8"/>
+                <rect x="294" y="100" width="6" height="8"/><rect x="308" y="126" width="6" height="8"/>
+                <rect x="318" y="160" width="6" height="8"/><rect x="132" y="176" width="6" height="8"/>
+                <rect x="248" y="152" width="6" height="8"/><rect x="354" y="170" width="6" height="8"/>
+              </g>
+            </svg>
+          </div>
+          <figcaption><b>Harbor Lights</b><span>T. Ilves</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="tickets" class="tickets-band">
+    <div class="sec-inner">
+      <p class="sec-label">Tickets</p>
+      <h2 class="tix-head">The city after dark, developed in flame.</h2>
+      <div class="tix">
+        <article class="tik dark">
+          <span class="kind">Night Pass</span>
+          <span class="amt">¤29</span>
+          <ul>
+            <li>One evening, all venues</li>
+            <li>Opening projection access</li>
+            <li>Darkroom viewing balcony</li>
+          </ul>
+          <a class="go" href="#top">Buy Night</a>
+        </article>
+        <article class="tik light">
+          <span class="kind">Full Festival</span>
+          <span class="amt">¤79</span>
+          <ul>
+            <li>All nine nights, all venues</li>
+            <li>Street walk with loaner film</li>
+            <li>Auction paddle included</li>
+          </ul>
+          <a class="go" href="#top">Buy Festival</a>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>Nocturne Festival · MMXXVI</span>
+  <span><a href="#program">Program</a> · <a href="#works">Works</a> · <a href="#tickets">Passes</a></span>
+  <span>Pier 4 · Harbor District</span>
+</footer>
 </body>
 </html>

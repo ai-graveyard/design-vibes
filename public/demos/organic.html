@@ -1,28 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Organic Demo</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
-    body { font-family: 'Nunito', sans-serif; }
-    .blob {
-      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organic Design · Design Vibes</title>
+<style>
+:root{
+  --mint:#A8E6CF;
+  --leaf:#DCEDC1;
+  --peach:#FFD3B6;
+  --coral:#FFAAA5;
+  --coral-deep:#F08A84;
+  --sea:#98D8C8;
+  --ink:#33544A;
+  --ink-soft:#5F7A70;
+  --bg:#FFF9F0;
+  --deep:#2E5347;
+  --serif:Georgia, serif;
+  --sans:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+svg{display:block}
+.wrap{max-width:1100px;margin:0 auto;padding:0 32px}
+h1,h2,.quote{font-family:var(--serif);font-weight:400}
+
+/* ===== Header ===== */
+header{padding:20px 0;position:relative;z-index:5}
+.nav{display:flex;align-items:center;gap:30px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:1.25rem;font-style:italic;color:var(--deep)}
+.leafmark{width:36px;height:36px;background:var(--mint);border-radius:60% 40% 55% 45%/55% 45% 60% 40%;display:grid;place-items:center;flex:none}
+.links{margin-left:auto;display:flex;gap:26px;font-weight:600;font-size:.93rem;color:var(--ink-soft)}
+.links a{transition:color .25s}
+.links a:hover{color:var(--coral-deep)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-weight:700;font-size:.95rem;padding:13px 26px;border-radius:999px;border:0;cursor:pointer;transition:transform .3s ease,background .3s,box-shadow .3s}
+.btn-coral{background:var(--coral);color:#fff}
+.btn-coral:hover{background:var(--coral-deep);transform:translateY(-3px);box-shadow:0 10px 22px rgba(240,138,132,.35)}
+.btn-line{background:transparent;color:var(--deep);box-shadow:inset 0 0 0 2px var(--sea)}
+.btn-line:hover{background:var(--sea);color:#fff;transform:translateY(-3px)}
+
+/* ===== Hero ===== */
+.hero{position:relative;padding:52px 0 110px}
+.hero-bg{position:absolute;top:-160px;right:-140px;width:560px;height:560px;background:var(--leaf);opacity:.55;border-radius:62% 38% 46% 54%/60% 44% 56% 40%;animation:breathe 9s ease-in-out infinite}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;position:relative}
+.tag{display:inline-flex;align-items:center;gap:8px;background:var(--leaf);color:var(--deep);font-weight:700;font-size:.82rem;padding:8px 18px;border-radius:999px;margin-bottom:22px}
+h1{font-size:clamp(2.3rem,4.6vw,3.6rem);line-height:1.15;color:var(--deep);margin-bottom:20px}
+h1 em{font-style:italic;color:var(--coral-deep)}
+.lede{font-size:1.1rem;color:var(--ink-soft);max-width:33em;margin-bottom:30px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px}
+.hero-notes{display:flex;gap:24px;flex-wrap:wrap;font-size:.87rem;font-weight:600;color:var(--ink-soft)}
+.hero-notes span{display:inline-flex;align-items:center;gap:8px}
+
+/* blob scene */
+.scene{position:relative;min-height:420px}
+.blob-main{position:absolute;inset:0;margin:auto;width:min(400px,92%);aspect-ratio:1;background:var(--mint);border-radius:61% 39% 52% 48%/44% 59% 41% 56%;display:grid;place-items:center;animation:breathe 8s ease-in-out infinite}
+.blob-main svg{width:62%;height:auto}
+.blob-peach{position:absolute;top:2%;right:4%;width:110px;height:110px;background:var(--peach);border-radius:65% 35% 50% 50%/55% 60% 40% 45%;animation:drift 7s ease-in-out infinite}
+.blob-coral{position:absolute;bottom:5%;left:2%;width:78px;height:78px;background:var(--coral);border-radius:45% 55% 60% 40%/50% 40% 60% 50%;animation:drift 9s ease-in-out infinite reverse}
+.blob-sea{position:absolute;top:14%;left:6%;width:46px;height:46px;background:var(--sea);border-radius:55% 45% 40% 60%/60% 50% 50% 40%;animation:drift 6s ease-in-out infinite}
+@keyframes breathe{
+  0%,100%{border-radius:61% 39% 52% 48%/44% 59% 41% 56%;transform:scale(1)}
+  50%{border-radius:42% 58% 37% 63%/60% 41% 59% 40%;transform:scale(1.045)}
+}
+@keyframes drift{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(-10px,-16px) rotate(6deg)}}
+
+/* ===== Wave dividers ===== */
+.wave{display:block;width:100%;height:80px}
+.wave.flip{transform:scaleY(-1)}
+
+/* ===== Rituals ===== */
+.rituals{background:#F3F7E9;padding:20px 0 96px}
+.sec-head{text-align:center;max-width:560px;margin:0 auto 52px}
+h2{font-size:clamp(1.8rem,3.2vw,2.5rem);color:var(--deep);margin-bottom:12px}
+.sec-head p{color:var(--ink-soft)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px}
+.card{background:#fff;border-radius:34px;padding:36px 30px;text-align:center;transition:transform .35s ease,box-shadow .35s ease}
+.card:hover{transform:translateY(-8px);box-shadow:0 18px 36px rgba(51,84,74,.12)}
+.card-blob{width:86px;height:86px;margin:0 auto 22px;display:grid;place-items:center;border-radius:56% 44% 50% 50%/48% 56% 44% 52%;transition:border-radius .5s ease}
+.card:hover .card-blob{border-radius:48% 52% 42% 58%/56% 44% 58% 42%}
+.card h3{font-family:var(--serif);font-size:1.3rem;color:var(--deep);margin-bottom:10px}
+.card p{font-size:.94rem;color:var(--ink-soft)}
+
+/* ===== Quote band ===== */
+.quote-band{background:var(--sea);padding:8px 0 88px;text-align:center;position:relative}
+.quote{font-size:clamp(1.4rem,2.8vw,2rem);font-style:italic;color:#1F473C;max-width:26em;margin:0 auto 18px;line-height:1.5}
+.quote-by{font-weight:700;font-size:.92rem;color:#2E5A4D;letter-spacing:.04em;margin-bottom:48px}
+.stats{display:flex;justify-content:center;gap:22px;flex-wrap:wrap}
+.stat{background:rgba(255,255,255,.75);border-radius:60% 40% 55% 45%/45% 55% 40% 60%;padding:30px 34px;min-width:150px;transition:transform .35s ease}
+.stat:nth-child(2){border-radius:45% 55% 42% 58%/58% 42% 60% 40%}
+.stat:nth-child(3){border-radius:52% 48% 60% 40%/44% 60% 40% 56%}
+.stat:hover{transform:scale(1.06)}
+.stat b{display:block;font-family:var(--serif);font-size:1.7rem;color:var(--deep);line-height:1.2}
+.stat span{font-size:.83rem;font-weight:600;color:var(--ink-soft)}
+
+/* ===== Footer ===== */
+footer{background:var(--deep);color:#CFE3D8;padding:0 0 40px}
+.foot-inner{padding-top:40px;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px;margin-bottom:44px}
+.foot-brand .logo{color:#fff;margin-bottom:14px}
+.foot-brand p{font-size:.93rem;max-width:22em;color:#A9C7B9}
+.foot-col b{display:block;color:#fff;font-weight:700;font-size:.95rem;margin-bottom:14px}
+.foot-col a{display:block;font-size:.9rem;margin-bottom:10px;transition:color .25s}
+.foot-col a:hover{color:#fff}
+.foot-base{border-top:1px solid rgba(255,255,255,.15);padding-top:22px;font-size:.85rem;color:#A9C7B9;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:960px){
+  .links{display:none}
+  .hero{padding:36px 0 80px}
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .scene{min-height:360px}
+  .foot-inner{grid-template-columns:1fr 1fr}
+}
+@media (max-width:480px){
+  .wrap{padding:0 20px}
+  .hero{padding:24px 0 64px}
+  .hero-bg{width:380px;height:380px;top:-120px;right:-160px}
+  .scene{min-height:300px}
+  .blob-peach{width:76px;height:76px}
+  .blob-coral{width:56px;height:56px}
+  .rituals{padding-bottom:72px}
+  .stat{padding:24px 26px;min-width:126px}
+  .foot-inner{grid-template-columns:1fr;gap:26px}
+  .wave{height:48px}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
 </head>
-<body class="bg-green-50">
-  <div class="w-full h-screen flex items-center justify-center p-8">
-    <div class="relative">
-      <div class="blob w-64 h-64 bg-green-400 absolute -top-8 -left-8 opacity-50"></div>
-      <div class="blob w-48 h-48 bg-yellow-300 absolute top-16 right-8 opacity-60" style="border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;"></div>
-      <div class="relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 max-w-sm">
-        <h2 class="text-2xl font-bold text-green-800 mb-4">Natural Flow</h2>
-        <p class="text-green-700">Organic shapes inspired by nature. Soft, flowing, and alive.</p>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">
+      <span class="leafmark">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#33544A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C7 17 4 13 4 8.5 4 5 7 3 12 3s8 2 8 5.5C20 13 17 17 12 21z"/><path d="M12 21V8"/></svg>
+      </span>
+      Moss &amp; Meadow
+    </a>
+    <nav class="links" aria-label="Main">
+      <a href="#rituals">Rituals</a>
+      <a href="#voices">Voices</a>
+      <a href="#top">Journal</a>
+    </nav>
+    <a class="btn btn-coral" href="#rituals">Join the club</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="tag">Small-batch botanicals</span>
+        <h1>Let your home breathe a little <em>greener</em>.</h1>
+        <p class="lede">Moss &amp; Meadow pairs slow-grown houseplants with gentle care rituals — potted in living soil, delivered like a gift, loved for years.</p>
+        <div class="hero-cta">
+          <a class="btn btn-coral" href="#rituals">Browse the greenhouse</a>
+          <a class="btn btn-line" href="#voices">Our rituals</a>
+        </div>
+        <div class="hero-notes">
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--sea)"><circle cx="12" cy="12" r="10"/></svg>Living soil, never plastic pots</span>
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--peach)"><circle cx="12" cy="12" r="10"/></svg>Carbon-light doorstep delivery</span>
+        </div>
+      </div>
+
+      <div class="scene" aria-hidden="true">
+        <div class="blob-main">
+          <svg viewBox="0 0 200 220" fill="none">
+            <path d="M78 218h44l6-38H72z" fill="#E8A87C"/>
+            <path d="M68 172h64l-6 12H74z" fill="#D98E62"/>
+            <path d="M100 172V96" stroke="#4C7A5E" stroke-width="6" stroke-linecap="round"/>
+            <path d="M100 128c-30 4-46-14-48-40 28-2 46 12 48 40z" fill="#63A375"/>
+            <path d="M100 112c30 2 44-16 44-44-26 0-42 16-44 44z" fill="#3E7C57"/>
+            <path d="M100 96c-4-28 8-48 30-58 8 26-6 48-30 58z" fill="#63A375"/>
+            <path d="M100 100c-24-8-32-28-28-54 22 8 32 30 28 54z" fill="#8CC59A"/>
+          </svg>
+        </div>
+        <div class="blob-peach"></div>
+        <div class="blob-coral"></div>
+        <div class="blob-sea"></div>
       </div>
     </div>
+  </section>
+
+  <svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true" style="background:var(--bg)">
+    <path d="M0 44C180 78 360 8 620 26 880 44 1120 74 1440 30v50H0z" fill="#F3F7E9"/>
+  </svg>
+
+  <section class="rituals" id="rituals">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Rooted in gentle habits</h2>
+        <p>Three small rituals, delivered with every plant — because thriving leaves come from tiny, regular kindnesses.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <span class="card-blob" style="background:var(--sea)">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg>
+          </span>
+          <h3>Water notes</h3>
+          <p>A weekly whisper of when to water, tuned to your light, your seasons and your soil.</p>
+        </article>
+        <article class="card">
+          <span class="card-blob" style="background:var(--peach)">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-2 13H7z"/><path d="M3 8h18M12 8V5"/><circle cx="12" cy="4" r="1.4"/></svg>
+          </span>
+          <h3>Repot rituals</h3>
+          <p>Seasonal kits with hand-thrown clay and dark, living soil that smells like rain.</p>
+        </article>
+        <article class="card">
+          <span class="card-blob" style="background:var(--coral)">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C7 17 4 13 4 8.5 4 5 7 3 12 3s8 2 8 5.5C20 13 17 17 12 21z"/><path d="M12 21V8"/></svg>
+          </span>
+          <h3>Slow grow guides</h3>
+          <p>Tiny letters on pruning, patience, and letting leaves take their own sweet time.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true" style="background:#F3F7E9">
+    <path d="M0 36C240 76 480 4 740 24 1000 44 1240 70 1440 26v54H0z" fill="var(--sea)"/>
+  </svg>
+
+  <section class="quote-band" id="voices">
+    <div class="wrap">
+      <p class="quote">“We don’t rush stems, and we won’t rush you. Good green things take their own sweet time — our job is simply to keep them company.”</p>
+      <p class="quote-by">— WREN ALDER, FOUNDER</p>
+      <div class="stats">
+        <div class="stat"><b>40+</b><span>slow-grown species</span></div>
+        <div class="stat"><b>Zero</b><span>plastic, ever</span></div>
+        <div class="stat"><b>3,000</b><span>happy shelves</span></div>
+      </div>
+    </div>
+  </section>
+
+  <svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true" style="background:var(--sea)">
+    <path d="M0 40C220 74 460 10 720 28 980 46 1220 72 1440 32v48H0z" fill="var(--deep)"/>
+  </svg>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <span class="logo">
+          <span class="leafmark"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#33544A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21C7 17 4 13 4 8.5 4 5 7 3 12 3s8 2 8 5.5C20 13 17 17 12 21z"/><path d="M12 21V8"/></svg></span>
+          Moss &amp; Meadow
+        </span>
+        <p>A little botanical studio in the valley, growing plants the unhurried way.</p>
+      </div>
+      <div class="foot-col">
+        <b>Greenhouse</b>
+        <a href="#rituals">Shop all plants</a>
+        <a href="#rituals">Rare leaves</a>
+        <a href="#rituals">Gift crates</a>
+      </div>
+      <div class="foot-col">
+        <b>Studio</b>
+        <a href="#top">Our story</a>
+        <a href="#top">Journal</a>
+        <a href="#top">Visit us</a>
+      </div>
+      <div class="foot-col">
+        <b>Care</b>
+        <a href="#top">Plant help</a>
+        <a href="#top">Delivery</a>
+        <a href="#top">Returns</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 Moss &amp; Meadow Studio</span>
+      <span>Grown, not manufactured.</span>
+    </div>
   </div>
+</footer>
+
 </body>
 </html>

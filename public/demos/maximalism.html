@@ -1,52 +1,280 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>极繁主义风格 Demo</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Georgia', serif;
-      background: 
-        repeating-linear-gradient(45deg, #ff1493 0, #ff1493 20px, #00ff00 20px, #00ff00 40px),
-        repeating-linear-gradient(-45deg, #ffd700 0, #ffd700 20px, #ff4500 20px, #ff4500 40px);
-      background-blend-mode: overlay;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px;
-    }
-    .max-card {
-      background: rgba(255,255,255,0.9);
-      padding: 60px;
-      border: 10px solid #000;
-      box-shadow: 20px 20px 0 #ff1493, -20px -20px 0 #00ff00;
-      text-align: center;
-    }
-    .max-card h1 {
-      font-size: 60px;
-      color: #000;
-      text-shadow: 3px 3px 0 #ffd700;
-      margin-bottom: 20px;
-    }
-    .max-card p {
-      font-size: 20px;
-      color: #333;
-    }
-    @media (max-width: 768px) {
-      body { padding: 20px; }
-      .max-card { padding: 30px 20px; border-width: 6px; box-shadow: 10px 10px 0 #ff1493, -10px -10px 0 #00ff00; }
-      .max-card h1 { font-size: 32px; }
-      .max-card p { font-size: 14px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maximalism · Design Vibes</title>
+<style>
+:root{
+  --pink:#FF1493;
+  --lime:#00FF00;
+  --gold:#FFD700;
+  --orange:#FF4500;
+  --violet:#8B00FF;
+  --violet-deep:#4B0082;
+  --ink:#120019;
+  --paper:#FFF3D6;
+  --sans:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --serif:Georgia, serif;
+  --mono:ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.5;font-size:16px;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+svg{display:block}
+.wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+
+/* ===== Ticker ===== */
+.ticker{background:var(--ink);color:var(--lime);overflow:hidden;border-bottom:4px solid var(--ink);white-space:nowrap}
+.ticker.pink{background:var(--pink);color:var(--ink);border-top:4px solid var(--ink)}
+.ticker-track{display:inline-flex;padding:9px 0;font-family:var(--mono);font-weight:700;font-size:.82rem;letter-spacing:.14em;animation:slide 22s linear infinite}
+.ticker span{padding:0 1.2em}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ===== Header ===== */
+header{background:var(--gold);border-bottom:5px solid var(--ink);position:relative;z-index:10}
+.nav{display:flex;align-items:center;gap:20px;padding:16px 0;flex-wrap:wrap}
+.logo{font-size:1.7rem;font-weight:900;letter-spacing:-.04em;transform:rotate(-2deg)}
+.logo em{font-style:normal;color:var(--pink);-webkit-text-stroke:1.5px var(--ink)}
+.links{margin-left:auto;display:flex;gap:12px;flex-wrap:wrap}
+.links a{font-weight:800;font-size:.82rem;letter-spacing:.05em;padding:8px 16px;border:3px solid var(--ink);border-radius:999px;background:#fff;transition:transform .2s,background .2s;box-shadow:3px 3px 0 var(--ink)}
+.links a:nth-child(1){background:var(--pink);color:#fff}
+.links a:nth-child(2){background:var(--lime)}
+.links a:nth-child(3){background:var(--orange);color:#fff}
+.links a:hover{transform:rotate(-3deg) scale(1.06)}
+
+/* ===== Hero ===== */
+.hero{background:var(--violet);background-image:radial-gradient(rgba(255,215,0,.28) 2.5px,transparent 2.5px);background-size:26px 26px;color:#fff;padding:74px 0 90px;position:relative;overflow:hidden;border-bottom:5px solid var(--ink)}
+.hero-deco-circle{position:absolute;width:340px;height:340px;border-radius:50%;background:var(--orange);top:-110px;right:-80px;border:5px solid var(--ink)}
+.hero-deco-sq{position:absolute;width:180px;height:180px;background:var(--pink);bottom:-60px;left:-40px;transform:rotate(18deg);border:5px solid var(--ink)}
+.hero-inner{position:relative;max-width:820px}
+.eyebrow{display:inline-block;font-family:var(--mono);font-size:.8rem;font-weight:700;letter-spacing:.22em;background:var(--ink);color:var(--gold);padding:8px 16px;transform:rotate(-1.5deg);margin-bottom:26px}
+.h-line{display:block;font-weight:900;line-height:.98;letter-spacing:-.02em}
+.h1-wrap{margin-bottom:30px}
+.l1{font-size:clamp(2.6rem,7vw,5rem);color:#fff}
+.l2{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(2.4rem,6.4vw,4.6rem);color:var(--gold);letter-spacing:0}
+.l3{font-size:clamp(3rem,8.4vw,6.2rem);color:transparent;-webkit-text-stroke:3px #fff;text-shadow:7px 7px 0 var(--pink);text-transform:uppercase}
+.l4{font-size:clamp(2.2rem,5.6vw,4rem);color:var(--lime);text-transform:uppercase}
+.hero p{max-width:34em;font-size:1.05rem;font-weight:500;color:rgba(255,255,255,.92);margin-bottom:34px}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap}
+.big-btn{display:inline-block;font-weight:900;font-size:1rem;letter-spacing:.06em;padding:16px 30px;border:4px solid var(--ink);background:var(--gold);color:var(--ink);box-shadow:7px 7px 0 var(--pink);transition:transform .2s,box-shadow .2s}
+.big-btn:hover{transform:translate(-3px,-3px);box-shadow:11px 11px 0 var(--pink)}
+.big-btn.ghost{background:transparent;color:#fff;border-color:#fff;box-shadow:7px 7px 0 var(--lime)}
+.big-btn.ghost:hover{box-shadow:11px 11px 0 var(--lime)}
+
+/* stickers */
+.sticker{position:absolute;font-weight:900;display:grid;place-items:center;text-align:center}
+.st-star{top:56px;right:11%;width:150px;height:150px}
+.st-star svg{position:absolute;inset:0;animation:spin 18s linear infinite}
+.st-star b{position:relative;font-size:1.05rem;transform:rotate(8deg);color:var(--ink)}
+.st-pill{bottom:120px;right:6%;background:var(--pink);color:#fff;border:4px solid var(--ink);border-radius:999px;padding:12px 22px;font-size:.9rem;transform:rotate(-9deg);box-shadow:5px 5px 0 var(--ink)}
+.st-round{top:47%;right:24%;width:110px;height:110px;border-radius:50%;background:var(--lime);color:var(--ink);border:4px solid var(--ink);font-size:.8rem;line-height:1.15;transform:rotate(10deg);box-shadow:5px 5px 0 var(--ink);padding:10px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ===== Menu ===== */
+.menu{padding:84px 0 96px;background-image:repeating-linear-gradient(-45deg,transparent 0 34px,rgba(139,0,255,.05) 34px 68px)}
+.menu-head{margin-bottom:54px;position:relative}
+.menu-head .kicker{font-family:var(--mono);font-weight:700;font-size:.8rem;letter-spacing:.24em;color:var(--violet)}
+h2{font-weight:900;font-size:clamp(2.2rem,5vw,3.6rem);letter-spacing:-.03em;line-height:1.02}
+h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--orange)}
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.dish{border:4px solid var(--ink);padding:32px 28px;position:relative;box-shadow:9px 9px 0 var(--ink);transition:transform .25s,box-shadow .25s}
+.dish:nth-child(odd){transform:rotate(-1.1deg)}
+.dish:nth-child(even){transform:rotate(1.1deg)}
+.dish:hover{transform:rotate(0) translateY(-6px);box-shadow:13px 13px 0 var(--ink)}
+.dish.gold{background:var(--gold);background-image:radial-gradient(var(--ink) 1.6px,transparent 1.6px);background-size:20px 20px}
+.dish.pink{background:var(--pink);background-image:repeating-linear-gradient(45deg,transparent 0 14px,rgba(255,255,255,.25) 14px 28px);color:#fff}
+.dish.lime{background:var(--lime);background-image:repeating-linear-gradient(0deg,transparent 0 16px,rgba(18,0,25,.08) 16px 32px),repeating-linear-gradient(90deg,transparent 0 16px,rgba(18,0,25,.08) 16px 32px)}
+.dish.orange{background:var(--orange);background-image:repeating-linear-gradient(135deg,transparent 0 18px,rgba(255,215,0,.3) 18px 36px);color:#fff}
+.dish-num{position:absolute;top:-24px;left:-18px;width:56px;height:56px;border-radius:50%;background:#fff;color:var(--ink);border:4px solid var(--ink);display:grid;place-items:center;font-weight:900;font-size:1.05rem;box-shadow:4px 4px 0 var(--ink)}
+.dish h3{font-size:1.5rem;font-weight:900;text-transform:uppercase;letter-spacing:.01em;margin-bottom:10px;background:#fff;color:var(--ink);display:inline-block;padding:4px 12px;border:3px solid var(--ink);transform:rotate(-.6deg)}
+.dish p{font-weight:600;font-size:.98rem;margin-bottom:18px}
+.tags{display:flex;gap:8px;flex-wrap:wrap}
+.tags i{font-style:normal;font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.08em;background:var(--ink);color:#fff;padding:5px 11px;border-radius:999px}
+
+/* ===== Rules ===== */
+.rules{background:var(--ink);color:#fff;padding:80px 0 96px;position:relative;overflow:hidden;border-top:5px solid var(--ink)}
+.rules::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,20,147,.16) 2px,transparent 2px);background-size:30px 30px}
+.rules .wrap{position:relative}
+.rules-kicker{font-family:var(--mono);font-weight:700;font-size:.8rem;letter-spacing:.24em;color:var(--gold);display:inline-block;border:2px solid var(--gold);padding:7px 14px;margin-bottom:38px;transform:rotate(-1deg)}
+.rule{font-weight:900;line-height:1.04;margin-bottom:26px;letter-spacing:-.02em}
+.rule.r1{font-size:clamp(1.9rem,4.8vw,3.4rem);color:var(--pink);transform:rotate(-.8deg)}
+.rule.r2{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.7rem,4.2vw,3rem);color:var(--gold);transform:rotate(.6deg)}
+.rule.r3{font-size:clamp(1.9rem,4.8vw,3.4rem);color:transparent;-webkit-text-stroke:2px var(--lime);transform:rotate(-.5deg);text-transform:uppercase}
+.rule.r4{font-size:clamp(1.6rem,3.8vw,2.6rem);color:#fff}
+.rule.r4 b{color:var(--orange);font-size:1.3em}
+.rules-cta{margin-top:44px}
+
+/* ===== Footer ===== */
+footer{background:var(--pink);background-image:radial-gradient(rgba(255,255,255,.35) 2px,transparent 2px);background-size:22px 22px;color:var(--ink);border-top:5px solid var(--ink);padding:54px 0 34px}
+.foot-grid{display:flex;justify-content:space-between;gap:36px;flex-wrap:wrap;margin-bottom:40px}
+.foot-logo{font-size:2.4rem;font-weight:900;letter-spacing:-.04em;transform:rotate(-2deg)}
+.foot-logo em{font-style:normal;color:#fff;-webkit-text-stroke:1.5px var(--ink)}
+.foot-tag{font-family:var(--mono);font-weight:700;font-size:.78rem;letter-spacing:.12em;margin-top:10px}
+.foot-col b{display:block;font-weight:900;text-transform:uppercase;font-size:.85rem;letter-spacing:.1em;margin-bottom:12px;background:var(--ink);color:var(--gold);display:inline-block;padding:4px 10px;transform:rotate(-1deg)}
+.foot-col a{display:block;font-weight:700;font-size:.92rem;margin-bottom:8px}
+.foot-col a:hover{text-decoration:underline wavy}
+.foot-base{border-top:3px solid var(--ink);padding-top:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-weight:700;font-size:.85rem}
+
+@media (max-width:900px){
+  .menu-grid{grid-template-columns:1fr}
+  .st-round{display:none}
+}
+@media (max-width:480px){
+  .wrap{padding:0 18px}
+  .nav{gap:10px;padding:14px 0}
+  .logo{font-size:1.4rem}
+  .links a{padding:7px 12px;font-size:.74rem;box-shadow:2px 2px 0 var(--ink)}
+  .hero{padding:56px 0 84px}
+  .st-star{display:none}
+  .st-pill{top:auto;bottom:16px;right:14px;padding:9px 15px;font-size:.76rem;transform:rotate(-6deg)}
+  .hero-deco-circle{width:220px;height:220px;top:-80px;right:-90px}
+  .menu{padding:64px 0 76px}
+  .dish{padding:26px 20px;box-shadow:6px 6px 0 var(--ink)}
+  .dish-num{left:-10px}
+  .rules{padding:60px 0 72px}
+  .big-btn{padding:13px 20px;font-size:.88rem}
+  .foot-grid{flex-direction:column;gap:26px}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
 </head>
 <body>
-  <div class="max-card">
-    <h1>MORE IS MORE</h1>
-    <p>Why have less when you can have everything?</p>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>MORE IS MORE ✶ LOUDER IS LOVELIER ✶ BEIGE IS A CRIME ✶ DECORATE EVERYTHING ✶ TRUST THE SPARKLE ✶</span>
+    <span>MORE IS MORE ✶ LOUDER IS LOVELIER ✶ BEIGE IS A CRIME ✶ DECORATE EVERYTHING ✶ TRUST THE SPARKLE ✶</span>
   </div>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">STUDIO RIOT<em>!</em></a>
+    <nav class="links" aria-label="Main">
+      <a href="#menu">WORK</a>
+      <a href="#menu">SERVICES</a>
+      <a href="#rules">MANIFESTO</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-deco-circle" aria-hidden="true"></div>
+    <div class="hero-deco-sq" aria-hidden="true"></div>
+
+    <div class="sticker st-star" aria-hidden="true">
+      <svg viewBox="0 0 150 150">
+        <polygon points="75,0 89,26 117,12 116,42 146,40 128,64 150,75 128,86 146,110 116,108 117,138 89,124 75,150 61,124 33,138 34,108 4,110 22,86 0,75 22,64 4,40 34,42 33,12 61,26" fill="var(--gold)" stroke="var(--ink)" stroke-width="4"/>
+      </svg>
+      <b>NEW<br>ISSUE!</b>
+    </div>
+    <div class="sticker st-pill" aria-hidden="true">EST. 2019 ★</div>
+    <div class="sticker st-round" aria-hidden="true">100%<br>EXTRA,<br>ALWAYS</div>
+
+    <div class="wrap hero-inner">
+      <span class="eyebrow">A CREATIVE BUREAU OF EXCESS</span>
+      <div class="h1-wrap">
+        <h1>
+          <span class="h-line l1">WE MAKE</span>
+          <span class="h-line l2">gloriously</span>
+          <span class="h-line l3">Loud</span>
+          <span class="h-line l4">things™</span>
+        </h1>
+      </div>
+      <p>Studio Riot is a design bureau that treats restraint as a rumor. Brands, posters, packaging — stacked, stickered, saturated, and still impossible to misread.</p>
+      <div class="hero-cta">
+        <a class="big-btn" href="#menu">START A PROJECT</a>
+        <a class="big-btn ghost" href="#rules">SEE THE CHAOS</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker pink" aria-hidden="true">
+    <div class="ticker-track">
+      <span>PATTERN ON PATTERN ✦ CLASH UNTIL IT SINGS ✦ EVERY INCH INVITED ✦ SUBTLETY LEFT THE CHAT ✦</span>
+      <span>PATTERN ON PATTERN ✦ CLASH UNTIL IT SINGS ✦ EVERY INCH INVITED ✦ SUBTLETY LEFT THE CHAT ✦</span>
+    </div>
+  </div>
+
+  <section class="menu" id="menu">
+    <div class="wrap">
+      <div class="menu-head">
+        <span class="kicker">WHAT'S COOKING</span>
+        <h2>The <em>menu</em>, SERVED LOUD</h2>
+      </div>
+      <div class="menu-grid">
+        <article class="dish gold">
+          <span class="dish-num">01</span>
+          <h3>Brand Explosions</h3>
+          <p>Identities with volume knobs that only turn right. Logos, lock-ups and mascots with main-character energy.</p>
+          <div class="tags"><i>LOUD</i><i>LOUDER</i><i>ICONIC</i></div>
+        </article>
+        <article class="dish pink">
+          <span class="dish-num">02</span>
+          <h3>Poster Maximal</h3>
+          <p>Print so dense it needs a seatbelt. Gig posters, zines and billboards layered like a good lasagna.</p>
+          <div class="tags"><i>PRINT</i><i>ZINE</i><i>XXL</i></div>
+        </article>
+        <article class="dish lime">
+          <span class="dish-num">03</span>
+          <h3>Package Parties</h3>
+          <p>Boxes that beg to be kept, hoarded and framed. Unboxing as a five-act play with confetti in act two.</p>
+          <div class="tags"><i>BOXES</i><i>FOIL</i><i>STICKERS</i></div>
+        </article>
+        <article class="dish orange">
+          <span class="dish-num">04</span>
+          <h3>Motion Mayhem</h3>
+          <p>Loops, spins and sparkle-bombs for restless feeds. Frame one grabs the collar; frame sixty won't let go.</p>
+          <div class="tags"><i>LOOPS</i><i>REELS</i><i>GIFS</i></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="rules" id="rules">
+    <div class="wrap">
+      <span class="rules-kicker">HOUSE RULES ★ READ TWICE</span>
+      <p class="rule r1">1. SUBTLETY LEFT THE CHAT.</p>
+      <p class="rule r2">2. clash until it sings.</p>
+      <p class="rule r3">3. Every inch gets invited.</p>
+      <p class="rule r4">4. More. Then a little <b>MORE</b>.</p>
+      <div class="rules-cta">
+        <a class="big-btn" href="#top">COMMISSION THE CHAOS →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">STUDIO RIOT<em>!</em></div>
+        <p class="foot-tag">PRINTED TOO LOUD, ON PURPOSE.</p>
+      </div>
+      <div class="foot-col">
+        <b>Studio</b>
+        <a href="#top">About the noise</a>
+        <a href="#top">Team of many hats</a>
+        <a href="#top">Press &amp; prizes</a>
+      </div>
+      <div class="foot-col">
+        <b>Follow</b>
+        <a href="#top">The Riot Zine</a>
+        <a href="#top">Sticker club</a>
+        <a href="#top">Radio Riot</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 Studio Riot Creative Bureau</span>
+      <span>NO QUIET DAYS SINCE 2019</span>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>

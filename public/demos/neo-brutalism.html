@@ -1,169 +1,382 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>新粗野主义风格 Demo</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Inter', 'Helvetica Neue', sans-serif;
-      background: #fff;
-      color: #000;
-    }
-    .nav {
-      padding: 20px 40px;
-      border-bottom: 3px solid #000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .nav h1 {
-      font-size: 24px;
-      font-weight: 900;
-    }
-    .nav-links a {
-      color: #000;
-      text-decoration: none;
-      margin-left: 30px;
-      font-weight: 700;
-      padding: 8px 16px;
-      border: 3px solid #000;
-      box-shadow: 4px 4px 0 #000;
-      transition: all 0.2s;
-    }
-    .nav-links a:hover {
-      transform: translate(2px, 2px);
-      box-shadow: 2px 2px 0 #000;
-    }
-    .hero {
-      padding: 100px 40px;
-      text-align: center;
-    }
-    .hero h2 {
-      font-size: 80px;
-      font-weight: 900;
-      line-height: 1;
-      margin-bottom: 30px;
-      text-transform: uppercase;
-    }
-    .hero p {
-      font-size: 24px;
-      max-width: 600px;
-      margin: 0 auto 40px;
-    }
-    .btn-primary {
-      display: inline-block;
-      padding: 16px 40px;
-      background: #FF6B35;
-      color: #000;
-      text-decoration: none;
-      font-weight: 900;
-      font-size: 18px;
-      border: 3px solid #000;
-      box-shadow: 6px 6px 0 #000;
-      transition: all 0.2s;
-    }
-    .btn-primary:hover {
-      transform: translate(3px, 3px);
-      box-shadow: 3px 3px 0 #000;
-    }
-    .features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-      padding: 80px 40px;
-      background: #f5f5f5;
-      border-top: 3px solid #000;
-    }
-    .feature {
-      background: #fff;
-      padding: 40px;
-      border: 3px solid #000;
-      box-shadow: 6px 6px 0 #000;
-    }
-    .feature h3 {
-      font-size: 24px;
-      font-weight: 900;
-      margin-bottom: 15px;
-    }
-    .feature p {
-      font-size: 16px;
-      line-height: 1.5;
-    }
-    .cta-section {
-      padding: 100px 40px;
-      text-align: center;
-      background: #004E89;
-      color: #fff;
-      border-top: 3px solid #000;
-    }
-    .cta-section h2 {
-      font-size: 48px;
-      font-weight: 900;
-      margin-bottom: 30px;
-    }
-    .btn-white {
-      display: inline-block;
-      padding: 16px 40px;
-      background: #fff;
-      color: #000;
-      text-decoration: none;
-      font-weight: 900;
-      font-size: 18px;
-      border: 3px solid #000;
-      box-shadow: 6px 6px 0 #000;
-    }
-    footer {
-      padding: 40px;
-      text-align: center;
-      border-top: 3px solid #000;
-      font-weight: 700;
-    }
-    @media (max-width: 768px) {
-      .hero h2 { font-size: 40px; }
-      .features { grid-template-columns: 1fr; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neo-Brutalism · Design Vibes</title>
+<style>
+:root{
+  --paper:#FFF6EA;
+  --ink:#000000;
+  --white:#FFFFFF;
+  --orange:#FF6B35;
+  --blue:#004E89;
+  --yellow:#F7C548;
+  --pink:#FF8FD4;
+  --green:#3ECF8E;
+  --bw:4px;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{overflow-x:clip}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  line-height:1.5;
+  overflow-x:clip;
+}
+::selection{background:var(--yellow)}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* ---------- nav ---------- */
+.nav{
+  background:var(--white);border-bottom:var(--bw) solid var(--ink);
+  position:relative;z-index:5;
+}
+.nav .wrap{display:flex;align-items:center;gap:28px;padding-top:14px;padding-bottom:14px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:22px;letter-spacing:-.02em;text-decoration:none}
+.logo .cube{
+  width:30px;height:30px;background:var(--yellow);border:3px solid var(--ink);
+  box-shadow:3px 3px 0 var(--ink);display:inline-block;flex:none;
+}
+.nav-links{display:flex;gap:22px;margin-left:auto;list-style:none}
+.nav-links a{
+  text-decoration:none;font-weight:700;font-size:15px;
+  border-bottom:3px solid transparent;transition:border-color .12s ease,background .12s ease;
+  padding:2px 4px;
+}
+.nav-links a:hover{border-color:var(--ink);background:var(--yellow)}
+
+.btn{
+  display:inline-block;font-weight:800;font-size:15px;text-decoration:none;color:var(--ink);
+  border:var(--bw) solid var(--ink);padding:12px 22px;background:var(--white);
+  box-shadow:5px 5px 0 var(--ink);cursor:pointer;font-family:var(--sans);
+  transition:transform .12s ease,box-shadow .12s ease,background .12s ease;
+}
+.btn:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--ink)}
+.btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+.btn.orange{background:var(--orange);color:var(--white)}
+.btn.black{background:var(--ink);color:var(--white)}
+.btn.small{padding:9px 16px;font-size:14px;box-shadow:4px 4px 0 var(--ink)}
+
+/* ---------- hero ---------- */
+.hero .wrap{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;
+  padding-top:64px;padding-bottom:72px;
+}
+.sticker{
+  display:inline-block;background:var(--pink);border:3px solid var(--ink);
+  box-shadow:4px 4px 0 var(--ink);padding:6px 14px;
+  font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.06em;
+  transform:rotate(-3deg);margin-bottom:22px;
+}
+.hero h1{
+  font-size:clamp(2.7rem,6.2vw,4.9rem);
+  font-weight:900;line-height:.95;letter-spacing:-.03em;text-transform:uppercase;
+}
+.hero h1 .hl{background:var(--yellow);border:3px solid var(--ink);padding:0 10px;display:inline-block;box-shadow:5px 5px 0 var(--ink)}
+.hero p.sub{margin:26px 0 30px;font-size:19px;max-width:46ch;font-weight:500}
+.cta-row{display:flex;gap:18px;flex-wrap:wrap}
+.hero .fine{
+  margin-top:26px;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;
+}
+.hero .fine b{background:var(--green);border:2px solid var(--ink);padding:1px 7px;font-weight:700}
+
+/* hero board */
+.board-zone{position:relative}
+.board{
+  background:var(--white);border:var(--bw) solid var(--ink);
+  box-shadow:10px 10px 0 var(--ink);padding:22px;position:relative;
+}
+.board .bar{
+  display:flex;gap:8px;align-items:center;border:3px solid var(--ink);
+  background:var(--paper);padding:8px 12px;margin-bottom:18px;
+}
+.board .dot{width:14px;height:14px;border:2.5px solid var(--ink);border-radius:50%}
+.board .dot.r{background:var(--orange)}
+.board .dot.y{background:var(--yellow)}
+.board .dot.g{background:var(--green)}
+.board .bar span{margin-left:auto;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.08em}
+.canvas{
+  position:relative;height:250px;border:3px solid var(--ink);
+  background:
+    linear-gradient(var(--paper) 0 0);
+  overflow:hidden;
+}
+.canvas .grid{
+  position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(0deg,transparent 0 27px,rgba(0,0,0,.08) 27px 28px),
+    repeating-linear-gradient(90deg,transparent 0 27px,rgba(0,0,0,.08) 27px 28px);
+}
+.shape{position:absolute;border:3.5px solid var(--ink)}
+.sq{width:86px;height:86px;background:var(--blue);left:26px;top:38px;transform:rotate(-6deg);box-shadow:5px 5px 0 var(--ink)}
+.ci{width:98px;height:98px;background:var(--orange);border-radius:50%;right:38px;top:24px;box-shadow:5px 5px 0 var(--ink)}
+.tri{
+  width:0;height:0;border:0;left:150px;bottom:22px;position:absolute;
+  border-left:52px solid transparent;border-right:52px solid transparent;
+  border-bottom:88px solid var(--yellow);
+  filter:drop-shadow(4px 4px 0 var(--ink));
+}
+.pill-shape{
+  width:120px;height:44px;background:var(--pink);border-radius:40px;
+  right:26px;bottom:30px;box-shadow:4px 4px 0 var(--ink);
+}
+.cursor-tag{
+  position:absolute;left:186px;top:96px;z-index:3;
+  font-family:var(--mono);font-size:11px;font-weight:700;
+}
+.cursor-tag svg{display:block;width:22px;height:22px}
+.cursor-tag span{
+  display:inline-block;background:var(--green);border:2.5px solid var(--ink);
+  padding:2px 8px;margin-left:16px;margin-top:-4px;box-shadow:3px 3px 0 var(--ink);
+}
+/* rotating badge */
+.badge-spin{
+  position:absolute;width:132px;height:132px;right:-34px;bottom:-40px;z-index:6;
+  filter:drop-shadow(5px 5px 0 rgba(0,0,0,1));
+}
+.badge-spin svg{width:100%;height:100%;animation:spin 16s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.star-new{position:absolute;width:96px;height:96px;left:-30px;top:-34px;z-index:6;transform:rotate(-12deg)}
+.star-new svg{width:100%;height:100%}
+
+/* ---------- marquee ---------- */
+.marquee{
+  background:var(--ink);color:var(--white);
+  border-top:var(--bw) solid var(--ink);border-bottom:var(--bw) solid var(--ink);
+  overflow:hidden;white-space:nowrap;
+}
+.track{
+  display:inline-flex;width:max-content;
+  animation:slide 24s linear infinite;
+  padding:12px 0;font-weight:800;font-size:16px;letter-spacing:.06em;text-transform:uppercase;
+}
+.track span{padding:0 14px}
+.track .y{color:var(--yellow)}
+.track .p{color:var(--pink)}
+.track .g{color:var(--green)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- features ---------- */
+.features{padding:72px 0 80px}
+.kicker{
+  font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  display:inline-block;background:var(--white);border:3px solid var(--ink);padding:4px 12px;
+  box-shadow:4px 4px 0 var(--ink);margin-bottom:18px;
+}
+.features h2,.cta h2{
+  font-size:clamp(1.9rem,4.4vw,3rem);font-weight:900;letter-spacing:-.02em;
+  text-transform:uppercase;line-height:1.02;margin-bottom:40px;max-width:24ch;
+}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.card{
+  border:var(--bw) solid var(--ink);box-shadow:7px 7px 0 var(--ink);
+  padding:26px 24px 28px;position:relative;
+  transition:transform .14s ease,box-shadow .14s ease;
+}
+.card:hover{transform:translate(-4px,-4px);box-shadow:11px 11px 0 var(--ink)}
+.card .tag{
+  position:absolute;top:-16px;left:20px;background:var(--white);border:3px solid var(--ink);
+  font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;
+  padding:3px 10px;box-shadow:3px 3px 0 var(--ink);
+}
+.card h3{font-size:22px;font-weight:900;text-transform:uppercase;letter-spacing:-.01em;margin:6px 0 12px;line-height:1.1}
+.card p{font-size:15.5px;font-weight:500}
+.card.yellow{background:var(--yellow)}
+.card.pink{background:var(--pink)}
+.card.blue{background:var(--blue);color:var(--white)}
+.card.blue .tag{color:var(--ink)}
+
+/* ---------- cta ---------- */
+.cta{padding:0 0 88px}
+.cta-box{
+  position:relative;background:var(--orange);border:var(--bw) solid var(--ink);
+  box-shadow:10px 10px 0 var(--ink);padding:54px 40px 58px;text-align:center;color:var(--white);
+}
+.cta-box h2{margin:0 auto 14px;max-width:none}
+.cta-box .price{
+  font-size:clamp(3.4rem,8vw,5.6rem);font-weight:900;letter-spacing:-.04em;line-height:1;
+  display:inline-block;background:var(--white);color:var(--ink);border:var(--bw) solid var(--ink);
+  padding:4px 26px;box-shadow:7px 7px 0 var(--ink);transform:rotate(-2deg);margin-bottom:22px;
+}
+.cta-box p{font-size:18px;font-weight:600;max-width:44ch;margin:0 auto 30px}
+.cta-box .sticker2{
+  position:absolute;top:-20px;right:34px;background:var(--green);border:3px solid var(--ink);
+  box-shadow:4px 4px 0 var(--ink);padding:7px 14px;transform:rotate(6deg);
+  font-family:var(--mono);font-size:12px;font-weight:700;color:var(--ink);letter-spacing:.05em;
+}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:var(--white);border-top:var(--bw) solid var(--ink)}
+footer .wrap{
+  display:flex;flex-wrap:wrap;gap:18px 36px;align-items:center;
+  padding-top:30px;padding-bottom:34px;
+}
+footer .logo{color:var(--white)}
+footer .logo .cube{box-shadow:3px 3px 0 var(--orange)}
+footer p{font-family:var(--mono);font-size:12px;letter-spacing:.04em;margin-left:auto}
+footer nav{display:flex;gap:18px}
+footer nav a{
+  color:var(--white);font-weight:700;font-size:14px;text-decoration:none;
+  border-bottom:3px solid var(--orange);transition:background .12s ease,color .12s ease;
+}
+footer nav a:hover{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+
+/* ---------- responsive ---------- */
+@media (max-width:880px){
+  .hero .wrap{grid-template-columns:1fr;gap:64px;padding-top:44px;padding-bottom:56px}
+  .cards{grid-template-columns:1fr;gap:34px}
+  .nav-links{display:none}
+  .board-zone{margin:0 10px}
+  .badge-spin{right:-14px;bottom:-34px;width:112px;height:112px}
+  .star-new{left:-12px;top:-28px;width:80px;height:80px}
+  footer p{margin-left:0}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
 </head>
 <body>
-  <nav class="nav">
-    <h1>NEO.BRUTAL</h1>
-    <div class="nav-links">
-      <a href="#">Work</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </div>
-  </nav>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top"><span class="cube"></span>BLOCKO</a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#pricing">Changelog</a></li>
+      <li><a href="#pricing">Blog</a></li>
+    </ul>
+    <a class="btn small orange" href="#pricing">Get Blocko</a>
+  </div>
+</header>
+
+<main id="top">
 
   <section class="hero">
-    <h2>Modern<br>Brutalism</h2>
-    <p>Clean, bold, and intentionally raw. The modern take on brutalist web design.</p>
-    <a href="#" class="btn-primary">Get Started</a>
+    <div class="wrap">
+      <div>
+        <span class="sticker">v2.0 &mdash; NOW WITH MORE BLACK</span>
+        <h1>Make it <span class="hl">loud.</span><br>Ship it flat.</h1>
+        <p class="sub">
+          Blocko is the design canvas that skipped gradient school. Solid ink,
+          honest borders, shadows that don&rsquo;t blur under pressure. Draw like
+          you mean it.
+        </p>
+        <div class="cta-row">
+          <a class="btn orange" href="#pricing">Start free &rarr;</a>
+          <a class="btn" href="#features">See it shout</a>
+        </div>
+        <p class="fine"><b>4,096 colors</b> &nbsp;ALL OF THEM AT FULL VOLUME &middot; NO BLUR ALLOWED</p>
+      </div>
+
+      <div class="board-zone">
+        <div class="star-new" aria-hidden="true">
+          <svg viewBox="0 0 100 100">
+            <polygon points="98,50 81.4,63 83.9,83.9 63,81.4 50,98 37,81.4 16.1,83.9 18.6,63 2,50 18.6,37 16.1,16.1 37,18.6 50,2 63,18.6 83.9,16.1 81.4,37" fill="#F7C548" stroke="#000" stroke-width="3.5"/>
+            <text x="50" y="57" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="17" font-weight="800" fill="#000">NEW!</text>
+          </svg>
+        </div>
+
+        <figure class="board" aria-label="Blocko canvas illustration">
+          <div class="bar" aria-hidden="true">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span>UNTITLED-04.BLK</span>
+          </div>
+          <div class="canvas" aria-hidden="true">
+            <div class="grid"></div>
+            <div class="shape sq"></div>
+            <div class="shape ci"></div>
+            <div class="tri"></div>
+            <div class="shape pill-shape"></div>
+            <div class="cursor-tag">
+              <svg viewBox="0 0 24 24"><path d="M4 2 L4 20 L9 15 L13 22 L16.5 20 L12.5 13 L19 13 Z" fill="#000" stroke="#fff" stroke-width="1.6"/></svg>
+              <span>sam</span>
+            </div>
+          </div>
+        </figure>
+
+        <div class="badge-spin" aria-hidden="true">
+          <svg viewBox="0 0 120 120">
+            <defs><path id="ring" d="M60,60 m-45,0 a45,45 0 1,1 90,0 a45,45 0 1,1 -90,0"/></defs>
+            <circle cx="60" cy="60" r="56" fill="#FF8FD4" stroke="#000" stroke-width="4"/>
+            <circle cx="60" cy="60" r="27" fill="#F7C548" stroke="#000" stroke-width="4"/>
+            <text font-family="ui-monospace,Menlo,monospace" font-size="11.5" font-weight="700" letter-spacing="1.6" fill="#000">
+              <textPath href="#ring">PRESS EVERY BUTTON &#9733; NO WRONG ANSWERS &#9733;</textPath>
+            </text>
+          </svg>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="features">
-    <div class="feature">
-      <h3>Bold Colors</h3>
-      <p>High contrast palettes that demand attention.</p>
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <span>No gradients</span><span class="y">&#10022;</span>
+      <span>No blur</span><span class="p">&#10022;</span>
+      <span>No mercy</span><span class="g">&#10022;</span>
+      <span>Just ink</span><span class="y">&#10022;</span>
+      <span>No gradients</span><span class="p">&#10022;</span>
+      <span>No blur</span><span class="g">&#10022;</span>
+      <span>No mercy</span><span class="y">&#10022;</span>
+      <span>Just ink</span><span class="p">&#10022;</span>
     </div>
-    <div class="feature">
-      <h3>Hard Shadows</h3>
-      <p>No blur, just solid offsets for depth.</p>
-    </div>
-    <div class="feature">
-      <h3>Thick Borders</h3>
-      <p>Clear boundaries with heavy strokes.</p>
+  </div>
+
+  <section class="features" id="features">
+    <div class="wrap">
+      <span class="kicker">Why switch</span>
+      <h2>Three reasons. We counted twice.</h2>
+      <div class="cards">
+        <article class="card yellow">
+          <span class="tag">01 / CANVAS</span>
+          <h3>Snap to nothing</h3>
+          <p>An infinite canvas with zero guilt. Grids are available, ignorable, and only slightly judgmental when you freehand a straight line.</p>
+        </article>
+        <article class="card pink">
+          <span class="tag">02 / STICKERS</span>
+          <h3>Stickers that stick</h3>
+          <p>Rotate a badge, slap on a label, stamp APPROVED across your own work. Self-esteem, now shipping in every file.</p>
+        </article>
+        <article class="card blue">
+          <span class="tag">03 / EXPORT</span>
+          <h3>Export like a brick</h3>
+          <p>One flat file, no layers weeping in a folder. Opens everywhere, loudly, and survives being emailed back to you with edits.</p>
+        </article>
+      </div>
     </div>
   </section>
 
-  <section class="cta-section">
-    <h2>Ready to go brutal?</h2>
-    <a href="#" class="btn-white">Start Building</a>
+  <section class="cta" id="pricing">
+    <div class="wrap">
+      <div class="cta-box">
+        <span class="sticker2">NO CARD NEEDED</span>
+        <h2>Pricing, briefly</h2>
+        <div class="price">$0</div>
+        <p>Free until you&rsquo;re famous. Then still free &mdash; we just want a nod in the acceptance speech.</p>
+        <a class="btn black" href="#top">Start making noise &rarr;</a>
+      </div>
+    </div>
   </section>
 
-  <footer>
-    © 2025 NEO.BRUTAL — BUILT WITH ATTITUDE
-  </footer>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top"><span class="cube"></span>BLOCKO</a>
+    <nav aria-label="Footer">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#top">Manual</a>
+    </nav>
+    <p>&copy; 2026 BLOCKO INDUSTRIES &mdash; drawn with a ruler, shipped without one.</p>
+  </div>
+</footer>
+
 </body>
 </html>

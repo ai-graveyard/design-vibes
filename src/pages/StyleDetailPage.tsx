@@ -86,9 +86,9 @@ export function StyleDetailPage() {
           </aside>
         )}
 
-        {/* Right Content */}
+        {/* Right Content — key 让切换风格时组件本地状态（复制态）自动重置；设备预览是全局状态，切换风格不受影响 */}
         <main className="flex-1 overflow-hidden">
-          <StyleDetailContent style={style} />
+          <StyleDetailContent key={style.id} style={style} />
         </main>
       </div>
     </div>

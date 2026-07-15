@@ -1,55 +1,256 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>动态字体风格 Demo</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Impact', 'Arial Black', sans-serif;
-      background: #000;
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .kinetic {
-      text-align: center;
-    }
-    .kinetic h1 {
-      font-size: 120px;
-      text-transform: uppercase;
-      animation: kinetic 3s ease-in-out infinite;
-    }
-    @keyframes kinetic {
-      0%, 100% { 
-        transform: scale(1) rotate(0deg);
-        letter-spacing: 0;
-      }
-      25% { 
-        transform: scale(1.1) rotate(-2deg);
-        letter-spacing: 20px;
-      }
-      50% { 
-        transform: scale(0.9) rotate(2deg);
-        letter-spacing: -10px;
-      }
-      75% { 
-        transform: scale(1.05) rotate(-1deg);
-        letter-spacing: 10px;
-      }
-    }
-    @media (max-width: 768px) {
-      .kinetic h1 { font-size: 60px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kinetic Typography · Design Vibes</title>
+<style>
+:root{
+  --bg:#000000;
+  --fg:#FFFFFF;
+  --accent:#FF0000;
+  --gray:#8a8a8a;
+  --line:#2b2b2b;
+  --sans:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono:ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);overflow-x:hidden}
+::selection{background:var(--accent);color:#fff}
+
+/* ── header ───────────────────────────── */
+header{position:sticky;top:0;z-index:30;display:flex;align-items:center;
+  justify-content:space-between;padding:1rem 1.6rem;background:var(--bg);
+  border-bottom:1px solid var(--line)}
+.logo{font-weight:900;font-size:1.05rem;letter-spacing:.08em;color:var(--fg);
+  text-decoration:none;text-transform:uppercase}
+.logo em{font-style:normal;color:var(--accent)}
+nav{display:flex;gap:1.6rem;align-items:center}
+nav a{color:var(--gray);text-decoration:none;font-size:.74rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;transition:color .2s,transform .2s}
+nav a:hover{color:var(--fg);transform:skewX(-8deg)}
+.btn{padding:.6rem 1.4rem;background:var(--accent);color:#fff;font-weight:800;
+  font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;
+  transition:transform .2s,background .2s}
+.btn:hover{transform:translate(2px,-2px) rotate(-1deg);background:#fff;color:var(--bg)}
+
+/* ── hero ─────────────────────────────── */
+.hero{position:relative;padding:5rem 1.6rem 4rem;min-height:58vh;
+  display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.hero-kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:.4em;
+  color:var(--gray);text-transform:uppercase;margin-bottom:1.6rem}
+.hero-kicker b{color:var(--accent);font-weight:400}
+.wf{font-size:clamp(3.4rem,14vw,11.5rem);font-weight:900;line-height:.92;
+  text-transform:uppercase;letter-spacing:-.015em;display:flex;flex-wrap:wrap}
+.wf span{display:inline-block;animation:wave 5.2s ease-in-out infinite;
+  animation-delay:calc(var(--i)*.16s);transition:transform .25s,color .25s}
+.wf span:hover{transform:translateY(-6%) scaleY(1.08);color:var(--accent);
+  -webkit-text-stroke:0;animation-play-state:paused}
+.wf .o{color:transparent;-webkit-text-stroke:3px var(--fg)}
+.wf .r{color:var(--accent)}
+@keyframes wave{0%,100%{transform:translateY(0)}50%{transform:translateY(-.09em)}}
+.hero-sub{margin-top:1.8rem;max-width:44ch;color:var(--gray);
+  font-size:1rem;line-height:1.8}
+.hero-sub b{color:var(--fg)}
+.aster{position:absolute;right:4%;top:12%;font-size:clamp(5rem,14vw,11rem);
+  font-weight:900;color:var(--accent);line-height:1;user-select:none;
+  animation:spin 12s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── marquees ─────────────────────────── */
+.mq{overflow:hidden;white-space:nowrap;border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);user-select:none}
+.mq .track{display:inline-flex;align-items:baseline;width:max-content;
+  animation:slide 22s linear infinite}
+.mq.rev .track{animation-direction:reverse}
+@keyframes slide{to{transform:translateX(-50%)}}
+.mq span{padding:0 .55em;font-weight:900;text-transform:uppercase;line-height:1.55}
+.mq .dotsep{color:var(--accent)}
+.mq-red{background:var(--accent);border:0}
+.mq-red span{color:var(--bg);font-size:1.05rem;letter-spacing:.14em;padding:.55rem .8rem}
+.mq-red .dotsep{color:#fff}
+.mq-ghost span{font-size:clamp(2.4rem,6vw,4.4rem);color:transparent;
+  -webkit-text-stroke:2px var(--fg);letter-spacing:.02em}
+.mq-ghost span.solid{color:var(--fg);-webkit-text-stroke:0}
+.mq-ghost span.red{color:var(--accent);-webkit-text-stroke:0}
+.mq-ghost .track{animation-duration:30s}
+.tiltwrap{overflow:hidden;padding:2.2rem 0}
+.tilt{transform:rotate(-2.4deg) scale(1.02)}
+.tilt .mq{border-color:var(--accent)}
+.tilt .mq span{color:var(--accent);font-size:1.2rem;letter-spacing:.3em;padding:.5rem .9rem}
+.tilt .track{animation-duration:16s}
+
+/* ── specimens ────────────────────────── */
+section{border-top:1px solid var(--line)}
+.sec-inner{max-width:1220px;margin:0 auto;padding:4.2rem 1.6rem}
+.sec-label{display:flex;align-items:center;gap:1rem;font-family:var(--mono);
+  font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gray);margin-bottom:2.4rem}
+.sec-label i{font-style:normal;color:var(--accent)}
+.sec-label::after{content:"";flex:1;height:1px;background:var(--line)}
+.spec{display:block;text-decoration:none;color:var(--fg);
+  border-top:1px solid var(--line);padding:1.6rem .4rem;
+  display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:1rem;
+  transition:background .25s}
+.spec:last-of-type{border-bottom:1px solid var(--line)}
+.spec .name{font-size:clamp(2rem,5.6vw,4.6rem);font-weight:900;line-height:1;
+  text-transform:uppercase;letter-spacing:-.01em;transition:transform .3s,color .3s,letter-spacing .3s;display:inline-block}
+.spec:nth-child(odd) .name{color:transparent;-webkit-text-stroke:2px var(--fg)}
+.spec .meta{font-family:var(--mono);font-size:.68rem;letter-spacing:.22em;
+  color:var(--gray);text-transform:uppercase;text-align:right;transition:color .3s}
+.spec .meta b{display:block;color:var(--fg);font-weight:400;margin-bottom:.2rem;transition:color .3s}
+.spec:hover{background:#0a0a0a}
+.spec:hover .name{transform:translateX(18px) skewX(-6deg);color:var(--accent);-webkit-text-stroke:0}
+.spec:hover .meta,.spec:hover .meta b{color:var(--accent)}
+.spec.mono-face .name{font-family:var(--mono);letter-spacing:-.06em}
+.spec.squish .name{transform:scaleY(1.3);transform-origin:bottom}
+.spec.squish:hover .name{transform:scaleY(1.3) translateX(18px) skewX(-6deg)}
+.spec.wide .name{letter-spacing:.18em}
+
+/* ── manifesto ────────────────────────── */
+.mani{font-size:clamp(1.7rem,4.6vw,3.6rem);font-weight:900;line-height:1.18;
+  text-transform:uppercase;max-width:24ch}
+.mani .o{color:transparent;-webkit-text-stroke:2px var(--fg)}
+.mani .r{color:var(--accent)}
+.mani .jump{display:inline-block;animation:jump 2.8s cubic-bezier(.3,1.6,.4,1) infinite}
+@keyframes jump{0%,62%,100%{transform:translateY(0) scaleY(1)}
+  68%{transform:translateY(.04em) scaleY(.9)}
+  78%{transform:translateY(-.28em) scaleY(1.06)}
+  88%{transform:translateY(.02em) scaleY(.96)}}
+.mani-note{margin-top:2rem;font-family:var(--mono);font-size:.74rem;
+  letter-spacing:.24em;color:var(--gray);text-transform:uppercase}
+
+/* ── trial cta ────────────────────────── */
+.trial .sec-inner{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+.trial h2{font-size:clamp(1.8rem,4.2vw,3.2rem);font-weight:900;line-height:1.05;
+  text-transform:uppercase;max-width:16ch}
+.trial h2 em{font-style:normal;color:transparent;-webkit-text-stroke:2px var(--accent)}
+.big-btn{display:inline-block;padding:1.2rem 2.6rem;background:var(--accent);color:#fff;
+  font-weight:900;font-size:1rem;letter-spacing:.22em;text-transform:uppercase;
+  text-decoration:none;transition:transform .25s,background .25s,color .25s}
+.big-btn:hover{transform:rotate(-2deg) scale(1.06);background:var(--fg);color:var(--bg)}
+
+/* ── footer ───────────────────────────── */
+footer{border-top:1px solid var(--line);padding:2rem 1.6rem;
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.22em;
+  color:var(--gray);text-transform:uppercase}
+footer a{color:var(--fg);text-decoration:none}
+footer a:hover{color:var(--accent)}
+
+/* ── responsive ───────────────────────── */
+@media (max-width:760px){
+  nav a{display:none}
+  .hero{padding:3.4rem 1.25rem 3rem;min-height:auto}
+  .aster{right:2%;top:4%;opacity:.55}
+  .sec-inner{padding:3rem 1.25rem}
+  .spec{grid-template-columns:1fr}
+  .spec .meta{text-align:left}
+  .trial .sec-inner{grid-template-columns:1fr}
+  .tilt{transform:rotate(-1.4deg)}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  html{scroll-behavior:auto}
+}
+</style>
 </head>
 <body>
-  <div class="kinetic">
-    <h1>MOVE</h1>
+<header>
+  <a class="logo" href="#top">Wildform<em>*</em></a>
+  <nav aria-label="Primary">
+    <a href="#faces">Typefaces</a>
+    <a href="#manifesto">Manifesto</a>
+    <a class="btn" href="#trial">Free Trials</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero" style="border-top:0">
+    <span class="aster" aria-hidden="true">*</span>
+    <p class="hero-kicker">Independent type foundry — <b>est. 2019</b></p>
+    <h1 class="wf" aria-label="Wildform">
+      <span style="--i:0">W</span><span class="o" style="--i:1">I</span><span style="--i:2">L</span><span class="o" style="--i:3">D</span><span class="r" style="--i:4">F</span><span style="--i:5">O</span><span class="o" style="--i:6">R</span><span style="--i:7">M</span>
+    </h1>
+    <p class="hero-sub">We draw letters that refuse to sit still. Eight retail families,
+      four in the oven, all of them <b>built to be shouted</b>.</p>
+  </section>
+
+  <div class="mq mq-red" aria-hidden="true">
+    <div class="track">
+      <span>New release — Gravity Sans</span><span class="dotsep">●</span>
+      <span>12 weights + italics</span><span class="dotsep">●</span>
+      <span>Variable axis: wobble</span><span class="dotsep">●</span>
+      <span>New release — Gravity Sans</span><span class="dotsep">●</span>
+      <span>12 weights + italics</span><span class="dotsep">●</span>
+      <span>Variable axis: wobble</span><span class="dotsep">●</span>
+    </div>
   </div>
+  <div class="mq mq-ghost rev" aria-hidden="true">
+    <div class="track">
+      <span>Loud</span><span class="solid">Louder</span><span class="red">Loudest</span>
+      <span>Bold</span><span class="solid">Bolder</span><span class="red">Boldest</span>
+      <span>Loud</span><span class="solid">Louder</span><span class="red">Loudest</span>
+      <span>Bold</span><span class="solid">Bolder</span><span class="red">Boldest</span>
+    </div>
+  </div>
+
+  <section id="faces">
+    <div class="sec-inner">
+      <p class="sec-label"><i>01</i> Retail library</p>
+      <a class="spec" href="#trial">
+        <span class="name">Gravity Sans</span>
+        <span class="meta"><b>12 weights · variable</b>grotesk with a temper</span>
+      </a>
+      <a class="spec mono-face" href="#trial">
+        <span class="name">Rubber Mono</span>
+        <span class="meta"><b>6 weights · code-safe</b>bounces at 4am</span>
+      </a>
+      <a class="spec squish" href="#trial">
+        <span class="name">Tantrum Display</span>
+        <span class="meta"><b>3 weights · headline</b>legibility optional</span>
+      </a>
+      <a class="spec wide" href="#trial">
+        <span class="name">Static Wide</span>
+        <span class="meta"><b>8 weights · caps only</b>takes up the whole room</span>
+      </a>
+    </div>
+  </section>
+
+  <section id="manifesto">
+    <div class="sec-inner">
+      <p class="sec-label"><i>02</i> Manifesto</p>
+      <p class="mani">A letter is a <span class="o">muscle</span>. We stretch it, bend it,
+        <span class="jump">drop</span> it from great heights.
+        If it bounces, <span class="r">we ship it.</span></p>
+      <p class="mani-note">— the foundry floor, third shift</p>
+    </div>
+  </section>
+
+  <div class="tiltwrap" aria-hidden="true">
+    <div class="tilt">
+      <div class="mq">
+        <div class="track">
+          <span>Try before you buy</span><span>●</span><span>Full glyph sets</span><span>●</span>
+          <span>No watermarks</span><span>●</span><span>Try before you buy</span><span>●</span>
+          <span>Full glyph sets</span><span>●</span><span>No watermarks</span><span>●</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="trial" class="trial" style="border-top:0">
+    <div class="sec-inner">
+      <h2>Every family, <em>free</em> for 30 days.</h2>
+      <a class="big-btn" href="#top">Get the bundle</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>Wildform Type Co. © 2026</span>
+  <span><a href="#faces">Library</a> · <a href="#manifesto">Manifesto</a> · <a href="#trial">Trials</a></span>
+  <span>Set loud or not at all</span>
+</footer>
 </body>
 </html>

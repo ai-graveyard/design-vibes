@@ -1,6 +1,6 @@
-import { Star, Copy, Check } from 'lucide-react';
+import { Star, Copy, Check, ArrowUpRight } from 'lucide-react';
 import type { DesignStyle } from '../data/styles';
-import { demoComponents } from './demos';
+import { DemoPreview } from './DemoPreview';
 import { getPromptById } from '../data/prompts';
 import { useState } from 'react';
 import { useAppStore } from '../store/appStore';
@@ -16,7 +16,6 @@ export function StyleCard({ style, onClick }: StyleCardProps) {
   const t = translations[language];
   const [copied, setCopied] = useState(false);
 
-  const DemoComponent = demoComponents[style.id];
   const promptData = getPromptById(style.id);
   const isDark = theme === 'dark';
 
@@ -31,28 +30,30 @@ export function StyleCard({ style, onClick }: StyleCardProps) {
   };
 
   return (
-    <div
+    <article
       onClick={onClick}
-      className={`group cursor-pointer rounded-xl overflow-hidden border transition-all duration-300 hover:shadow-lg ${
+      className={`group cursor-pointer rounded-xl overflow-hidden border transition-all duration-300 hover:-translate-y-0.5 ${
         isDark
-          ? 'bg-[#1a1a1a] border-gray-800 hover:border-[#FF9F1C]'
-          : 'bg-white border-gray-200 hover:border-[#FF9F1C]'
+          ? 'bg-[#1a1a1a] border-gray-800 hover:border-[#FF9F1C] hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.6)]'
+          : 'bg-white border-gray-200 hover:border-[#FF9F1C] hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.15)]'
       }`}
     >
-      {/* Preview Demo */}
-      <div className={`relative aspect-[16/10] overflow-hidden rounded-t-xl ${isDark ? 'bg-[#0a0a0a]' : 'bg-gray-50'}`}>
-        {DemoComponent && (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-full h-full">
-              <DemoComponent />
-            </div>
-          </div>
-        )}
+      {/* 真实 demo 的缩放预览 */}
+      <div className={`relative aspect-[16/10] overflow-hidden border-b ${isDark ? 'bg-[#0a0a0a] border-gray-800' : 'bg-gray-50 border-gray-100'}`}>
+        <div className="absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-[1.02]">
+          <DemoPreview styleId={style.id} placeholderColor={style.colors[0]} />
+        </div>
 
         {/* Rating Badge */}
         <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 bg-white/95 backdrop-blur-sm rounded-md shadow-sm">
           <Star className="w-3 h-3 fill-[#FF9F1C] text-[#FF9F1C]" />
-          <span className="text-xs font-bold text-black">{style.rating}</span>
+          <span className="text-xs font-bold text-black tabular-nums">{style.rating.toFixed(1)}</span>
+        </div>
+
+        {/* Hover Hint */}
+        <div className="absolute bottom-3 right-3 flex items-center gap-1 px-2.5 py-1.5 bg-black/80 backdrop-blur-sm rounded-md opacity-0 translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+          <span className="text-[10px] uppercase tracking-wider text-white">{t.card.viewDetail}</span>
+          <ArrowUpRight className="w-3 h-3 text-[#FF9F1C]" />
         </div>
       </div>
 
@@ -60,7 +61,7 @@ export function StyleCard({ style, onClick }: StyleCardProps) {
       <div className="p-4 sm:p-5">
         {/* Title */}
         <div className="mb-3">
-          <h3 className={`font-bold text-base sm:text-lg mb-0.5 ${isDark ? 'text-white' : 'text-black'}`}>
+          <h3 className={`font-bold text-base sm:text-lg mb-0.5 transition-colors group-hover:text-[#FF9F1C] ${isDark ? 'text-white' : 'text-black'}`}>
             {language === 'zh' ? style.name : style.nameEn}
           </h3>
           <p className={`text-[10px] uppercase tracking-wider ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
@@ -70,13 +71,13 @@ export function StyleCard({ style, onClick }: StyleCardProps) {
 
         {/* Description */}
         <p className={`text-xs leading-relaxed mb-3 line-clamp-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-          {language === 'zh' ? style.description.slice(0, 60) + '...' : style.descriptionEn.slice(0, 80) + '...'}
+          {language === 'zh' ? style.description : style.descriptionEn}
         </p>
 
         {/* Core Features */}
         <div className="mb-3">
           <span className={`text-[10px] uppercase tracking-wider mb-1.5 block ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
-            {t.card.coreFeatures || '核心特点'}
+            {t.card.coreFeatures}
           </span>
           <div className="flex flex-wrap gap-1.5">
             {(language === 'zh' ? style.features : style.featuresEn).slice(0, 4).map((feature, i) => (
@@ -117,12 +118,14 @@ export function StyleCard({ style, onClick }: StyleCardProps) {
 
         {/* Actions */}
         <div className={`flex items-center justify-between pt-3 border-t ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
-          <span className={`text-[10px] ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+          <span className={`text-[10px] tabular-nums ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
             {style.useCases.length} {t.card.useCases}
           </span>
           {promptData && (
             <button
               onClick={handleCopyPrompt}
+              type="button"
+              aria-label={t.card.copyPrompt}
               className={`flex items-center gap-1.5 px-3 py-1.5 text-[10px] uppercase tracking-wider rounded transition-all ${
                 copied
                   ? 'bg-green-500 text-white'
@@ -137,6 +140,6 @@ export function StyleCard({ style, onClick }: StyleCardProps) {
           )}
         </div>
       </div>
-    </div>
+    </article>
   );
 }

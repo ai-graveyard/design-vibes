@@ -99,13 +99,18 @@ export function StylesGrid() {
 
         {/* Grid */}
         {filteredStyles.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-            {filteredStyles.map((style) => (
-              <StyleCard
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
+            {filteredStyles.map((style, index) => (
+              <div
                 key={style.id}
-                style={style}
-                onClick={() => handleCardClick(style.id)}
-              />
+                className="animate-fade-up"
+                style={{ animationDelay: `${Math.min(index, 8) * 60}ms` }}
+              >
+                <StyleCard
+                  style={style}
+                  onClick={() => handleCardClick(style.id)}
+                />
+              </div>
             ))}
           </div>
         ) : (

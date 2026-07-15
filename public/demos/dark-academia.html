@@ -1,59 +1,357 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>暗黑学院风格 Demo</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Crimson Text', 'Times New Roman', serif;
-      background: #2f4f4f;
-      color: #f5f5dc;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px;
-    }
-    .academia {
-      max-width: 600px;
-      text-align: center;
-      padding: 60px;
-      border: 2px solid #8b4513;
-      background: rgba(0,0,0,0.3);
-    }
-    .academia h1 {
-      font-size: 48px;
-      font-style: italic;
-      margin-bottom: 30px;
-      color: #f5f5dc;
-    }
-    .academia p {
-      font-size: 20px;
-      line-height: 1.8;
-      color: #d2b48c;
-    }
-    .academia .quote {
-      margin-top: 30px;
-      font-size: 16px;
-      color: #8b4513;
-      font-style: italic;
-    }
-    @media (max-width: 768px) {
-      body { padding: 20px; }
-      .academia { padding: 30px 20px; }
-      .academia h1 { font-size: 28px; }
-      .academia p { font-size: 14px; }
-      .academia .quote { font-size: 12px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dark Academia · Design Vibes</title>
+<style>
+:root{
+  --bg:#1A130C;
+  --panel:#241A11;
+  --green:#26382F;
+  --green-deep:#1C2A23;
+  --parchment:#EADCBE;
+  --ink:#CDBD9C;
+  --wine:#722F37;
+  --wine-deep:#59242B;
+  --brass:#B08D57;
+  --candle:#EFA94A;
+  --serif:Georgia,"Palatino Linotype","Songti SC",serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background-color:var(--bg);
+  background-image:
+    repeating-linear-gradient(0deg,rgba(255,244,214,.014) 0 1px,transparent 1px 3px),
+    repeating-linear-gradient(90deg,rgba(0,0,0,.05) 0 2px,transparent 2px 5px),
+    radial-gradient(ellipse 120% 90% at 50% 0%,rgba(239,169,74,.05),transparent 55%),
+    radial-gradient(ellipse 140% 100% at 50% 100%,rgba(0,0,0,.5),transparent 60%);
+  color:var(--ink);
+  font-family:var(--serif);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1140px;margin:0 auto;padding:0 2rem}
+.rubric{font-size:.6875rem;letter-spacing:.3em;text-transform:uppercase;color:var(--brass)}
+
+/* ---------- header ---------- */
+header{border-bottom:1px solid rgba(176,141,87,.35);position:relative}
+header::after{content:"";position:absolute;left:0;right:0;bottom:3px;border-bottom:1px solid rgba(176,141,87,.15)}
+.head-in{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.15rem 2rem;max-width:1140px;margin:0 auto}
+.sigil{display:flex;align-items:center;gap:.85rem}
+.seal{
+  width:38px;height:38px;border-radius:50%;flex:none;
+  background:radial-gradient(circle at 35% 30%,#8d3b45,var(--wine) 55%,var(--wine-deep));
+  box-shadow:0 2px 6px rgba(0,0,0,.6),inset 0 0 0 3px rgba(0,0,0,.18);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--parchment);font-size:1.05rem;font-style:italic;
+}
+.sigil b{font-weight:400;font-style:italic;font-size:1.2rem;color:var(--parchment);letter-spacing:.02em}
+.sigil small{display:block;font-style:normal;font-size:.625rem;letter-spacing:.32em;text-transform:uppercase;color:var(--brass)}
+nav{display:flex;gap:1.9rem}
+nav a{font-size:.8125rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);border-bottom:1px solid transparent;padding-bottom:.25rem;transition:color .2s,border-color .2s}
+nav a:hover{color:var(--parchment);border-color:var(--brass)}
+
+/* ---------- hero ---------- */
+.hero{display:grid;grid-template-columns:7fr 5fr;gap:3rem;align-items:center;padding:3.8rem 2rem 4.2rem;max-width:1140px;margin:0 auto}
+.hero h1{
+  font-size:clamp(2.4rem,4.6vw,3.7rem);
+  font-weight:400;color:var(--parchment);line-height:1.15;letter-spacing:.01em;
+  margin:1.1rem 0 1.6rem;
+}
+.hero h1 em{font-style:italic;color:var(--candle)}
+blockquote{
+  border-left:2px solid var(--wine);padding:.35rem 0 .35rem 1.2rem;margin:0 0 1.5rem;
+  font-style:italic;color:var(--parchment);font-size:1.0625rem;
+}
+blockquote cite{display:block;font-style:normal;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-top:.5rem}
+.hero p.lead{max-width:52ch;margin-bottom:2rem}
+.btns{display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap}
+.btn{
+  display:inline-block;padding:.85rem 1.9rem;background:var(--wine);color:var(--parchment);
+  font-size:.8125rem;letter-spacing:.22em;text-transform:uppercase;
+  border:1px solid rgba(234,220,190,.25);box-shadow:0 4px 14px rgba(0,0,0,.45);
+  transition:background .2s,transform .2s;
+}
+.btn:hover{background:var(--wine-deep);transform:translateY(-2px)}
+.link{font-style:italic;color:var(--brass);border-bottom:1px dotted var(--brass);transition:color .2s}
+.link:hover{color:var(--candle)}
+
+/* candlelit still-life */
+.study{
+  position:relative;height:400px;border:1px solid rgba(176,141,87,.4);
+  background:
+    radial-gradient(ellipse 70% 48% at 62% 40%,rgba(239,169,74,.22),transparent 65%),
+    linear-gradient(180deg,#171008,#20160c 70%,#120c06);
+  box-shadow:inset 0 0 60px rgba(0,0,0,.75),0 10px 34px rgba(0,0,0,.5);
+  overflow:hidden;
+}
+.study::after{content:"";position:absolute;left:0;right:0;bottom:0;height:74px;background:linear-gradient(180deg,#33241426,#3a2a17);border-top:2px solid #4a3620}
+.flame{
+  position:absolute;left:61.5%;top:23%;width:16px;height:30px;z-index:3;
+  background:radial-gradient(ellipse at 50% 78%,#fff3c4 0%,#f5c85c 42%,#e08a2d 72%,rgba(224,138,45,0) 100%);
+  border-radius:50% 50% 46% 54%/64% 64% 36% 36%;
+  transform-origin:50% 100%;
+  animation:flicker 2.3s ease-in-out infinite alternate;
+}
+.glow{
+  position:absolute;left:61.5%;top:20%;width:190px;height:190px;margin:-80px 0 0 -87px;z-index:2;
+  background:radial-gradient(circle,rgba(239,169,74,.30),rgba(239,169,74,.08) 45%,transparent 70%);
+  border-radius:50%;animation:breathe 4.5s ease-in-out infinite alternate;
+}
+@keyframes flicker{
+  0%{transform:scaleY(1) rotate(-1.5deg)}
+  28%{transform:scaleY(.92) rotate(1.2deg)}
+  55%{transform:scaleY(1.06) rotate(-.8deg)}
+  100%{transform:scaleY(.97) rotate(1.6deg)}
+}
+@keyframes breathe{from{opacity:.75}to{opacity:1.1}}
+.candle{
+  position:absolute;left:61.5%;top:29.5%;width:30px;height:120px;margin-left:-15px;z-index:3;
+  background:linear-gradient(90deg,#c9b489,#f0e3bd 45%,#b6a075);
+  border-radius:5px 5px 3px 3px;
+}
+.candle::before{content:"";position:absolute;top:-7px;left:50%;width:2px;height:9px;margin-left:-1px;background:#3a2c1a}
+.candle::after{content:"";position:absolute;top:-3px;left:2px;right:4px;height:8px;background:radial-gradient(ellipse at 50% 0,#f7ecc9,#d8c493);border-radius:50%}
+.stick{position:absolute;left:61.5%;top:calc(29.5% + 120px);width:64px;height:34px;margin-left:-32px;z-index:3;
+  background:linear-gradient(180deg,#8a6a33,#5d461f);border-radius:4px 4px 10px 10px}
+.stick::before{content:"";position:absolute;top:-6px;left:14px;right:14px;height:8px;background:#9c7a3d;border-radius:50%}
+/* book pile */
+.pile{position:absolute;left:10%;bottom:70px;width:200px;z-index:3}
+.pile .tome{display:block;height:30px;border-radius:3px 5px 5px 3px;box-shadow:0 3px 8px rgba(0,0,0,.5),inset 0 1px 0 rgba(234,220,190,.14);position:relative}
+.pile .tome i{position:absolute;right:6px;top:3px;bottom:3px;width:6px;background:repeating-linear-gradient(0deg,rgba(234,220,190,.75) 0 2px,rgba(0,0,0,.2) 2px 4px);border-radius:1px}
+.pile .tome+.tome{margin-top:3px}
+.pile .t1{background:linear-gradient(180deg,#4a6354,#2c4237);width:88%}
+.pile .t2{background:linear-gradient(180deg,#96434f,#5f2831);width:100%;margin-left:4%}
+.pile .t3{background:linear-gradient(180deg,#6d5230,#463321);width:80%;margin-left:2%}
+/* ink bottle & quill */
+.ink{position:absolute;right:13%;bottom:70px;width:46px;height:40px;z-index:3;
+  background:linear-gradient(135deg,#3d4a55 0%,#232c33 40%,#10151a 100%);clip-path:polygon(18% 0,82% 0,100% 38%,88% 100%,12% 100%,0 38%);
+  box-shadow:0 4px 10px rgba(0,0,0,.5)}
+.ink::before{content:"";position:absolute;top:-8px;left:50%;width:18px;height:9px;margin-left:-9px;background:#3d3428;border-radius:2px}
+.quill{position:absolute;right:10.5%;bottom:96px;width:6px;height:96px;z-index:2;
+  background:linear-gradient(180deg,var(--parchment),#c9b489 60%,transparent);
+  border-radius:100% 0 40% 40%/60% 0 40% 40%;transform:rotate(24deg);transform-origin:bottom center}
+.quill::before{content:"";position:absolute;left:-7px;top:6px;width:14px;height:58px;
+  background:linear-gradient(100deg,rgba(234,220,190,.85),rgba(176,141,87,.5));
+  border-radius:100% 20% 60% 20%/80% 20% 80% 20%}
+.plate{position:absolute;left:0;right:0;bottom:22px;text-align:center;z-index:4;
+  font-size:.625rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(234,220,190,.55)}
+
+/* ---------- sections ---------- */
+section{padding:3.6rem 0}
+.sec-head{text-align:center;margin-bottom:2.6rem}
+.sec-head h2{font-size:clamp(1.7rem,3.2vw,2.4rem);font-weight:400;color:var(--parchment);margin:.5rem 0 .3rem}
+.sec-head .lat{font-style:italic;color:var(--brass);font-size:.9375rem}
+
+/* the stacks */
+.stacks{background:linear-gradient(180deg,rgba(38,56,47,.35),rgba(38,56,47,.12));border-top:1px solid rgba(176,141,87,.25);border-bottom:1px solid rgba(176,141,87,.25)}
+.shelf{
+  display:flex;align-items:flex-end;justify-content:center;gap:5px;
+  padding:0 1.4rem 0;max-width:980px;margin:0 auto;
+  border-bottom:14px solid #3a2a17;box-shadow:0 16px 0 -8px #2a1e10;
+}
+.book{
+  width:44px;border-radius:3px 3px 0 0;position:relative;
+  writing-mode:vertical-rl;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(234,220,190,.85);
+  padding:.6rem 0;box-shadow:inset -3px 0 6px rgba(0,0,0,.35),0 -1px 3px rgba(0,0,0,.3);
+  transition:transform .22s ease;cursor:default;white-space:nowrap;overflow:hidden;
+}
+.book:hover{transform:translateY(-8px)}
+.book::before,.book::after{content:"";position:absolute;left:4px;right:4px;height:1px;background:rgba(234,220,190,.4)}
+.book::before{top:8px}.book::after{bottom:8px}
+.b-g{background:linear-gradient(90deg,#2d4438,var(--green-deep))}
+.b-w{background:linear-gradient(90deg,#7b3540,var(--wine-deep))}
+.b-br{background:linear-gradient(90deg,#4f3a22,#382a18)}
+.b-bk{background:linear-gradient(90deg,#26221c,#171410)}
+.h1{height:200px}.h2{height:224px}.h3{height:184px}.h4{height:236px}.h5{height:210px}
+.lean{transform:rotate(7deg) translateY(-4px);transform-origin:bottom right;margin-left:-4px}
+.lean:hover{transform:rotate(7deg) translateY(-12px)}
+.stacks .caption{text-align:center;font-style:italic;margin-top:2.1rem;color:var(--ink)}
+
+/* lectures */
+.lect{max-width:900px;margin:0 auto;list-style:none}
+.lect li{
+  display:grid;grid-template-columns:9.5rem 1fr auto;gap:1.6rem;align-items:baseline;
+  border-top:1px solid rgba(176,141,87,.28);padding:1.1rem .6rem;
+  border-left:2px solid transparent;transition:background .2s,border-color .2s;
+}
+.lect li:last-child{border-bottom:1px solid rgba(176,141,87,.28)}
+.lect li:hover{background:rgba(239,169,74,.05);border-left-color:var(--wine)}
+.lect .date{font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass)}
+.lect h3{font-weight:400;font-style:italic;color:var(--parchment);font-size:1.125rem}
+.lect .who{font-size:.8125rem;color:var(--ink)}
+.lect .who b{font-weight:400;color:var(--brass)}
+
+/* correspondence */
+.write{text-align:center;max-width:620px;margin:0 auto}
+.write .seal{margin:0 auto 1.3rem;width:52px;height:52px;font-size:1.4rem}
+.write h2{font-weight:400;color:var(--parchment);font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:.9rem}
+.write p{font-style:italic;margin-bottom:1.7rem}
+
+/* footer */
+footer{border-top:1px solid rgba(176,141,87,.35);position:relative;padding:2.4rem 0 2.8rem;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.45))}
+footer::before{content:"";position:absolute;left:0;right:0;top:3px;border-top:1px solid rgba(176,141,87,.15)}
+.foot-in{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1140px;margin:0 auto;padding:0 2rem}
+.foot-in h4{font-size:.6875rem;letter-spacing:.32em;text-transform:uppercase;color:var(--brass);margin-bottom:.6rem;font-weight:400}
+.foot-in p{font-size:.875rem}
+.foot-in .lat{font-style:italic;color:var(--parchment)}
+.foot-end{text-align:center;margin-top:2rem;font-size:.6875rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(176,141,87,.7)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+/* ---------- mobile ---------- */
+@media (max-width:760px){
+  .wrap{padding:0 1.1rem}
+  .head-in{padding:1rem 1.1rem;flex-direction:column;gap:.9rem}
+  nav{gap:1.1rem;flex-wrap:wrap;justify-content:center}
+  nav a{font-size:.6875rem}
+  .hero{grid-template-columns:1fr;padding:2.4rem 1.1rem 2.8rem;gap:2.4rem}
+  .study{height:330px}
+  .pile{left:7%;width:150px}
+  .ink{right:9%}
+  .quill{right:6%}
+  .book{width:34px;font-size:.58rem}
+  .h1{height:236px}.h2{height:220px}.h3{height:152px}.h4{height:220px}.h5{height:178px}
+  .book:nth-child(n+9){display:none}
+  .lect li{grid-template-columns:1fr;gap:.25rem;padding:1rem .4rem}
+  .foot-in{grid-template-columns:1fr;gap:1.5rem;padding:0 1.1rem}
+  section{padding:2.6rem 0}
+}
+</style>
 </head>
 <body>
-  <div class="academia">
-    <h1>Dark Academia</h1>
-    <p>"Sapere aude" — Dare to know. The pursuit of knowledge in the shadows of ancient libraries.</p>
-    <div class="quote">— Horace</div>
+
+<header>
+  <div class="head-in">
+    <a class="sigil" href="#top">
+      <span class="seal" aria-hidden="true">A</span>
+      <span><b>The Aldermoor Society</b><small>Founded MDCCCXCII</small></span>
+    </a>
+    <nav>
+      <a href="#stacks">The Stacks</a>
+      <a href="#lectures">Lectures</a>
+      <a href="#write">Correspondence</a>
+      <a href="#write">Membership</a>
+    </nav>
   </div>
+</header>
+
+<section class="hero" id="top">
+  <div>
+    <span class="rubric">A reading circle · College Lane, Oxenford</span>
+    <h1>Reading by candlelight, <em>thinking in centuries.</em></h1>
+    <blockquote>
+      “Vita sine litteris mors est.” — Life without letters is death.
+      <cite>Seneca · Epistulae Morales, LXXXII</cite>
+    </blockquote>
+    <p class="lead">Since 1892 the Society has kept the same three rules: arrive before dusk, annotate in pencil, and never shelve a book you have not argued with. The reading room seats twenty-four; the silence seats more.</p>
+    <div class="btns">
+      <a class="btn" href="#write">Petition for Membership</a>
+      <a class="link" href="#stacks">Browse the stacks first</a>
+    </div>
+  </div>
+  <div class="study" aria-hidden="true">
+    <span class="glow"></span>
+    <span class="flame"></span>
+    <span class="candle"></span>
+    <span class="stick"></span>
+    <span class="pile">
+      <span class="tome t1"><i></i></span>
+      <span class="tome t2"><i></i></span>
+      <span class="tome t3"><i></i></span>
+    </span>
+    <span class="quill"></span>
+    <span class="ink"></span>
+    <span class="plate">The Reading Room · After Hours</span>
+  </div>
+</section>
+
+<section class="stacks" id="stacks">
+  <div class="sec-head">
+    <span class="rubric">The Library</span>
+    <h2>The Stacks</h2>
+    <p class="lat">Ex libris, ex umbris — out of books, out of shadows</p>
+  </div>
+  <div class="shelf" aria-label="A shelf of the Society's volumes">
+    <span class="book b-g h2">A Grammar of Shadows</span>
+    <span class="book b-br h4">The Candle-Keeper's Almanac</span>
+    <span class="book b-w h1">Meditations on the North Wind</span>
+    <span class="book b-bk h3">Marginalia, Vol. IX</span>
+    <span class="book b-g h5">The Oxenford Bestiary</span>
+    <span class="book b-w h2">Letters to a Young Archivist</span>
+    <span class="book b-br h1">On the Weight of Paper</span>
+    <span class="book b-bk h4 lean">A Field Guide to Libraries</span>
+    <span class="book b-w h5">The Long Winter Lexicon</span>
+    <span class="book b-g h3">Ash &amp; Vellum</span>
+    <span class="book b-br h2">The Last Reader Leaves</span>
+  </div>
+  <p class="caption">Eleven thousand volumes, catalogued by hand since 1892 — the card drawers still smell of cedar.</p>
+</section>
+
+<section id="lectures">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="rubric">Michaelmas Term</span>
+      <h2>Evening Lectures</h2>
+      <p class="lat">Candles lit at seven · Doors barred at eight</p>
+    </div>
+    <ul class="lect">
+      <li>
+        <span class="date">Oct 09 · Thu</span>
+        <h3>The Marginalia of Forgotten Readers</h3>
+        <span class="who">Prof. E. Hartwicke · <b>The Long Room</b></span>
+      </li>
+      <li>
+        <span class="date">Oct 23 · Thu</span>
+        <h3>Latin for the Long Winter</h3>
+        <span class="who">Dr. L. Ferrand · <b>The Long Room</b></span>
+      </li>
+      <li>
+        <span class="date">Nov 06 · Thu</span>
+        <h3>Candle Chemistry and the Reading Eye</h3>
+        <span class="who">M. Aurelia Finch · <b>The Undercroft</b></span>
+      </li>
+      <li>
+        <span class="date">Nov 20 · Thu</span>
+        <h3>On Translating the Untranslatable</h3>
+        <span class="who">The Keeper of Books · <b>The Long Room</b></span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="write" style="border-top:1px solid rgba(176,141,87,.25)">
+  <div class="wrap write">
+    <span class="seal" aria-hidden="true">A</span>
+    <h2>Write to the Keeper of Books</h2>
+    <p>Petitions are read aloud on the first Thursday of each month, by candlelight, in the order received. Wax seals are admired but not required.</p>
+    <a class="btn" href="#write">Compose a Petition</a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-in">
+    <div>
+      <h4>Motto</h4>
+      <p class="lat">Finis coronat opus.<br>The end crowns the work.</p>
+    </div>
+    <div>
+      <h4>Rooms</h4>
+      <p>College Lane, Oxenford<br>The Long Room &amp; The Undercroft</p>
+    </div>
+    <div>
+      <h4>Hours</h4>
+      <p>Dusk until the last reader leaves.<br>Closed on the feast of St. Jerome.</p>
+    </div>
+  </div>
+  <p class="foot-end">The Aldermoor Society · MDCCCXCII — MMXXVI</p>
+</footer>
+
 </body>
 </html>

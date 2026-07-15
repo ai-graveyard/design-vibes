@@ -1,27 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apple Style Demo</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-    body { font-family: 'Inter', sans-serif; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apple Minimalism · Design Vibes</title>
+<style>
+:root{
+  --bg:#ffffff;
+  --bg-alt:#f5f5f7;
+  --fg:#1d1d1f;
+  --fg-soft:#6e6e73;
+  --accent:#0071e3;
+  --accent-hover:#0077ed;
+  --dark:#000000;
+  --hairline:rgba(0,0,0,.08);
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--fg);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+img,svg{max-width:100%}
+
+/* ---------- Nav ---------- */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.72);
+  backdrop-filter:saturate(180%) blur(20px);
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid var(--hairline);
+}
+.nav{
+  max-width:1024px;margin:0 auto;height:48px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 22px;font-size:12px;
+}
+.brand{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.nav ul{display:flex;gap:34px;list-style:none}
+.nav ul a{color:rgba(29,29,31,.8);transition:color .25s}
+.nav ul a:hover{color:var(--fg)}
+.nav-buy{
+  background:var(--accent);color:#fff;
+  padding:5px 14px;border-radius:980px;font-size:12px;
+  transition:background .25s;
+}
+.nav-buy:hover{background:var(--accent-hover)}
+
+/* ---------- Hero ---------- */
+.hero{
+  text-align:center;
+  padding:104px 24px 0;
+}
+.eyebrow{
+  font-size:14px;font-weight:600;color:var(--fg-soft);
+  letter-spacing:.02em;margin-bottom:14px;
+}
+.hero h1{
+  font-size:clamp(52px,8vw,92px);
+  font-weight:600;letter-spacing:-.025em;line-height:1.03;
+}
+.hero .sub{
+  max-width:560px;margin:22px auto 0;
+  font-size:clamp(18px,2.2vw,23px);line-height:1.4;
+  color:var(--fg-soft);font-weight:400;
+}
+.price{margin-top:18px;font-size:15px;color:var(--fg-soft)}
+.cta-row{
+  display:flex;gap:24px;justify-content:center;align-items:center;
+  margin-top:30px;flex-wrap:wrap;
+}
+.btn{
+  display:inline-block;background:var(--accent);color:#fff;
+  font-size:17px;padding:12px 30px;border-radius:980px;
+  transition:background .25s,transform .25s;
+}
+.btn:hover{background:var(--accent-hover);transform:scale(1.015)}
+.link{
+  color:var(--accent);font-size:17px;
+  transition:opacity .25s;
+}
+.link:hover{opacity:.75;text-decoration:underline}
+.link::after{content:" ›"}
+
+/* ---------- Product (pure CSS headphones) ---------- */
+.stage{
+  height:520px;display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-start;
+  padding-top:64px;overflow:hidden;
+}
+.device{
+  position:relative;width:400px;height:400px;
+  animation:float 7s ease-in-out infinite;
+}
+.band{
+  position:absolute;left:50%;top:0;transform:translateX(-50%);
+  width:300px;height:168px;
+  border-radius:150px 150px 0 0;
+  background:linear-gradient(180deg,#fbfbfd 0%,#e7e7ec 62%,#d4d4da 100%);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.9),0 2px 3px rgba(0,0,0,.05);
+}
+.band::after{
+  content:"";position:absolute;left:20px;right:20px;top:20px;bottom:-2px;
+  border-radius:130px 130px 0 0;background:var(--bg);
+}
+.arm{
+  position:absolute;top:150px;width:12px;height:46px;border-radius:6px;
+  background:linear-gradient(90deg,#e9e9ee,#c9c9d0);
+  box-shadow:0 1px 2px rgba(0,0,0,.12);
+}
+.arm.l{left:56px}.arm.r{right:56px}
+.cup{
+  position:absolute;top:182px;width:132px;height:172px;border-radius:62px;
+  background:radial-gradient(130% 130% at 30% 16%,#fafafc 0%,#e8e8ed 46%,#d0d0d7 78%,#c2c2c9 100%);
+  box-shadow:0 30px 50px -24px rgba(0,0,0,.28),inset 0 1px 1px rgba(255,255,255,.85);
+}
+.cup::before{
+  content:"";position:absolute;inset:14px;border-radius:50px;
+  background:linear-gradient(158deg,#f3f3f6 0%,#dcdce2 58%,#d2d2d9 100%);
+  box-shadow:inset 0 2px 8px rgba(0,0,0,.07);
+}
+.cup::after{
+  content:"";position:absolute;top:22px;left:26px;width:44px;height:20px;
+  border-radius:50%;background:rgba(255,255,255,.85);filter:blur(6px);
+}
+.cup.l{left:16px;transform:rotate(-5deg)}
+.cup.r{right:16px;transform:rotate(5deg)}
+.shadow{
+  width:330px;height:34px;border-radius:50%;margin-top:16px;
+  background:radial-gradient(50% 50% at 50% 50%,rgba(0,0,0,.18),transparent 72%);
+  animation:breathe 7s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes breathe{0%,100%{transform:scaleX(1);opacity:1}50%{transform:scaleX(.92);opacity:.75}}
+
+/* ---------- Dark section ---------- */
+.dark{
+  background:var(--dark);color:#f5f5f7;
+  text-align:center;padding:130px 24px 120px;
+}
+.dark .eyebrow{color:var(--accent)}
+.dark h2{
+  font-size:clamp(38px,5.4vw,64px);font-weight:600;letter-spacing:-.02em;
+  line-height:1.06;max-width:760px;margin:0 auto;
+  background:linear-gradient(180deg,#ffffff 55%,#86868b 130%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+}
+.dark .sub{
+  max-width:540px;margin:24px auto 0;font-size:19px;line-height:1.45;
+  color:#86868b;
+}
+.stats{
+  display:flex;justify-content:center;gap:88px;
+  margin-top:78px;flex-wrap:wrap;
+}
+.stat b{
+  display:block;font-size:clamp(44px,5vw,58px);font-weight:600;
+  letter-spacing:-.02em;
+  background:linear-gradient(120deg,#2997ff,#7dc2ff);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+}
+.stat span{display:block;margin-top:8px;font-size:15px;color:#86868b}
+
+/* ---------- Bento ---------- */
+.bento{background:var(--bg-alt);padding:120px 24px 130px}
+.bento-head{text-align:center;max-width:640px;margin:0 auto 64px}
+.bento-head h2{font-size:clamp(34px,4.6vw,52px);font-weight:600;letter-spacing:-.02em}
+.bento-head p{margin-top:16px;font-size:19px;color:var(--fg-soft);line-height:1.45}
+.grid{
+  max-width:980px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;
+}
+.card{
+  background:#fff;border-radius:28px;padding:44px 40px 40px;
+  box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.04);
+  transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;
+}
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 2px 4px rgba(0,0,0,.05),0 18px 44px rgba(0,0,0,.09);
+}
+.card h3{font-size:22px;font-weight:600;letter-spacing:-.01em}
+.card p{margin-top:8px;font-size:15px;line-height:1.5;color:var(--fg-soft)}
+.fig{height:120px;display:flex;align-items:center;margin-bottom:26px}
+/* fig 1 — rings */
+.rings{position:relative;width:110px;height:110px;margin:0 auto}
+.rings i{
+  position:absolute;inset:0;border-radius:50%;
+  border:1.5px solid rgba(0,113,227,.55);
+}
+.rings i:nth-child(2){inset:18px;border-color:rgba(0,113,227,.75)}
+.rings i:nth-child(3){inset:36px;border-color:var(--accent);background:rgba(0,113,227,.08)}
+.rings i:nth-child(4){inset:49px;background:var(--accent);border:none}
+/* fig 2 — battery */
+.batt{
+  width:190px;height:58px;margin:0 auto;border-radius:18px;
+  border:2px solid rgba(29,29,31,.22);padding:5px;position:relative;
+}
+.batt::after{
+  content:"";position:absolute;right:-9px;top:19px;width:6px;height:16px;
+  border-radius:0 4px 4px 0;background:rgba(29,29,31,.22);
+}
+.batt i{
+  display:block;height:100%;width:82%;border-radius:12px;
+  background:linear-gradient(90deg,#30d158,#67e388);
+}
+/* fig 3 — knit */
+.knit{
+  width:110px;height:110px;margin:0 auto;border-radius:50%;
+  background:
+    repeating-linear-gradient(45deg,rgba(255,255,255,.22) 0 3px,transparent 3px 8px),
+    repeating-linear-gradient(-45deg,rgba(0,0,0,.10) 0 3px,transparent 3px 8px),
+    radial-gradient(120% 120% at 30% 25%,#bfc4cf,#8b93a3 70%);
+  box-shadow:inset 0 2px 10px rgba(0,0,0,.18);
+}
+/* fig 4 — finishes */
+.dots{display:flex;gap:20px;margin:0 auto}
+.dots i{
+  width:52px;height:52px;border-radius:50%;
+  box-shadow:inset 0 2px 4px rgba(255,255,255,.55),inset 0 -4px 8px rgba(0,0,0,.14),0 2px 5px rgba(0,0,0,.12);
+  transition:transform .3s;
+}
+.dots i:hover{transform:scale(1.12)}
+.dots i:nth-child(1){background:radial-gradient(at 32% 26%,#f7f1e6,#ded4c2)}
+.dots i:nth-child(2){background:radial-gradient(at 32% 26%,#d9dce1,#aeb3bb)}
+.dots i:nth-child(3){background:radial-gradient(at 32% 26%,#4a505c,#23262e)}
+.dots i:nth-child(4){background:radial-gradient(at 32% 26%,#3f8fdd,#1c5f9e)}
+
+/* ---------- Footer ---------- */
+footer{background:var(--bg-alt);border-top:1px solid var(--hairline);padding:34px 24px 48px}
+.foot{max-width:980px;margin:0 auto;font-size:12px;color:var(--fg-soft);line-height:1.5}
+.foot .fine{padding-bottom:18px;border-bottom:1px solid var(--hairline)}
+.foot-row{
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding-top:18px;
+}
+.foot-row nav{display:flex;gap:24px}
+.foot-row a{transition:color .25s}
+.foot-row a:hover{color:var(--fg)}
+
+/* ---------- Responsive ---------- */
+@media(max-width:840px){
+  .nav ul{display:none}
+  .grid{grid-template-columns:1fr}
+  .stats{gap:52px}
+}
+@media(max-width:480px){
+  .hero{padding-top:72px}
+  .stage{height:380px;padding-top:40px}
+  .device{transform:scale(.68);transform-origin:top center;animation:none}
+  .shadow{margin-top:-84px;transform:scale(.7)}
+  .stats{flex-direction:column;gap:40px}
+  .card{padding:34px 28px 30px}
+  .dark{padding:90px 24px 84px}
+  .bento{padding:84px 20px 90px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
 </head>
-<body class="bg-white">
-  <div class="w-full h-screen flex flex-col items-center justify-center p-8">
-    <div class="text-center">
-      <div class="w-32 h-32 rounded-3xl mx-auto mb-6 flex items-center justify-center shadow-sm bg-gradient-to-br from-gray-100 to-gray-200">
-        <div class="w-20 h-20 rounded-2xl bg-black"></div>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="#top">Halcyon</a>
+    <ul>
+      <li><a href="#top">Overview</a></li>
+      <li><a href="#engine">Engine</a></li>
+      <li><a href="#design">Design</a></li>
+      <li><a href="#design">Specs</a></li>
+      <li><a href="#design">Support</a></li>
+    </ul>
+    <a class="nav-buy" href="#design">Buy</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <p class="eyebrow">Halcyon One</p>
+    <h1>Silence, shaped.</h1>
+    <p class="sub">Adaptive noise cancellation, all-day comfort, and sound tuned to the way you actually listen.</p>
+    <p class="price">From $549 or $45.75/mo. for 12&nbsp;months</p>
+    <div class="cta-row">
+      <a class="btn" href="#design">Buy</a>
+      <a class="link" href="#engine">Learn more</a>
+    </div>
+  </section>
+
+  <div class="stage" aria-hidden="true">
+    <div class="device">
+      <div class="band"></div>
+      <div class="arm l"></div>
+      <div class="arm r"></div>
+      <div class="cup l"></div>
+      <div class="cup r"></div>
+    </div>
+    <div class="shadow"></div>
+  </div>
+
+  <section class="dark" id="engine">
+    <p class="eyebrow">A1 Acoustic Engine</p>
+    <h2>Our most advanced audio chip. Tuned for the space between notes.</h2>
+    <p class="sub">A custom silicon core samples the room a thousand times a second, then rebuilds the quiet around you.</p>
+    <div class="stats">
+      <div class="stat"><b>42&nbsp;dB</b><span>of active noise reduction</span></div>
+      <div class="stat"><b>34&nbsp;hr</b><span>battery on a single charge</span></div>
+      <div class="stat"><b>48&nbsp;kHz</b><span>lossless, end to end</span></div>
+    </div>
+  </section>
+
+  <section class="bento" id="design">
+    <div class="bento-head">
+      <h2>Designed to disappear.</h2>
+      <p>Every gram, every curve, every stitch considered — so all that remains is the music.</p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="fig"><div class="rings"><i></i><i></i><i></i><i></i></div></div>
+        <h3>Adaptive ANC</h3>
+        <p>Six microphones map your surroundings continuously, cancelling what you don't want and letting voices through when you do.</p>
       </div>
-      <h1 class="text-4xl font-semibold mb-2 tracking-tight text-gray-900">Product</h1>
-      <p class="text-lg mb-6 text-gray-500">Pro. Beyond.</p>
-      <button class="bg-blue-600 text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-blue-700 transition-colors">
-        Learn more
-      </button>
+      <div class="card">
+        <div class="fig"><div class="batt"><i></i></div></div>
+        <h3>All-day battery</h3>
+        <p>34 hours of listening on one charge. Five minutes on the pad brings back four more hours.</p>
+      </div>
+      <div class="card">
+        <div class="fig"><div class="knit"></div></div>
+        <h3>Breathable knit</h3>
+        <p>A single recycled thread, woven into a mesh canopy that spreads weight so evenly you'll forget it's there.</p>
+      </div>
+      <div class="card">
+        <div class="fig"><div class="dots"><i></i><i></i><i></i><i></i></div></div>
+        <h3>Four finishes</h3>
+        <p>Starlight, Fog, Midnight, and Pacific. Anodized aluminum, matched cushion to cable.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <p class="fine">Battery life varies with use, settings, and environment. Lossless audio requires a compatible source. Halcyon One is engineered with 45% recycled material by weight.</p>
+    <div class="foot-row">
+      <p>Copyright © 2026 Halcyon Inc. All rights reserved.</p>
+      <nav>
+        <a href="#top">Privacy</a>
+        <a href="#top">Terms</a>
+        <a href="#top">Sales Policy</a>
+        <a href="#top">Legal</a>
+      </nav>
     </div>
   </div>
+</footer>
+
 </body>
 </html>

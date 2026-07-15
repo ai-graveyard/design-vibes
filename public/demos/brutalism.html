@@ -1,133 +1,295 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>粗野主义风格 Demo</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Courier New', monospace;
-      background: #fff;
-      color: #000;
-      line-height: 1.4;
-    }
-    .nav {
-      border-bottom: 4px solid #000;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .nav h1 {
-      font-size: 24px;
-      text-transform: uppercase;
-    }
-    .nav-links a {
-      color: #000;
-      text-decoration: none;
-      margin-left: 20px;
-      font-size: 14px;
-      text-transform: uppercase;
-    }
-    .nav-links a:hover {
-      background: #ff0;
-    }
-    .hero {
-      padding: 60px 20px;
-      border-bottom: 4px solid #000;
-    }
-    .hero h2 {
-      font-size: 80px;
-      line-height: 0.9;
-      margin-bottom: 30px;
-    }
-    .hero p {
-      font-size: 20px;
-      max-width: 600px;
-    }
-    .warning {
-      background: #ff0;
-      padding: 10px 20px;
-      display: inline-block;
-      margin-top: 30px;
-      font-weight: bold;
-    }
-    .content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-    .content > div {
-      padding: 40px 20px;
-      border-right: 4px solid #000;
-      border-bottom: 4px solid #000;
-    }
-    .content > div:last-child {
-      border-right: none;
-    }
-    .content h3 {
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-    .content p {
-      font-size: 16px;
-    }
-    .black-section {
-      background: #000;
-      color: #fff;
-      padding: 60px 20px;
-    }
-    .black-section h3 {
-      font-size: 48px;
-      margin-bottom: 20px;
-    }
-    footer {
-      padding: 40px 20px;
-      border-top: 4px solid #000;
-      text-align: center;
-      font-size: 14px;
-    }
-    @media (max-width: 768px) {
-      .hero h2 { font-size: 40px; }
-      .content { grid-template-columns: 1fr; }
-      .content > div { border-right: none; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brutalism · Design Vibes</title>
+<style>
+:root{
+  --bg:#FFFFFF;
+  --fg:#000000;
+  --link:#0000EE;
+  --visited:#551A8B;
+  --hl:#FFFF00;
+  --red:#FF0000;
+  --green:#00FF00;
+  --serif:Georgia,"Times New Roman",serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{overflow-x:clip}
+body{
+  background:var(--bg);
+  color:var(--fg);
+  font-family:var(--serif);
+  font-size:17px;
+  line-height:1.5;
+  overflow-x:clip;
+}
+a{color:var(--link);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1.5px}
+a:visited{color:var(--visited)}
+a:hover{background:var(--hl);color:var(--fg)}
+::selection{background:var(--hl);color:var(--fg)}
+
+.topbar{
+  background:var(--fg);color:var(--bg);
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  display:flex;justify-content:space-between;gap:8px 20px;flex-wrap:wrap;
+  padding:7px 18px;
+}
+.topbar .on{color:var(--green)}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+
+.masthead{padding:34px 0 0}
+.masthead h1{
+  font-size:clamp(4rem,15vw,8.75rem);
+  font-weight:900;letter-spacing:-.04em;line-height:.9;text-transform:uppercase;
+}
+.masthead .tagline{
+  font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  margin-top:10px;
+}
+.masthead .tagline b{background:var(--fg);color:var(--bg);padding:1px 6px;font-weight:400}
+
+nav{margin:22px 0 0;font-family:var(--mono);font-size:14px}
+nav a{margin-right:4px}
+
+hr{border:0;border-top:5px solid var(--fg);margin:26px 0}
+
+.hero{padding:8px 0 6px}
+.hero h2{
+  font-size:clamp(2.5rem,7.6vw,4.9rem);
+  font-weight:900;line-height:.97;letter-spacing:-.02em;text-transform:uppercase;
+  max-width:16ch;
+}
+.hero h2 em{font-style:italic;letter-spacing:0}
+.hero .dek{margin:22px 0 0;font-size:19px;max-width:58ch}
+.hero .dek code{font-family:var(--mono);font-size:.85em;border:1.5px solid var(--fg);padding:1px 5px;white-space:nowrap}
+
+.notice{
+  margin:26px 0 6px;background:var(--hl);border:3px solid var(--fg);
+  padding:13px 16px;font-family:var(--mono);font-size:13.5px;line-height:1.6;
+}
+.notice .new{
+  display:inline-block;background:var(--red);color:var(--bg);
+  padding:1px 7px;font-weight:700;margin-right:8px;letter-spacing:.1em;
+}
+
+.sec-label{
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  margin-bottom:6px;
+}
+.sec-label::before{content:"## ";font-weight:700}
+h3.sec-title{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:18px}
+
+table{width:100%;border-collapse:collapse;border:3px solid var(--fg);font-size:15px}
+caption{
+  caption-side:bottom;text-align:left;font-family:var(--mono);
+  font-size:11px;padding-top:8px;letter-spacing:.06em;
+}
+th{
+  background:var(--fg);color:var(--bg);font-family:var(--mono);font-weight:400;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  text-align:left;padding:9px 12px;border:1px solid var(--fg);
+}
+td{border:1.5px solid var(--fg);padding:9px 12px;vertical-align:top}
+td.num,td.words{font-family:var(--mono);font-size:13px;white-space:nowrap}
+td .kind{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+tbody tr{transition:background .12s ease}
+tbody tr:hover{background:var(--hl)}
+.soon{font-family:var(--mono);font-size:12px;color:var(--red);text-transform:uppercase;letter-spacing:.08em}
+
+.rules{counter-reset:rule;list-style:none;max-width:62ch}
+.rules li{
+  counter-increment:rule;padding:14px 0;border-bottom:2px solid var(--fg);
+  font-size:19px;line-height:1.4;
+}
+.rules li::before{
+  content:counter(rule,decimal-leading-zero)". ";
+  font-family:var(--mono);font-size:14px;font-weight:700;margin-right:8px;
+}
+.rules li:last-child{border-bottom:0}
+.rules mark{background:var(--hl);padding:0 3px}
+
+.colophon{
+  border:3px solid var(--fg);padding:18px 20px;
+  font-family:var(--mono);font-size:13.5px;line-height:2;
+}
+.colophon dt{float:left;clear:left;width:12em;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.colophon dd{margin-left:12.5em}
+.colophon dd s{color:var(--red)}
+
+.badges{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px}
+.badge{
+  width:88px;height:31px;border:2px solid var(--fg);
+  display:inline-flex;align-items:center;justify-content:center;text-align:center;
+  font-family:var(--mono);font-size:8px;letter-spacing:.05em;text-transform:uppercase;
+  line-height:1.2;padding:2px;user-select:none;
+  transition:background .12s ease,color .12s ease;
+}
+.badge:hover{background:var(--fg);color:var(--bg)}
+.badge.y{background:var(--hl)}
+.badge.y:hover{background:var(--fg)}
+
+footer{margin-top:40px;border-top:5px solid var(--fg)}
+footer .inner{padding:20px 0 46px;font-family:var(--mono);font-size:12px;line-height:2}
+footer .up{float:right}
+
+.blink{animation:blink 1.2s steps(1,end) infinite}
+@keyframes blink{50%{visibility:hidden}}
+
+@media (max-width:520px){
+  body{font-size:16px}
+  .topbar{font-size:9.5px;padding:6px 12px}
+  table{font-size:13.5px}
+  th,td{padding:7px 8px}
+  .hide-sm{display:none}
+  .colophon dt{float:none;width:auto}
+  .colophon dd{margin-left:0;margin-bottom:6px}
+  footer .up{float:none;display:inline-block}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
 </head>
 <body>
-  <nav class="nav">
-    <h1>BRUTAL.WEB</h1>
-    <div class="nav-links">
-      <a href="#">About</a>
-      <a href="#">Work</a>
-      <a href="#">Contact</a>
-    </div>
-  </nav>
 
-  <section class="hero">
-    <h2>RAW<br>UNFILTERED<br>REAL</h2>
-    <p>Brutalism in web design embraces the raw, unpolished nature of the web. No smoothing, no gradients, just pure HTML energy.</p>
-    <div class="warning">⚠ WARNING: CONTAINS UNMODIFIED HTML</div>
+<header>
+  <div class="topbar">
+    <span>Gravel &mdash; an internet paper</span>
+    <span class="hide-sm">EST. 1996 &middot; STILL LOADING FAST</span>
+    <span><span class="on">&#9679;</span> SERVER: UP (IT&rsquo;S A FILE)</span>
+  </div>
+
+  <div class="wrap masthead">
+    <h1>Gravel</h1>
+    <p class="tagline"><b>ISSUE NO. 41</b> &nbsp;JULY 2026 &middot; TYPED BY HAND &middot; 14 KILOBYTES HEAVY &middot; FREE WHERE HYPERTEXT IS SOLD</p>
+    <nav aria-label="Main">
+      [ <a href="#toc">index</a> ]
+      [ <a href="#rules">the rules</a> ]
+      [ <a href="#colophon">colophon</a> ]
+      [ <a href="#toc">back issues</a> ]
+      [ <a href="#colophon">write to us</a> ]
+    </nav>
+    <hr>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero" aria-label="Introduction">
+    <h2>Words, set in Times, served <em>raw</em>.</h2>
+    <p class="dek">
+      Gravel is a paper about the web, published on the web, using only the web.
+      No trackers, no cookies &mdash; we don&rsquo;t even have a kitchen. Each issue is
+      <code>one (1) .html file</code>, hand-typed, and it finishes loading before
+      you finish blinking.
+    </p>
+    <aside class="notice">
+      <span class="new blink">NEW</span>SUBMISSIONS OPEN FOR ISSUE 42 &mdash; plain text only.
+      Attachments will be printed, judged, and composted. Payment: exposure to
+      our nineteen readers, plus $40.
+    </aside>
   </section>
 
-  <section class="content">
-    <div>
-      <h3>NO CSS</h3>
-      <p>Well, minimal CSS. Just enough to make it readable. The web doesn't need to be pretty to be functional.</p>
-    </div>
-    <div>
-      <h3>BIG TEXT</h3>
-      <p>Make a statement. Use massive typography. Let the words do the talking.</p>
+  <hr>
+
+  <section id="toc" aria-labelledby="toc-title">
+    <p class="sec-label">Section 01 / Contents</p>
+    <h3 class="sec-title" id="toc-title">In this issue</h3>
+    <table>
+      <caption>Reading time calculated at one (1) grumble per paragraph.</caption>
+      <thead>
+        <tr>
+          <th scope="col">No.</th>
+          <th scope="col">Piece</th>
+          <th scope="col" class="hide-sm">Words</th>
+          <th scope="col">Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="num">001</td>
+          <td><strong>The Browser Is the Building</strong><br><span class="kind">essay</span> &mdash; why every website already ships with free architecture.</td>
+          <td class="words hide-sm">2,410</td>
+          <td><a href="#toc">read</a></td>
+        </tr>
+        <tr>
+          <td class="num">002</td>
+          <td><strong>Against Smooth Scrolling</strong><br><span class="kind">rant</span> &mdash; the page should move when told, not glide like a salesman.</td>
+          <td class="words hide-sm">960</td>
+          <td><a href="#toc">read</a></td>
+        </tr>
+        <tr>
+          <td class="num">003</td>
+          <td><strong>A Field Guide to Default Blue</strong><br><span class="kind">taxonomy</span> &mdash; #0000EE and the forty links we clicked before you.</td>
+          <td class="words hide-sm">1,280</td>
+          <td><a href="#toc">read</a></td>
+        </tr>
+        <tr>
+          <td class="num">004</td>
+          <td><strong>My Homepage Weighs Less Than This Sentence</strong><br><span class="kind">brag</span> &mdash; a performance budget measured in commas.</td>
+          <td class="words hide-sm">140</td>
+          <td><a href="#toc">read</a></td>
+        </tr>
+        <tr>
+          <td class="num">005</td>
+          <td><strong>Interview: The Last Webmaster</strong><br><span class="kind">interview</span> &mdash; she still answers the guestbook. Every entry.</td>
+          <td class="words hide-sm">3,150</td>
+          <td><span class="soon">soon</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <hr>
+
+  <section id="rules" aria-labelledby="rules-title">
+    <p class="sec-label">Section 02 / Doctrine</p>
+    <h3 class="sec-title" id="rules-title">House rules</h3>
+    <ol class="rules">
+      <li>HTML is a design system. It shipped in 1993 and <mark>the docs are one page</mark>.</li>
+      <li>If it loads fast, it looks good. This is the entire theory of aesthetics.</li>
+      <li>Underlines belong to links. Everything else must earn its ink.</li>
+      <li>Every byte is a guest in someone&rsquo;s pocket. <mark>Act like a host.</mark></li>
+      <li>When in doubt, make the heading bigger. When certain, bigger still.</li>
+    </ol>
+  </section>
+
+  <hr>
+
+  <section id="colophon" aria-labelledby="colophon-title">
+    <p class="sec-label">Section 03 / Colophon</p>
+    <h3 class="sec-title" id="colophon-title">How the sausage is typed</h3>
+    <dl class="colophon">
+      <dt>Built with</dt><dd>hands, mostly the left one</dd>
+      <dt>Stack</dt><dd>one file, zero scripts, zero requests</dd>
+      <dt>Typefaces</dt><dd>whatever your machine woke up with</dd>
+      <dt>Cookies</dt><dd><s>rejected</s> never baked</dd>
+      <dt>Analytics</dt><dd>we assume you exist</dd>
+      <dt>Uptime</dt><dd>it&rsquo;s a static file. Relax.</dd>
+      <dt>Letters</dt><dd>postbox 41, the open web (bring stamps)</dd>
+    </dl>
+    <div class="badges" aria-hidden="true">
+      <span class="badge y">Made with HTML</span>
+      <span class="badge">Best viewed: yes</span>
+      <span class="badge">0 trackers inside</span>
+      <span class="badge y">CSS optional</span>
+      <span class="badge">Valid enough</span>
     </div>
   </section>
 
-  <section class="black-section">
-    <h3>EXPOSE THE SKELETON</h3>
-    <p>Show the structure. Show the grid. Show how it's built. Transparency is honesty.</p>
-  </section>
+</main>
 
-  <footer>
-    © 2025 BRUTAL.WEB — NO RIGHTS RESERVED
-  </footer>
+<footer>
+  <div class="wrap inner">
+    <a class="up" href="#toc">[ back to top &uarr; ]</a>
+    GRAVEL is set in Times because Times was already here.<br>
+    &copy; 1996&ndash;2026 &middot; no rights reserved &mdash; take what you need, credit what you take.<br>
+    This page validates, roughly. &middot; <a href="#toc">index</a> &middot; <a href="#rules">rules</a> &middot; <a href="#colophon">colophon</a>
+  </div>
+</footer>
+
 </body>
 </html>

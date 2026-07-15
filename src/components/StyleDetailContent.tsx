@@ -1,21 +1,25 @@
-import { Star, Copy, CheckCheck, Monitor, Smartphone, Sparkles, Check, CircleX } from 'lucide-react';
+import { Star, Copy, CheckCheck, Monitor, Smartphone, Sparkles, Check, CircleX, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { DesignStyle } from '../data/styles';
 import { getPromptById } from '../data/prompts';
 import { useState, useEffect } from 'react';
 import { useAppStore } from '../store/appStore';
 import { translations } from '../data/translations';
 
-type DeviceType = 'desktop' | 'mobile';
-
 interface StyleDetailContentProps {
   style: DesignStyle;
 }
 
 export function StyleDetailContent({ style }: StyleDetailContentProps) {
-  const [device, setDevice] = useState<DeviceType>('desktop');
   const [copied, setCopied] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const { language, theme } = useAppStore();
+  const {
+    language,
+    theme,
+    previewDevice: device,
+    setPreviewDevice: setDevice,
+    isDetailsPanelCollapsed,
+    toggleDetailsPanel,
+  } = useAppStore();
   const t = translations[language];
 
   // Detect mobile screen
@@ -27,11 +31,6 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
-
-  // Reset device when style changes
-  useEffect(() => {
-    setDevice('desktop');
-  }, [style.id]);
 
   const getDeviceWidth = () => {
     switch (device) {
@@ -62,9 +61,25 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
         <div className={`${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-100'}`}>
           {/* Header */}
           <div className={`border-b px-4 py-3 flex items-center justify-between ${isDark ? 'bg-[#1a1a1a] border-gray-800' : 'bg-white border-gray-200'}`}>
-            <h2 className={`text-sm font-bold ${isDark ? 'text-white' : 'text-black'}`}>
-              {language === 'zh' ? style.name : style.nameEn}
-            </h2>
+            <div className="flex items-center gap-2">
+              <span className="relative flex w-1.5 h-1.5">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-60 animate-ping" />
+                <span className="relative inline-flex w-1.5 h-1.5 rounded-full bg-green-500" />
+              </span>
+              <h2 className={`text-sm font-bold ${isDark ? 'text-white' : 'text-black'}`}>
+                {language === 'zh' ? style.name : style.nameEn}
+              </h2>
+            </div>
+            <a
+              href={demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={t.modal.openInNewTab}
+              aria-label={t.modal.openInNewTab}
+              className={`p-2 rounded-lg transition-colors ${isDark ? 'text-gray-400 hover:text-white hover:bg-gray-800' : 'text-gray-500 hover:text-black hover:bg-gray-100'}`}
+            >
+              <ExternalLink className="w-4 h-4" />
+            </a>
           </div>
 
           {/* Iframe - fixed aspect ratio */}
@@ -74,7 +89,7 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
                 src={demoUrl}
                 className="w-full h-full border-0"
                 title={`${style.name} Demo`}
-                sandbox="allow-scripts allow-same-origin"
+                sandbox="allow-same-origin"
               />
             </div>
           </div>
@@ -247,29 +262,69 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
     <div className="flex h-full flex-row">
       {/* Preview Area */}
       <div
-        className={`flex flex-col transition-all duration-300 ${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-100'}`}
-        style={{ width: '55%', height: '100%' }}
+        className={`flex flex-col flex-1 min-w-0 transition-all duration-300 ${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-100'}`}
+        style={{ height: '100%' }}
       >
         {/* Header */}
         <div className={`border-b px-4 py-3 flex items-center justify-between ${isDark ? 'bg-[#1a1a1a] border-gray-800' : 'bg-white border-gray-200'}`}>
-          <h2 className={`text-sm font-bold ${isDark ? 'text-white' : 'text-black'}`}>
-            {language === 'zh' ? style.name : style.nameEn}
-          </h2>
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="relative flex w-1.5 h-1.5 shrink-0">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-60 animate-ping" />
+              <span className="relative inline-flex w-1.5 h-1.5 rounded-full bg-green-500" />
+            </span>
+            <h2 className={`text-sm font-bold truncate ${isDark ? 'text-white' : 'text-black'}`}>
+              {language === 'zh' ? style.name : style.nameEn}
+            </h2>
+            <span className={`hidden lg:inline text-[10px] uppercase tracking-wider ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+              {t.modal.livePreview}
+            </span>
+          </div>
 
-          {/* Device Toggle */}
-          <div className={`flex items-center gap-0 rounded-lg overflow-hidden border ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
-            <button
-              onClick={() => setDevice('desktop')}
-              className={`p-2 transition-colors ${device === 'desktop' ? 'bg-[#FF9F1C] text-white' : isDark ? 'bg-[#1a1a1a] text-gray-400 hover:text-white' : 'bg-white text-gray-500 hover:text-black'}`}
+          <div className="flex items-center gap-2">
+            {/* Device Toggle */}
+            <div className={`flex items-center gap-0 rounded-lg overflow-hidden border ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
+              <button
+                onClick={() => setDevice('desktop')}
+                type="button"
+                title="Desktop"
+                aria-pressed={device === 'desktop'}
+                className={`p-2 transition-colors ${device === 'desktop' ? 'bg-[#FF9F1C] text-white' : isDark ? 'bg-[#1a1a1a] text-gray-400 hover:text-white' : 'bg-white text-gray-500 hover:text-black'}`}
+              >
+                <Monitor className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => setDevice('mobile')}
+                type="button"
+                title="Mobile"
+                aria-pressed={device === 'mobile'}
+                className={`p-2 transition-colors ${device === 'mobile' ? 'bg-[#FF9F1C] text-white' : isDark ? 'bg-[#1a1a1a] text-gray-400 hover:text-white' : 'bg-white text-gray-500 hover:text-black'}`}
+              >
+                <Smartphone className="w-4 h-4" />
+              </button>
+            </div>
+
+            <a
+              href={demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={t.modal.openInNewTab}
+              aria-label={t.modal.openInNewTab}
+              className={`p-2 rounded-lg border transition-colors ${isDark ? 'border-gray-700 text-gray-400 hover:text-white hover:bg-gray-800' : 'border-gray-200 text-gray-500 hover:text-black hover:bg-gray-100'}`}
             >
-              <Monitor className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => setDevice('mobile')}
-              className={`p-2 transition-colors ${device === 'mobile' ? 'bg-[#FF9F1C] text-white' : isDark ? 'bg-[#1a1a1a] text-gray-400 hover:text-white' : 'bg-white text-gray-500 hover:text-black'}`}
-            >
-              <Smartphone className="w-4 h-4" />
-            </button>
+              <ExternalLink className="w-4 h-4" />
+            </a>
+
+            {isDetailsPanelCollapsed && (
+              <button
+                type="button"
+                onClick={toggleDetailsPanel}
+                title={language === 'zh' ? '展开详情' : 'Expand details'}
+                aria-label={language === 'zh' ? '展开详情' : 'Expand details'}
+                className="p-2 rounded-lg bg-[#FF9F1C] text-white transition-colors hover:bg-[#E8900A]"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+            )}
           </div>
         </div>
 
@@ -286,7 +341,7 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
               src={demoUrl}
               className="w-full h-full border-0"
               title={`${style.name} Demo`}
-              sandbox="allow-scripts allow-same-origin"
+              sandbox="allow-same-origin"
             />
           </div>
         </div>
@@ -294,12 +349,22 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
 
       {/* Details Panel */}
       <div
-        className={`flex flex-col transition-all duration-300 overflow-hidden ${isDark ? 'bg-[#1a1a1a]' : 'bg-white'}`}
-        style={{ width: '45%', height: '100%' }}
+        className={`flex flex-col shrink-0 border-l transition-all duration-300 overflow-hidden ${isDark ? 'bg-[#1a1a1a] border-gray-800' : 'bg-white border-gray-200'}`}
+        style={{ width: isDetailsPanelCollapsed ? '0px' : '400px', height: '100%' }}
       >
+      <div className="w-[400px] h-full flex flex-col shrink-0">
         {/* Header with Rating & Tags */}
-        <div className={`border-b px-5 py-4 flex items-center justify-between shrink-0 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
+        <div className={`border-b px-4 py-3 flex items-center justify-between shrink-0 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
           <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={toggleDetailsPanel}
+              title={language === 'zh' ? '收起详情' : 'Collapse details'}
+              aria-label={language === 'zh' ? '收起详情' : 'Collapse details'}
+              className={`shrink-0 p-2 rounded-lg border transition-colors ${isDark ? 'border-gray-700 text-gray-400 hover:text-white hover:bg-gray-800' : 'border-gray-200 text-gray-500 hover:text-black hover:bg-gray-100'}`}
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
             <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#FF9F1C] text-white rounded">
               <Star className="w-3.5 h-3.5 fill-white" />
               <span className="text-sm font-bold">{style.rating}</span>
@@ -452,6 +517,7 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

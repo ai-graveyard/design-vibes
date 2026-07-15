@@ -1,72 +1,338 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>日式极简风格 Demo</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Noto Serif JP', 'Hiragino Mincho Pro', serif;
-      background: #f5f5dc;
-      color: #2f4f4f;
-      min-height: 100vh;
-    }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 100px 40px;
-    }
-    .ma {
-      text-align: center;
-      padding: 80px 0;
-    }
-    .ma h1 {
-      font-size: 120px;
-      font-weight: 300;
-      color: #8b7355;
-      letter-spacing: 0.5em;
-    }
-    .ma p {
-      font-size: 18px;
-      margin-top: 40px;
-      color: #666;
-    }
-    .circle {
-      width: 200px;
-      height: 200px;
-      border: 2px solid #8b7355;
-      border-radius: 50%;
-      margin: 60px auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .circle-inner {
-      width: 100px;
-      height: 100px;
-      background: #2f4f4f;
-      border-radius: 50%;
-    }
-    @media (max-width: 768px) {
-      .container { padding: 60px 20px; }
-      .ma { padding: 40px 0; }
-      .ma h1 { font-size: 60px; letter-spacing: 0.3em; }
-      .ma p { font-size: 14px; }
-      .circle { width: 120px; height: 120px; }
-      .circle-inner { width: 60px; height: 60px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japanese Minimalism · Design Vibes</title>
+<style>
+:root{
+  --paper:#f6f2e6;
+  --paper-deep:#efe9d8;
+  --ink:#2f3b38;
+  --ink-soft:#6f6a5b;
+  --clay:#8b7355;
+  --sand:#c4a77d;
+  --gold:#b08d3f;
+  --seal:#a63a2b;
+  --hair:rgba(139,115,85,.35);
+  --serif:Georgia,"Palatino Linotype","Songti SC",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:var(--serif);
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 40px}
+.kicker{
+  font-family:var(--sans);font-size:11px;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--clay);
+}
+.hairline{border:none;border-top:1px solid var(--hair)}
+
+/* ---------- Header ---------- */
+header{padding:44px 0 0}
+.nav{display:flex;justify-content:space-between;align-items:baseline}
+.brand{display:flex;align-items:baseline;gap:14px}
+.brand b{
+  font-weight:400;font-size:19px;letter-spacing:.42em;
+}
+.brand span{font-size:13px;color:var(--clay);letter-spacing:.2em}
+.nav ul{display:flex;gap:44px;list-style:none}
+.nav a{
+  font-size:12.5px;letter-spacing:.18em;color:var(--ink-soft);
+  padding-bottom:3px;border-bottom:1px solid transparent;
+  transition:color .4s,border-color .4s;
+}
+.nav a:hover{color:var(--ink);border-color:var(--clay)}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;
+  padding-top:120px;padding-bottom:130px;
+  display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);
+  gap:60px;align-items:center;
+}
+.hero h1{
+  margin-top:26px;
+  font-size:clamp(36px,4.8vw,58px);
+  font-weight:400;line-height:1.28;letter-spacing:.015em;
+  max-width:15ch;
+}
+.hero .lede{
+  margin-top:34px;max-width:44ch;color:var(--ink-soft);font-size:16px;
+}
+.hero-cta{margin-top:52px;display:flex;align-items:center;gap:36px}
+.cta{
+  font-family:var(--sans);font-size:12px;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--ink);padding:14px 34px;border:1px solid var(--ink);
+  transition:background .5s,color .5s;
+}
+.cta:hover{background:var(--ink);color:var(--paper)}
+.cta-quiet{
+  font-size:13.5px;font-style:italic;color:var(--clay);
+  border-bottom:1px solid var(--hair);padding-bottom:2px;
+  transition:color .4s,border-color .4s;
+}
+.cta-quiet:hover{color:var(--ink);border-color:var(--clay)}
+
+/* enso + vertical text */
+.enso-block{
+  position:relative;display:flex;justify-content:center;align-items:center;
+  min-height:380px;
+}
+.enso{width:min(330px,80%)}
+.enso .stroke{
+  fill:none;stroke:var(--ink);stroke-width:11;stroke-linecap:round;
+  stroke-dasharray:410;stroke-dashoffset:410;
+  animation:draw 2.8s cubic-bezier(.6,.05,.3,1) .3s forwards;
+}
+.enso .ghost{
+  fill:none;stroke:var(--clay);stroke-width:15;stroke-linecap:round;opacity:.14;
+}
+@keyframes draw{to{stroke-dashoffset:0}}
+.tategaki{
+  position:absolute;right:-8px;top:50%;transform:translateY(-50%);
+  writing-mode:vertical-rl;
+  font-size:26px;letter-spacing:.5em;color:var(--clay);
+  border-right:1px solid var(--hair);padding-right:18px;
+}
+.tategaki small{font-size:11px;letter-spacing:.4em;color:var(--ink-soft)}
+
+/* ---------- Ma section ---------- */
+.ma{
+  background:var(--paper-deep);
+  padding:110px 0 116px;
+}
+.ma-grid{
+  display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:70px;
+  align-items:center;
+}
+.ma-glyph{
+  writing-mode:vertical-rl;justify-self:center;
+  font-size:clamp(88px,11vw,140px);line-height:1;color:var(--ink);
+  position:relative;padding-top:10px;
+}
+.ma-glyph::after{
+  content:"";position:absolute;left:50%;bottom:-46px;transform:translateX(-50%);
+  width:1px;height:36px;background:var(--gold);
+}
+.ma h2{
+  font-size:clamp(26px,3vw,34px);font-weight:400;line-height:1.45;
+  max-width:24ch;
+}
+.ma .kicker{display:block;margin-bottom:22px}
+.ma p.body{margin-top:26px;color:var(--ink-soft);max-width:52ch;font-size:15.5px}
+
+/* ---------- Seats (three sittings) ---------- */
+.seats{padding-top:110px;padding-bottom:40px}
+.seats .kicker{display:block;margin-bottom:14px}
+.seats h2{font-size:clamp(26px,3vw,34px);font-weight:400}
+.seat-list{margin-top:56px;list-style:none}
+.seat{
+  display:grid;
+  grid-template-columns:64px 150px 1fr 130px;
+  gap:28px;align-items:baseline;
+  padding:30px 0;border-top:1px solid var(--hair);
+  transition:background .5s;
+}
+.seat:last-child{border-bottom:1px solid var(--hair)}
+.seat:hover{background:rgba(196,167,125,.10)}
+.seat .kanji{font-size:30px;line-height:1;color:var(--clay)}
+.seat .name{font-size:16px;letter-spacing:.06em}
+.seat .name small{
+  display:block;font-family:var(--sans);font-size:11px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin-top:5px;
+}
+.seat .desc{font-size:14.5px;color:var(--ink-soft);max-width:52ch}
+.seat .time{
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.14em;
+  color:var(--ink);text-align:right;font-variant-numeric:tabular-nums;
+}
+
+/* ---------- Vessel / kintsugi ---------- */
+.vessel{padding:100px 0 130px}
+.vessel-grid{
+  display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);
+  gap:70px;align-items:center;
+}
+.bowl-stage{display:flex;justify-content:center}
+.bowl{width:min(300px,86%)}
+.vessel h2{font-size:clamp(26px,3vw,34px);font-weight:400;line-height:1.45}
+.vessel .kicker{display:block;margin-bottom:22px}
+.vessel p.body{margin-top:24px;color:var(--ink-soft);max-width:46ch;font-size:15.5px}
+.vessel .note{
+  margin-top:40px;display:flex;align-items:center;gap:16px;
+  font-size:13px;font-style:italic;color:var(--clay);
+}
+.vessel .note::before{
+  content:"";width:44px;height:1px;background:var(--gold);flex:none;
+}
+
+/* ---------- Footer ---------- */
+footer{
+  border-top:1px solid var(--hair);
+  padding:54px 0 64px;background:var(--paper);
+}
+.foot{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  gap:32px;flex-wrap:wrap;
+}
+.foot .col p{font-size:13px;color:var(--ink-soft)}
+.foot .col .kicker{display:block;margin-bottom:12px}
+.seal{
+  width:44px;height:58px;background:var(--seal);color:var(--paper);
+  writing-mode:vertical-rl;display:flex;align-items:center;justify-content:center;
+  font-size:15px;letter-spacing:.32em;border-radius:2px;
+  box-shadow:0 1px 4px rgba(166,58,43,.35);
+}
+
+/* ---------- Responsive ---------- */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding-top:80px;padding-bottom:90px;gap:70px}
+  .enso-block{min-height:320px}
+  .ma-grid,.vessel-grid{grid-template-columns:1fr;gap:50px}
+  .ma-glyph{writing-mode:horizontal-tb;justify-self:start}
+  .ma-glyph::after{left:0;transform:none;bottom:-30px}
+  .seat{grid-template-columns:48px 1fr 110px;grid-template-rows:auto auto}
+  .seat .desc{grid-column:2/4;grid-row:2}
+  .seat .time{grid-column:2/4;grid-row:3;text-align:left;margin-top:6px}
+}
+@media(max-width:520px){
+  .wrap{padding:0 22px}
+  .nav ul{gap:18px}
+  .nav ul li:nth-child(1),.nav ul li:nth-child(3){display:none}
+  .nav a{font-size:11.5px;letter-spacing:.12em}
+  .brand b{letter-spacing:.3em}
+  .brand span{display:none}
+  .hero{padding-top:60px;padding-bottom:70px}
+  .hero-cta{flex-direction:column;align-items:flex-start;gap:24px}
+  .tategaki{right:0;font-size:20px;padding-right:10px}
+  .seat{grid-template-columns:40px 1fr 90px;gap:16px}
+  .seats,.ma,.vessel{padding-top:80px;padding-bottom:80px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .enso .stroke{stroke-dashoffset:0}
+}
+</style>
 </head>
 <body>
-  <div class="container">
-    <div class="ma">
-      <h1>間</h1>
-      <p>The space between. The pause that gives meaning.</p>
-      <div class="circle">
-        <div class="circle-inner"></div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <b>YOHAKU</b><span>余白</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#ma">Philosophy</a></li>
+        <li><a href="#seats">Sittings</a></li>
+        <li><a href="#vessel">Vessels</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap">
+    <div>
+      <span class="kicker">A teahouse in the northern hills</span>
+      <h1>The beauty of what is left empty.</h1>
+      <p class="lede">Three rooms, one kettle, and the long quiet of the valley. We serve tea the slow way — so that the pauses may say what words cannot.</p>
+      <div class="hero-cta">
+        <a class="cta" href="#seats">Reserve a seat</a>
+        <a class="cta-quiet" href="#ma">On emptiness</a>
       </div>
     </div>
+    <div class="enso-block" aria-hidden="true">
+      <svg class="enso" viewBox="0 0 200 200">
+        <path class="ghost" d="M 149 49 A 72 72 0 1 0 171 88"/>
+        <path class="stroke" d="M 146 45 A 72 72 0 1 0 171 88"/>
+      </svg>
+      <div class="tategaki">余白<small>　よはく</small></div>
+    </div>
+  </section>
+
+  <section class="ma" id="ma">
+    <div class="wrap ma-grid">
+      <div class="ma-glyph" aria-hidden="true">間</div>
+      <div>
+        <span class="kicker">Ma — the interval</span>
+        <h2>Space is not the absence of things. It is the room they need to breathe.</h2>
+        <p class="body">A bowl is useful because it is hollow. A room is livable because it is unfilled. Between two sounds of the kettle there is a silence, and the tea is mostly made of it. We build our days here around that interval.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="seats wrap" id="seats">
+    <span class="kicker">Three sittings daily</span>
+    <h2>Each seat, one hour. Six guests, no more.</h2>
+    <ul class="seat-list">
+      <li class="seat">
+        <span class="kanji" aria-hidden="true">朝</span>
+        <span class="name">Asa<small>Morning seat</small></span>
+        <span class="desc">Mist still in the cedars. A pale sencha, steamed rice, and the first light through paper.</span>
+        <span class="time">06:30 — 07:30</span>
+      </li>
+      <li class="seat">
+        <span class="kanji" aria-hidden="true">午</span>
+        <span class="name">Hiru<small>Noon seat</small></span>
+        <span class="desc">Roasted hōjicha and a single seasonal sweet, taken facing the dry garden.</span>
+        <span class="time">12:00 — 13:00</span>
+      </li>
+      <li class="seat">
+        <span class="kanji" aria-hidden="true">夕</span>
+        <span class="name">Yū<small>Dusk seat</small></span>
+        <span class="desc">Thick matcha in winter, thin in summer. The lamps are lit only after the last pour.</span>
+        <span class="time">17:30 — 18:30</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="vessel" id="vessel">
+    <div class="wrap vessel-grid">
+      <div class="bowl-stage" aria-hidden="true">
+        <svg class="bowl" viewBox="0 0 300 220">
+          <ellipse cx="150" cy="196" rx="74" ry="10" fill="rgba(47,59,56,.12)"/>
+          <path d="M 46 58 C 50 130 92 176 150 176 C 208 176 250 130 254 58 C 220 74 180 82 150 82 C 120 82 80 74 46 58 Z" fill="none" stroke="var(--ink)" stroke-width="3"/>
+          <path d="M 58 66 C 66 122 102 162 150 162" fill="none" stroke="var(--clay)" stroke-width="2" opacity=".5"/>
+          <path d="M 150 82 L 138 112 L 152 138 L 141 176" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M 152 138 L 168 150" fill="none" stroke="var(--gold)" stroke-width="2"/>
+        </svg>
+      </div>
+      <div>
+        <span class="kicker">The vessels</span>
+        <h2>Our bowls are old, and some of them are broken. Those are the ones we reach for first.</h2>
+        <p class="body">Each winter a local kiln fires a small batch for the house; each spring we mend what the year has cracked, seam by seam, in lacquer and gold. The repair is not hidden. It is the history of the bowl, written where everyone can read it.</p>
+        <p class="note">Mended vessels may be purchased once retired from service.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="visit">
+  <div class="wrap foot">
+    <div class="col">
+      <span class="kicker">Visit</span>
+      <p>End of the pine road, above the third bridge.<br>Open Thursday to Sunday, by reservation.</p>
+    </div>
+    <div class="col">
+      <span class="kicker">Correspondence</span>
+      <p>Letters are answered within the week.<br>The telephone is not.</p>
+    </div>
+    <div class="col">
+      <span class="kicker">Yohaku</span>
+      <p>Est. in the year of the deep snow.<br>© 2026 — All seasons reserved.</p>
+    </div>
+    <div class="seal" aria-hidden="true">余白</div>
   </div>
+</footer>
+
 </body>
 </html>

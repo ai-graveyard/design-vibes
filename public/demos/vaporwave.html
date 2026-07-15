@@ -1,33 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vaporwave Demo</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-    body { font-family: 'VT323', monospace; }
-    .retro-text {
-      text-shadow: 3px 3px 0px #ff00ff;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vaporwave · Design Vibes</title>
+<style>
+:root{
+  --pink:#FF69B4;
+  --cyan:#00CED1;
+  --purple:#9400D3;
+  --gold:#FFD700;
+  --blue:#1E90FF;
+  --deep:#17022e;
+  --deep-2:#2a0a4e;
+  --win-bg:#ece6f7;
+  --win-ink:#2a1246;
+  --sans:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono:ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:linear-gradient(180deg,var(--deep) 0%,var(--deep-2) 55%,#3d1160 100%);
+  color:#f4e9ff;font-family:var(--sans);overflow-x:hidden;min-height:100vh;
+}
+::selection{background:var(--pink);color:#fff}
+
+/* ── header ───────────────────────────── */
+header{position:sticky;top:0;z-index:20;display:flex;align-items:center;
+  justify-content:space-between;padding:.85rem 1.5rem;
+  background:rgba(23,2,46,.82);backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(255,105,180,.35)}
+.logo{text-decoration:none;color:#fff;font-weight:800;letter-spacing:.3em;
+  font-size:.95rem;text-shadow:2px 2px 0 var(--purple),4px 4px 0 rgba(0,206,209,.6)}
+.logo small{display:block;font-weight:400;letter-spacing:.5em;font-size:.55rem;
+  color:var(--cyan);margin-top:.15rem}
+nav{display:flex;gap:1.5rem;align-items:center}
+nav a{color:#d8c6f2;text-decoration:none;font-size:.72rem;letter-spacing:.24em;
+  text-transform:uppercase;transition:color .25s,text-shadow .25s}
+nav a:hover{color:var(--pink);text-shadow:0 0 12px rgba(255,105,180,.9)}
+
+/* ── hero ─────────────────────────────── */
+.hero{position:relative;height:88vh;min-height:540px;overflow:hidden;
+  background:linear-gradient(180deg,#0d0221 0%,var(--blue) 30%,var(--purple) 52%,var(--pink) 68%,var(--gold) 82%);
+}
+.stars{position:absolute;inset:0 0 45% 0;
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 34% 8%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 58% 22%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 79% 12%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 90% 28%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 22% 32%, #fff 50%, transparent 51%);
+  opacity:.7;animation:twinkle 6s ease-in-out infinite alternate}
+@keyframes twinkle{to{opacity:.3}}
+.sun{position:absolute;left:50%;top:16%;width:min(44vh,330px);aspect-ratio:1;
+  transform:translateX(-50%);border-radius:50%;
+  background:linear-gradient(180deg,var(--gold) 5%,#ff9e5e 38%,var(--pink) 62%,var(--purple) 100%);
+  -webkit-mask:linear-gradient(#000 0 58%,transparent 58%),
+    repeating-linear-gradient(180deg,#000 0 14%,transparent 14% 19%);
+  mask:linear-gradient(#000 0 58%,transparent 58%),
+    repeating-linear-gradient(180deg,#000 0 14%,transparent 14% 19%);
+  filter:drop-shadow(0 0 40px rgba(255,105,180,.75));
+  animation:sunfloat 10s ease-in-out infinite}
+@keyframes sunfloat{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-16px)}}
+.gridzone{position:absolute;left:0;right:0;bottom:0;height:44%;overflow:hidden;
+  perspective:320px;perspective-origin:50% 0}
+.gridplane{position:absolute;left:-60%;right:-60%;top:-10%;height:320%;
+  transform-origin:50% 0;transform:rotateX(74deg) translateY(0);
+  background:
+    repeating-linear-gradient(90deg,rgba(0,206,209,.85) 0 2px,transparent 2px 90px),
+    repeating-linear-gradient(0deg,rgba(255,105,180,.8) 0 2px,transparent 2px 68px),
+    linear-gradient(180deg,#2b0a52 0%,#12032b 70%);
+  animation:gridmove 4.5s linear infinite}
+@keyframes gridmove{to{transform:rotateX(74deg) translateY(68px)}}
+.horizonline{position:absolute;left:0;right:0;bottom:44%;height:3px;
+  background:linear-gradient(90deg,transparent,var(--cyan),var(--pink),transparent);
+  filter:blur(1px);opacity:.9}
+.palm{position:absolute;bottom:8%;width:clamp(120px,18vw,220px);opacity:.92;color:#12032b}
+.palm.l{left:-1.5%}
+.palm.r{right:-1.5%;transform:scaleX(-1)}
+.hero-copy{position:relative;z-index:5;text-align:center;padding-top:9.5rem}
+.hero-kicker{font-family:var(--mono);letter-spacing:.6em;font-size:.72rem;
+  color:var(--cyan);text-transform:uppercase;text-shadow:0 0 10px rgba(0,206,209,.8)}
+h1{margin-top:1rem;font-size:clamp(2.8rem,8vw,6rem);font-weight:900;line-height:1;
+  letter-spacing:.12em;color:#fff;
+  text-shadow:3px 3px 0 var(--purple),6px 6px 0 rgba(0,206,209,.55),0 0 34px rgba(255,105,180,.65)}
+.jp{display:block;margin-top:1rem;font-size:clamp(.9rem,2vw,1.25rem);
+  letter-spacing:.7em;color:var(--gold);text-shadow:0 0 14px rgba(255,215,0,.6)}
+.hero-sub{margin:1.2rem auto 0;max-width:46ch;color:#efdcff;font-size:.95rem;
+  line-height:1.8;text-shadow:0 1px 6px rgba(23,2,46,.8)}
+.hero-cta{display:inline-block;margin-top:1.6rem;padding:.8rem 2.2rem;
+  font-family:var(--mono);font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--win-ink);text-decoration:none;background:linear-gradient(180deg,#fff,#d9c8f5);
+  border:2px solid #fff;border-right-color:#8a6bb8;border-bottom-color:#8a6bb8;
+  box-shadow:3px 3px 0 rgba(18,3,43,.55);transition:transform .2s,box-shadow .2s}
+.hero-cta:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 rgba(18,3,43,.55)}
+.hero-cta:active{transform:translate(1px,1px);box-shadow:1px 1px 0 rgba(18,3,43,.55)}
+
+/* ── sections / windows ───────────────── */
+section{max-width:1120px;margin:0 auto;padding:4.2rem 1.5rem}
+.sec-title{text-align:center;font-size:clamp(1.4rem,3vw,2rem);font-weight:800;
+  letter-spacing:.34em;text-transform:uppercase;color:#fff;
+  text-shadow:2px 2px 0 var(--purple),0 0 22px rgba(148,0,211,.8);margin-bottom:.6rem}
+.sec-note{text-align:center;color:var(--cyan);font-family:var(--mono);
+  font-size:.7rem;letter-spacing:.4em;margin-bottom:2.6rem}
+.win{background:var(--win-bg);color:var(--win-ink);border:2px solid #fff;
+  border-right-color:#7e5fae;border-bottom-color:#7e5fae;
+  box-shadow:6px 6px 0 rgba(10,1,24,.5);transition:transform .3s,box-shadow .3s}
+.win:hover{transform:translate(-3px,-3px);box-shadow:10px 10px 0 rgba(10,1,24,.5)}
+.win-bar{display:flex;align-items:center;gap:.55rem;padding:.5rem .7rem;
+  background:linear-gradient(90deg,var(--purple),var(--blue));color:#fff;
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.12em}
+.win-bar .t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.win-btns{margin-left:auto;display:flex;gap:.3rem}
+.win-btns i{width:14px;height:14px;background:#e6ddf5;border:1px solid #fff;
+  border-right-color:#7e5fae;border-bottom-color:#7e5fae;font-style:normal;
+  font-size:.55rem;line-height:12px;text-align:center;color:var(--win-ink);font-family:var(--mono)}
+.win-body{padding:1.2rem}
+
+/* now playing */
+.split{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:start}
+.tracks{list-style:none;font-family:var(--mono);font-size:.82rem}
+.tracks li{display:flex;gap:.9rem;padding:.65rem .4rem;border-bottom:1px dashed #b3a1d6;
+  transition:background .2s,transform .2s}
+.tracks li:hover{background:rgba(148,0,211,.12);transform:translateX(4px)}
+.tracks .no{color:var(--purple);font-weight:700}
+.tracks .len{margin-left:auto;color:#7a639e}
+.eq{display:flex;align-items:flex-end;gap:5px;height:52px;margin-top:1.1rem}
+.eq i{flex:1;background:linear-gradient(180deg,var(--pink),var(--purple));
+  transform-origin:bottom;animation:eq 2.6s ease-in-out infinite}
+.eq i:nth-child(1){transform:scaleY(.4);animation-delay:0s}
+.eq i:nth-child(2){transform:scaleY(.7);animation-delay:.3s}
+.eq i:nth-child(3){transform:scaleY(.5);animation-delay:.6s}
+.eq i:nth-child(4){transform:scaleY(.9);animation-delay:.15s}
+.eq i:nth-child(5){transform:scaleY(.6);animation-delay:.45s}
+.eq i:nth-child(6){transform:scaleY(.8);animation-delay:.75s}
+.eq i:nth-child(7){transform:scaleY(.35);animation-delay:.5s}
+.eq i:nth-child(8){transform:scaleY(.65);animation-delay:.9s}
+@keyframes eq{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+.statue-stage{display:grid;place-items:center;padding:1rem 0;
+  background:
+    repeating-conic-gradient(rgba(148,0,211,.08) 0 25%,transparent 0 50%) 0 0/28px 28px,
+    linear-gradient(180deg,#f6f0ff,#e2d4f5)}
+.statue-stage svg{width:min(200px,60%);filter:drop-shadow(0 10px 18px rgba(148,0,211,.35));
+  animation:floaty 9s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.caption{font-family:var(--mono);font-size:.66rem;letter-spacing:.3em;color:#7a639e;
+  text-align:center;padding:.7rem 0 .2rem;text-transform:uppercase}
+
+/* directory */
+.floors{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem}
+.floor-art{height:130px;display:grid;place-items:center;overflow:hidden;
+  background:linear-gradient(160deg,var(--blue),var(--purple) 55%,var(--pink))}
+.floor-art .shape{width:74px;height:74px;background:linear-gradient(180deg,var(--gold),var(--pink));
+  box-shadow:0 0 26px rgba(255,215,0,.55);animation:spin 14s linear infinite}
+.shape.ball{border-radius:50%;background:linear-gradient(180deg,var(--cyan),var(--blue));
+  box-shadow:0 0 26px rgba(0,206,209,.6);animation:floaty 7s ease-in-out infinite}
+.shape.tri{clip-path:polygon(50% 0,100% 100%,0 100%);
+  background:linear-gradient(180deg,var(--pink),var(--purple));
+  box-shadow:none;filter:drop-shadow(0 0 18px rgba(255,105,180,.7));
+  animation:floaty 8s ease-in-out infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.floor h3{font-size:.95rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.4rem}
+.floor h3 span{color:var(--purple)}
+.floor p{font-size:.8rem;line-height:1.7;color:#5d4a80}
+
+/* visit */
+.visit{text-align:center}
+.visit .win{max-width:620px;margin:0 auto}
+.visit p{font-size:.95rem;line-height:2;color:var(--win-ink)}
+.visit .jp2{display:block;margin-top:.8rem;letter-spacing:.5em;color:var(--purple);font-size:.8rem}
+
+/* marquee ribbon */
+.ribbon{overflow:hidden;border-top:1px solid rgba(0,206,209,.4);
+  border-bottom:1px solid rgba(255,105,180,.4);background:rgba(10,1,24,.45)}
+.ribbon .track{display:flex;white-space:nowrap;width:max-content;
+  animation:ride 26s linear infinite}
+.ribbon span{padding:.55rem 1.6rem;font-family:var(--mono);font-size:.68rem;
+  letter-spacing:.5em;text-transform:uppercase;color:var(--cyan)}
+.ribbon span:nth-child(even){color:var(--pink)}
+@keyframes ride{to{transform:translateX(-50%)}}
+
+/* footer */
+footer{padding:2.2rem 1.5rem 2.6rem;text-align:center;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.3em;
+  color:#b79fd8;text-transform:uppercase}
+footer b{color:var(--gold);font-weight:400}
+
+/* ── responsive ───────────────────────── */
+@media (max-width:860px){
+  .split{grid-template-columns:1fr}
+  .floors{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  nav a{display:none}
+  nav a:last-child{display:inline}
+  .hero{height:auto;min-height:0;padding-bottom:46vw}
+  .hero-copy{padding:5.5rem 1.25rem 3rem}
+  .gridzone{height:38vw}
+  .horizonline{bottom:38vw}
+  .palm{width:110px;bottom:6vw}
+  h1{letter-spacing:.06em}
+  .jp{letter-spacing:.4em}
+  section{padding:3rem 1.25rem}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  html{scroll-behavior:auto}
+}
+</style>
 </head>
-<body class="bg-gradient-to-b from-pink-400 via-purple-500 to-indigo-900">
-  <div class="w-full h-screen flex flex-col items-center justify-center p-8">
-    <div class="text-center">
-      <h1 class="text-6xl text-cyan-300 retro-text mb-4">AESTHETIC</h1>
-      <div class="w-64 h-32 bg-gradient-to-b from-orange-400 to-yellow-300 mb-4 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-t from-purple-900/50 to-transparent"></div>
-        <div class="absolute bottom-0 w-full h-1/2 bg-gradient-to-t from-purple-900 to-transparent"></div>
-      </div>
-      <p class="text-pink-300 text-2xl">ＶＡＰＯＲＷＡＶＥ</p>
-      <div class="flex justify-center gap-4 mt-4">
-        <span class="text-cyan-300 text-xl">▲</span>
-        <span class="text-pink-300 text-xl">●</span>
-        <span class="text-yellow-300 text-xl">■</span>
-      </div>
+<body>
+<header>
+  <a class="logo" href="#top">ECHO PLAZA<small>エコープラザ</small></a>
+  <nav aria-label="Primary">
+    <a href="#playing">Now Playing</a>
+    <a href="#directory">Directory</a>
+    <a href="#visit">Visit</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero" aria-label="Echo Plaza">
+    <div class="stars" aria-hidden="true"></div>
+    <div class="sun" aria-hidden="true"></div>
+    <div class="horizonline" aria-hidden="true"></div>
+    <div class="gridzone" aria-hidden="true"><div class="gridplane"></div></div>
+    <svg class="palm l" viewBox="0 0 200 260" aria-hidden="true">
+      <path fill="currentColor" d="M96 258c4-58 2-104-8-138l14-2c12 36 12 84 6 140zM90 118C70 96 44 88 12 96c22-22 56-24 84 6zM92 114C86 84 66 64 34 58c30-10 62 8 70 50zM98 112c2-30 20-52 52-58-14 26-34 44-42 62zM102 116c20-18 46-22 76-10-24 14-52 16-66 22z"/>
+    </svg>
+    <svg class="palm r" viewBox="0 0 200 260" aria-hidden="true">
+      <path fill="currentColor" d="M96 258c4-58 2-104-8-138l14-2c12 36 12 84 6 140zM90 118C70 96 44 88 12 96c22-22 56-24 84 6zM92 114C86 84 66 64 34 58c30-10 62 8 70 50zM98 112c2-30 20-52 52-58-14 26-34 44-42 62zM102 116c20-18 46-22 76-10-24 14-52 16-66 22z"/>
+    </svg>
+    <div class="hero-copy">
+      <p class="hero-kicker">ＶＩＲＴＵＡＬ ＰＡＲＡＤＩＳＥ</p>
+      <h1>ECHO PLAZA</h1>
+      <span class="jp">ベイパー・ドリーム・モール</span>
+      <p class="hero-sub">The mall that never closes. Marble halls, endless escalators,
+        fountains humming in reverb. Check in any time — checkout was discontinued in 1995.</p>
+      <a class="hero-cta" href="#playing">Enter the Plaza</a>
+    </div>
+  </section>
+
+  <div class="ribbon" aria-hidden="true">
+    <div class="track">
+      <span>Open Forever</span><span>営業中</span><span>Floor ∞</span><span>夢の中で</span>
+      <span>Slow Life</span><span>パラダイス</span><span>Est. 1995</span><span>エコー</span>
+      <span>Open Forever</span><span>営業中</span><span>Floor ∞</span><span>夢の中で</span>
+      <span>Slow Life</span><span>パラダイス</span><span>Est. 1995</span><span>エコー</span>
     </div>
   </div>
+
+  <section id="playing">
+    <h2 class="sec-title">Now Playing</h2>
+    <p class="sec-note">アトリウム・サウンドシステム</p>
+    <div class="split">
+      <div class="win">
+        <div class="win-bar"><span class="t">now_playing.exe — atrium loop</span>
+          <span class="win-btns" aria-hidden="true"><i>_</i><i>□</i><i>×</i></span></div>
+        <div class="win-body">
+          <ol class="tracks">
+            <li><span class="no">01</span> Midnight Arcade <span class="len">4:44</span></li>
+            <li><span class="no">02</span> Palm Court Fountain <span class="len">3:33</span></li>
+            <li><span class="no">03</span> Escalator to Nowhere <span class="len">5:55</span></li>
+            <li><span class="no">04</span> Dial Tone Dreams <span class="len">4:20</span></li>
+            <li><span class="no">05</span> Checkout Counter Sunset <span class="len">6:07</span></li>
+          </ol>
+          <div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+      <div class="win">
+        <div class="win-bar"><span class="t">gallery.exe — atrium statue</span>
+          <span class="win-btns" aria-hidden="true"><i>_</i><i>□</i><i>×</i></span></div>
+        <div class="statue-stage">
+          <svg viewBox="0 0 200 240" role="img" aria-label="Marble bust">
+            <defs>
+              <linearGradient id="marble" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ffffff"/>
+                <stop offset=".55" stop-color="#e8ddfb"/>
+                <stop offset="1" stop-color="#b9e6ef"/>
+              </linearGradient>
+            </defs>
+            <path fill="url(#marble)" d="M100 18c-20 0-34 14-36 34-1 12 2 22-4 30-4 5-4 10 2 12 2 1 3 3 3 6 0 4 2 6 6 6 2 6 6 10 12 12 2 6 0 12-8 16-22 10-42 16-50 30-6 11-8 26-8 40h166c0-14-2-29-8-40-8-14-28-20-50-30-8-4-10-10-8-16 10-4 16-12 17-24 2-20-6-42-34-42z"/>
+            <rect x="30" y="206" width="140" height="12" rx="2" fill="url(#marble)"/>
+            <rect x="42" y="220" width="116" height="10" rx="2" fill="#cbb9ec"/>
+          </svg>
+          <p class="caption">Helios of the Food Court・彫像</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="directory">
+    <h2 class="sec-title">Mall Directory</h2>
+    <p class="sec-note">フロアガイド</p>
+    <div class="floors">
+      <article class="win floor">
+        <div class="win-bar"><span class="t">floor_01.dir</span>
+          <span class="win-btns" aria-hidden="true"><i>_</i><i>□</i><i>×</i></span></div>
+        <div class="floor-art" aria-hidden="true"><span class="shape ball"></span></div>
+        <div class="win-body">
+          <h3><span>F1</span> · Sunken Atrium</h3>
+          <p>Reflecting pools, dial-up koi, a fountain that only plays saxophone.
+            Lost &amp; Found accepts memories.</p>
+        </div>
+      </article>
+      <article class="win floor">
+        <div class="win-bar"><span class="t">floor_02.dir</span>
+          <span class="win-btns" aria-hidden="true"><i>_</i><i>□</i><i>×</i></span></div>
+        <div class="floor-art" aria-hidden="true"><span class="shape"></span></div>
+        <div class="win-body">
+          <h3><span>F2</span> · Crystal Arcade</h3>
+          <p>Cabinets glowing since forever, high scores signed by people
+            who never existed. Tokens are free after midnight.</p>
+        </div>
+      </article>
+      <article class="win floor">
+        <div class="win-bar"><span class="t">floor_88.dir</span>
+          <span class="win-btns" aria-hidden="true"><i>_</i><i>□</i><i>×</i></span></div>
+        <div class="floor-art" aria-hidden="true"><span class="shape tri"></span></div>
+        <div class="win-body">
+          <h3><span>F∞</span> · Infinite Escalator</h3>
+          <p>Going up. Always up. Soft carpet, softer light, the gentle hum
+            of a summer that refuses to end.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="visit" class="visit">
+    <h2 class="sec-title">Visit Us</h2>
+    <p class="sec-note">アクセス</p>
+    <div class="win">
+      <div class="win-bar"><span class="t">directions.txt</span>
+        <span class="win-btns" aria-hidden="true"><i>_</i><i>□</i><i>×</i></span></div>
+      <div class="win-body">
+        <p>Close your eyes. Take the last escalator before the tone ends.<br>
+          We are on the floor between floors. Parking is a state of mind.
+          <span class="jp2">目を閉じて、最後のエスカレーターへ</span></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 1995 — forever · Echo Plaza · <b>all dreams reserved</b> · すべての夢、予約済み
+</footer>
 </body>
 </html>
