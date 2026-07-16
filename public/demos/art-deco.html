@@ -147,21 +147,21 @@ footer::before{content:"";position:absolute;top:4px;left:0;right:0;border-top:1p
 @keyframes deco-rail{from{transform:scaleY(0)}}
 @supports (animation-timeline:view()){
   .sec-title,.bill,.room,.reserve .tel{
-    animation:deco-in 1s ease both;
+    animation:deco-in 1s ease;
     animation-timeline:view();
     animation-range:entry 0% entry 50%;
   }
-  .bill:nth-child(2){animation-range:entry 7% entry 57%}
-  .bill:nth-child(3){animation-range:entry 14% entry 64%}
+  .bill:nth-child(2){animation-range:entry 0% entry 64%}
+  .bill:nth-child(3){animation-range:entry 0% entry 78%}
   .reserve .steps span,footer::before{
     transform-origin:center;
-    animation:deco-rule 1s ease both;
+    animation:deco-rule 1s ease;
     animation-timeline:view();
     animation-range:entry 0% cover 25%;
   }
   .rooms .rail{
     transform-origin:center;
-    animation:deco-rail 1s ease both;
+    animation:deco-rail 1s ease;
     animation-timeline:view();
     animation-range:entry 0% cover 30%;
   }

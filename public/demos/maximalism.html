@@ -158,19 +158,19 @@ footer{background:var(--pink);background-image:radial-gradient(rgba(255,255,255,
 }
 @supports (animation-timeline:view()){
   .menu-head,.rules-cta{
-    animation:rise 1s ease-out both;
+    animation:rise 1s ease-out;
     animation-timeline:view();
     animation-range:entry 0% entry 50%;
   }
   .dish{
     --r:-1.1deg;
-    animation:rise-tilt 1s ease-out both;
+    animation:rise-tilt 1s ease-out;
     animation-timeline:view();
     animation-range:entry 0% entry 50%;
   }
-  .dish:nth-child(even){--r:1.1deg;animation-range:entry 7% entry 57%}
+  .dish:nth-child(even){--r:1.1deg;animation-range:entry 0% entry 64%}
   .rules-kicker,.rule{
-    animation:appear 1s ease-out both;
+    animation:appear 1s ease-out;
     animation-timeline:view();
     animation-range:entry 0% entry 50%;
   }

@@ -212,21 +212,21 @@ header nav a:active{transform:translate(2px,2px);transition:none}
 @supports (animation-timeline:view()){
   .work h2,.process h2{
     --r:-1.2deg;
-    animation:lurch-l 1s ease-out both;
+    animation:lurch-l 1s ease-out;
     animation-timeline:view();
     animation-range:entry 0% entry 50%;
   }
   .case{
-    animation:lurch-l 1s ease-out both;
+    animation:lurch-l 1s ease-out;
     animation-timeline:view();
     animation-range:entry 0% entry 50%;
   }
   .case-1{--r:-2deg}
-  .case-2{--r:1.6deg;animation-name:lurch-r;animation-range:entry 7% entry 57%}
-  .case-3{--r:-1deg;animation-name:lurch-spin;animation-range:entry 14% entry 64%}
+  .case-2{--r:1.6deg;animation-name:lurch-r;animation-range:entry 0% entry 64%}
+  .case-3{--r:-1deg;animation-name:lurch-spin;animation-range:entry 0% entry 78%}
   .process-box{
     --r:.8deg;
-    animation:lurch-r 1s ease-out both;
+    animation:lurch-r 1s ease-out;
     animation-timeline:view();
     animation-range:entry 0% entry 50%;
   }

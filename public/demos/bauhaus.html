@@ -148,12 +148,12 @@ footer a:hover{color:var(--yellow)}
 @keyframes turn-in{from{opacity:0;transform:rotate(-6deg)}}
 @supports (animation-timeline:view()){
   .sec-head,.card,.years li,.visit h2,.visit .hours{
-    animation:slot-in 1s linear both;
+    animation:slot-in 1s linear;
     animation-timeline:view();
     animation-range:entry 0% entry 50%;
   }
-  .card:nth-child(2){animation-range:entry 7% entry 57%}
-  .card:nth-child(3){animation-range:entry 14% entry 64%}
+  .card:nth-child(2){animation-range:entry 0% entry 64%}
+  .card:nth-child(3){animation-range:entry 0% entry 78%}
 }
 
 @media (prefers-reduced-motion:reduce){

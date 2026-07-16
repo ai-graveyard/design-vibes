@@ -174,15 +174,15 @@ nav a:active{color:var(--ink);border-color:var(--ink)}
 @keyframes rule-in{from{transform:scaleX(0)}}
 @supports (animation-timeline:view()){
   .row3 article,.pull,.f-grid>div{
-    animation:settle 1s linear both;
+    animation:settle 1s linear;
     animation-timeline:view();
     animation-range:entry 0% entry 45%;
   }
-  .row3 article:nth-child(2){animation-range:entry 6% entry 51%}
-  .row3 article:nth-child(3){animation-range:entry 12% entry 57%}
+  .row3 article:nth-child(2){animation-range:entry 0% entry 57%}
+  .row3 article:nth-child(3){animation-range:entry 0% entry 69%}
   .kick::after,.oxr{
     transform-origin:left;
-    animation:rule-in 1s linear both;
+    animation:rule-in 1s linear;
     animation-timeline:view();
     animation-range:entry 0% cover 22%;
   }

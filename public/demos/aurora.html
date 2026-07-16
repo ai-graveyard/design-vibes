@@ -218,12 +218,12 @@ footer{padding:56px 0 44px}
 @keyframes rise-soft{from{opacity:0;transform:translateY(14px)}}
 @supports (animation-timeline:view()){
   .logos,.stats,.sec-head,.fcard,.dev-grid>div{
-    animation:rise-soft 1s linear both;
+    animation:rise-soft 1s linear;
     animation-timeline:view();
     animation-range:entry 0% entry 50%;
   }
-  .fcard:nth-child(2),.dev-grid>div:nth-child(2){animation-range:entry 7% entry 57%}
-  .fcard:nth-child(3){animation-range:entry 14% entry 64%}
+  .fcard:nth-child(2),.dev-grid>div:nth-child(2){animation-range:entry 0% entry 64%}
+  .fcard:nth-child(3){animation-range:entry 0% entry 78%}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}

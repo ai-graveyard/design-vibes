@@ -260,13 +260,13 @@ footer{background:var(--surface-c-high);padding:52px 0 28px;margin-top:36px}
 @keyframes fab-in{from{opacity:0;transform:scale(.6)}}
 @supports (animation-timeline:view()){
   .sec-head,.cards .card,.stat,.cta{
-    animation:rise-in 1s linear both;
+    animation:rise-in 1s linear;
     animation-timeline:view();
     animation-range:entry 0% entry 50%;
   }
-  .cards .card:nth-child(2){animation-range:entry 7% entry 57%}
-  .cards .card:nth-child(3){animation-range:entry 14% entry 64%}
-  .stat:nth-child(2),.stat:nth-child(4){animation-range:entry 7% entry 57%}
+  .cards .card:nth-child(2){animation-range:entry 0% entry 64%}
+  .cards .card:nth-child(3){animation-range:entry 0% entry 78%}
+  .stat:nth-child(2),.stat:nth-child(4){animation-range:entry 0% entry 64%}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none !important;transition:none !important}

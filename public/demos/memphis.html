@@ -188,12 +188,12 @@ footer p{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;margin-le
 }
 @supports (animation-timeline:view()){
   .k,.products h2,.prod,.creed .wrap{
-    animation:pop-soft 1s cubic-bezier(.34,1.56,.64,1) both;
+    animation:pop-soft 1s cubic-bezier(.34,1.56,.64,1);
     animation-timeline:view();
     animation-range:entry 0% entry 50%;
   }
-  .prod:nth-child(2){animation-range:entry 7% entry 57%}
-  .prod:nth-child(3){animation-range:entry 14% entry 64%}
+  .prod:nth-child(2){animation-range:entry 0% entry 64%}
+  .prod:nth-child(3){animation-range:entry 0% entry 78%}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}

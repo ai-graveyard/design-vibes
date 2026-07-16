@@ -149,15 +149,15 @@ footer{background:var(--ink);color:#B0BEC5;padding:60px 0 36px;font-size:.92rem}
 @keyframes rise{from{opacity:0;transform:translateY(10px)}}
 @supports (animation-timeline:view()){
   .sec-head,.feat-grid .card,.stat,.step{
-    animation:rise 1s linear both;
+    animation:rise 1s linear;
     animation-timeline:view();
     animation-range:entry 0% entry 45%;
   }
-  .feat-grid .card:nth-child(2),.step:nth-child(2){animation-range:entry 7% entry 52%}
-  .feat-grid .card:nth-child(3),.step:nth-child(3){animation-range:entry 14% entry 59%}
-  .feat-grid .card:nth-child(4){animation-range:entry 21% entry 66%}
-  .stat:nth-child(2){animation-range:entry 7% entry 52%}
-  .stat:nth-child(3){animation-range:entry 14% entry 59%}
+  .feat-grid .card:nth-child(2),.step:nth-child(2){animation-range:entry 0% entry 59%}
+  .feat-grid .card:nth-child(3),.step:nth-child(3){animation-range:entry 0% entry 73%}
+  .feat-grid .card:nth-child(4){animation-range:entry 0% entry 87%}
+  .stat:nth-child(2){animation-range:entry 0% entry 59%}
+  .stat:nth-child(3){animation-range:entry 0% entry 73%}
 }
 
 @media (prefers-reduced-motion: reduce){

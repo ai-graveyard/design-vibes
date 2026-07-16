@@ -160,7 +160,7 @@ a:active{background:var(--fg);color:var(--bg);transition:none}
 @keyframes flash-in{from{opacity:0}}
 @supports (animation-timeline:view()){
   .sec-label,.sec-title,tbody tr,.rules li,.colophon,.badges{
-    animation:flash-in 1s steps(2,jump-none) both;
+    animation:flash-in 1s steps(2,jump-none);
     animation-timeline:view();
     animation-range:entry 0% entry 40%;
   }

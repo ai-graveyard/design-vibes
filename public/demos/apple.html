@@ -263,19 +263,19 @@ footer{background:var(--bg-alt);border-top:1px solid var(--hairline);padding:34p
 @keyframes lume{from{opacity:0;transform:translateY(14px);filter:blur(12px)}}
 @supports (animation-timeline:view()){
   .dark .eyebrow,.dark .sub,.bento-head,.grid .card{
-    animation:rise 1s linear both;
+    animation:rise 1s linear;
     animation-timeline:view();
     animation-range:entry 0% entry 55%;
   }
-  .grid .card:nth-child(2),.grid .card:nth-child(4){animation-range:entry 6% entry 61%}
+  .grid .card:nth-child(2),.grid .card:nth-child(4){animation-range:entry 0% entry 67%}
   .dark h2{
-    animation:lume 1s linear both;
+    animation:lume 1s linear;
     animation-timeline:view();
     animation-range:entry 0% entry 60%;
   }
-  .stat{animation:rise 1s linear both;animation-timeline:view();animation-range:entry 0% entry 50%}
-  .stat:nth-child(2){animation-range:entry 7% entry 57%}
-  .stat:nth-child(3){animation-range:entry 14% entry 64%}
+  .stat{animation:rise 1s linear;animation-timeline:view();animation-range:entry 0% entry 50%}
+  .stat:nth-child(2){animation-range:entry 0% entry 64%}
+  .stat:nth-child(3){animation-range:entry 0% entry 78%}
 }
 
 /* ---------- Responsive ---------- */
