@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editorial · Design Vibes</title>
+<style>
+:root{
+  --paper:#FAF7F0;
+  --ink:#141414;
+  --ink-soft:#3E3A33;
+  --accent:#C8102E;
+  --grey:#8A857C;
+  --hairline:#DCD5C6;
+  --serif:Georgia,"Iowan Old Style","Times New Roman",Times,serif;
+  --display:Didot,"Bodoni 72","Didot LT STD",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+.sheet{max-width:1240px;margin:0 auto;padding-left:2rem;padding-right:2rem}
+.oxr{height:6px;border-top:3px solid var(--ink);border-bottom:1px solid var(--ink)}
+.kick{
+  display:flex;align-items:center;gap:.7rem;
+  font-family:var(--sans);font-size:.625rem;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--accent);
+}
+.kick::after{content:"";flex:1;border-top:1px solid var(--hairline)}
+.by{font-family:var(--sans);font-size:.6875rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:.55rem 0 0}
+.by span{font-family:var(--serif);font-weight:400;font-style:italic;letter-spacing:0;text-transform:none;color:var(--grey);font-size:.8125rem}
+
+/* ---------- date strip ---------- */
+.strip{border-bottom:1px solid var(--ink)}
+.strip .in{
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  padding-top:.5rem;padding-bottom:.5rem;
+  font-family:var(--sans);font-size:.625rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+}
+.strip .ed{color:var(--accent)}
+
+/* ---------- masthead ---------- */
+.mast .sheet{position:relative;text-align:center;padding-top:1.6rem;padding-bottom:1.1rem}
+.mast h1{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(2.7rem,8.6vw,6.9rem);line-height:1;letter-spacing:.01em;
+}
+.mast h1 span{color:var(--accent)}
+.tag{margin-top:.6rem;font-size:.6875rem;letter-spacing:.3em;text-transform:uppercase;color:var(--grey)}
+.ear{position:absolute;top:50%;transform:translateY(-50%);font-size:.6875rem;font-style:italic;color:var(--grey);line-height:1.55}
+.e-l{left:2rem;text-align:left}
+.e-r{right:2rem;text-align:right}
+
+/* ---------- section nav ---------- */
+nav{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.nav-in{display:flex;justify-content:center;gap:2.1rem;flex-wrap:wrap;padding-top:.55rem;padding-bottom:.55rem}
+nav a{
+  font-family:var(--sans);font-size:.6875rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  padding-bottom:2px;border-bottom:2px solid transparent;
+  transition:color .15s,border-color .15s;
+}
+nav a:hover{color:var(--accent);border-color:var(--accent)}
+nav a.on{border-color:var(--accent)}
+
+/* ---------- lead story ---------- */
+.lead{display:grid;grid-template-columns:1fr 380px;column-gap:2.4rem;padding-top:2.1rem;padding-bottom:2.6rem}
+.head{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(1.9rem,3.7vw,2.95rem);line-height:1.06;letter-spacing:-.005em;
+  margin:.7rem 0 .8rem;
+}
+.deck{font-size:1.125rem;font-style:italic;color:var(--ink-soft);line-height:1.5;max-width:62ch}
+.lead .by{margin-bottom:1.1rem}
+.body{columns:2;column-gap:2.2rem;column-rule:1px solid var(--hairline);text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.body p{font-size:.9375rem;margin-bottom:.85rem}
+.body p:first-child::first-letter{
+  font-family:var(--display);font-weight:400;color:var(--accent);
+  font-size:4.4rem;line-height:.76;float:left;padding:.06em .09em 0 0;
+}
+.cont{margin-top:.3rem;font-size:.8125rem;font-style:italic;color:var(--accent)}
+
+/* sidebar */
+.side{border-left:1px solid var(--hairline);padding-left:2.4rem;display:flex;flex-direction:column;gap:1.4rem}
+figure{margin:0}
+.ph{width:100%;border:1px solid var(--hairline);display:block}
+.ph-train{
+  aspect-ratio:4/3;
+  background:
+    repeating-linear-gradient(0deg,rgba(20,20,20,.04) 0 1px,transparent 1px 3px),
+    radial-gradient(circle at 81% 42%,var(--accent) 0 3px,rgba(200,16,46,0) 4px),
+    linear-gradient(180deg,transparent 0 63%,rgba(20,20,20,.42) 63% 63.6%,transparent 63.6%),
+    linear-gradient(101deg,#55514A 0 27%,#6B665C 27% 28.6%,transparent 28.6%),
+    linear-gradient(180deg,transparent 0 63%,#57534B 63% 100%),
+    radial-gradient(ellipse 120% 85% at 74% 0%,#E7E0D0,transparent 58%),
+    linear-gradient(180deg,#C8C1B2,#8A857C);
+}
+.ph-gallery{
+  aspect-ratio:5/2;
+  background:
+    repeating-linear-gradient(0deg,rgba(20,20,20,.035) 0 1px,transparent 1px 3px),
+    linear-gradient(#2E2B26,#2E2B26) 13% 38%/13% 36% no-repeat,
+    linear-gradient(#3A362F,#3A362F) 50% 42%/17% 46% no-repeat,
+    linear-gradient(#26231F,#26231F) 86% 34%/11% 28% no-repeat,
+    linear-gradient(180deg,#D8D1C2 0 79%,#8A857C 79% 79.8%,#A29C90 79.8%);
+}
+figcaption{
+  font-size:.75rem;font-style:italic;color:var(--grey);line-height:1.5;
+  padding:.5rem 2px .7rem;border-bottom:1px solid var(--hairline);
+}
+.cred{display:block;font-style:normal;font-family:var(--sans);font-size:.5625rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;margin-top:.3rem}
+.analysis h3{font-size:1.2rem;line-height:1.25;font-weight:700;margin:.5rem 0 0}
+.analysis .by{margin-bottom:.55rem}
+.analysis p{font-size:.875rem}
+.idx h4{font-family:var(--sans);font-size:.625rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin-bottom:.45rem}
+.idx ul{list-style:none}
+.idx li{display:flex;align-items:baseline;font-size:.875rem;padding:.26rem 0}
+.idx i{flex:1;border-bottom:1px dotted var(--grey);margin:0 .45rem;transform:translateY(-.3em)}
+.idx b{font-family:var(--sans);font-size:.6875rem;font-weight:700}
+
+/* ---------- three-column flow ---------- */
+.flow{padding-top:2.2rem;padding-bottom:2.8rem}
+.row3{display:grid;grid-template-columns:repeat(3,1fr);column-gap:2.2rem}
+.row3 article{min-width:0}
+.row3 article:nth-child(n+2){border-left:1px solid var(--hairline);padding-left:2.2rem}
+.row3 h3{font-size:1.3rem;line-height:1.18;letter-spacing:-.005em;margin:.55rem 0 0;transition:color .15s}
+.row3 article:hover h3{color:var(--accent)}
+.row3 .by{margin-bottom:.5rem}
+.row3 p{font-size:.875rem;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.row3 article p+p{margin-top:.55rem}
+.thumb{margin-bottom:.9rem}
+.thumb figcaption{border-bottom:0;padding-bottom:0}
+
+/* pull quote */
+.pull{border-top:4px double var(--ink);border-bottom:4px double var(--ink);margin:2.1rem 0;padding:1.9rem 1rem;text-align:center}
+.pull p{font-family:var(--display);font-style:italic;font-size:clamp(1.35rem,2.5vw,1.95rem);line-height:1.32;max-width:52ch;margin:0 auto}
+.pull .qm{color:var(--accent);font-style:normal;font-size:1.35em;line-height:0}
+.pull cite{
+  display:block;margin-top:.9rem;font-style:normal;
+  font-family:var(--sans);font-size:.625rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--grey);
+}
+
+/* ---------- footer ---------- */
+footer{padding-bottom:2.4rem}
+footer .oxr{margin-bottom:1.7rem}
+.f-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:2.2rem}
+.f-grid h4{font-family:var(--sans);font-size:.625rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin-bottom:.45rem}
+.f-grid p{font-size:.8125rem;color:var(--ink-soft);line-height:1.6}
+.f-grid .secs b{font-weight:400;color:var(--accent)}
+.f-end{
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  border-top:1px solid var(--hairline);margin-top:1.9rem;padding-top:.8rem;
+  font-family:var(--sans);font-size:.625rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+/* ---------- narrow desk ---------- */
+@media (max-width:1020px){
+  .lead{grid-template-columns:1fr 300px}
+  .body{columns:1}
+  .ear{display:none}
+}
+
+/* ---------- mobile ---------- */
+@media (max-width:760px){
+  .sheet{padding-left:1.1rem;padding-right:1.1rem}
+  .strip .in{justify-content:center;text-align:center;gap:.35rem 1rem}
+  .strip .s-price{display:none}
+  .mast .sheet{padding-top:1.15rem;padding-bottom:.85rem}
+  .tag{font-size:.5625rem;letter-spacing:.18em}
+  .nav-in{gap:.65rem 1.15rem;padding-top:.5rem;padding-bottom:.5rem}
+  nav a{font-size:.625rem;letter-spacing:.12em}
+  .lead{grid-template-columns:1fr;row-gap:1.9rem;padding-top:1.5rem;padding-bottom:1.9rem}
+  .side{border-left:0;padding-left:0;border-top:1px solid var(--hairline);padding-top:1.6rem}
+  .row3{grid-template-columns:1fr;row-gap:1.6rem}
+  .row3 article:nth-child(n+2){border-left:0;padding-left:0;border-top:1px solid var(--hairline);padding-top:1.5rem}
+  .pull{margin:1.7rem 0;padding:1.5rem .3rem}
+  .flow{padding-top:1.7rem;padding-bottom:2.1rem}
+  .f-grid{grid-template-columns:1fr;gap:1.4rem}
+  .f-end{flex-direction:column;gap:.4rem}
+}
+</style>
+</head>
+<body>
+
+<div class="strip">
+  <div class="sheet in">
+    <span>Saturday–Sunday, July 18–19, 2026</span>
+    <span class="ed">Weekend Edition · No. 2,847</span>
+    <span class="s-price">London £3.50 · New York $6.00 · Wien €5.00</span>
+  </div>
+</div>
+
+<header class="mast">
+  <div class="sheet">
+    <p class="ear e-l">Fine, then clearing<br>24° / 16° · Moonrise 21:14</p>
+    <p class="ear e-r">Sixteen pages<br>Printed in three cities</p>
+    <h1>The Meridian<span>.</span></h1>
+    <p class="tag">Founded MCMXI · A Review of the Passing Week · Published Saturdays at Dawn</p>
+  </div>
+</header>
+
+<nav>
+  <div class="sheet nav-in">
+    <a class="on" href="#lede">The Lede</a>
+    <a href="#lede">Essays</a>
+    <a href="#flow">Culture</a>
+    <a href="#flow">Technology</a>
+    <a href="#flow">Food</a>
+    <a href="#flow">Books</a>
+    <a href="#flow">Cities</a>
+    <a href="#letters">Letters</a>
+  </div>
+</nav>
+
+<main>
+<section class="lead sheet" id="lede">
+  <div class="story">
+    <p class="kick">The Weekend Essay</p>
+    <h2 class="head">The Slow Return of the Night Train</h2>
+    <p class="deck">Twenty years after Europe tore up its sleeper timetables, the berths are back and selling out by spring. Margaret Ellison boards the 23:40 to Trieste and finds a continent relearning the oldest luxury in travel — arriving rested.</p>
+    <p class="by">By Margaret Ellison<span> · Vienna Hauptbahnhof</span></p>
+    <div class="body">
+      <p>VIENNA — At 23:12 the platform lights dim by a third, a courtesy the railway extends to passengers who intend to sleep. The 23:40 to Trieste is already boarding: a family folding a pram like origami, two cellists sharing one berth and one instrument, a man in a pressed suit who has made this crossing every Thursday for a year. The corridor smells of clean linen and of coffee that will not be poured until Slovenia.</p>
+      <p>Eleven sleeper routes have reopened across the continent since 2023, and the operators can hardly print tickets fast enough. The summer berths to the Adriatic sold out in four days; the revived Alpine Mail to Zürich runs at 96 per cent occupancy and a waiting list that reads like a census. A mode of travel written off as a museum piece two decades ago has become, quietly and without a single keynote address, the fastest-growing corner of European rail.</p>
+      <p>The economics were supposed to be impossible. A seat can be sold twice in a day, a bed only once, and that arithmetic killed the sleeper in the spreadsheet era. What the spreadsheets missed was the value of the hours themselves: a train that leaves after dinner and arrives before breakfast does not compete with the aeroplane at all. It competes with the hotel, and it throws in a country going past the window.</p>
+      <p>Somewhere after Graz the attendant chalks the breakfast times onto a small slate, one door at a time, and the train settles into its long, patient argument with the dark.</p>
+      <p class="cont">The essay continues on Page 12 →</p>
+    </div>
+  </div>
+  <aside class="side">
+    <figure>
+      <span class="ph ph-train" role="img" aria-label="A sleeper train waits at a dim platform, one red signal lit"></span>
+      <figcaption>The 23:40 sleeper to Trieste waits under half-dimmed lights, Platform 9, Vienna Hauptbahnhof.
+        <span class="cred">Photograph · Anna Keller for The Meridian</span>
+      </figcaption>
+    </figure>
+    <div class="analysis">
+      <p class="kick">Analysis</p>
+      <h3>Rail’s second act is about sleep, not speed</h3>
+      <p class="by">By Tomas Verhoeven<span> · Transport Desk</span></p>
+      <p>Speed was rail’s twentieth-century argument, and aviation won it. The sleeper declines the contest entirely: it sells the one thing a departure lounge cannot manufacture, a night’s rest already moving in the right direction. Its true rival was never the plane — it is the airport hotel and the 5 a.m. alarm.</p>
+    </div>
+    <div class="idx">
+      <h4>In This Edition</h4>
+      <ul>
+        <li><span>The Weekend Essay</span><i></i><b>1</b></li>
+        <li><span>Culture &amp; Exhibitions</span><i></i><b>8</b></li>
+        <li><span>Books, Reviewed Kindly</span><i></i><b>9</b></li>
+        <li><span>Food &amp; the Tuesday Table</span><i></i><b>11</b></li>
+        <li><span>Cities &amp; Benches</span><i></i><b>14</b></li>
+        <li><span>Letters to the Editor</span><i></i><b>15</b></li>
+      </ul>
+    </div>
+  </aside>
+</section>
+
+<div class="sheet"><div class="oxr" aria-hidden="true"></div></div>
+
+<section class="flow sheet" id="flow">
+  <div class="row3">
+    <article>
+      <p class="kick">Culture</p>
+      <h3>The Museum That Took Down Its Labels</h3>
+      <p class="by">By Priya Nandakumar<span> · Copenhagen</span></p>
+      <figure class="thumb">
+        <span class="ph ph-gallery" role="img" aria-label="Three unlabelled frames on a pale gallery wall"></span>
+        <figcaption>The east wall of the Vesterbro Kunsthal, captions withdrawn.</figcaption>
+      </figure>
+      <p>Six months ago the Vesterbro Kunsthal removed every label from its walls — no titles, no dates, no interpretive prose — leaving one line at the entrance: “The paintings will manage.” Attendance has risen by a fifth, and the average pause before a canvas has tripled to fifty-one seconds, a figure the director now quotes the way other institutions quote endowments.</p>
+      <p class="cont">Continued on Page 8 →</p>
+    </article>
+    <article>
+      <p class="kick">Technology</p>
+      <h3>The Right to Repair Finally Gets Its Manual</h3>
+      <p class="by">By Daniel Okafor<span> · Brussels</span></p>
+      <p>The universal repair schematic — a supremely boring document with revolutionary intentions — was ratified on Tuesday after nine years of committee warfare. From January, any appliance sold in the bloc must ship with an exploded diagram that a competent stranger can follow, fasteners numbered, glue forbidden where a screw would do.</p>
+      <p>The lobbyists called it a hobbyist’s charter. The hobbyists, for once, agreed with the lobbyists, and photographed themselves doing so beside a forty-year-old tractor that still starts on the first turn.</p>
+      <p class="cont">Continued on Page 5 →</p>
+    </article>
+    <article>
+      <p class="kick">Food</p>
+      <h3>In Praise of the Tuesday Table</h3>
+      <p class="by">By Lucia Ferreira<span> · Lisbon</span></p>
+      <p>The Tuesday table is the restaurant trade’s best-kept secret: the night the kitchen cooks for itself. No tasting menus, no theatre — the good bread from the morning batch, the stew that improved overnight, whatever the chef was eating standing up. Ask for it plainly and most kitchens will feed you like a relative, which is to say generously and with commentary.</p>
+      <p>Our correspondent spent five Tuesdays being fed this way and files her expenses without apology.</p>
+      <p class="cont">Continued on Page 11 →</p>
+    </article>
+  </div>
+
+  <blockquote class="pull">
+    <p><span class="qm">“</span>The sleeper was never selling speed. It was selling the whole day you step down into, still unspent.<span class="qm">”</span></p>
+    <cite>From “The Slow Return of the Night Train” · Page One</cite>
+  </blockquote>
+
+  <div class="row3">
+    <article>
+      <p class="kick">The Column</p>
+      <h3>A Modest Defence of the Paper Map</h3>
+      <p class="by">By Henry Aldous<span> · At large</span></p>
+      <p>The map that cannot reroute you also cannot interrupt you. Unfolded across a car bonnet it turns navigation into a conversation rather than an obedience, and it fails so gracefully: no battery, no signal, merely a corner that tears along an old crease like a well-thumbed argument. You will be lost occasionally. You will also, for once, know roughly where.</p>
+    </article>
+    <article>
+      <p class="kick">Books</p>
+      <h3>A Novel That Maps Grief to the Centimetre</h3>
+      <p class="by">By Nadia Osei<span> · Books Desk</span></p>
+      <p>“The Cartographer’s Daughter” (Harwich &amp; Vale, 288pp) follows a surveyor’s estranged child as she re-measures her father’s final commission — a valley drowned for a reservoir — armed with his field notebooks and her own excellent grudges. Ilse Stein’s prose is exact without being cold; the flood, when it comes, is entirely earned.</p>
+      <p class="cont">The full review appears on Page 9 →</p>
+    </article>
+    <article>
+      <p class="kick">Cities</p>
+      <h3>Who Gets to Sit Down?</h3>
+      <p class="by">By Amara Diallo<span> · The Bench Audit</span></p>
+      <p>Our survey of four city centres found 412 public benches removed in a decade and 380 “leaning bars” installed in their place — street furniture designed to be departed. A bench is the cheapest civic promise a city can make: that you may exist in public without buying anything. Page 14 asks which councils still keep that promise, and names the ones that quietly stopped.</p>
+      <p class="cont">Continued on Page 14 →</p>
+    </article>
+  </div>
+</section>
+</main>
+
+<footer id="letters">
+  <div class="sheet">
+    <div class="oxr" aria-hidden="true"></div>
+    <div class="f-grid">
+      <div>
+        <h4>The Meridian</h4>
+        <p>A weekly review of ideas, cities and the useful arts, set and printed since MCMXI on paper that forgives second thoughts. Composed of ink, hairlines and white space; nothing else was required.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <p class="secs">The Lede <b>·</b> Essays <b>·</b> Culture <b>·</b> Technology <b>·</b> Food <b>·</b> Books <b>·</b> Cities <b>·</b> Letters <b>·</b> The Crossword, Eventually</p>
+      </div>
+      <div>
+        <h4>Correspondence</h4>
+        <p>Letters arrive by post at 4 Cannon Row, Third Floor, or by wire to the night desk before eleven. The editor reads everything and answers rather less.</p>
+      </div>
+    </div>
+    <div class="f-end">
+      <span>© 2026 The Meridian Weekend Review</span>
+      <span>Page One of Sixteen · Set in a Didone hand</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

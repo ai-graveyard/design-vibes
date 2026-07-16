@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frutiger Aero · Design Vibes</title>
+<style>
+:root{
+  --bg:#BDE8FF;
+  --bg-soft:#E8F7FF;
+  --bg-card:#FFFFFF;
+  --fg:#1B4A6B;
+  --fg-soft:#48759B;
+  --accent:#8FD400;
+  --accent-deep:#69A917;
+  --accent-soft:#A8E04E;
+  --aqua:#4CA6E8;
+  --aqua-deep:#2E86C9;
+  --sun:#FFC93C;
+  --glow:#4CA6E847;
+  --hi:#FFFe;
+  --sans:"Segoe UI","Frutiger","Frutiger Linotype",Verdana,Tahoma,-apple-system,"Helvetica Neue",Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:#fff;color:var(--fg);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+a:focus-visible{outline:3px solid var(--aqua-deep);outline-offset:3px}
+::selection{background:#8FD40059}
+.sea{background:linear-gradient(180deg,#39A0E4 0%,#155681 90%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+/* glossy top-light overlay: the Frutiger Aero signature */
+.gloss{position:relative;z-index:0}
+.gloss::before{content:"";position:absolute;z-index:-1;left:4%;right:4%;top:3px;height:48%;border-radius:inherit;background:linear-gradient(180deg,var(--hi),#FFF1);pointer-events:none}
+/* nav */
+header{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,#FFF 0%,#E8F7FFE0 100%);border-bottom:1px solid #FFFe;box-shadow:0 8px 24px #4CA6E838}
+.nav{max-width:1180px;margin:0 auto;height:60px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 32px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:1.14rem;color:var(--fg);letter-spacing:-.01em}
+.logo-orb{width:34px;height:34px;flex:none;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 32% 26%,#D6F1FF 0%,#7EC6F2 46%,var(--aqua-deep) 100%);box-shadow:inset 0 -4px 8px #14548573,inset 0 3px 5px #FFFe,0 6px 14px var(--glow)}
+nav ul{display:flex;gap:8px;list-style:none}
+nav ul a{color:var(--fg-soft);text-decoration:none;font-size:.92rem;font-weight:600;padding:7px 15px;border-radius:999px;transition:background .25s,color .25s,box-shadow .25s}
+nav ul a:hover{background:#FFFe;color:var(--aqua-deep);box-shadow:0 4px 10px #4CA6E833}
+/* gel buttons */
+.btn{position:relative;z-index:0;display:inline-block;padding:14px 30px;border-radius:999px;text-decoration:none;font-weight:700;font-size:1rem;color:#fff;text-shadow:0 1px 2px #2E600A73;background:linear-gradient(180deg,var(--accent-soft) 0%,var(--accent) 48%,var(--accent-deep) 100%);box-shadow:0 12px 26px #7ABF2E73,inset 0 1px 1px #FFFd,inset 0 -7px 12px #427C0A52;transition:transform .25s,filter .25s}
+.btn::before{content:"";position:absolute;z-index:-1;left:6px;right:6px;top:2px;height:52%;border-radius:999px;background:linear-gradient(180deg,#FFFe,#FFF1);pointer-events:none}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.05) saturate(1.05)}
+.btn:active{transform:translateY(1px);filter:none}
+.btn-aqua{background:linear-gradient(180deg,#8ED0F8 0%,var(--aqua) 48%,var(--aqua-deep) 100%);text-shadow:0 1px 2px #124A7480;box-shadow:0 12px 26px #4CA6E873,inset 0 1px 1px #FFFd,inset 0 -7px 12px #15548459}
+.btn-small{padding:9px 22px;font-size:.88rem}
+/* hero */
+.hero{position:relative;z-index:0;overflow:hidden;background:linear-gradient(180deg,#8CCEF6 0%,var(--bg) 34%,var(--bg-soft) 74%,#DDF1FE 100%)}
+.hero::before{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(620px 420px at 84% -8%,#FFF3B2F2,#FFF3B200 65%),radial-gradient(540px 340px at 4% 102%,#8FD40040,#8FD40000 70%);pointer-events:none}
+.hero::after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(112deg,#FFF0 38%,#FFF5 49%,#FFF0 60%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:52px;align-items:center;padding-top:52px}
+.tag{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:999px;margin-bottom:20px;background:linear-gradient(180deg,#FFFe,#DEF2FFCC);box-shadow:0 8px 18px var(--glow),inset 0 1px 1px #fff;font-size:.72rem;font-weight:700;letter-spacing:.12em;color:var(--aqua-deep)}
+.dot{width:9px;height:9px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#D9F7A0,var(--accent) 60%,var(--accent-deep));box-shadow:0 1px 3px #69A91780}
+h1{font-size:clamp(2.4rem,4.7vw,3.7rem);line-height:1.05;font-weight:700;letter-spacing:-.02em;margin-bottom:18px}
+h1,.sec-head h2{text-wrap:balance}
+.lede{font-size:1.08rem;color:var(--fg-soft);max-width:30rem;margin-bottom:30px;font-weight:500}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:26px}
+.hero-cta.center{justify-content:center;margin-bottom:0}
+.chips{display:flex;gap:10px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border-radius:999px;background:linear-gradient(180deg,#FFFe,#DEF2FFB8);box-shadow:0 6px 14px #4CA6E833,inset 0 1px 1px #fff;font-size:.78rem;font-weight:600;color:var(--fg-soft)}
+.chip svg{flex:none}
+/* bubbles */
+.stage{position:relative;min-height:460px}
+.orb{position:absolute;border-radius:50%;background:radial-gradient(circle at 32% 26%,#FFFe 0%,#E2F6FF99 26%,#9ED9FA4D 52%,#4CA6E859 82%,#2E86C980 100%);box-shadow:inset -10px -12px 22px #2E86C940,inset 6px 8px 14px #FFFe,0 16px 36px #4CA6E84D;animation:drift 8s ease-in-out infinite}
+.orb::after{content:"";position:absolute;top:9%;left:14%;width:46%;height:32%;border-radius:50%;background:linear-gradient(180deg,#FFFe,#FFF0);transform:rotate(-16deg)}
+.o1{width:170px;height:170px;top:-34px;right:-24px}
+.o2{width:92px;height:92px;left:-12px;bottom:48px;animation-delay:-2.6s}
+.o3{width:56px;height:56px;right:5%;bottom:-4px;animation-delay:-5s}
+@keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+/* glossy weather widget */
+.widget{position:relative;z-index:2;width:min(400px,100%);margin:36px auto 0;padding:26px 26px 22px;border-radius:28px;background:linear-gradient(180deg,#FFF 0%,#E0F3FFE6 58%,#C6E8FCEB 100%);border:1px solid #FFF;box-shadow:0 30px 60px #2E86C959,0 4px 10px #2E86C929,inset 0 1px 1px #fff;animation:drift 9s ease-in-out -1.4s infinite}
+.w-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.w-city{font-size:.85rem;font-weight:700;color:var(--fg-soft);letter-spacing:.02em}
+.w-temp{font-size:4rem;font-weight:700;line-height:1.08;letter-spacing:-.03em}
+.w-cond{font-size:.85rem;font-weight:600;color:var(--fg-soft)}
+.w-sun{flex:none;margin:4px 2px 0 0}
+.w-chips{display:flex;gap:10px;margin:18px 0 16px}
+.w-chip{flex:1;text-align:center;padding:8px 4px 9px;border-radius:14px;background:linear-gradient(180deg,#FFF,#D5EEFFB3);box-shadow:inset 0 1px 1px #fff,0 4px 10px #4CA6E829}
+.w-chip b{display:block;font-size:.6rem;letter-spacing:.12em;color:var(--aqua-deep);text-transform:uppercase}
+.w-chip em{font-style:normal;font-size:.88rem;font-weight:700;color:var(--fg)}
+.w-days{display:flex;justify-content:space-between;padding-top:14px;border-top:1px solid #4CA6E840}
+.w-days span{display:grid;justify-items:center;gap:2px;font-size:.7rem;font-weight:600;color:var(--fg-soft)}
+.w-days b{font-size:.84rem;color:var(--fg)}
+.mi{display:block}
+/* waves */
+.wave{display:block;width:100%;height:84px;margin-top:56px}
+.hero .wave{margin-top:34px}
+/* sections */
+.sec-head{max-width:640px;margin:0 auto 46px;text-align:center}
+.sec-head h2{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:700;letter-spacing:-.02em;margin-bottom:10px}
+.sec-head p{color:var(--fg-soft);font-weight:500}
+.mornings{background:#F7FCFF;padding-top:78px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.card{border-radius:26px;padding:30px 28px;background:linear-gradient(180deg,#fff 0%,#EAF6FF 100%);border:1px solid #fff;box-shadow:0 20px 44px #4CA6E838,0 2px 6px #4CA6E81F;transition:transform .3s,box-shadow .3s}
+.card:hover{transform:translateY(-8px);box-shadow:0 30px 56px #4CA6E852,0 2px 6px #4CA6E81F}
+.card h3{font-size:1.16rem;font-weight:700;margin-bottom:8px}
+.card p{font-size:.92rem;color:var(--fg-soft)}
+.icon-orb{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;margin-bottom:18px}
+.i-aqua{background:radial-gradient(circle at 32% 26%,#D7F1FF,#7EC6F2 48%,var(--aqua-deep));box-shadow:inset 0 -5px 9px #14507D61,inset 0 3px 5px #FFFe,0 10px 20px #4CA6E866}
+.i-green{background:radial-gradient(circle at 32% 26%,#E9FBC8,var(--accent-soft) 48%,var(--accent-deep));box-shadow:inset 0 -5px 9px #3C690A61,inset 0 3px 5px #FFFe,0 10px 20px #8FD40066}
+.i-gold{background:radial-gradient(circle at 32% 26%,#FFF3C4,#FFD75E 48%,#F5A623);box-shadow:inset 0 -5px 9px #AA6E0A66,inset 0 3px 5px #FFFf,0 10px 20px #FFBE3C73}
+/* eco band */
+.planet{position:relative;z-index:0;overflow:hidden;background:linear-gradient(180deg,var(--accent-soft) 0%,var(--accent) 44%,#68A81F 100%);color:#fff;padding-top:74px}
+.planet::before{content:"";position:absolute;z-index:-1;left:0;right:0;top:0;height:46%;background:linear-gradient(180deg,#FFF8,#FFF0);pointer-events:none}
+.planet .sec-head{margin-bottom:34px}
+.planet h2{color:#fff;text-shadow:0 2px 8px #46780F66}
+.planet .sec-head p{color:#FFFe}
+.orb.white{background:radial-gradient(circle at 32% 26%,#FFFe,#FFF4 52%,#FFF1 100%);box-shadow:inset -8px -10px 18px #5A961E33,inset 5px 7px 12px #FFF9,0 12px 26px #46780F40}
+.b1{width:130px;height:130px;top:30px;left:-42px}
+.b2{width:74px;height:74px;right:6%;top:52px;animation-delay:-3.4s}
+.stats{display:flex;justify-content:center;gap:64px;flex-wrap:wrap;padding:8px 0}
+.stat{text-align:center;min-width:150px}
+.stat b{display:block;font-size:clamp(2.6rem,4.6vw,3.5rem);font-weight:700;letter-spacing:-.02em;line-height:1.15;text-shadow:0 3px 10px #46780F73}
+.stat span{font-size:.86rem;font-weight:600;color:#FFFe}
+/* download */
+.pocket{position:relative;z-index:0;overflow:hidden;background:linear-gradient(180deg,#F2FBFF 0%,#DFF2FE 100%)}
+.pocket::before{content:"";position:absolute;z-index:-1;inset:0;background:radial-gradient(480px 300px at 88% 14%,#FFF3B2CC,#FFF3B200 68%);pointer-events:none}
+.p1{width:96px;height:96px;left:9%;top:70px;animation-delay:-1.8s}
+.p2{width:52px;height:52px;right:12%;top:150px;animation-delay:-4.4s}
+.pocket .sec-head{margin:0 auto;padding-top:84px}
+.pocket .sec-head p{margin-bottom:30px}
+.fine{font-size:.8rem;color:var(--fg-soft);margin-top:18px;text-align:center}
+/* footer */
+footer{position:relative;z-index:0;background:linear-gradient(180deg,#57ADE9 0%,var(--aqua-deep) 100%);color:#fff}
+footer::before{content:"";position:absolute;z-index:-1;left:0;right:0;top:0;height:40%;background:linear-gradient(180deg,#FFF5,#FFF0);pointer-events:none}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;padding:54px 0 34px}
+.logo-inv{color:#fff}
+.f-brand p{font-size:.88rem;color:#FFFe;max-width:17rem;margin-top:14px}
+.foot h4{font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:#FFFc;margin-bottom:12px}
+.foot ul{list-style:none;display:grid;gap:8px}
+.foot ul a{color:#FFFe;text-decoration:none;font-size:.9rem;font-weight:600}
+.foot ul a:hover,.f-bottom a:hover{color:#fff;text-decoration:underline}
+.f-bottom{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;border-top:1px solid #FFF5;padding:18px 0 30px;font-size:.8rem;color:#FFFe}
+.f-bottom nav{display:flex;gap:22px}
+.f-bottom a{color:#FFFe;text-decoration:none;font-weight:600}
+/* responsive */
+@media (max-width:1024px){
+nav ul{display:none}
+.hero-grid{grid-template-columns:1fr;gap:30px;padding-top:44px}
+.stage{min-height:0;padding-bottom:20px}
+.o1{right:2%;top:-46px}
+.cards{grid-template-columns:1fr;max-width:520px;margin:0 auto}
+.foot{grid-template-columns:1.4fr 1fr 1fr}
+}
+@media (max-width:600px){
+.wrap{padding:0 20px}
+.nav{padding:0 20px}
+.hero-grid{padding-top:36px}
+.lede{font-size:1rem}
+.widget{padding:22px 18px 18px}
+.w-temp{font-size:3.2rem}
+.o1{width:120px;height:120px}
+.o2{width:64px;height:64px;left:-20px}
+.wave{height:52px;margin-top:44px}
+.hero .wave{margin-top:24px}
+.stats{gap:26px}
+.stat{min-width:42%}
+.foot{grid-template-columns:1fr;gap:26px;padding-top:44px}
+.f-bottom{flex-direction:column;align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){
+*,*::before,*::after{animation:none !important;transition:none !important}
+html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<path id="wr" d="M0 38C150 20 310 14 470 30C650 48 780 68 950 60C1120 52 1280 16 1440 26L1440 88 0 88Z"/>
+<path id="wv" d="M0 46C150 28 310 22 470 38C650 56 780 76 950 68C1120 60 1280 24 1440 34L1440 88 0 88Z"/>
+<path id="i-dp" d="M7.5 1.4c2.1 2.9 3.9 5 3.9 7.1a3.9 3.9 0 1 1-7.8 0c0-2.1 1.8-4.2 3.9-7.1Z"/>
+<g id="i-sun"><g stroke="#F5A623" stroke-width="1.8" stroke-linecap="round"><path d="M12 1.2v2.6M12 18.2v2.6M3 11h2.6M18.4 11H21M5.6 4.6l1.9 1.9M16.5 15.5l1.9 1.9M18.4 4.6l-1.9 1.9M7.5 15.5l-1.9 1.9"/></g><circle cx="12" cy="11" r="4.6" fill="#FFC93C"/></g>
+<g id="i-cs"><circle cx="16.5" cy="6.5" r="4" fill="#FFC93C"/><path d="M6 19.5h11a3.6 3.6 0 0 0 .8-7.1A6 6 0 0 0 6.4 10.6 4.5 4.5 0 0 0 6 19.5Z" fill="#fff" stroke="#BEE0F5"/></g>
+<g id="i-rn"><path d="M6 15h11a3.6 3.6 0 0 0 .8-7.1A6 6 0 0 0 6.4 6.1 4.6 4.6 0 0 0 6 15Z" fill="#fff" stroke="#BEE0F5"/><path d="M8.5 17.2l-.9 2.6M13 17.2l-.9 2.6M17.4 17.2l-.9 2.6" stroke="#4CA6E8" stroke-width="1.7" stroke-linecap="round"/></g>
+</defs>
+</svg>
+<header>
+<div class="nav">
+<a class="logo" href="#top"><span class="logo-orb"><svg width="15" height="15" aria-hidden="true"><use href="#i-dp" fill="#fff"/></svg></span>Skyva</a>
+<nav aria-label="Primary">
+<ul>
+<li><a href="#mornings">Mornings</a></li>
+<li><a href="#planet">Planet</a></li>
+<li><a href="#pocket">Widgets</a></li>
+<li><a href="#pocket">Download</a></li>
+</ul>
+</nav>
+<a class="btn btn-small" href="#pocket">Get Skyva</a>
+</div>
+</header>
+<main id="top">
+<section class="hero">
+<div class="wrap hero-grid">
+<div>
+<span class="tag"><i class="dot"></i>SKYVA 4 · NOW WITH POLLEN LENS</span>
+<h1 class="sea">Your sky, freshly squeezed.</h1>
+<p class="lede">Skyva blends satellite eyes, street-corner sensors and a splash of morning dew into the friendliest forecast on Earth — so you step out the door on the sky's good side.</p>
+<div class="hero-cta">
+<a class="btn" href="#pocket">Get Skyva free</a>
+<a class="btn btn-aqua" href="#mornings">Peek at today</a>
+</div>
+<div class="chips">
+<span class="chip"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5 9.9 5.4l4.3.6-3.1 3 .7 4.3L8 11.2l-3.8 2 .7-4.2-3.1-3 4.3-.6L8 1.5Z" fill="#FFC93C"/></svg>4.9 on app stores</span>
+<span class="chip"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.6 2.2C7.8 2.6 3.6 5.4 3 12.8c3.6 1.4 8 .4 9.6-3 1.2-2.4 1.2-5 1-7.6Z" fill="#8FD400"/></svg>Runs on wind &amp; sun</span>
+<span class="chip"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.6c2.2 3 4.1 5.2 4.1 7.4a4.1 4.1 0 1 1-8.2 0C3.9 6.8 5.8 4.6 8 1.6Z" fill="#4CA6E8"/></svg>Ad-free, always</span>
+</div>
+</div>
+<div class="stage">
+<i class="orb o1"></i>
+<i class="orb o2"></i>
+<i class="orb o3"></i>
+<div class="widget gloss">
+<div class="w-head">
+<div>
+<p class="w-city">Brighton Seafront · Sat 10:24</p>
+<p class="w-temp sea">21°</p>
+<p class="w-cond">Sunny spells · gentle sea breeze</p>
+</div>
+<svg class="w-sun" width="84" height="84" viewBox="0 0 84 84" aria-hidden="true">
+<defs><radialGradient id="sg" cx="36%" cy="30%" r="80%"><stop offset="0%" stop-color="#FFF7CF"/><stop offset="55%" stop-color="#FFD75E"/><stop offset="100%" stop-color="#F5A623"/></radialGradient></defs>
+<g stroke="#FFD75E" stroke-width="4.5" stroke-linecap="round" opacity=".95"><path d="M42 3v10M42 71v10M3 42h10M71 42h10M14.4 14.4l7 7M62.6 62.6l7 7M69.6 14.4l-7 7M21.4 62.6l-7 7"/></g>
+<circle cx="42" cy="42" r="21" fill="url(#sg)"/>
+<ellipse cx="35" cy="34" rx="8.5" ry="5.5" fill="#FFF9"/>
+</svg>
+</div>
+<div class="w-chips">
+<span class="w-chip"><b>Air</b><em>Fresh</em></span>
+<span class="w-chip"><b>Pollen</b><em>Low</em></span>
+<span class="w-chip"><b>UV</b><em>3 of 11</em></span>
+</div>
+<div class="w-days">
+<span><svg class="mi" width="24" height="22" aria-hidden="true"><use href="#i-sun"/></svg>Sun<b>22°</b></span>
+<span><svg class="mi" width="24" height="22" aria-hidden="true"><use href="#i-cs"/></svg>Mon<b>24°</b></span>
+<span><svg class="mi" width="24" height="22" aria-hidden="true"><use href="#i-rn"/></svg>Tue<b>19°</b></span>
+<span><svg class="mi" width="24" height="22" aria-hidden="true"><use href="#i-sun"/></svg>Wed<b>21°</b></span>
+<span><svg class="mi" width="24" height="22" aria-hidden="true"><use href="#i-cs"/></svg>Thu<b>23°</b></span>
+</div>
+</div>
+</div>
+</div>
+<svg class="wave" viewBox="0 0 1440 88" preserveAspectRatio="none" aria-hidden="true"><use href="#wr" fill="#FFF8"/><use href="#wv" fill="#F7FCFF"/></svg>
+</section>
+<section id="mornings" class="mornings">
+<div class="wrap">
+<div class="sec-head">
+<h2 class="sea">Three little wins before breakfast</h2>
+<p>Everything Skyva knows fits on one bright card — and it lands before the kettle boils.</p>
+</div>
+<div class="cards">
+<article class="card gloss">
+<span class="icon-orb i-aqua"><svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><path d="M13 2.8c3.7 5 6.6 8.6 6.6 12.2a6.6 6.6 0 1 1-13.2 0C6.4 11.4 9.3 7.8 13 2.8Z" fill="#fff"/><ellipse cx="10.4" cy="14.6" rx="1.9" ry="3" fill="#BFE4FA" transform="rotate(18 10.4 14.6)"/></svg></span>
+<h3>Rain, five minutes early</h3>
+<p>Block-level radar watches your exact street and pings you three hundred seconds before the first drop. The washing stays dry, and you look mildly psychic.</p>
+</article>
+<article class="card gloss">
+<span class="icon-orb i-green"><svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><g fill="#fff"><circle cx="13" cy="6" r="3.6"/><circle cx="19.7" cy="10.9" r="3.6"/><circle cx="17.1" cy="18.8" r="3.6"/><circle cx="8.9" cy="18.8" r="3.6"/><circle cx="6.3" cy="10.9" r="3.6"/></g><circle cx="13" cy="13" r="3.4" fill="#FFD75E"/></svg></span>
+<h3>Pollen Lens</h3>
+<p>Watch birch, grass and nettle drift across a live map, then take the fresher route to work. Hay-fever season, noticeably softened.</p>
+</article>
+<article class="card gloss">
+<span class="icon-orb i-gold"><svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><path d="M13 3.2a6.6 6.6 0 0 1 6.6 6.6c0 3.9 1.3 5.6 2.2 6.7H4.2c.9-1.1 2.2-2.8 2.2-6.7A6.6 6.6 0 0 1 13 3.2Z" fill="#fff"/><path d="M10.5 19.4a2.6 2.6 0 0 0 5 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>
+<h3>Golden-hour bell</h3>
+<p>One gentle chime when the light turns to honey. For photographers, dog walkers and anyone who collects good sunsets.</p>
+</article>
+</div>
+</div>
+<svg class="wave" viewBox="0 0 1440 88" preserveAspectRatio="none" aria-hidden="true"><use href="#wv" fill="#A8E04E"/></svg>
+</section>
+<section id="planet" class="planet">
+<i class="orb white b1"></i>
+<i class="orb white b2"></i>
+<div class="wrap">
+<div class="sec-head">
+<h2>Powered by the weather itself</h2>
+<p>Every forecast is computed on wind and sunshine — the very things it predicts. The sky runs the numbers; we just pass them along.</p>
+</div>
+<div class="stats">
+<div class="stat"><b>100%</b><span>wind &amp; solar compute</span></div>
+<div class="stat"><b>1.8M</b><span>rain pings last spring</span></div>
+<div class="stat"><b>40</b><span>countries breathing easier</span></div>
+<div class="stat"><b>0</b><span>ads, now and forever</span></div>
+</div>
+</div>
+<svg class="wave" viewBox="0 0 1440 88" preserveAspectRatio="none" aria-hidden="true"><use href="#wr" fill="#FFF8"/><use href="#wv" fill="#F2FBFF"/></svg>
+</section>
+<section id="pocket" class="pocket">
+<i class="orb p1"></i>
+<i class="orb p2"></i>
+<div class="wrap">
+<div class="sec-head">
+<h2 class="sea">Take a pocketful of sky</h2>
+<p>Skyva is free on phones and tablets, with home-screen widgets that stay dewy-fresh all day. The sky is already out there — now it fits in your pocket, too.</p>
+</div>
+<div class="hero-cta center">
+<a class="btn" href="#top">Download Skyva</a>
+<a class="btn btn-aqua" href="#top">Browse widgets</a>
+</div>
+<p class="fine">Free forever. Rain pings, Pollen Lens and one very good sunrise included.</p>
+</div>
+<svg class="wave" viewBox="0 0 1440 88" preserveAspectRatio="none" aria-hidden="true"><use href="#wr" fill="#FFF9"/><use href="#wv" fill="#57ADE9"/></svg>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<div class="foot">
+<div class="f-brand">
+<a class="logo logo-inv" href="#top"><span class="logo-orb"><svg width="15" height="15" aria-hidden="true"><use href="#i-dp" fill="#fff"/></svg></span>Skyva</a>
+<p>Forecasts with a silver lining, served on wind and sunshine from a small studio by the sea.</p>
+</div>
+<div>
+<h4>Product</h4>
+<ul>
+<li><a href="#top">Today</a></li>
+<li><a href="#mornings">Pollen Lens</a></li>
+<li><a href="#pocket">Widgets</a></li>
+<li><a href="#mornings">Golden hour</a></li>
+</ul>
+</div>
+<div>
+<h4>Company</h4>
+<ul>
+<li><a href="#top">About</a></li>
+<li><a href="#planet">Planet pledge</a></li>
+<li><a href="#top">Press kit</a></li>
+<li><a href="#top">Careers</a></li>
+</ul>
+</div>
+<div>
+<h4>Support</h4>
+<ul>
+<li><a href="#top">Help centre</a></li>
+<li><a href="#top">Contact</a></li>
+<li><a href="#top">Status</a></li>
+</ul>
+</div>
+</div>
+<div class="f-bottom">
+<p>© 2026 Skyva Weather Ltd. Made under changeable skies in Brighton.</p>
+<nav aria-label="Legal">
+<a href="#top">Privacy</a>
+<a href="#top">Terms</a>
+<a href="#top">Cookies</a>
+</nav>
+</div>
+</div>
+</footer>
+</body>
+</html>

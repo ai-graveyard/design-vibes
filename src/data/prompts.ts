@@ -225,6 +225,60 @@ export const stylePrompts: StylePrompt[] = [
     shortPrompt: "暗黑学院，羊皮纸+咖啡棕暖金，磨损边缘圆角+烛光暖阴影",
     shortPromptEn: "Dark Academia, parchment with espresso-brown and gold, worn-edge radius with candlelight shadows"
   },
+  {
+    id: "liquid-glass",
+    name: "液态玻璃",
+    nameEn: "Liquid Glass",
+    prompt: "液态玻璃风格（Apple 2025 设计语言）。深邃蓝黑渐变画布（#05070F 到 #101830），背后漂浮冰蓝（#5AC8FA）、琥珀（#FF9F0A）、紫（#BF5AF2）的大光晕缓慢漂移。玻璃面板用 backdrop-filter: blur(32px) saturate(180%)，白色 8% 透明度填充，顶部一条 1px 白色内高光（inset 0 1px 0 rgba(255,255,255,.35)）模拟镜面反射，外圈细半透明描边。一切圆角都大而饱满：面板 28px 起步，按钮一律 999px 胶囊形。系统无衬线字体，白字为主。层级靠玻璃厚度（透明度差异）而非投影表达。",
+    promptEn: "Liquid Glass style (Apple's 2025 design language). A deep navy-black gradient canvas (#05070F to #101830) with large glowing orbs — ice blue (#5AC8FA), amber (#FF9F0A), purple (#BF5AF2) — drifting slowly behind. Glass panels use backdrop-filter: blur(32px) saturate(180%) with an 8% white fill, a 1px white inner top highlight (inset 0 1px 0 rgba(255,255,255,.35)) for specular reflection, and a thin translucent border. Every radius is generous: 28px+ panels and full 999px capsule buttons. System sans-serif, mostly white text. Express hierarchy through glass thickness (opacity differences), never drop shadows.",
+    shortPrompt: "液态玻璃，深蓝黑底+彩色光晕，重模糊玻璃+顶边镜面高光，全胶囊圆角",
+    shortPromptEn: "Liquid Glass, deep navy with glowing orbs, heavy-blur glass with specular top edge, capsule radii"
+  },
+  {
+    id: "frutiger-aero",
+    name: "Frutiger Aero",
+    nameEn: "Frutiger Aero",
+    prompt: "Frutiger Aero 风格，2000 年代的乐观科技美学。天空蓝渐变底（#BDE8FF 到 #E8F7FF 到白），配草绿（#8FD400、#7ABF2E）和水蓝（#4CA6E8）。核心是光泽而非磨砂：按钮和卡片上半部叠加白色高光渐变（白色 40% 透明度渐隐）模拟塑料与水面反光；散布漂浮气泡（径向渐变圆+白色镜面光斑）；区块间用 SVG 波浪线分隔。字体用 humanist 无衬线（Segoe UI 系），正文深蓝灰（#1B4A6B）。圆角饱满（16-28px），整体明亮、湿润、充满希望。",
+    promptEn: "Frutiger Aero style, the optimistic 2000s tech aesthetic. Sky blue gradient base (#BDE8FF to #E8F7FF to white) with grass green (#8FD400, #7ABF2E) and aqua blue (#4CA6E8). The key is gloss, not frost: overlay the top half of buttons and cards with a white highlight gradient (40% white fading out) to fake plastic and water reflections; scatter floating bubbles (radial-gradient circles with white specular dots); divide sections with SVG waves. Use a humanist sans-serif (Segoe UI family) with deep blue-gray body text (#1B4A6B). Plump radii (16-28px) — everything bright, dewy, hopeful.",
+    shortPrompt: "Frutiger Aero，天蓝草绿+光泽高光按钮，漂浮气泡与波浪分隔，饱满圆角",
+    shortPromptEn: "Frutiger Aero, sky blue and grass green with glossy highlights, floating bubbles and waves, plump radii"
+  },
+  {
+    id: "aurora",
+    name: "极光渐变",
+    nameEn: "Aurora Gradients",
+    prompt: "极光渐变风格（Stripe 式 SaaS 美学）。近白底色（#FAFAFC）配近黑文字（#0A0A14），大量留白。hero 区做一片流动极光：蓝紫（#635BFF）、青（#00D4FF）、粉（#FF80BF）多层 radial-gradient 色块经 blur(100px) 交叠，用 CSS 动画缓慢位移，边缘自然消散进白底。标题关键词用 background-clip: text 的极光渐变文字。其余部分极度克制：1px 细灰边框卡片（#E6E6EE）、小号 uppercase kicker 标签。渐变只在 hero 和 CTA 区绽放，别处保持干净。",
+    promptEn: "Aurora gradient style (Stripe-school SaaS aesthetic). Near-white base (#FAFAFC), near-black text (#0A0A14), generous whitespace. Build a flowing aurora in the hero: layered radial-gradients of blurple (#635BFF), cyan (#00D4FF), and pink (#FF80BF) blurred ~100px, drifting slowly via CSS animation and dissolving into the white base. Apply aurora gradient text to key headline words with background-clip: text. Everything else stays restrained: 1px hairline gray cards (#E6E6EE) and small uppercase kicker labels. Let gradients bloom only in the hero and CTA bands — keep the rest clean.",
+    shortPrompt: "极光渐变，白底近黑字，hero 弥散极光+渐变标题字，细灰边框卡片",
+    shortPromptEn: "Aurora gradients, white base with near-black text, diffused hero aurora and gradient headlines, hairline cards"
+  },
+  {
+    id: "editorial",
+    name: "报刊编辑风",
+    nameEn: "Editorial",
+    prompt: "报刊编辑排版风格。纸感米白底（#FAF7F0）、墨黑文字（#141414）、一处报刊红强调（#C8102E）。超大衬线报头（Georgia/Didone 气质），1px 细规则线纵横分割版面，正文用 CSS columns 排成三栏，首段用 ::first-letter 首字下沉，红色 uppercase kicker 小标签，byline 与 dateline 用斜体小字，跨栏 pull quote 大号引文。零圆角零阴影——纸面上只有墨、线与留白。",
+    promptEn: "Editorial newspaper typography style. Paper cream base (#FAF7F0), ink black text (#141414), one newspaper red accent (#C8102E). Oversized serif masthead (Georgia/Didone flavor), 1px hairline rules dividing the layout, body copy flowing in three CSS columns, ::first-letter drop caps on lead paragraphs, red uppercase kickers, italic bylines and datelines, and a large pull quote spanning columns. Zero radius, zero shadows — nothing but ink, rules, and whitespace on paper.",
+    shortPrompt: "报刊编辑风，米白底墨黑字+报刊红，衬线报头+细规则线+三栏首字下沉",
+    shortPromptEn: "Editorial style, cream and ink with newspaper red, serif masthead, hairline rules, columns and drop caps"
+  },
+  {
+    id: "terminal",
+    name: "终端黑客风",
+    nameEn: "Terminal",
+    prompt: "终端黑客风格。近黑绿底（#0A0F0B），磷光绿主文字（#33FF66）带轻微 text-shadow 辉光，琥珀色（#FFB000）做警示强调，全站只用等宽字体（ui-monospace 栈）。全屏叠加 CRT 扫描线（repeating-linear-gradient 3px 半透明横纹）和四角暗角。内容用终端语法叙事：$ 提示符命令行、[ok]/[warn] 前缀的输出日志、box-drawing 字符（┌─┐）画边框、闪烁块状光标（step 动画）。man page 式区块标题全大写宽字距。圆角不超过 4px。",
+    promptEn: "Terminal hacker style. Near-black green base (#0A0F0B), phosphor green text (#33FF66) with a subtle text-shadow glow, amber (#FFB000) for warnings, monospace only (ui-monospace stack) everywhere. Overlay full-screen CRT scanlines (3px repeating-linear-gradient stripes) plus a corner vignette. Narrate in terminal grammar: $ prompt command lines, output logs with [ok]/[warn] prefixes, box-drawing characters (┌─┐) as borders, and a blinking block cursor (step animation). Man-page section titles in wide-tracked uppercase. Radii never exceed 4px.",
+    shortPrompt: "终端黑客风，黑绿底磷光绿+琥珀，等宽字体+扫描线+闪烁光标",
+    shortPromptEn: "Terminal style, phosphor green on near-black with amber, monospace with scanlines and blinking cursor"
+  },
+  {
+    id: "pixel",
+    name: "像素风",
+    nameEn: "Pixel Art",
+    prompt: "像素风 8-bit 游戏美学。限定色盘：深夜蓝底（#1A1C2C）配番茄红（#B13E53）、橙（#EF7D57）、日光黄（#FFCD75）、荧光绿（#A7F070）、天蓝（#41A6F6）。零圆角零模糊零平滑：像素边框用多层 box-shadow 做阶梯锯齿角；按钮用 4px 硬位移阴影、按下时 translate 位移；小图标（心、星、金币）用单个 div 的多重 box-shadow 逐格画出；动画一律 steps() 跳帧。标题用等宽粗体全大写+4px 硬 text-shadow，配 HUD 元素（SCORE 计数、♥♥♥ 生命、闪烁的 PRESS START）。",
+    promptEn: "Pixel art 8-bit game aesthetic. Limited palette: midnight blue base (#1A1C2C) with tomato red (#B13E53), orange (#EF7D57), sun yellow (#FFCD75), neon green (#A7F070), sky blue (#41A6F6). Zero radius, zero blur, zero easing: build pixel borders with stacked box-shadow stair-step corners; give buttons 4px hard offset shadows that translate on press; draw tiny icons (hearts, stars, coins) cell by cell with multi box-shadow on single divs; animate everything with steps() frame jumps. Headlines in bold uppercase monospace with 4px hard text-shadows, plus HUD elements (SCORE counter, ♥♥♥ lives, blinking PRESS START).",
+    shortPrompt: "像素风，限定色盘+box-shadow 像素画，硬阴影按钮+steps() 跳帧动画",
+    shortPromptEn: "Pixel art, limited palette with box-shadow sprites, hard-shadow buttons and steps() animations"
+  },
 ];
 
 export function getPromptById(id: string): StylePrompt | undefined {

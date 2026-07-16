@@ -17,6 +17,9 @@ export interface DesignStyle {
   consEn: string[];
   examples: string[];
   examplesEn: string[];
+  /** 避坑指南：做这种风格最常见的翻车点 */
+  pitfalls: string[];
+  pitfallsEn: string[];
   colors: string[];
 }
 
@@ -82,6 +85,18 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["Apple.com", "Linear.app", "Notion.so", "Stripe.com", "Vercel.com"],
     examplesEn: ["Apple.com", "Linear.app", "Notion.so", "Stripe.com", "Vercel.com"],
+    pitfalls: [
+      "留白给得零散不成系统——Apple 的间距是 8 的倍数刻度，随手的大 margin 只会显得空",
+      "强调色到处用——蓝色只属于链接与主 CTA，满屏蓝按钮就不是 Apple 了",
+      "阴影下手太重——超过 2px 的实体投影立刻廉价，要用发丝级的超薄阴影",
+      "字重全用 Bold——层级靠字号与灰度区分，不靠加粗"
+    ],
+    pitfallsEn: [
+      "Scattered, unsystematic whitespace — Apple spacing follows an 8pt scale; random large margins just look empty",
+      "Accent color everywhere — blue belongs only to links and the primary CTA",
+      "Heavy shadows — anything beyond 2px reads cheap; keep them hairline-thin",
+      "Bold everywhere — hierarchy comes from size and gray value, not weight"
+    ],
     colors: ["#FFFFFF", "#000000", "#F5F5F7", "#0071E3", "#1D1D1F"]
   },
   {
@@ -145,6 +160,16 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["Braun.com", "Vitsoe.com", "Teenage Engineering", "Leica", "Bang & Olufsen"],
     examplesEn: ["Braun.com", "Vitsoe.com", "Teenage Engineering", "Leica", "Bang & Olufsen"],
+    pitfalls: [
+      "强调色出现第二处——焦橙只给一个功能控件，多了就成了装饰",
+      "加了装饰性图形——拉姆斯风里每个像素都要有功能理由",
+      "网格对不齐——8pt 网格是骨架，一处错位全盘皆输"
+    ],
+    pitfallsEn: [
+      "A second accent — the burnt orange goes on exactly one functional control; more becomes decoration",
+      "Decorative graphics — every pixel needs a functional reason here",
+      "Broken grid alignment — the 8pt grid is the skeleton; one misalignment ruins it all"
+    ],
     colors: ["#FFFFFF", "#000000", "#808080", "#C0C0C0", "#F2F2F2"]
   },
   {
@@ -208,6 +233,16 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["Josef Müller-Brockmann 作品", "Emil Ruder 作品", "Neue Haas Grotesk 官网", "Type Directors Club"],
     examplesEn: ["Josef Müller-Brockmann works", "Emil Ruder works", "Neue Haas Grotesk site", "Type Directors Club"],
+    pitfalls: [
+      "三原色当装饰铺满——红黄蓝只做小面积功能强调，大面积使用就成了海报涂鸦",
+      "用了圆角——瑞士风的世界里没有 border-radius",
+      "居中对称布局——非对称网格才是灵魂，居中就平庸了"
+    ],
+    pitfallsEn: [
+      "Primary colors as decoration — red/yellow/blue are small functional accents; large fields turn it into poster paint",
+      "Rounded corners — border-radius does not exist in Swiss style",
+      "Centered symmetric layouts — the asymmetric grid is the soul; centering makes it generic"
+    ],
     colors: ["#FFFFFF", "#000000", "#FF0000", "#FFD700", "#0000FF"]
   },
   {
@@ -271,6 +306,16 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["Bauhaus-Archiv Berlin", "Vitra Design Museum", "MoMA Design Store", "Alessi"],
     examplesEn: ["Bauhaus-Archiv Berlin", "Vitra Design Museum", "MoMA Design Store", "Alessi"],
+    pitfalls: [
+      "几何图形只当背景贴纸——圆、三角、方要参与版面结构，而不是漂浮装饰",
+      "描边粗细不一致——粗黑描边要统一刻度，杂乱线宽毁掉秩序感",
+      "配色加了粉紫青——红黄蓝三原色加黑白米就是全部，多一色都不是包豪斯"
+    ],
+    pitfallsEn: [
+      "Shapes as floating stickers — circles, triangles, squares must structure the layout, not decorate it",
+      "Inconsistent stroke widths — the thick black outlines need one scale; mixed weights kill the order",
+      "Extra hues — red, yellow, blue plus black/cream is the whole palette; one more and it's not Bauhaus"
+    ],
     colors: ["#FF0000", "#FFFF00", "#0000FF", "#000000", "#FFFFFF"]
   },
   {
@@ -334,6 +379,16 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["Ettore Sottsass 作品", "Memphis Milano", "Camper 鞋履", "Moschino 部分系列"],
     examplesEn: ["Ettore Sottsass works", "Memphis Milano", "Camper shoes", "Moschino collections"],
+    pitfalls: [
+      "元素散得太满——贴纸感需要呼吸空间，塞满就成了视觉噪音",
+      "描边有粗有细——所有元素统一 3px 左右的黑描边才有成套感",
+      "配色用了低饱和莫兰迪——孟菲斯的颜色必须高饱和高明度地对撞"
+    ],
+    pitfallsEn: [
+      "Overcrowding — the sticker charm needs breathing room; cramming turns it into noise",
+      "Mixed outline weights — a uniform ~3px black stroke is what makes elements feel like one set",
+      "Muted palettes — Memphis colors must clash at high saturation and brightness"
+    ],
     colors: ["#FF69B4", "#00CED1", "#FFD700", "#000000", "#FF6347"]
   },
   {
@@ -399,6 +454,16 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["macOS Big Sur", "iOS 控制中心", "Windows 11", "Linear.app", "Figma"],
     examplesEn: ["macOS Big Sur", "iOS Control Center", "Windows 11", "Linear.app", "Figma"],
+    pitfalls: [
+      "玻璃后面没有东西——没有彩色光斑可透，毛玻璃就只是一层灰色滤镜",
+      "模糊值太小——blur 低于 15px 看起来像没擦干净的屏幕而不是玻璃",
+      "忘了细边框——1px 半透明白边是玻璃边缘的关键暗示"
+    ],
+    pitfallsEn: [
+      "Nothing behind the glass — without colorful shapes to blur, frosted panels are just gray filters",
+      "Blur too weak — under 15px it looks like a smudged screen, not glass",
+      "Missing the hairline border — the 1px translucent white edge is what sells the pane"
+    ],
     colors: ["rgba(255,255,255,0.15)", "#E0E0E0", "#FF6B9D", "#4ECDC4", "#667EEA"]
   },
   {
@@ -464,6 +529,16 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["Dribbble 概念作品", "智能家居 UI", "Tesla 车机界面参考"],
     examplesEn: ["Dribbble concepts", "Smart home UI", "Tesla car UI references"],
+    pitfalls: [
+      "元素和背景不同色——新拟态的一切必须从同一块底色里长出来",
+      "加了描边——挤压感全靠双向阴影，一条 border 就穿帮",
+      "弱对比还堆小字——本就低对比的风格，正文要更大更深才能读"
+    ],
+    pitfallsEn: [
+      "Elements a different color than the background — everything must be carved from one material",
+      "Adding borders — the extrusion illusion lives in the dual shadows; a border breaks the spell",
+      "Tiny low-contrast text — in an inherently soft style, body text needs extra size and darkness"
+    ],
     colors: ["#E0E5EC", "#FFFFFF", "#A3B1C6", "#7A8CA5", "#C8D0D8"]
   },
   {
@@ -529,6 +604,16 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["brutalistwebsites.com", "Craigslist", "Bloomberg.com (部分)", "hacker news"],
     examplesEn: ["brutalistwebsites.com", "Craigslist", "Bloomberg.com (partially)", "Hacker News"],
+    pitfalls: [
+      "偷偷做了美化——加圆角、加阴影、加渐变，那就不再是粗野主义",
+      "字体换成精致无衬线——浏览器默认的 Times 与等宽体才有生猛感",
+      "排版太规整——刻意的密集堆叠与错位才是态度本身"
+    ],
+    pitfallsEn: [
+      "Sneaking in polish — rounded corners, shadows, gradients all betray the point",
+      "Swapping in refined sans-serifs — default Times and monospace carry the rawness",
+      "Layouts too tidy — deliberate density and misalignment are the attitude"
+    ],
     colors: ["#000000", "#FFFF00", "#FF0000", "#FFFFFF", "#00FF00"]
   },
   {
@@ -594,6 +679,16 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["Charli XCX - Brat", "Balenciaga 部分campaign", "MSCHF", "Yaeji"],
     examplesEn: ["Charli XCX - Brat", "Balenciaga campaigns", "MSCHF", "Yaeji"],
+    pitfalls: [
+      "乱得没有秩序——反设计是精心策划的失控，随机堆砌只是真的乱",
+      "把可用性也一起反掉——按钮仍要能找到、能点击",
+      "叛逆得不够彻底——半吊子的冲突看起来像失误而不是宣言"
+    ],
+    pitfallsEn: [
+      "Chaos without curation — anti-design is engineered loss of control; random mess is just mess",
+      "Breaking usability too — buttons must still be findable and clickable",
+      "Half-hearted rebellion — mild clashes read as mistakes, not statements"
+    ],
     colors: ["#89FC00", "#FF0000", "#0000FF", "#FFFF00", "#FF00FF"]
   },
   {
@@ -657,6 +752,16 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["Windows 8/10 UI", "早期 iOS 7-12", "Google Material Design", "Spotify"],
     examplesEn: ["Windows 8/10 UI", "Early iOS 7-12", "Google Material Design", "Spotify"],
+    pitfalls: [
+      "可点击元素认不出来——去掉一切质感后，按钮必须靠色块与形状自证身份",
+      "色块平得没有层级——扁平不等于所有区块同等重要",
+      "图标风格混搭——线性图标和面性图标混用立刻露馅"
+    ],
+    pitfallsEn: [
+      "Unrecognizable click targets — with all texture gone, buttons must prove themselves via color and shape",
+      "No hierarchy between blocks — flat style still needs visual priority",
+      "Mixed icon styles — combining outline and filled icons instantly breaks the system"
+    ],
     colors: ["#2196F3", "#4CAF50", "#FF9800", "#9C27B0", "#00BCD4"]
   },
   {
@@ -720,6 +825,16 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["Google 全系产品", "Android 系统 UI", "Flutter 应用", "YouTube"],
     examplesEn: ["All Google products", "Android system UI", "Flutter apps", "YouTube"],
+    pitfalls: [
+      "海拔乱用——Material 的阴影深度对应层级语义，不是随手的装饰",
+      "圆角刻度各自为政——圆角有 token 体系，别每张卡片自创一套",
+      "动效缺席——涟漪反馈与转场是 Material 的灵魂，静态的只是彩色卡片"
+    ],
+    pitfallsEn: [
+      "Random elevation — shadow depth encodes hierarchy in Material; it's not ad-hoc decoration",
+      "Freestyle corner radii — radii follow tokens; don't invent per card",
+      "No motion — ripples and transitions are the soul; without them it's just colored cards"
+    ],
     colors: ["#4285F4", "#34A853", "#FBBC05", "#EA4335", "#5F6368"]
   },
   {
@@ -783,6 +898,16 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["Muji 无印良品", "Kinfolk 杂志", "中川政七商店", "白井屋"],
     examplesEn: ["Muji", "Kinfolk Magazine", "Nakagawa Masashichi Shoten", "Shiroiya"],
+    pitfalls: [
+      "把留白当成空白——日式的「间」是构图的一部分，要有意图地不对称分布",
+      "排印西式化——小字号、宽字距的克制才是气质来源，大标题一喊就破功",
+      "颜色超过三种——墨、纸，加一点朱或蓝就足够"
+    ],
+    pitfallsEn: [
+      "Whitespace as mere emptiness — Japanese ma is compositional, distributed with asymmetric intent",
+      "Western-loud typography — restraint via small sizes and wide tracking carries the mood; shouting headlines break it",
+      "More than three colors — ink, paper, and one touch of vermilion or indigo suffice"
+    ],
     colors: ["#F5F5DC", "#8B7355", "#2F4F4F", "#D4AF37", "#C4A77D"]
   },
   {
@@ -846,6 +971,16 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["IKEA 宜家", "HAY", "Muuto", "Arket", "COS"],
     examplesEn: ["IKEA", "HAY", "Muuto", "Arket", "COS"],
+    pitfalls: [
+      "白得发冷——北欧的白是暖白，要配原木色与织物质感才有 hygge",
+      "版面塞满产品图——留白与大图的松弛感正是核心卖点",
+      "用了高饱和强调色——低饱和的自然色系才是这个味"
+    ],
+    pitfallsEn: [
+      "Cold sterile white — Nordic white is warm, paired with wood tones and textile texture for hygge",
+      "Cramming product shots — the relaxed spacing and large imagery are the whole point",
+      "High-saturation accents — desaturated natural hues are the register"
+    ],
     colors: ["#F5F5F5", "#D4C4B7", "#8B9A7C", "#E8DCC4", "#A9B5A3"]
   },
   {
@@ -909,6 +1044,16 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["Stripe.com", "Dropbox", "Spotify", "Mailchimp", "Slack"],
     examplesEn: ["Stripe.com", "Dropbox", "Spotify", "Mailchimp", "Slack"],
+    pitfalls: [
+      "blob 形状太规则——有机形态要像自然生长，接近正圆或椭圆就失去了意义",
+      "曲线里混进直角——一处生硬的矩形会打断整个流动感",
+      "动画太快——有机风的动效要像呼吸，快了就焦躁"
+    ],
+    pitfallsEn: [
+      "Blobs too regular — organic shapes must feel grown; near-circles defeat the purpose",
+      "Hard corners sneaking in — one sharp rectangle interrupts the entire flow",
+      "Fast animations — organic motion should breathe; speed makes it anxious"
+    ],
     colors: ["#A8E6CF", "#DCEDC1", "#FFD3B6", "#FFAAA5", "#98D8C8"]
   },
   {
@@ -972,6 +1117,16 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["Android 12 Logo", "Reddit Snoo", "Windows 11 Emoji", "Notion AI"],
     examplesEn: ["Android 12 Logo", "Reddit Snoo", "Windows 11 Emoji", "Notion AI"],
+    pitfalls: [
+      "内阴影丢了——黏土的膨胀感靠外投影与内高光同时存在",
+      "圆角不够大——低于 20px 就不像捏出来的",
+      "配色太成人——粘土拟态天生属于高明度的糖果色"
+    ],
+    pitfallsEn: [
+      "Missing the inner shadow — clay's puffiness needs the outer drop and inner highlight together",
+      "Radii too small — under ~20px it stops looking hand-molded",
+      "Grown-up palettes — clay lives in high-key candy colors"
+    ],
     colors: ["#FFB6C1", "#87CEEB", "#98FB98", "#DDA0DD", "#FFDAB9"]
   },
   {
@@ -1035,6 +1190,16 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["Figma Community", "Gumroad", "Poolside.fm", "Pitch.com", "Notion 模板"],
     examplesEn: ["Figma Community", "Gumroad", "Poolside.fm", "Pitch.com", "Notion templates"],
+    pitfalls: [
+      "阴影做了模糊——必须是 0 模糊的硬实体投影，位移 4-8px",
+      "描边细于 2px——粗黑描边就是它的身份证",
+      "按下去没有位移——active 时卡片要真的「怼」进阴影的位置"
+    ],
+    pitfallsEn: [
+      "Blurred shadows — they must be hard, zero-blur solid offsets of 4-8px",
+      "Borders thinner than 2px — the thick black outline is the ID card",
+      "No press displacement — on :active the card should physically slam into its shadow"
+    ],
     colors: ["#000000", "#FF6B35", "#004E89", "#FFFFFF", "#F7C548"]
   },
   {
@@ -1098,6 +1263,16 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["Apple 产品页", "Linear Features", "Notion 官网", "Raycast", "Arc 浏览器"],
     examplesEn: ["Apple Product Pages", "Linear Features", "Notion.so", "Raycast", "Arc Browser"],
+    pitfalls: [
+      "格子大小没有节奏——bento 的魅力在大小格的韵律，全部等大就成了普通网格",
+      "单个格子信息过载——每格只讲一件事",
+      "圆角与间距各自为政——所有格子共享同一套 radius 和 gap 才像一个便当盒"
+    ],
+    pitfallsEn: [
+      "No size rhythm — bento charm lives in varied cell sizes; uniform cells are just a grid",
+      "Overstuffed cells — each box tells exactly one thing",
+      "Freestyle radius and gaps — every cell must share one radius and gap to read as one box"
+    ],
     colors: ["#FFFFFF", "#F0F0F0", "#000000", "#007AFF", "#1E1E1E"]
   },
   {
@@ -1161,6 +1336,16 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["Spotify Wrapped", "Adidas Originals", "NPR", "Twitch 品牌", "Nike ACG"],
     examplesEn: ["Spotify Wrapped", "Adidas Originals", "NPR", "Twitch branding", "Nike ACG"],
+    pitfalls: [
+      "第三种颜色混进来——双色调的纪律就是两个色相（加各自深浅）",
+      "两色对比不足——要选色相环上距离足够远的对撞色",
+      "照片保持全彩——图片必须做双色映射，否则立刻出戏"
+    ],
+    pitfallsEn: [
+      "A third hue sneaks in — the discipline is two hues plus their tints",
+      "Weak contrast between the two — pick hues far apart on the wheel",
+      "Full-color photos — imagery must be duotone-mapped or the spell breaks"
+    ],
     colors: ["#1E3A8A", "#F97316", "#7C3AED", "#10B981", "#000000"]
   },
   {
@@ -1226,6 +1411,16 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["Apple 产品发布会", "Active Theory 作品", "Awwwards 获奖站", "KIKK Festival"],
     examplesEn: ["Apple keynotes", "Active Theory works", "Awwwards winners", "KIKK Festival"],
+    pitfalls: [
+      "所有文字同时在动——动态字体需要编排节奏，全部一起动等于没有焦点",
+      "循环不停不歇——动画要慢、要留静止段，否则让人头晕",
+      "忽略 prefers-reduced-motion——动效风格的可访问性红线"
+    ],
+    pitfallsEn: [
+      "Everything animating at once — kinetic type needs choreography; simultaneous motion means no focus",
+      "Relentless loops — keep cycles slow with resting beats, or it's nauseating",
+      "Ignoring prefers-reduced-motion — the accessibility red line of motion-heavy styles"
+    ],
     colors: ["#FF0000", "#000000", "#FFFFFF", "#FFD700", "#00FFFF"]
   },
   {
@@ -1291,6 +1486,16 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["Cyberpunk 2077", "银翼杀手 2049", "赛博朋克边缘行者", "AKIRA"],
     examplesEn: ["Cyberpunk 2077", "Blade Runner 2049", "Cyberpunk: Edgerunners", "AKIRA"],
+    pitfalls: [
+      "霓虹全都开到最亮——霓虹要有主次层级，全亮等于全灰",
+      "故障效果太频繁——glitch 是标点符号不是正文",
+      "文字直接压在噪点上——赛博朋克也需要可读性的底垫"
+    ],
+    pitfallsEn: [
+      "Every neon at max — glow needs hierarchy; all-bright reads as flat gray",
+      "Constant glitching — glitch is punctuation, not prose",
+      "Text straight on noise — even cyberpunk needs readable backing"
+    ],
     colors: ["#FF00FF", "#00FFFF", "#FFFF00", "#000000", "#FF1493"]
   },
   {
@@ -1356,6 +1561,16 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["Macintosh Plus - Floral Shoppe", "Saint Pepsi", "Arizona Iced Tea x Adidas"],
     examplesEn: ["Macintosh Plus - Floral Shoppe", "Saint Pepsi", "Arizona Iced Tea x Adidas"],
+    pitfalls: [
+      "只有粉紫渐变没有符号——蒸汽波靠雕像、棕榈、网格地平线这些符号叙事",
+      "字体太现代——需要衬线斜体或全角宽字距的复古味（还有日文假名点缀）",
+      "饱和度拉满——蒸汽波是褪色的梦，要带一层雾感"
+    ],
+    pitfallsEn: [
+      "Gradient without iconography — vaporwave narrates through statues, palms, grid horizons",
+      "Too-modern typefaces — it wants italic serifs or wide-tracked retro faces (plus katakana accents)",
+      "Full saturation — vaporwave is a faded dream; keep a hazy wash over it"
+    ],
     colors: ["#FF69B4", "#00CED1", "#9400D3", "#FFD700", "#1E90FF"]
   },
   {
@@ -1421,6 +1636,16 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["Gucci.com", "Valentino", "Dolce & Gabbana", "Versace", "Vogue Italia"],
     examplesEn: ["Gucci.com", "Valentino", "Dolce & Gabbana", "Versace", "Vogue Italia"],
+    pitfalls: [
+      "多而无序——极繁是有层次的丰富而不是随机堆放，要保留视觉动线",
+      "元素之间没有呼应——图案与色彩要成组、成家族地重复出现",
+      "可读性牺牲殆尽——正文区仍然需要一块相对安静的底"
+    ],
+    pitfallsEn: [
+      "Abundance without order — maximalism is layered richness, not random piles; keep a visual path",
+      "No echoing motifs — patterns and colors must repeat in families",
+      "Sacrificing all readability — body copy still needs a calmer backing"
+    ],
     colors: ["#FF1493", "#00FF00", "#FFD700", "#FF4500", "#8B00FF"]
   },
   {
@@ -1486,6 +1711,16 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["了不起的盖茨比", "克莱斯勒大厦", "The Savoy London", "Tiffany & Co."],
     examplesEn: ["The Great Gatsby", "Chrysler Building", "The Savoy London", "Tiffany & Co."],
+    pitfalls: [
+      "金色用成土豪金——Deco 的金是细线条的金属光泽，不是大面积填充",
+      "图案不对称——对称与放射结构是装饰艺术的骨架",
+      "字体用了圆润无衬线——它需要几何感衬线或装饰性大写字母"
+    ],
+    pitfallsEn: [
+      "Gold as bulk fill — Deco gold lives in fine metallic linework, not large fills",
+      "Asymmetric ornament — symmetry and radiating structure are the skeleton",
+      "Soft rounded sans-serifs — it wants geometric serifs or decorative capitals"
+    ],
     colors: ["#FFD700", "#C0C0C0", "#000000", "#8B4513", "#1C1C1C"]
   },
   {
@@ -1551,6 +1786,454 @@ export const designStyles: DesignStyle[] = [
     ],
     examples: ["Oxford University Press", "Penguin Classics", "The School of Life", "Hogwarts Legacy"],
     examplesEn: ["Oxford University Press", "Penguin Classics", "The School of Life", "Hogwarts Legacy"],
+    pitfalls: [
+      "黑得没有暖光——暗黑学院是烛光下的暖棕黑，冷灰黑就成了赛博哥特",
+      "材质缺席——羊皮纸、皮革、木纹的质感是氛围的一半",
+      "衬线字体太现代——要有旧印刷的味道（Garamond 一系）"
+    ],
+    pitfallsEn: [
+      "Cold blackness — dark academia is warm candlelit brown-black; cool grays turn it cyber-goth",
+      "No texture — parchment, leather, and wood grain carry half the mood",
+      "Modern serifs — it needs old-print flavor (the Garamond family)"
+    ],
     colors: ["#2F4F4F", "#8B4513", "#000000", "#F5F5DC", "#800020"]
+  },
+  {
+    id: "liquid-glass",
+    name: "液态玻璃",
+    nameEn: "Liquid Glass",
+    rating: 3.8,
+    description: "Apple 在 2025 年 WWDC 发布的新一代设计语言，玻璃拟态的进化形态。界面元素如同真实的液态玻璃——折射、镜面高光与动态模糊随内容流动，层级由材质厚度而非阴影表达。克制的深色画布上，光线成为唯一的装饰。",
+    descriptionEn: "Apple's next-generation design language unveiled at WWDC 2025 — glassmorphism evolved. UI elements behave like real liquid glass: refraction, specular highlights, and dynamic blur flow with content, while hierarchy comes from material thickness rather than shadows. On a restrained dark canvas, light itself is the only ornament.",
+    tags: ["现代", "热门", "前卫"],
+    tagsEn: ["Modern", "Hot", "Avant-garde"],
+    features: [
+      "镜面高光边缘 - 顶部 1px 白色内高光",
+      "深度背景模糊 - blur 28-40px + 饱和提升",
+      "全胶囊圆角 - 面板 28px 起、按钮 999px",
+      "彩色光晕背景 - 玻璃后漂浮的发光 orb",
+      "材质厚度分层 - 用透明度而非阴影表达层级"
+    ],
+    featuresEn: [
+      "Specular edge highlight - 1px white inner top glow",
+      "Deep backdrop blur - 28-40px with saturation boost",
+      "Full capsule radii - 28px+ panels, 999px buttons",
+      "Glowing orb backdrops - colored light behind glass",
+      "Material-depth layering - opacity over shadows"
+    ],
+    useCases: [
+      "操作系统与系统级应用",
+      "高端科技产品发布页",
+      "音乐/视频播放器界面",
+      "智能家居控制面板",
+      "AR/VR 空间界面"
+    ],
+    useCasesEn: [
+      "Operating systems and system-level apps",
+      "Premium tech product launch pages",
+      "Music/video player interfaces",
+      "Smart home control panels",
+      "AR/VR spatial interfaces"
+    ],
+    pros: [
+      "紧贴 Apple 最新设计趋势",
+      "通透高级的未来感",
+      "层级清晰而不依赖投影",
+      "深色场景下极具沉浸感"
+    ],
+    prosEn: [
+      "Aligned with Apple's latest design direction",
+      "Translucent, premium, futuristic",
+      "Clear hierarchy without heavy shadows",
+      "Deeply immersive in dark contexts"
+    ],
+    cons: [
+      "浏览器兼容性要求高 - backdrop-filter",
+      "低对比场景有可读性风险",
+      "多层模糊有性能开销"
+    ],
+    consEn: [
+      "High browser requirements - backdrop-filter",
+      "Readability risk in low contrast",
+      "Performance cost of layered blur"
+    ],
+    examples: ["iOS 26", "macOS Tahoe", "visionOS", "Apple.com"],
+    examplesEn: ["iOS 26", "macOS Tahoe", "visionOS", "Apple.com"],
+    pitfalls: [
+      "拿玻璃拟态旧配方交差——液态玻璃的关键是顶边镜面高光与「厚度」层级，不只是模糊",
+      "背景光晕静止不动——光要缓慢漂移，静止的光晕像贴图",
+      "硬套在浅色底上——它只在深色画布上成立"
+    ],
+    pitfallsEn: [
+      "Recycling plain glassmorphism — Liquid Glass hinges on the specular top edge and thickness hierarchy, not just blur",
+      "Static orbs — the light must drift slowly; frozen glow looks pasted on",
+      "Forcing it onto light backgrounds — it only convinces on a dark canvas"
+    ],
+    colors: ["#0A0E1F", "#5AC8FA", "#BF5AF2", "#FF9F0A", "#F2F4F8"]
+  },
+  {
+    id: "frutiger-aero",
+    name: "Frutiger Aero",
+    nameEn: "Frutiger Aero",
+    rating: 3.3,
+    description: "2004-2013 年间统治世界的乐观科技美学——Windows Vista 的光泽按钮、天空草地壁纸、漂浮的水泡与锦鲤。它相信科技会带来更绿色美好的未来。如今作为千禧怀旧浪潮在社交平台上强势回归。",
+    descriptionEn: "The optimistic tech aesthetic that ruled 2004-2013 — Windows Vista's glossy buttons, sky-and-grass wallpapers, floating bubbles and koi fish. It believed technology would bring a greener, brighter future. Now roaring back across social platforms as millennial nostalgia.",
+    tags: ["复古", "活泼", "流行"],
+    tagsEn: ["Vintage", "Playful", "Trendy"],
+    features: [
+      "光泽质感 - 上半部白色高光渐变",
+      "自然意象 - 天空/草地/水滴/气泡",
+      "天蓝草绿配色 - 明亮高饱和",
+      "饱满圆角 - 16-28px 水润感",
+      "光晕与镜头光斑点缀"
+    ],
+    featuresEn: [
+      "Glossy surfaces - white top-half highlight gradients",
+      "Nature imagery - sky/grass/water/bubbles",
+      "Sky blue and grass green - bright and saturated",
+      "Plump radii - 16-28px dewy softness",
+      "Glows and lens flare accents"
+    ],
+    useCases: [
+      "天气/环保类应用",
+      "怀旧向个人主页",
+      "饮品与个护品牌",
+      "儿童科技产品",
+      "Y2K 复古营销活动页"
+    ],
+    useCasesEn: [
+      "Weather and eco apps",
+      "Nostalgia-driven personal sites",
+      "Beverage and personal care brands",
+      "Kids' tech products",
+      "Y2K revival campaign pages"
+    ],
+    pros: [
+      "强烈的怀旧情绪共鸣",
+      "乐观治愈的独特氛围",
+      "在扁平化泛滥中极具辨识度",
+      "自带社交传播话题性"
+    ],
+    prosEn: [
+      "Powerful nostalgia resonance",
+      "Uniquely optimistic, healing mood",
+      "Stands out in a flat-design world",
+      "Built-in social virality"
+    ],
+    cons: [
+      "分寸难拿捏 - 易显廉价过时",
+      "光泽细节工作量大",
+      "不适合严肃商务场景"
+    ],
+    consEn: [
+      "Hard to balance - can look cheap or dated",
+      "Gloss details are labor-intensive",
+      "Poor fit for serious business"
+    ],
+    examples: ["Windows Vista", "Wii 主界面", "iTunes 7", "Frutiger Aero Archive"],
+    examplesEn: ["Windows Vista", "Wii Menu", "iTunes 7", "Frutiger Aero Archive"],
+    pitfalls: [
+      "做成了磨砂玻璃——Aero 的质感是光泽塑料与水面，高光要锐利清晰",
+      "自然元素缺席——没有天空、草地、气泡，就只剩一个过时的渐变按钮",
+      "配色发灰——它的蓝与绿必须干净明亮，像洗过的晴天"
+    ],
+    pitfallsEn: [
+      "Frosting instead of gloss — Aero is shiny plastic and water; highlights must be crisp",
+      "No nature — without sky, grass, and bubbles it's just a dated gradient button",
+      "Grayish tints — its blues and greens must stay clean and bright, like a washed sky"
+    ],
+    colors: ["#BDE8FF", "#4CA6E8", "#8FD400", "#FFFFFF", "#1B4A6B"]
+  },
+  {
+    id: "aurora",
+    name: "极光渐变",
+    nameEn: "Aurora Gradients",
+    rating: 4.0,
+    description: "当代 SaaS 营销页的统治性美学：干净的白底与克制的排版之上，一片缓慢流动的极光渐变作为唯一的情绪出口。源自 Stripe 的标志性 hero 动效，如今已是「专业而不无聊」的代名词。",
+    descriptionEn: "The dominant aesthetic of modern SaaS marketing: over a clean white canvas and restrained typography, one slowly flowing aurora gradient serves as the sole emotional outlet. Born from Stripe's iconic hero animation, it's now shorthand for 'professional but not boring'.",
+    tags: ["现代", "流行", "热门"],
+    tagsEn: ["Modern", "Trendy", "Hot"],
+    features: [
+      "弥散极光渐变 - 多层模糊色块交叠",
+      "干净白底 - 渐变只在关键区绽放",
+      "渐变文字 - background-clip: text",
+      "细灰边框卡片 - 1px hairline",
+      "缓慢流动动画 - 8s+ 循环"
+    ],
+    featuresEn: [
+      "Diffused aurora gradients - layered blurred color fields",
+      "Clean white base - gradients bloom only at key moments",
+      "Gradient text - background-clip: text",
+      "Hairline gray cards - 1px borders",
+      "Slow drifting animation - 8s+ loops"
+    ],
+    useCases: [
+      "SaaS 产品官网",
+      "AI 产品发布页",
+      "开发者工具营销页",
+      "金融科技品牌",
+      "科技大会活动页"
+    ],
+    useCasesEn: [
+      "SaaS product sites",
+      "AI product launch pages",
+      "Developer tool marketing",
+      "Fintech brands",
+      "Tech conference pages"
+    ],
+    pros: [
+      "专业感与情绪张力兼得",
+      "极易与品牌色结合",
+      "实现成熟 - 纯 CSS 可达",
+      "转化率经过市场验证"
+    ],
+    prosEn: [
+      "Professional yet emotive",
+      "Easy to adapt to brand colors",
+      "Mature technique - pure CSS",
+      "Market-proven conversion"
+    ],
+    cons: [
+      "同质化严重 - 满街都是",
+      "渐变色彩管理有门槛",
+      "过度使用会显得浮夸"
+    ],
+    consEn: [
+      "Heavily saturated - it's everywhere",
+      "Gradient color control takes skill",
+      "Overuse reads as flashy"
+    ],
+    examples: ["Stripe.com", "Linear.app", "Raycast.com", "Resend.com", "Clerk.com"],
+    examplesEn: ["Stripe.com", "Linear.app", "Raycast.com", "Resend.com", "Clerk.com"],
+    pitfalls: [
+      "渐变铺满全页——极光只在 hero 与 CTA 绽放，其余保持素净",
+      "相邻色相脏了——过渡必须干净通透，混浊立刻显得廉价",
+      "忘了动起来——静止的极光只是一团彩色模糊"
+    ],
+    pitfallsEn: [
+      "Gradients everywhere — the aurora blooms only in hero and CTA bands; keep the rest plain",
+      "Muddy hue transitions — blends must stay clean and luminous or it cheapens fast",
+      "No motion — a static aurora is just colored blur"
+    ],
+    colors: ["#FAFAFC", "#635BFF", "#00D4FF", "#FF80BF", "#0A0A14"]
+  },
+  {
+    id: "editorial",
+    name: "报刊编辑风",
+    nameEn: "Editorial",
+    rating: 3.8,
+    description: "把百年报刊排版工艺搬进浏览器：衬线报头、细规则线、多栏文字流、首字下沉与引文抽排。设计完全服务于阅读节奏，墨、线与留白就是全部的装饰。数字时代里最持久优雅的信息美学。",
+    descriptionEn: "A century of newspaper typographic craft brought to the browser: serif mastheads, hairline rules, multi-column text flows, drop caps and pull quotes. Design serves reading rhythm entirely — ink, rules, and whitespace are the only ornaments. The most enduring information aesthetic of the digital age.",
+    tags: ["经典", "个性", "艺术"],
+    tagsEn: ["Classic", "Distinctive", "Art"],
+    features: [
+      "超大衬线报头 - Didone 气质",
+      "细规则线分栏 - 1px hairline",
+      "多栏文字流 - CSS columns",
+      "首字下沉 - ::first-letter",
+      "编辑元素齐全 - kicker/byline/引文"
+    ],
+    featuresEn: [
+      "Oversized serif masthead - Didone flavor",
+      "Hairline column rules - 1px",
+      "Multi-column text flow - CSS columns",
+      "Drop caps - ::first-letter",
+      "Full editorial kit - kickers/bylines/pull quotes"
+    ],
+    useCases: [
+      "数字杂志与 Newsletter",
+      "深度报道专题页",
+      "内容型个人博客",
+      "出版社与书评站点",
+      "品牌内容中心"
+    ],
+    useCasesEn: [
+      "Digital magazines and newsletters",
+      "Long-form feature stories",
+      "Content-first personal blogs",
+      "Publishers and book review sites",
+      "Brand content hubs"
+    ],
+    pros: [
+      "阅读体验极佳",
+      "永不过时的优雅",
+      "内容权威感强",
+      "对图片素材依赖低"
+    ],
+    prosEn: [
+      "Excellent reading experience",
+      "Timeless elegance",
+      "Strong editorial authority",
+      "Low dependency on imagery"
+    ],
+    cons: [
+      "对文字质量要求极高",
+      "视觉冲击力偏弱",
+      "多栏布局响应式改造繁琐"
+    ],
+    consEn: [
+      "Demands high-quality writing",
+      "Modest visual impact",
+      "Column layouts are fussy responsively"
+    ],
+    examples: ["NYTimes.com", "The New Yorker", "Monocle", "The Economist"],
+    examplesEn: ["NYTimes.com", "The New Yorker", "Monocle", "The Economist"],
+    pitfalls: [
+      "规则线太粗——报刊的线是 0.5-1px 的 hairline，粗了就成了表格",
+      "栏宽失控——每栏 45-75 字符是可读性铁律",
+      "编辑元素缺席——没有 kicker、byline、首字下沉，就只是分了栏的博客"
+    ],
+    pitfallsEn: [
+      "Heavy rules — editorial lines are 0.5-1px hairlines; thicker reads as spreadsheet",
+      "Runaway measure — 45-75 characters per column is the iron law",
+      "Missing editorial furniture — without kickers, bylines, and drop caps it's just a blog in columns"
+    ],
+    colors: ["#FAF7F0", "#141414", "#C8102E", "#8A857C", "#E8E2D5"]
+  },
+  {
+    id: "terminal",
+    name: "终端黑客风",
+    nameEn: "Terminal",
+    rating: 3.6,
+    description: "把 CRT 磷光屏的绿色辉光、扫描线与命令行语法搬上网页。等宽字体是唯一的字体，命令与输出是唯一的叙事。对开发者而言这是母语般的亲切感，对大众则是黑客电影式的神秘想象。",
+    descriptionEn: "The green phosphor glow, scanlines, and command-line grammar of CRT screens brought to the web. Monospace is the only typeface; commands and output are the only narrative. Native tongue for developers, hacker-movie mystique for everyone else.",
+    tags: ["复古", "个性"],
+    tagsEn: ["Vintage", "Distinctive"],
+    features: [
+      "全站等宽字体 - ui-monospace 栈",
+      "磷光绿辉光 - text-shadow 光晕",
+      "CRT 扫描线 - repeating-gradient 叠加",
+      "闪烁块状光标 - step 动画",
+      "终端窗口 chrome 与 $ 提示符"
+    ],
+    featuresEn: [
+      "Monospace everywhere - ui-monospace stack",
+      "Phosphor green glow - text-shadow halos",
+      "CRT scanlines - repeating-gradient overlay",
+      "Blinking block cursor - step animation",
+      "Terminal chrome with $ prompts"
+    ],
+    useCases: [
+      "CLI 工具与开发者产品",
+      "程序员个人主页",
+      "技术博客",
+      "网络安全公司",
+      "编程教育平台"
+    ],
+    useCasesEn: [
+      "CLI tools and dev products",
+      "Developer portfolios",
+      "Tech blogs",
+      "Cybersecurity companies",
+      "Coding education platforms"
+    ],
+    pros: [
+      "开发者受众天然好感",
+      "实现成本低 - 几乎零图片",
+      "性能极佳",
+      "氛围一致性极强"
+    ],
+    prosEn: [
+      "Instant developer credibility",
+      "Cheap to build - nearly zero images",
+      "Excellent performance",
+      "Powerful atmospheric coherence"
+    ],
+    cons: [
+      "大众用户有阅读门槛",
+      "长文阅读易疲劳",
+      "绿色单色情绪单一"
+    ],
+    consEn: [
+      "Steep readability for general users",
+      "Fatiguing for long reads",
+      "Monochrome green limits emotional range"
+    ],
+    examples: ["Warp.dev", "Charm.sh", "asciinema.org", "cool-retro-term"],
+    examplesEn: ["Warp.dev", "Charm.sh", "asciinema.org", "cool-retro-term"],
+    pitfalls: [
+      "混进了非等宽字体——一处 sans-serif 就足以出戏",
+      "绿色只有一档——磷光绿需要亮、暗、辉光多档层次",
+      "扫描线太重——叠加层透明度超过 10% 会杀死可读性"
+    ],
+    pitfallsEn: [
+      "A non-monospace font sneaks in — one sans-serif breaks character",
+      "Single-shade green — phosphor needs bright, dim, and glow tiers",
+      "Scanlines too heavy — overlay opacity beyond ~10% kills readability"
+    ],
+    colors: ["#0A0F0B", "#33FF66", "#FFB000", "#0F5F2E", "#E8FFE8"]
+  },
+  {
+    id: "pixel",
+    name: "像素风",
+    nameEn: "Pixel Art",
+    rating: 3.4,
+    description: "8-bit 游戏机的限定色盘与马赛克方块美学。每个图形都由可见的像素格构成，动画逐帧跳动而非平滑过渡，界面像一台老游戏机的开机画面。粗糙即魅力，怀旧即语言。",
+    descriptionEn: "The limited palettes and mosaic-block aesthetic of 8-bit consoles. Every graphic is built from visible pixel cells, animations jump frame-by-frame instead of easing, and the interface feels like an old console boot screen. Roughness is the charm; nostalgia is the language.",
+    tags: ["复古", "活泼", "个性"],
+    tagsEn: ["Vintage", "Playful", "Distinctive"],
+    features: [
+      "限定色盘 - NES/PICO-8 式 8-16 色",
+      "box-shadow 像素画 - 逐格绘制图标",
+      "零圆角零模糊 - 硬边一切",
+      "steps() 跳帧动画",
+      "HUD 元素 - SCORE/生命值/PRESS START"
+    ],
+    featuresEn: [
+      "Limited palettes - NES/PICO-8 style 8-16 colors",
+      "Box-shadow pixel art - icons drawn cell by cell",
+      "Zero radius, zero blur - hard edges everywhere",
+      "Frame-stepped animations - steps()",
+      "HUD elements - SCORE/hearts/PRESS START"
+    ],
+    useCases: [
+      "独立游戏工作室",
+      "游戏发布会活动页",
+      "复古主题电商",
+      "数字藏品平台",
+      "程序员趣味个人站"
+    ],
+    useCasesEn: [
+      "Indie game studios",
+      "Game launch event pages",
+      "Retro-themed e-commerce",
+      "Digital collectible platforms",
+      "Playful developer sites"
+    ],
+    pros: [
+      "辨识度拉满",
+      "游戏玩家情感共鸣强",
+      "图形资产体积小",
+      "容错率高 - 粗糙即风格"
+    ],
+    prosEn: [
+      "Maximum recognizability",
+      "Strong gamer resonance",
+      "Tiny graphic assets",
+      "Forgiving - roughness is the style"
+    ],
+    cons: [
+      "精致像素画其实很费工",
+      "正文可读性受限",
+      "严肃场景完全不适用"
+    ],
+    consEn: [
+      "Good pixel art is laborious",
+      "Limited body-text readability",
+      "Unusable in serious contexts"
+    ],
+    examples: ["Celeste", "Stardew Valley", "itch.io", "Poolsuite.net"],
+    examplesEn: ["Celeste", "Stardew Valley", "itch.io", "Poolsuite.net"],
+    pitfalls: [
+      "用了平滑缓动曲线——一切运动必须 steps() 跳帧",
+      "圆角和模糊混进来——像素世界里没有抗锯齿",
+      "色盘失控——超过 16 色就没有 8-bit 的味道了"
+    ],
+    pitfallsEn: [
+      "Smooth easing curves — all motion must jump via steps()",
+      "Rounded corners or blur creeping in — the pixel world has no anti-aliasing",
+      "Palette sprawl — beyond 16 colors the 8-bit flavor is gone"
+    ],
+    colors: ["#1A1C2C", "#B13E53", "#FFCD75", "#41A6F6", "#A7F070"]
   },
 ].sort((a, b) => b.rating - a.rating);

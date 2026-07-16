@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liquid Glass · Design Vibes</title>
+<style>
+:root{
+--bg:#05070f;
+--bg1:#0a1022;
+--fg:#ffffff;
+--muted:#ffffffa6;
+--faint:#ffffff6b;
+--accent:#5ac8fa;
+--accent-deep:#2f7cf6;
+--amber:#ff9f0a;
+--violet:#bf5af2;
+--glass:#ffffff17;
+--glass-soft:#ffffff0d;
+--stroke:#ffffff2e;
+--stroke-soft:#ffffff1a;
+--edge:#ffffff59;
+--shadow:0 24px 70px #0206148c;
+--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+--mono:ui-monospace,"SF Mono",Menlo,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--fg);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:linear-gradient(180deg,var(--bg) 0%,var(--bg1) 50%,#101830 100%)}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.45}
+.orb-1{width:560px;height:560px;top:-16%;left:-9%;background:var(--accent);--dx:9vw;--dy:7vh;animation:drift 26s ease-in-out infinite alternate}
+.orb-2{width:500px;height:500px;top:22%;right:-12%;background:var(--violet);opacity:.38;--dx:-8vw;--dy:10vh;animation:drift 33s ease-in-out -8s infinite alternate}
+.orb-3{width:460px;height:460px;bottom:-18%;left:24%;background:var(--amber);opacity:.3;--dx:8vw;--dy:-6vh;animation:drift 39s ease-in-out -15s infinite alternate}
+@keyframes drift{to{transform:translate3d(var(--dx),var(--dy),0) scale(1.15)}}
+.lg{
+position:relative;
+background:linear-gradient(135deg,var(--glass),var(--glass-soft));
+-webkit-backdrop-filter:blur(32px) saturate(180%);
+backdrop-filter:blur(32px) saturate(180%);
+border:1px solid var(--stroke);
+box-shadow:var(--shadow),inset 0 1px 0 var(--edge),inset 0 -1px 0 #ffffff0f;
+}
+.lg::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(130% 65% at 14% -8%,#ffffff29,transparent 52%),radial-gradient(70% 45% at 88% 112%,#ffffff12,transparent 60%)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+header{position:sticky;top:18px;z-index:10;padding:0 32px}
+.nav{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 14px 12px 24px;border-radius:999px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.06rem}
+.logo-mark{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--violet));box-shadow:inset 0 1px 0 #ffffff80,0 6px 16px #5ac8fa66;display:grid;place-items:center}
+nav ul{display:flex;gap:30px;list-style:none}
+nav a{color:var(--muted);font-size:.9rem;transition:color .25s}
+nav a:hover{color:var(--fg)}
+.btn{display:inline-block;padding:13px 28px;border-radius:999px;font-size:.94rem;font-weight:600;color:var(--fg);border:1px solid var(--stroke);background:#ffffff1a;box-shadow:inset 0 1px 0 #ffffff4d;transition:transform .25s,box-shadow .25s,background .25s}
+.btn:hover{transform:translateY(-2px);background:#ffffff29;box-shadow:inset 0 1px 0 #ffffff66,0 14px 34px #02061473}
+.btn-primary{background:linear-gradient(135deg,#5ac8faeb,#2f7cf6eb);border-color:#ffffff59;box-shadow:0 12px 32px #5ac8fa59,inset 0 1px 0 #ffffff80}
+.btn-primary:hover{background:linear-gradient(135deg,var(--accent),var(--accent-deep));box-shadow:0 18px 44px #5ac8fa80,inset 0 1px 0 #ffffff8c}
+.btn-sm{padding:9px 20px;font-size:.86rem}
+.hero{padding:76px 0 92px;text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 18px;border-radius:999px;font-size:.76rem;font-weight:600;letter-spacing:.12em;color:var(--muted);border:1px solid var(--stroke-soft);background:#ffffff0f;margin-bottom:26px}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+h1{font-size:clamp(2.6rem,6.4vw,4.9rem);line-height:1.04;font-weight:800;letter-spacing:-.03em;margin-bottom:24px}
+.grad-text{background:linear-gradient(100deg,var(--accent) 10%,var(--violet) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{font-size:1.08rem;color:var(--muted);max-width:37rem;margin:0 auto 36px}
+.hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.dock{display:inline-flex;gap:14px;padding:16px 18px;border-radius:30px;margin-top:56px;overflow:hidden}
+.dock::before{content:"";position:absolute;top:0;bottom:0;left:-70%;width:45%;background:linear-gradient(100deg,transparent,#ffffff21,transparent);animation:sheen 9s ease-in-out infinite}
+@keyframes sheen{0%,55%{left:-70%}90%,100%{left:130%}}
+.ic{width:58px;height:58px;border-radius:17px;display:grid;place-items:center;flex:none;box-shadow:inset 0 1px 0 #ffffff73,0 10px 22px #02061473;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.ic:hover{transform:translateY(-11px) scale(1.15)}
+.ic-fi{background:linear-gradient(180deg,#67d1ff,#1f8ef1)}
+.ic-ph{background:radial-gradient(circle,#fff 25%,#fff0 26%),conic-gradient(from 30deg,#ff5e5b,#ff9f0a,#ffd60a,#32d74b,#5ac8fa,#bf5af2,#ff5e5b)}
+.ic-mu{background:linear-gradient(180deg,#ff8ab0,#fc3c44)}
+.ic-ms{background:linear-gradient(180deg,#7ce88a,#28cd41)}
+.ic-we{background:linear-gradient(180deg,#54b7ff,#1565e8)}
+.ic-se{background:linear-gradient(180deg,#9a9aa2,#4c4c55)}
+.note{margin-top:18px;font-size:.8rem;color:var(--faint);text-align:center}
+section{padding:78px 0}
+.sec-head{max-width:640px;margin:0 auto 52px;text-align:center}
+.sec-head h2,.dev-grid h2{font-size:clamp(1.7rem,3.2vw,2.5rem);font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+.sec-head p{color:var(--muted)}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.feature{padding:30px 28px;border-radius:28px;transition:transform .3s,box-shadow .3s}
+.feature:hover{transform:translateY(-6px);box-shadow:0 34px 80px #0206149e,inset 0 1px 0 #ffffff73}
+.f-icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;margin-bottom:20px;border:1px solid #ffffff47;box-shadow:inset 0 1px 0 #ffffff66,0 10px 22px #02061459}
+.f-icon.b{background:linear-gradient(135deg,#5ac8fa8c,#5ac8fa1f)}
+.f-icon.v{background:linear-gradient(135deg,#bf5af28c,#bf5af21f)}
+.f-icon.a{background:linear-gradient(135deg,#ff9f0a8c,#ff9f0a1f)}
+.feature h3{font-size:1.1rem;font-weight:700;margin-bottom:9px}
+.feature p{font-size:.92rem;color:var(--muted)}
+.cc{display:grid;grid-template-columns:1fr 1.35fr auto 1.35fr;gap:16px;padding:22px;border-radius:36px}
+.tile{min-width:0;padding:18px;border-radius:24px;background:#ffffff0f;border:1px solid var(--stroke-soft);box-shadow:inset 0 1px 0 #ffffff24}
+.tile h4{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.seg-grid{display:grid;grid-template-columns:repeat(2,46px);gap:11px;margin:15px 0 14px}
+.seg{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--stroke-soft);background:#ffffff1a;transition:transform .25s,background .25s}
+.seg:hover{transform:scale(1.1)}
+.seg.on{background:linear-gradient(135deg,var(--accent),var(--accent-deep));border-color:#ffffff52;box-shadow:0 8px 20px #5ac8fa66,inset 0 1px 0 #ffffff73}
+.tstat{font-size:.76rem;color:var(--faint)}
+.row{display:flex;align-items:center;gap:12px;padding:12px 0 11px}
+.row + .row{border-top:1px solid var(--stroke-soft)}
+.row b{display:block;font-size:.9rem;line-height:1.3}
+.row span{display:block;font-size:.74rem;color:var(--faint)}
+.row > div{flex:1;min-width:0}
+.mini{width:36px;height:36px;border-radius:50%;flex:none;display:grid;place-items:center}
+.mini-moon{background:linear-gradient(135deg,var(--violet),#7048e8);box-shadow:inset 0 1px 0 #ffffff66,0 6px 16px #bf5af273}
+.mini-sun{background:#ffffff1a;border:1px solid var(--stroke-soft)}
+.sw{width:44px;height:26px;border-radius:999px;position:relative;flex:none;border:1px solid var(--stroke-soft);background:#ffffff1f;transition:background .25s}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 2px 6px #02061466;transition:left .25s}
+.sw.on{background:linear-gradient(135deg,var(--accent),var(--accent-deep));border-color:#ffffff4d}
+.sw.on::after{left:20px}
+.sliders{display:flex;gap:14px;justify-content:center;margin-top:15px}
+.sl{position:relative;width:46px;height:138px;border-radius:23px;overflow:hidden;background:#ffffff1a;border:1px solid var(--stroke-soft);box-shadow:inset 0 1px 0 #ffffff24}
+.sl i{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(180deg,#fff,#ffffffdb);transition:height .35s}
+.sl svg{position:absolute;bottom:11px;left:50%;transform:translateX(-50%);z-index:1}
+.sl-a i{height:72%}.sl-a:hover i{height:85%}
+.sl-b i{height:44%}.sl-b:hover i{height:60%}
+.art{width:52px;height:52px;border-radius:13px;flex:none;background:radial-gradient(120% 120% at 28% 22%,#e2b7ff,var(--violet) 46%,#3d2f8f);box-shadow:inset 0 1px 0 #ffffff73,0 8px 18px #02061466}
+.bar{height:4px;border-radius:2px;background:#ffffff29;margin:12px 0;overflow:hidden}
+.bar i{display:block;height:100%;width:42%;border-radius:2px;background:#ffffffd9}
+.tp{display:flex;gap:20px;align-items:center;justify-content:center}
+.tp svg{opacity:.85;transition:opacity .2s,transform .2s}
+.tp svg:hover{opacity:1;transform:scale(1.15)}
+.dev-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.dev-grid > div > p{color:var(--muted);margin-bottom:26px}
+.chips{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px}
+.chip{padding:9px 16px;border-radius:999px;font-size:.8rem;color:var(--muted);border:1px solid var(--stroke-soft);background:#ffffff12;box-shadow:inset 0 1px 0 #ffffff29}
+.chip strong{color:var(--fg);font-weight:700}
+.code{border-radius:24px;padding:20px 24px 22px;font-family:var(--mono);font-size:.84rem;line-height:1.7;color:#ffffffd9}
+.code pre{font-family:inherit;white-space:pre;overflow-x:auto}
+.k{color:#7ad7ff}.t{color:#d9b3ff}.s{color:#ffce8a}.cm{color:#ffffff5c}
+footer{border-top:1px solid var(--stroke-soft);background:#060914b3;margin-top:30px}
+.foot{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;padding:48px 0 22px;flex-wrap:wrap}
+.foot-brand{max-width:280px}
+.foot-brand p{font-size:.85rem;color:var(--faint);margin-top:12px}
+.foot-cols{display:flex;gap:60px;flex-wrap:wrap}
+.foot-col h4{font-size:.76rem;text-transform:uppercase;letter-spacing:.1em;color:var(--faint);margin-bottom:14px}
+.foot-col a{display:block;color:var(--muted);font-size:.88rem;margin-bottom:10px;transition:color .25s}
+.foot-col a:hover{color:var(--fg)}
+.legal{border-top:1px solid var(--stroke-soft);padding:18px 0 26px;font-size:.78rem;color:var(--faint);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+a:focus-visible,.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media (max-width:960px){
+nav ul{display:none}
+.features{grid-template-columns:1fr;max-width:460px;margin:0 auto}
+.cc{grid-template-columns:1fr 1fr}
+.dev-grid{grid-template-columns:1fr;gap:44px}
+}
+@media (max-width:560px){
+.wrap{padding:0 20px}
+header{padding:0 14px;top:10px}
+.nav{padding:10px 10px 10px 18px}
+.hero{padding:56px 0 64px}
+section{padding:56px 0}
+.dock{gap:10px;padding:12px 13px;margin-top:44px;border-radius:24px}
+.ic{width:44px;height:44px;border-radius:13px}
+.ic svg{transform:scale(.8)}
+.cc{grid-template-columns:1fr;padding:16px;border-radius:28px}
+.sl{height:118px}
+.code{font-size:.78rem;padding:18px}
+.foot{flex-direction:column;gap:32px}
+.foot-cols{gap:36px}
+}
+@media (prefers-reduced-motion:reduce){
+*,*::before,*::after{animation:none !important;transition:none !important}
+html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true">
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+</div>
+
+<header>
+<div class="nav lg">
+<a class="logo" href="#top">
+<span class="logo-mark"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><g id="lmk"><circle cx="8" cy="8" r="6" stroke="#ffffffe6" stroke-width="1.5"/><path d="M5 6.5a3.6 3.6 0 0 1 2.7-2" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></g></svg></span>
+Lumina
+</a>
+<nav aria-label="Primary">
+<ul>
+<li><a href="#material">Material</a></li>
+<li><a href="#control">Control</a></li>
+<li><a href="#developers">Developers</a></li>
+</ul>
+</nav>
+<a class="btn btn-primary btn-sm" href="#developers">Get the beta</a>
+</div>
+</header>
+
+<main id="top">
+<section class="hero wrap">
+<span class="eyebrow"><span class="dot"></span>LUMINA OS 2 — PUBLIC BETA</span>
+<h1>Light, made <span class="grad-text">liquid.</span></h1>
+<p class="lede">Every surface in Lumina OS 2 is poured from one optical material — glass that blurs, bends, and brightens whatever moves beneath it. Software you don't just look at. You look through it.</p>
+<div class="hero-cta">
+<a class="btn btn-primary" href="#developers">Download the beta</a>
+<a class="btn" href="#material">Watch the design film</a>
+</div>
+<div class="dock lg" aria-hidden="true">
+<span class="ic ic-fi"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 15c2.6-5.4 4.7 5.4 7.3 0s4.7 5.4 7.3 0" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>
+<span class="ic ic-ph"></span>
+<span class="ic ic-mu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9.4 17.5V6.2l8.2-2v11" stroke="#fff" stroke-width="1.9" stroke-linejoin="round"/><circle cx="7" cy="17.5" r="2.4" fill="#fff"/><circle cx="15.2" cy="15.2" r="2.4" fill="#fff"/></svg></span>
+<span class="ic ic-ms"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 4.2c-4.6 0-8.3 2.9-8.3 6.6 0 2.2 1.3 4.1 3.3 5.3-.1 1-.6 2-1.5 2.9 1.7-.2 3-.8 3.9-1.5.8.2 1.7.3 2.6.3 4.6 0 8.3-2.9 8.3-6.8S16.6 4.2 12 4.2Z" fill="#fff"/></svg></span>
+<span class="ic ic-we"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="9.4" cy="8.8" r="3.6" fill="#ffd60a"/><path d="M8.6 18h8.6a3.1 3.1 0 0 0 .4-6.2 4.4 4.4 0 0 0-8.5 1.1A2.6 2.6 0 0 0 8.6 18Z" fill="#fff"/></svg></span>
+<span class="ic ic-se"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4.5 7.2h15M4.5 12h15M4.5 16.8h15" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="9.4" cy="7.2" r="2.1" fill="#fff"/><circle cx="15" cy="12" r="2.1" fill="#fff"/><circle cx="8.2" cy="16.8" r="2.1" fill="#fff"/></svg></span>
+</div>
+<p class="note">The new Dock — hover an icon. Six apps, one sheet of glass.</p>
+</section>
+
+<section id="material" class="wrap">
+<div class="sec-head">
+<h2>One material. Every layer.</h2>
+<p>Liquid Glass isn't a coat of paint over the interface — it's what the interface is made of, from the lock screen down to the smallest switch.</p>
+</div>
+<div class="features">
+<article class="feature lg">
+<span class="f-icon b"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3.6 18.4 18.4H3.6L11 3.6Z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M1.4 11H6.6m8.6 3.6h5.4" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+<h3>Refraction, in real time</h3>
+<p>Every panel samples the scene behind it, then bends that light through thirty layers of blur and a 180% color lift. Windows feel like lenses, not stickers.</p>
+</article>
+<article class="feature lg">
+<span class="f-icon v"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="12.5" height="12.5" rx="3.5" stroke="#fff" stroke-width="1.6"/><path d="M19 8.6v5.9a4.5 4.5 0 0 1-4.5 4.5H8.6" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+<h3>Depth without shadows</h3>
+<p>Layers separate by optics, not dark halos. A brighter top edge, a softer fill, a thinner rim — your eye reads the whole stack in a single glance.</p>
+</article>
+<article class="feature lg">
+<span class="f-icon a"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="4.2" stroke="#fff" stroke-width="1.6"/><path d="M11 1.6v2.6M11 17.8v2.6M1.6 11h2.6M17.8 11h2.6" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+<h3>Alive to what's beneath</h3>
+<p>Drag a sheet across a sunset photo and watch its tint warm up. Glass saturates the color it covers, so nothing behind it ever turns to mud.</p>
+</article>
+</div>
+</section>
+
+<section id="control" class="wrap">
+<div class="sec-head">
+<h2>Control Center, poured whole.</h2>
+<p>Flip on Focus, pull the brightness down, keep the music running — every tile is cut from the same sheet, and every state glows through the glass.</p>
+</div>
+<div class="cc lg">
+<div class="tile">
+<h4>Connect</h4>
+<div class="seg-grid">
+<span class="seg on"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="2" fill="#fff"/><path d="M4.7 13.3a6.1 6.1 0 0 1 0-8.6M13.3 4.7a6.1 6.1 0 0 1 0 8.6" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+<span class="seg on"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2.8 7.3a8.8 8.8 0 0 1 12.4 0M5.4 10a5.1 5.1 0 0 1 7.2 0" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="12.9" r="1.4" fill="#fff"/></svg></span>
+<span class="seg"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3.6 14V11M7.2 14V8.4M10.8 14V5.8M14.4 14V3.4" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+<span class="seg"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2.6" y="4" width="12.8" height="8.6" rx="2" stroke="#fff" stroke-width="1.5"/><path d="M6.6 15.2h4.8" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+</div>
+<p class="tstat">Beam on — 3 devices nearby</p>
+</div>
+<div class="tile">
+<h4>Scenes</h4>
+<div class="row">
+<span class="mini mini-moon"><svg width="16" height="16" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z" fill="#fff"/></svg></span>
+<div><b>Focus</b><span>Until sunset</span></div>
+<span class="sw on"></span>
+</div>
+<div class="row">
+<span class="mini mini-sun"><svg width="16" height="16" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="4" stroke="#fff" stroke-width="1.7"/><path d="M11 2.6v2M11 17.4v2M2.6 11h2M17.4 11h2" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+<div><b>Night Shift</b><span>Off at 7:00 AM</span></div>
+<span class="sw"></span>
+</div>
+</div>
+<div class="tile">
+<h4>Light · Sound</h4>
+<div class="sliders">
+<span class="sl sl-a"><i></i><svg width="16" height="16" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="4" stroke="#0a1226" stroke-width="1.8"/><path d="M11 2.6v2.2M11 17.2v2.2M2.6 11h2.2M17.2 11h2.2" stroke="#0a1226" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+<span class="sl sl-b"><i></i><svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M3 7v4h2.8L9.6 14V4L5.8 7H3Z" fill="#0a1226"/><path d="M12.4 6.4a4.6 4.6 0 0 1 0 5.2" stroke="#0a1226" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+</div>
+</div>
+<div class="tile">
+<h4>Now Playing</h4>
+<div class="row">
+<span class="art"></span>
+<div><b>Prism Runner</b><span>Neon Reef — Refraction</span></div>
+</div>
+<div class="bar"><i></i></div>
+<div class="tp">
+<svg width="16" height="16" viewBox="0 0 16 16"><path d="M13 3.4 7 8l6 4.6zM3 3.4h1.8v9.2H3z" fill="#fff"/></svg>
+<svg width="20" height="20" viewBox="0 0 16 16"><path d="M4.6 2.8v10.4L13.4 8 4.6 2.8Z" fill="#fff"/></svg>
+<svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 3.4 9 8l-6 4.6zM11.2 3.4H13v9.2h-1.8z" fill="#fff"/></svg>
+</div>
+</div>
+</div>
+<p class="note">Live blur, specular edges, zero bitmaps — one material, four pours.</p>
+</section>
+
+<section id="developers" class="wrap">
+<div class="dev-grid">
+<div>
+<h2>Adopt it in an afternoon.</h2>
+<p>The Glass SDK ships the exact material Lumina is built from. One modifier wraps any view in live refraction, specular edges and touch ripple — and it falls back to soft translucency on older GPUs.</p>
+<div class="chips">
+<span class="chip"><strong>120 fps</strong> on device</span>
+<span class="chip"><strong>4 KB</strong> runtime</span>
+<span class="chip"><strong>Zero</strong> config</span>
+</div>
+<a class="btn" href="#top">Read the Glass docs</a>
+</div>
+<div class="code lg">
+<pre><span class="k">import</span> <span class="t">Glass</span>
+
+<span class="k">struct</span> <span class="t">DockTile</span>: <span class="t">View</span> {
+  <span class="k">var</span> body: <span class="k">some</span> <span class="t">View</span> {
+    <span class="t">Icon</span>(<span class="s">"waveform"</span>)
+      .padding(18)
+      .glass(.regular, tint: .auto)
+      .edge(.specular)
+      .ripple(on: .press)  <span class="cm">// that's it.</span>
+  }
+}</pre>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+<div class="foot">
+<div class="foot-brand">
+<a class="logo" href="#top">
+<span class="logo-mark"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="#lmk"/></svg></span>
+Lumina
+</a>
+<p>An operating system poured from light. Designed in Lisbon, rendered everywhere.</p>
+</div>
+<div class="foot-cols">
+<div class="foot-col">
+<h4>OS</h4>
+<a href="#top">Overview</a>
+<a href="#material">Design film</a>
+<a href="#control">Beta notes</a>
+</div>
+<div class="foot-col">
+<h4>Developers</h4>
+<a href="#developers">Glass SDK</a>
+<a href="#developers">Documentation</a>
+<a href="#developers">Release cycle</a>
+</div>
+<div class="foot-col">
+<h4>Company</h4>
+<a href="#top">About</a>
+<a href="#top">Careers</a>
+<a href="#top">Press</a>
+</div>
+</div>
+</div>
+<div class="legal">
+<span>© 2026 Lumina Computer, Inc. All rights reserved.</span>
+<span>Beta software — pour responsibly.</span>
+</div>
+</div>
+</footer>
+</body>
+</html>
