@@ -1,17 +1,83 @@
-import { Star, Copy, CheckCheck, Monitor, Smartphone, Sparkles, Check, CircleX, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, Copy, CheckCheck, Monitor, Smartphone, Sparkles, Check, CircleX, ExternalLink, ChevronLeft, ChevronRight, ChevronDown, Eye, Code, TriangleAlert } from 'lucide-react';
 import type { DesignStyle } from '../data/styles';
 import { getPromptById } from '../data/prompts';
 import { useState, useEffect } from 'react';
 import { useAppStore } from '../store/appStore';
 import { translations } from '../data/translations';
+import { DemoCodeView } from './DemoCodeView';
+import { DesignTokens } from './DesignTokens';
 
 interface StyleDetailContentProps {
   style: DesignStyle;
 }
 
-export function StyleDetailContent({ style }: StyleDetailContentProps) {
+/** AI 提示词区块：展示与复制的都是完整提示词，收起时仅视觉截断 */
+function PromptSection({ styleId }: { styleId: string }) {
+  const { language, theme } = useAppStore();
+  const t = translations[language];
+  const isDark = theme === 'dark';
   const [copied, setCopied] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const promptData = getPromptById(styleId);
+
+  if (!promptData) return null;
+  const fullPrompt = language === 'zh' ? promptData.prompt : promptData.promptEn;
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(fullPrompt);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div className={`mb-5 border rounded-lg p-4 ${isDark ? 'bg-[#0a0a0a] border-gray-800' : 'bg-gray-50 border-gray-200'}`}>
+      <div className="flex items-center gap-2 mb-3">
+        <Sparkles className="w-4 h-4 text-[#FF9F1C]" />
+        <h4 className={`text-xs font-bold uppercase tracking-wider ${isDark ? 'text-white' : 'text-black'}`}>
+          {t.modal.aiPrompt}
+        </h4>
+      </div>
+      <div className={`border rounded-lg p-3 mb-3 ${isDark ? 'bg-[#1a1a1a] border-gray-800' : 'bg-white border-gray-200'}`}>
+        <pre className={`text-[11px] whitespace-pre-wrap font-mono leading-relaxed ${expanded ? '' : 'line-clamp-4'} ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+          {fullPrompt}
+        </pre>
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          className={`mt-2 flex items-center gap-1 text-[10px] uppercase tracking-wider transition-colors ${isDark ? 'text-gray-500 hover:text-white' : 'text-gray-400 hover:text-black'}`}
+        >
+          {expanded ? t.modal.collapsePrompt : t.modal.expandPrompt}
+          <ChevronDown className={`w-3 h-3 transition-transform ${expanded ? 'rotate-180' : ''}`} />
+        </button>
+      </div>
+      <button
+        onClick={handleCopy}
+        type="button"
+        className={`w-full flex items-center justify-center gap-2 px-4 py-2.5 text-xs uppercase tracking-wider rounded-lg transition-colors ${
+          copied
+            ? 'bg-green-500 text-white'
+            : 'bg-[#FF9F1C] text-white hover:bg-[#E8900A]'
+        }`}
+      >
+        {copied ? (
+          <>
+            <CheckCheck className="w-4 h-4" />
+            {t.modal.copiedFull}
+          </>
+        ) : (
+          <>
+            <Copy className="w-4 h-4" />
+            {t.modal.copyFullPrompt}
+          </>
+        )}
+      </button>
+    </div>
+  );
+}
+
+export function StyleDetailContent({ style }: StyleDetailContentProps) {
   const [isMobile, setIsMobile] = useState(false);
+  const [viewMode, setViewMode] = useState<'preview' | 'code'>('preview');
   const {
     language,
     theme,
@@ -40,17 +106,6 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
   };
 
   const demoUrl = `/demos/${style.id}.html`;
-  const promptData = getPromptById(style.id);
-
-  const handleCopyPrompt = async () => {
-    if (promptData) {
-      const textToCopy = language === 'zh' ? promptData.prompt : promptData.promptEn;
-      await navigator.clipboard.writeText(textToCopy);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
-
   const isDark = theme === 'dark';
 
   // Mobile layout: single scrollable column
@@ -70,28 +125,57 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
                 {language === 'zh' ? style.name : style.nameEn}
               </h2>
             </div>
-            <a
-              href={demoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              title={t.modal.openInNewTab}
-              aria-label={t.modal.openInNewTab}
-              className={`p-2 rounded-lg transition-colors ${isDark ? 'text-gray-400 hover:text-white hover:bg-gray-800' : 'text-gray-500 hover:text-black hover:bg-gray-100'}`}
-            >
-              <ExternalLink className="w-4 h-4" />
-            </a>
+            <div className="flex items-center gap-1.5">
+              {/* View Toggle: Preview / Code */}
+              <div className={`flex items-center gap-0 rounded-lg overflow-hidden border ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
+                <button
+                  onClick={() => setViewMode('preview')}
+                  type="button"
+                  title={t.modal.previewTab}
+                  aria-pressed={viewMode === 'preview'}
+                  className={`p-2 transition-colors ${viewMode === 'preview' ? 'bg-[#FF9F1C] text-white' : isDark ? 'bg-[#1a1a1a] text-gray-400 hover:text-white' : 'bg-white text-gray-500 hover:text-black'}`}
+                >
+                  <Eye className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setViewMode('code')}
+                  type="button"
+                  title={t.modal.codeTab}
+                  aria-pressed={viewMode === 'code'}
+                  className={`p-2 transition-colors ${viewMode === 'code' ? 'bg-[#FF9F1C] text-white' : isDark ? 'bg-[#1a1a1a] text-gray-400 hover:text-white' : 'bg-white text-gray-500 hover:text-black'}`}
+                >
+                  <Code className="w-4 h-4" />
+                </button>
+              </div>
+              <a
+                href={demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={t.modal.openInNewTab}
+                aria-label={t.modal.openInNewTab}
+                className={`p-2 rounded-lg transition-colors ${isDark ? 'text-gray-400 hover:text-white hover:bg-gray-800' : 'text-gray-500 hover:text-black hover:bg-gray-100'}`}
+              >
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            </div>
           </div>
 
-          {/* Iframe - fixed aspect ratio */}
+          {/* Iframe / Code view - fixed height area */}
           <div className="p-4">
-            <div className="aspect-[16/10] bg-white shadow-2xl rounded-lg overflow-hidden">
-              <iframe
-                src={demoUrl}
-                className="w-full h-full border-0"
-                title={`${style.name} Demo`}
-                sandbox="allow-same-origin"
-              />
-            </div>
+            {viewMode === 'code' ? (
+              <div className="h-[440px]">
+                <DemoCodeView styleId={style.id} />
+              </div>
+            ) : (
+              <div className="aspect-[16/10] bg-white shadow-2xl rounded-lg overflow-hidden">
+                <iframe
+                  src={demoUrl}
+                  className="w-full h-full border-0"
+                  title={`${style.name} Demo`}
+                  sandbox="allow-same-origin"
+                />
+              </div>
+            )}
           </div>
         </div>
 
@@ -127,41 +211,7 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
             </p>
 
             {/* AI Prompt Section */}
-            {promptData && (
-              <div className={`mb-5 border rounded-lg p-4 ${isDark ? 'bg-[#0a0a0a] border-gray-800' : 'bg-gray-50 border-gray-200'}`}>
-                <div className="flex items-center gap-2 mb-3">
-                  <Sparkles className="w-4 h-4 text-[#FF9F1C]" />
-                  <h4 className={`text-xs font-bold uppercase tracking-wider ${isDark ? 'text-white' : 'text-black'}`}>
-                    {t.modal.aiPrompt}
-                  </h4>
-                </div>
-                <div className={`border rounded-lg p-3 mb-3 ${isDark ? 'bg-[#1a1a1a] border-gray-800' : 'bg-white border-gray-200'}`}>
-                  <pre className={`text-[11px] whitespace-pre-wrap font-mono leading-relaxed line-clamp-3 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                    {language === 'zh' ? promptData.shortPrompt : promptData.shortPromptEn}
-                  </pre>
-                </div>
-                <button
-                  onClick={handleCopyPrompt}
-                  className={`w-full flex items-center justify-center gap-2 px-4 py-2.5 text-xs uppercase tracking-wider rounded-lg transition-colors ${
-                    copied
-                      ? 'bg-green-500 text-white'
-                      : 'bg-[#FF9F1C] text-white hover:bg-[#E8900A]'
-                  }`}
-                >
-                  {copied ? (
-                    <>
-                      <CheckCheck className="w-4 h-4" />
-                      {t.modal.copiedFull}
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-4 h-4" />
-                      {t.modal.copyFullPrompt}
-                    </>
-                  )}
-                </button>
-              </div>
-            )}
+            <PromptSection styleId={style.id} />
 
             {/* Core Features */}
             <div className="mb-5">
@@ -221,6 +271,25 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
               </div>
             </div>
 
+            {/* Pitfalls */}
+            <div className="mb-5">
+              <h4 className={`text-xs font-bold uppercase tracking-wider mb-1 flex items-center gap-1.5 ${isDark ? 'text-white' : 'text-black'}`}>
+                <TriangleAlert className="w-3.5 h-3.5 text-amber-500" />
+                {t.modal.pitfalls}
+              </h4>
+              <p className={`text-[10px] mb-2 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+                {t.modal.pitfallsHint}
+              </p>
+              <ul className={`space-y-1.5 border rounded-lg p-3 ${isDark ? 'border-amber-500/20 bg-amber-500/5' : 'border-amber-200 bg-amber-50/60'}`}>
+                {(language === 'zh' ? style.pitfalls : style.pitfallsEn).map((pitfall, i) => (
+                  <li key={i} className={`text-[11px] leading-relaxed flex items-start gap-1.5 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+                    <span className="text-amber-500 shrink-0">•</span>
+                    {pitfall}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             {/* Color Palette */}
             <div className="mb-5">
               <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
@@ -237,6 +306,9 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
                 ))}
               </div>
             </div>
+
+            {/* Design Tokens（提取自 demo :root） */}
+            <DesignTokens styleId={style.id} />
 
             {/* Examples */}
             <div className="pb-4">
@@ -281,27 +353,51 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
           </div>
 
           <div className="flex items-center gap-2">
-            {/* Device Toggle */}
+            {/* View Toggle: Preview / Code */}
             <div className={`flex items-center gap-0 rounded-lg overflow-hidden border ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
               <button
-                onClick={() => setDevice('desktop')}
+                onClick={() => setViewMode('preview')}
                 type="button"
-                title="Desktop"
-                aria-pressed={device === 'desktop'}
-                className={`p-2 transition-colors ${device === 'desktop' ? 'bg-[#FF9F1C] text-white' : isDark ? 'bg-[#1a1a1a] text-gray-400 hover:text-white' : 'bg-white text-gray-500 hover:text-black'}`}
+                title={t.modal.previewTab}
+                aria-pressed={viewMode === 'preview'}
+                className={`p-2 transition-colors ${viewMode === 'preview' ? 'bg-[#FF9F1C] text-white' : isDark ? 'bg-[#1a1a1a] text-gray-400 hover:text-white' : 'bg-white text-gray-500 hover:text-black'}`}
               >
-                <Monitor className="w-4 h-4" />
+                <Eye className="w-4 h-4" />
               </button>
               <button
-                onClick={() => setDevice('mobile')}
+                onClick={() => setViewMode('code')}
                 type="button"
-                title="Mobile"
-                aria-pressed={device === 'mobile'}
-                className={`p-2 transition-colors ${device === 'mobile' ? 'bg-[#FF9F1C] text-white' : isDark ? 'bg-[#1a1a1a] text-gray-400 hover:text-white' : 'bg-white text-gray-500 hover:text-black'}`}
+                title={t.modal.codeTab}
+                aria-pressed={viewMode === 'code'}
+                className={`p-2 transition-colors ${viewMode === 'code' ? 'bg-[#FF9F1C] text-white' : isDark ? 'bg-[#1a1a1a] text-gray-400 hover:text-white' : 'bg-white text-gray-500 hover:text-black'}`}
               >
-                <Smartphone className="w-4 h-4" />
+                <Code className="w-4 h-4" />
               </button>
             </div>
+
+            {/* Device Toggle（仅预览模式） */}
+            {viewMode === 'preview' && (
+              <div className={`flex items-center gap-0 rounded-lg overflow-hidden border ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
+                <button
+                  onClick={() => setDevice('desktop')}
+                  type="button"
+                  title="Desktop"
+                  aria-pressed={device === 'desktop'}
+                  className={`p-2 transition-colors ${device === 'desktop' ? 'bg-[#FF9F1C] text-white' : isDark ? 'bg-[#1a1a1a] text-gray-400 hover:text-white' : 'bg-white text-gray-500 hover:text-black'}`}
+                >
+                  <Monitor className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setDevice('mobile')}
+                  type="button"
+                  title="Mobile"
+                  aria-pressed={device === 'mobile'}
+                  className={`p-2 transition-colors ${device === 'mobile' ? 'bg-[#FF9F1C] text-white' : isDark ? 'bg-[#1a1a1a] text-gray-400 hover:text-white' : 'bg-white text-gray-500 hover:text-black'}`}
+                >
+                  <Smartphone className="w-4 h-4" />
+                </button>
+              </div>
+            )}
 
             <a
               href={demoUrl}
@@ -328,22 +424,26 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
           </div>
         </div>
 
-        {/* Iframe */}
+        {/* Iframe / Code view */}
         <div className="flex-1 overflow-hidden flex items-center justify-center p-4">
-          <div
-            className="bg-white shadow-2xl rounded-lg transition-all duration-300 h-full overflow-hidden"
-            style={{
-              width: getDeviceWidth(),
-              maxWidth: '100%'
-            }}
-          >
-            <iframe
-              src={demoUrl}
-              className="w-full h-full border-0"
-              title={`${style.name} Demo`}
-              sandbox="allow-same-origin"
-            />
-          </div>
+          {viewMode === 'code' ? (
+            <DemoCodeView styleId={style.id} />
+          ) : (
+            <div
+              className="bg-white shadow-2xl rounded-lg transition-all duration-300 h-full overflow-hidden"
+              style={{
+                width: getDeviceWidth(),
+                maxWidth: '100%'
+              }}
+            >
+              <iframe
+                src={demoUrl}
+                className="w-full h-full border-0"
+                title={`${style.name} Demo`}
+                sandbox="allow-same-origin"
+              />
+            </div>
+          )}
         </div>
       </div>
 
@@ -392,41 +492,7 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
           </p>
 
           {/* AI Prompt Section */}
-          {promptData && (
-            <div className={`mb-5 border rounded-lg p-4 ${isDark ? 'bg-[#0a0a0a] border-gray-800' : 'bg-gray-50 border-gray-200'}`}>
-              <div className="flex items-center gap-2 mb-3">
-                <Sparkles className="w-4 h-4 text-[#FF9F1C]" />
-                <h4 className={`text-xs font-bold uppercase tracking-wider ${isDark ? 'text-white' : 'text-black'}`}>
-                  {t.modal.aiPrompt}
-                </h4>
-              </div>
-              <div className={`border rounded-lg p-3 mb-3 ${isDark ? 'bg-[#1a1a1a] border-gray-800' : 'bg-white border-gray-200'}`}>
-                <pre className={`text-[11px] whitespace-pre-wrap font-mono leading-relaxed line-clamp-3 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                  {language === 'zh' ? promptData.shortPrompt : promptData.shortPromptEn}
-                </pre>
-              </div>
-              <button
-                onClick={handleCopyPrompt}
-                className={`w-full flex items-center justify-center gap-2 px-4 py-2.5 text-xs uppercase tracking-wider rounded-lg transition-colors ${
-                  copied
-                    ? 'bg-green-500 text-white'
-                    : 'bg-[#FF9F1C] text-white hover:bg-[#E8900A]'
-                }`}
-              >
-                {copied ? (
-                  <>
-                    <CheckCheck className="w-4 h-4" />
-                    {t.modal.copiedFull}
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-4 h-4" />
-                    {t.modal.copyFullPrompt}
-                  </>
-                )}
-              </button>
-            </div>
-          )}
+          <PromptSection styleId={style.id} />
 
           {/* Core Features */}
           <div className="mb-5">
@@ -486,6 +552,25 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
             </div>
           </div>
 
+          {/* Pitfalls */}
+          <div className="mb-5">
+            <h4 className={`text-xs font-bold uppercase tracking-wider mb-1 flex items-center gap-1.5 ${isDark ? 'text-white' : 'text-black'}`}>
+              <TriangleAlert className="w-3.5 h-3.5 text-amber-500" />
+              {t.modal.pitfalls}
+            </h4>
+            <p className={`text-[10px] mb-2 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+              {t.modal.pitfallsHint}
+            </p>
+            <ul className={`space-y-1.5 border rounded-lg p-3 ${isDark ? 'border-amber-500/20 bg-amber-500/5' : 'border-amber-200 bg-amber-50/60'}`}>
+              {(language === 'zh' ? style.pitfalls : style.pitfallsEn).map((pitfall, i) => (
+                <li key={i} className={`text-[11px] leading-relaxed flex items-start gap-1.5 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+                  <span className="text-amber-500 shrink-0">•</span>
+                  {pitfall}
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Color Palette */}
           <div className="mb-5">
             <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
@@ -502,6 +587,9 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
               ))}
             </div>
           </div>
+
+          {/* Design Tokens（提取自 demo :root） */}
+          <DesignTokens styleId={style.id} />
 
           {/* Examples */}
           <div>

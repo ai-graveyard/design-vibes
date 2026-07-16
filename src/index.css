@@ -119,3 +119,28 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Demo 源码查看器：固定深色底，与站点主题无关 */
+.code-viewer {
+  color: #c9d1d9;
+  counter-reset: line;
+}
+.code-viewer .code-line {
+  counter-increment: line;
+}
+.code-viewer .code-line::before {
+  content: counter(line);
+  display: inline-block;
+  width: 3.2em;
+  padding-right: 1.2em;
+  text-align: right;
+  color: #484f58;
+  user-select: none;
+}
+.tok-cmt { color: #8b949e; font-style: italic; }
+.tok-tag { color: #7ee787; }
+.tok-attr { color: #79c0ff; }
+.tok-str { color: #a5d6ff; }
+.tok-sel { color: #d2a8ff; }
+.tok-prop { color: #79c0ff; }
+.tok-num { color: #ffa657; }

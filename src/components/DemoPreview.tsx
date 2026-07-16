@@ -26,6 +26,8 @@ export function DemoPreview({ styleId, placeholderColor }: DemoPreviewProps) {
     const resizeObserver = new ResizeObserver(updateScale);
     resizeObserver.observe(el);
 
+    // 首次接近视口才挂载 iframe；挂载后保持常驻（反复挂卸会造成滚动时的解析抖动），
+    // 屏幕外的绘制与合成开销交给容器上的 content-visibility: auto 跳过
     const intersectionObserver = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -47,7 +49,7 @@ export function DemoPreview({ styleId, placeholderColor }: DemoPreviewProps) {
     <div
       ref={containerRef}
       className="absolute inset-0 overflow-hidden"
-      style={{ backgroundColor: placeholderColor }}
+      style={{ backgroundColor: placeholderColor, contentVisibility: 'auto' }}
     >
       {visible && scale > 0 && (
         <iframe

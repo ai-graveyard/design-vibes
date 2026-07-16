@@ -5,6 +5,7 @@ import { designStyles } from '../data/styles';
 import { useAppStore } from '../store/appStore';
 import { StyleSidebar } from '../components/StyleSidebar';
 import { StyleDetailContent } from '../components/StyleDetailContent';
+import { usePageMeta } from '../hooks/usePageMeta';
 
 export function StyleDetailPage() {
   const { styleId } = useParams<{ styleId: string }>();
@@ -23,6 +24,12 @@ export function StyleDetailPage() {
   }, []);
 
   const style = designStyles.find(s => s.id === styleId);
+
+  // usePageMeta 是 hook，必须在提前 return 之前调用
+  usePageMeta(
+    style ? `${language === 'zh' ? style.name : style.nameEn} · Design Vibes` : 'Design Vibes',
+    style ? (language === 'zh' ? style.description : style.descriptionEn) : undefined
+  );
 
   // Redirect to home if style not found
   if (!style) {

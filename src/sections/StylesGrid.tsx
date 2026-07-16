@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Search } from 'lucide-react';
 import { designStyles } from '../data/styles';
 import { StyleCard } from '../components/StyleCard';
@@ -16,7 +15,6 @@ export function StylesGrid() {
   const [searchQuery, setSearchQuery] = useState('');
   const t = translations[language];
   const isDark = theme === 'dark';
-  const navigate = useNavigate();
 
   const tags = language === 'zh' ? allTags : allTagsEn;
 
@@ -32,10 +30,6 @@ export function StylesGrid() {
       style.tagsEn.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesTag && matchesSearch;
   });
-
-  const handleCardClick = (styleId: string) => {
-    navigate(`/style/${styleId}`);
-  };
 
   return (
     <section
@@ -106,10 +100,7 @@ export function StylesGrid() {
                 className="animate-fade-up"
                 style={{ animationDelay: `${Math.min(index, 8) * 60}ms` }}
               >
-                <StyleCard
-                  style={style}
-                  onClick={() => handleCardClick(style.id)}
-                />
+                <StyleCard style={style} />
               </div>
             ))}
           </div>
