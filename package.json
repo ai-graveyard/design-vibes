@@ -8,6 +8,7 @@
     "validate": "node scripts/validate-demos.mjs",
     "build": "node scripts/validate-demos.mjs && tsc -b && vite build && node scripts/postbuild-seo.mjs",
     "og": "node scripts/generate-og.mjs",
+    "thumbs": "node scripts/generate-thumbs.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },

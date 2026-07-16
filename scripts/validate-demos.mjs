@@ -2,7 +2,7 @@
 // 校验 styles / prompts / demos 三处数据一致性，以及 demo 的零依赖约定。
 // 约定：每种风格必须在 src/data/styles.ts、src/data/prompts.ts、public/demos/<id>.html 三处同时存在；
 //       demo 为单文件 HTML —— 无 <script>、无外部 URL、有 :root CSS 变量（design tokens 来源）。
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -15,6 +15,10 @@ const styleIds = extractIds(read('src/data/styles.ts'));
 const promptIds = extractIds(read('src/data/prompts.ts'));
 const demoFiles = readdirSync(path.join(root, 'public/demos')).filter((f) => f.endsWith('.html'));
 const demoIds = demoFiles.map((f) => f.replace(/\.html$/, ''));
+const thumbsDir = path.join(root, 'public/thumbs');
+const thumbIds = existsSync(thumbsDir)
+  ? readdirSync(thumbsDir).filter((f) => f.endsWith('.jpg')).map((f) => f.replace(/\.jpg$/, ''))
+  : [];
 
 const errors = [];
 const missingIn = (a, b) => a.filter((x) => !b.includes(x));
@@ -25,6 +29,8 @@ for (const id of missingIn(styleIds, promptIds)) errors.push(`styles.ts 的 "${i
 for (const id of missingIn(promptIds, styleIds)) errors.push(`prompts.ts 的 "${id}" 在 styles.ts 中缺失`);
 for (const id of missingIn(styleIds, demoIds)) errors.push(`缺少 demo：public/demos/${id}.html`);
 for (const id of missingIn(demoIds, styleIds)) errors.push(`孤儿 demo（styles.ts 无此 id）：public/demos/${id}.html`);
+for (const id of missingIn(styleIds, thumbIds))
+  errors.push(`缺少卡片缩略图：public/thumbs/${id}.jpg（运行 pnpm thumbs 生成）`);
 
 for (const f of demoFiles) {
   const where = `public/demos/${f}`;

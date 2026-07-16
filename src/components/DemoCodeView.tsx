@@ -48,7 +48,7 @@ export function DemoCodeView({ styleId }: DemoCodeViewProps) {
           <span className="text-[11px] font-mono text-gray-400 truncate">
             demos/{styleId}.html
             {source && (
-              <span className="text-gray-600"> · {(source.length / 1024).toFixed(1)} KB · HTML + CSS only</span>
+              <span className="text-gray-600"> · {(source.length / 1024).toFixed(1)} KB · {t.modal.htmlCssOnly}</span>
             )}
           </span>
         </div>

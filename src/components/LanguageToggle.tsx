@@ -7,7 +7,8 @@ export function LanguageToggle() {
     <button
       onClick={toggleLanguage}
       className="text-xs font-medium tracking-wider text-gray-500 hover:text-black dark:hover:text-white transition-colors px-2 py-1"
-      aria-label="Toggle language"
+      aria-label={language === 'zh' ? '切换为英文' : 'Switch to Chinese'}
+      title={language === 'zh' ? '切换为英文' : 'Switch to Chinese'}
     >
       {language === 'zh' ? 'EN' : '中文'}
     </button>

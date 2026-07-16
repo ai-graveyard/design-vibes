@@ -2,7 +2,6 @@ import { Star, Copy, Check, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import type { DesignStyle } from '../data/styles';
 import { DemoPreview } from './DemoPreview';
-import { getPromptById } from '../data/prompts';
 import { useState } from 'react';
 import { useAppStore } from '../store/appStore';
 import { translations } from '../data/translations';
@@ -12,40 +11,39 @@ interface StyleCardProps {
 }
 
 export function StyleCard({ style }: StyleCardProps) {
-  const { language, theme } = useAppStore();
+  const { language } = useAppStore();
   const t = translations[language];
   const [copied, setCopied] = useState(false);
-
-  const promptData = getPromptById(style.id);
-  const isDark = theme === 'dark';
 
   const handleCopyPrompt = async (e: React.MouseEvent) => {
     // 阻止外层 Link 的默认跳转
     e.preventDefault();
     e.stopPropagation();
-    if (promptData) {
-      const textToCopy = language === 'zh' ? promptData.shortPrompt : promptData.shortPromptEn;
-      await navigator.clipboard.writeText(textToCopy);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
+    // prompts 数据（~40KB 源码）点击时才动态加载，不进首页主包；
+    // styles/prompts/demos 三处 id 对齐由构建期 validate-demos.mjs 保证
+    const { getPromptById } = await import('../data/prompts');
+    const promptData = getPromptById(style.id);
+    if (!promptData) return;
+    const textToCopy = language === 'zh' ? promptData.shortPrompt : promptData.shortPromptEn;
+    await navigator.clipboard.writeText(textToCopy);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
     <Link
       to={`/style/${style.id}`}
-      className={`group block rounded-xl overflow-hidden border transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF9F1C] focus-visible:ring-offset-2 ${
-        isDark
-          ? 'bg-[#1a1a1a] border-gray-800 hover:border-[#FF9F1C] hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.6)] focus-visible:ring-offset-[#0f0f0f]'
-          : 'bg-white border-gray-200 hover:border-[#FF9F1C] hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.15)] focus-visible:ring-offset-gray-50'
-      }`}
+      className="group block rounded-xl overflow-hidden border transition-all duration-300 hover:-translate-y-1 hover:border-[#FF9F1C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF9F1C] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 bg-white border-gray-200 hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.15)] dark:bg-[#1a1a1a] dark:border-gray-800 dark:hover:border-[#FF9F1C] dark:hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.6)] dark:focus-visible:ring-offset-[#0f0f0f]"
     >
       <article>
         {/* 真实 demo 的缩放预览 */}
-        <div className={`relative aspect-[16/10] overflow-hidden border-b ${isDark ? 'bg-[#0a0a0a] border-gray-800' : 'bg-gray-50 border-gray-100'}`}>
+        <div className="relative aspect-[16/10] overflow-hidden border-b bg-gray-50 border-gray-100 dark:bg-[#0a0a0a] dark:border-gray-800">
           <div className="absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-[1.02]">
-            <DemoPreview styleId={style.id} placeholderColor={style.colors[0]} />
+            <DemoPreview styleId={style.id} placeholderColor={style.colors[0]} scrollOnHover thumbnail />
           </div>
+
+          {/* Hover 扫光（一次性，见 index.css .card-sheen） */}
+          <div className="card-sheen" aria-hidden="true" />
 
           {/* Rating Badge */}
           <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 bg-white/95 backdrop-blur-sm rounded-md shadow-sm">
@@ -64,39 +62,35 @@ export function StyleCard({ style }: StyleCardProps) {
         <div className="p-4 sm:p-5">
           {/* Title */}
           <div className="mb-3">
-            <h3 className={`font-bold text-base sm:text-lg mb-0.5 transition-colors group-hover:text-[#FF9F1C] ${isDark ? 'text-white' : 'text-black'}`}>
+            <h3 className="font-bold text-base sm:text-lg mb-0.5 transition-colors group-hover:text-[#FF9F1C] text-black dark:text-white">
               {language === 'zh' ? style.name : style.nameEn}
             </h3>
-            <p className={`text-[10px] uppercase tracking-wider ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+            <p className="text-[10px] uppercase tracking-wider text-gray-400 dark:text-gray-500">
               {style.nameEn}
             </p>
           </div>
 
           {/* Description */}
-          <p className={`text-xs leading-relaxed mb-3 line-clamp-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+          <p className="text-xs leading-relaxed mb-3 line-clamp-2 text-gray-600 dark:text-gray-400">
             {language === 'zh' ? style.description : style.descriptionEn}
           </p>
 
           {/* Core Features */}
           <div className="mb-3">
-            <span className={`text-[10px] uppercase tracking-wider mb-1.5 block ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+            <span className="text-[10px] uppercase tracking-wider mb-1.5 block text-gray-400 dark:text-gray-500">
               {t.card.coreFeatures}
             </span>
             <div className="flex flex-wrap gap-1.5">
               {(language === 'zh' ? style.features : style.featuresEn).slice(0, 4).map((feature, i) => (
                 <span
                   key={i}
-                  className={`inline-block max-w-36 truncate px-2 py-1 text-[10px] rounded ${
-                    isDark
-                      ? 'bg-gray-800 text-gray-300'
-                      : 'bg-gray-100 text-gray-600'
-                  }`}
+                  className="inline-block max-w-36 truncate px-2 py-1 text-[10px] rounded bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300"
                 >
                   {feature.split(' - ')[0]}
                 </span>
               ))}
               {style.features.length > 4 && (
-                <span className={`px-2 py-1 text-[10px] rounded ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+                <span className="px-2 py-1 text-[10px] rounded text-gray-400 dark:text-gray-500">
                   +{style.features.length - 4}
                 </span>
               )}
@@ -120,27 +114,23 @@ export function StyleCard({ style }: StyleCardProps) {
           </div>
 
           {/* Actions */}
-          <div className={`flex items-center justify-between pt-3 border-t ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
-            <span className={`text-[10px] tabular-nums ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+          <div className="flex items-center justify-between pt-3 border-t border-gray-200 dark:border-gray-800">
+            <span className="text-[10px] tabular-nums text-gray-400 dark:text-gray-500">
               {style.useCases.length} {t.card.useCases}
             </span>
-            {promptData && (
-              <button
-                onClick={handleCopyPrompt}
-                type="button"
-                aria-label={t.card.copyPrompt}
-                className={`flex items-center gap-1.5 px-3 py-1.5 text-[10px] uppercase tracking-wider rounded transition-all ${
-                  copied
-                    ? 'bg-green-500 text-white'
-                    : isDark
-                      ? 'bg-gray-800 text-gray-300 hover:bg-[#FF9F1C] hover:text-white'
-                      : 'bg-gray-100 text-gray-600 hover:bg-[#FF9F1C] hover:text-white'
-                }`}
-              >
-                {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
-                {copied ? t.card.copied : t.card.copyPrompt}
-              </button>
-            )}
+            <button
+              onClick={handleCopyPrompt}
+              type="button"
+              aria-label={t.card.copyPrompt}
+              className={`flex items-center gap-1.5 px-3 py-1.5 text-[10px] uppercase tracking-wider rounded transition-all active:scale-95 ${
+                copied
+                  ? 'bg-green-500 text-white'
+                  : 'bg-gray-100 text-gray-600 hover:bg-[#FF9F1C] hover:text-white dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-[#FF9F1C] dark:hover:text-white'
+              }`}
+            >
+              {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+              {copied ? t.card.copied : t.card.copyPrompt}
+            </button>
           </div>
         </div>
       </article>

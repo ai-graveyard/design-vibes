@@ -1,11 +1,12 @@
 import { Star, Copy, CheckCheck, Monitor, Smartphone, Sparkles, Check, CircleX, ExternalLink, ChevronLeft, ChevronRight, ChevronDown, Eye, Code, TriangleAlert } from 'lucide-react';
 import type { DesignStyle } from '../data/styles';
 import { getPromptById } from '../data/prompts';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useAppStore } from '../store/appStore';
 import { translations } from '../data/translations';
 import { DemoCodeView } from './DemoCodeView';
 import { DesignTokens } from './DesignTokens';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 interface StyleDetailContentProps {
   style: DesignStyle;
@@ -13,9 +14,8 @@ interface StyleDetailContentProps {
 
 /** AI 提示词区块：展示与复制的都是完整提示词，收起时仅视觉截断 */
 function PromptSection({ styleId }: { styleId: string }) {
-  const { language, theme } = useAppStore();
+  const { language } = useAppStore();
   const t = translations[language];
-  const isDark = theme === 'dark';
   const [copied, setCopied] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const promptData = getPromptById(styleId);
@@ -30,21 +30,21 @@ function PromptSection({ styleId }: { styleId: string }) {
   };
 
   return (
-    <div className={`mb-5 border rounded-lg p-4 ${isDark ? 'bg-[#0a0a0a] border-gray-800' : 'bg-gray-50 border-gray-200'}`}>
+    <div className={`mb-5 border rounded-lg p-4 bg-gray-50 border-gray-200 dark:bg-[#0a0a0a] dark:border-gray-800`}>
       <div className="flex items-center gap-2 mb-3">
         <Sparkles className="w-4 h-4 text-[#FF9F1C]" />
-        <h4 className={`text-xs font-bold uppercase tracking-wider ${isDark ? 'text-white' : 'text-black'}`}>
+        <h4 className={`text-xs font-bold uppercase tracking-wider text-black dark:text-white`}>
           {t.modal.aiPrompt}
         </h4>
       </div>
-      <div className={`border rounded-lg p-3 mb-3 ${isDark ? 'bg-[#1a1a1a] border-gray-800' : 'bg-white border-gray-200'}`}>
-        <pre className={`text-[11px] whitespace-pre-wrap font-mono leading-relaxed ${expanded ? '' : 'line-clamp-4'} ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+      <div className={`border rounded-lg p-3 mb-3 bg-white border-gray-200 dark:bg-[#1a1a1a] dark:border-gray-800`}>
+        <pre className={`text-[11px] whitespace-pre-wrap font-mono leading-relaxed ${expanded ? '' : 'line-clamp-4'} text-gray-600 dark:text-gray-400`}>
           {fullPrompt}
         </pre>
         <button
           type="button"
           onClick={() => setExpanded((v) => !v)}
-          className={`mt-2 flex items-center gap-1 text-[10px] uppercase tracking-wider transition-colors ${isDark ? 'text-gray-500 hover:text-white' : 'text-gray-400 hover:text-black'}`}
+          className={`mt-2 flex items-center gap-1 text-[10px] uppercase tracking-wider transition-colors text-gray-400 hover:text-black dark:text-gray-500 dark:hover:text-white`}
         >
           {expanded ? t.modal.collapsePrompt : t.modal.expandPrompt}
           <ChevronDown className={`w-3 h-3 transition-transform ${expanded ? 'rotate-180' : ''}`} />
@@ -76,27 +76,16 @@ function PromptSection({ styleId }: { styleId: string }) {
 }
 
 export function StyleDetailContent({ style }: StyleDetailContentProps) {
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useIsMobile();
   const [viewMode, setViewMode] = useState<'preview' | 'code'>('preview');
   const {
     language,
-    theme,
     previewDevice: device,
     setPreviewDevice: setDevice,
     isDetailsPanelCollapsed,
     toggleDetailsPanel,
   } = useAppStore();
   const t = translations[language];
-
-  // Detect mobile screen
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   const getDeviceWidth = () => {
     switch (device) {
@@ -106,34 +95,33 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
   };
 
   const demoUrl = `/demos/${style.id}.html`;
-  const isDark = theme === 'dark';
 
   // Mobile layout: single scrollable column
   if (isMobile) {
     return (
       <div className="h-full overflow-y-auto">
         {/* Preview Area */}
-        <div className={`${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-100'}`}>
+        <div className={`bg-gray-100 dark:bg-[#2a2a2a]`}>
           {/* Header */}
-          <div className={`border-b px-4 py-3 flex items-center justify-between ${isDark ? 'bg-[#1a1a1a] border-gray-800' : 'bg-white border-gray-200'}`}>
+          <div className={`border-b px-4 py-3 flex items-center justify-between bg-white border-gray-200 dark:bg-[#1a1a1a] dark:border-gray-800`}>
             <div className="flex items-center gap-2">
               <span className="relative flex w-1.5 h-1.5">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-60 animate-ping" />
                 <span className="relative inline-flex w-1.5 h-1.5 rounded-full bg-green-500" />
               </span>
-              <h2 className={`text-sm font-bold ${isDark ? 'text-white' : 'text-black'}`}>
+              <h2 className={`text-sm font-bold text-black dark:text-white`}>
                 {language === 'zh' ? style.name : style.nameEn}
               </h2>
             </div>
             <div className="flex items-center gap-1.5">
               {/* View Toggle: Preview / Code */}
-              <div className={`flex items-center gap-0 rounded-lg overflow-hidden border ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
+              <div className={`flex items-center gap-0 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700`}>
                 <button
                   onClick={() => setViewMode('preview')}
                   type="button"
                   title={t.modal.previewTab}
                   aria-pressed={viewMode === 'preview'}
-                  className={`p-2 transition-colors ${viewMode === 'preview' ? 'bg-[#FF9F1C] text-white' : isDark ? 'bg-[#1a1a1a] text-gray-400 hover:text-white' : 'bg-white text-gray-500 hover:text-black'}`}
+                  className={`p-2 transition-colors ${viewMode === 'preview' ? 'bg-[#FF9F1C] text-white' : 'bg-white text-gray-500 hover:text-black dark:bg-[#1a1a1a] dark:text-gray-400 dark:hover:text-white'}`}
                 >
                   <Eye className="w-4 h-4" />
                 </button>
@@ -142,7 +130,7 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
                   type="button"
                   title={t.modal.codeTab}
                   aria-pressed={viewMode === 'code'}
-                  className={`p-2 transition-colors ${viewMode === 'code' ? 'bg-[#FF9F1C] text-white' : isDark ? 'bg-[#1a1a1a] text-gray-400 hover:text-white' : 'bg-white text-gray-500 hover:text-black'}`}
+                  className={`p-2 transition-colors ${viewMode === 'code' ? 'bg-[#FF9F1C] text-white' : 'bg-white text-gray-500 hover:text-black dark:bg-[#1a1a1a] dark:text-gray-400 dark:hover:text-white'}`}
                 >
                   <Code className="w-4 h-4" />
                 </button>
@@ -153,7 +141,7 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
                 rel="noopener noreferrer"
                 title={t.modal.openInNewTab}
                 aria-label={t.modal.openInNewTab}
-                className={`p-2 rounded-lg transition-colors ${isDark ? 'text-gray-400 hover:text-white hover:bg-gray-800' : 'text-gray-500 hover:text-black hover:bg-gray-100'}`}
+                className={`p-2 rounded-lg transition-colors text-gray-500 hover:text-black hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800`}
               >
                 <ExternalLink className="w-4 h-4" />
               </a>
@@ -180,9 +168,9 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
         </div>
 
         {/* Details Panel */}
-        <div className={`${isDark ? 'bg-[#1a1a1a]' : 'bg-white'}`}>
+        <div className={`bg-white dark:bg-[#1a1a1a]`}>
           {/* Header with Rating & Tags */}
-          <div className={`border-b px-5 py-4 flex items-center justify-between ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
+          <div className={`border-b px-5 py-4 flex items-center justify-between border-gray-200 dark:border-gray-800`}>
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-1.5 px-2.5 py-1 bg-[#FF9F1C] text-white rounded">
                 <Star className="w-3.5 h-3.5 fill-white" />
@@ -190,7 +178,7 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
               </div>
               <div className="flex gap-1.5">
                 {(language === 'zh' ? style.tags : style.tagsEn).slice(0, 2).map((tag, i) => (
-                  <span key={i} className={`px-2 py-1 text-[10px] uppercase tracking-wider rounded ${isDark ? 'bg-gray-800 text-gray-300' : 'bg-gray-100 text-gray-600'}`}>
+                  <span key={i} className={`px-2 py-1 text-[10px] uppercase tracking-wider rounded bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300`}>
                     {tag}
                   </span>
                 ))}
@@ -201,12 +189,12 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
           {/* Content */}
           <div className="px-5 py-5">
             {/* Style Name */}
-            <h3 className={`text-xl font-bold mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
+            <h3 className={`text-xl font-bold mb-2 text-black dark:text-white`}>
               {language === 'zh' ? style.name : style.nameEn}
             </h3>
 
             {/* Description */}
-            <p className={`text-xs leading-relaxed mb-5 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+            <p className={`text-xs leading-relaxed mb-5 text-gray-600 dark:text-gray-400`}>
               {language === 'zh' ? style.description : style.descriptionEn}
             </p>
 
@@ -215,12 +203,12 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
 
             {/* Core Features */}
             <div className="mb-5">
-              <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
+              <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 text-black dark:text-white`}>
                 {t.modal.features}
               </h4>
               <div className="flex flex-wrap gap-1.5">
                 {(language === 'zh' ? style.features : style.featuresEn).slice(0, 5).map((feature, i) => (
-                  <span key={i} className={`px-2.5 py-1 text-[10px] rounded ${isDark ? 'bg-gray-800 text-gray-300' : 'bg-gray-100 text-gray-700'}`}>
+                  <span key={i} className={`px-2.5 py-1 text-[10px] rounded bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300`}>
                     {feature.split(' - ')[0]}
                   </span>
                 ))}
@@ -229,7 +217,7 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
 
             {/* Use Cases */}
             <div className="mb-5">
-              <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
+              <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 text-black dark:text-white`}>
                 {t.modal.useCases}
               </h4>
               <div className="flex flex-wrap gap-1.5">
@@ -244,12 +232,12 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
             {/* Pros & Cons */}
             <div className="grid grid-cols-2 gap-4 mb-5">
               <div>
-                <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-1 ${isDark ? 'text-white' : 'text-black'}`}>
+                <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-1 text-black dark:text-white`}>
                   <span className="text-green-500">✓</span> {t.modal.pros || '优点'}
                 </h4>
                 <ul className="space-y-1">
                   {(language === 'zh' ? style.pros : style.prosEn).slice(0, 3).map((pro, i) => (
-                    <li key={i} className={`text-[10px] flex items-start gap-1 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                    <li key={i} className={`text-[10px] flex items-start gap-1 text-gray-600 dark:text-gray-400`}>
                       <Check className="w-3 h-3 text-green-500 shrink-0 mt-0.5" />
                       {pro.split(' - ')[0]}
                     </li>
@@ -257,12 +245,12 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
                 </ul>
               </div>
               <div>
-                <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-1 ${isDark ? 'text-white' : 'text-black'}`}>
+                <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-1 text-black dark:text-white`}>
                   <span className="text-red-500">✗</span> {t.modal.cons || '缺点'}
                 </h4>
                 <ul className="space-y-1">
                   {(language === 'zh' ? style.cons : style.consEn).slice(0, 3).map((con, i) => (
-                    <li key={i} className={`text-[10px] flex items-start gap-1 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                    <li key={i} className={`text-[10px] flex items-start gap-1 text-gray-600 dark:text-gray-400`}>
                       <CircleX className="w-3 h-3 text-red-500 shrink-0 mt-0.5" />
                       {con.split(' - ')[0]}
                     </li>
@@ -273,16 +261,16 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
 
             {/* Pitfalls */}
             <div className="mb-5">
-              <h4 className={`text-xs font-bold uppercase tracking-wider mb-1 flex items-center gap-1.5 ${isDark ? 'text-white' : 'text-black'}`}>
+              <h4 className={`text-xs font-bold uppercase tracking-wider mb-1 flex items-center gap-1.5 text-black dark:text-white`}>
                 <TriangleAlert className="w-3.5 h-3.5 text-amber-500" />
                 {t.modal.pitfalls}
               </h4>
-              <p className={`text-[10px] mb-2 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+              <p className={`text-[10px] mb-2 text-gray-400 dark:text-gray-500`}>
                 {t.modal.pitfallsHint}
               </p>
-              <ul className={`space-y-1.5 border rounded-lg p-3 ${isDark ? 'border-amber-500/20 bg-amber-500/5' : 'border-amber-200 bg-amber-50/60'}`}>
+              <ul className={`space-y-1.5 border rounded-lg p-3 border-amber-200 bg-amber-50/60 dark:border-amber-500/20 dark:bg-amber-500/5`}>
                 {(language === 'zh' ? style.pitfalls : style.pitfallsEn).map((pitfall, i) => (
-                  <li key={i} className={`text-[11px] leading-relaxed flex items-start gap-1.5 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+                  <li key={i} className={`text-[11px] leading-relaxed flex items-start gap-1.5 text-gray-700 dark:text-gray-300`}>
                     <span className="text-amber-500 shrink-0">•</span>
                     {pitfall}
                   </li>
@@ -292,7 +280,7 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
 
             {/* Color Palette */}
             <div className="mb-5">
-              <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
+              <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 text-black dark:text-white`}>
                 {t.modal.colors || '配色方案'}
               </h4>
               <div className="flex gap-2">
@@ -312,12 +300,12 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
 
             {/* Examples */}
             <div className="pb-4">
-              <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
+              <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 text-black dark:text-white`}>
                 {t.modal.examples || '代表案例'}
               </h4>
               <div className="flex flex-wrap gap-1.5">
                 {(language === 'zh' ? style.examples : style.examplesEn).slice(0, 4).map((example, i) => (
-                  <span key={i} className={`px-2.5 py-1 text-[10px] rounded border ${isDark ? 'border-gray-700 text-gray-400' : 'border-gray-200 text-gray-600'}`}>
+                  <span key={i} className={`px-2.5 py-1 text-[10px] rounded border border-gray-200 text-gray-600 dark:border-gray-700 dark:text-gray-400`}>
                     {example}
                   </span>
                 ))}
@@ -334,33 +322,33 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
     <div className="flex h-full flex-row">
       {/* Preview Area */}
       <div
-        className={`flex flex-col flex-1 min-w-0 transition-all duration-300 ${isDark ? 'bg-[#2a2a2a]' : 'bg-gray-100'}`}
+        className={`flex flex-col flex-1 min-w-0 transition-all duration-300 bg-gray-100 dark:bg-[#2a2a2a]`}
         style={{ height: '100%' }}
       >
         {/* Header */}
-        <div className={`border-b px-4 py-3 flex items-center justify-between ${isDark ? 'bg-[#1a1a1a] border-gray-800' : 'bg-white border-gray-200'}`}>
+        <div className={`border-b px-4 py-3 flex items-center justify-between bg-white border-gray-200 dark:bg-[#1a1a1a] dark:border-gray-800`}>
           <div className="flex items-center gap-2 min-w-0">
             <span className="relative flex w-1.5 h-1.5 shrink-0">
               <span className="absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-60 animate-ping" />
               <span className="relative inline-flex w-1.5 h-1.5 rounded-full bg-green-500" />
             </span>
-            <h2 className={`text-sm font-bold truncate ${isDark ? 'text-white' : 'text-black'}`}>
+            <h2 className={`text-sm font-bold truncate text-black dark:text-white`}>
               {language === 'zh' ? style.name : style.nameEn}
             </h2>
-            <span className={`hidden lg:inline text-[10px] uppercase tracking-wider ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+            <span className={`hidden lg:inline text-[10px] uppercase tracking-wider text-gray-400 dark:text-gray-500`}>
               {t.modal.livePreview}
             </span>
           </div>
 
           <div className="flex items-center gap-2">
             {/* View Toggle: Preview / Code */}
-            <div className={`flex items-center gap-0 rounded-lg overflow-hidden border ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
+            <div className={`flex items-center gap-0 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700`}>
               <button
                 onClick={() => setViewMode('preview')}
                 type="button"
                 title={t.modal.previewTab}
                 aria-pressed={viewMode === 'preview'}
-                className={`p-2 transition-colors ${viewMode === 'preview' ? 'bg-[#FF9F1C] text-white' : isDark ? 'bg-[#1a1a1a] text-gray-400 hover:text-white' : 'bg-white text-gray-500 hover:text-black'}`}
+                className={`p-2 transition-colors ${viewMode === 'preview' ? 'bg-[#FF9F1C] text-white' : 'bg-white text-gray-500 hover:text-black dark:bg-[#1a1a1a] dark:text-gray-400 dark:hover:text-white'}`}
               >
                 <Eye className="w-4 h-4" />
               </button>
@@ -369,7 +357,7 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
                 type="button"
                 title={t.modal.codeTab}
                 aria-pressed={viewMode === 'code'}
-                className={`p-2 transition-colors ${viewMode === 'code' ? 'bg-[#FF9F1C] text-white' : isDark ? 'bg-[#1a1a1a] text-gray-400 hover:text-white' : 'bg-white text-gray-500 hover:text-black'}`}
+                className={`p-2 transition-colors ${viewMode === 'code' ? 'bg-[#FF9F1C] text-white' : 'bg-white text-gray-500 hover:text-black dark:bg-[#1a1a1a] dark:text-gray-400 dark:hover:text-white'}`}
               >
                 <Code className="w-4 h-4" />
               </button>
@@ -377,22 +365,24 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
 
             {/* Device Toggle（仅预览模式） */}
             {viewMode === 'preview' && (
-              <div className={`flex items-center gap-0 rounded-lg overflow-hidden border ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
+              <div className={`flex items-center gap-0 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700`}>
                 <button
                   onClick={() => setDevice('desktop')}
                   type="button"
-                  title="Desktop"
+                  title={t.modal.desktop}
+                  aria-label={t.modal.desktop}
                   aria-pressed={device === 'desktop'}
-                  className={`p-2 transition-colors ${device === 'desktop' ? 'bg-[#FF9F1C] text-white' : isDark ? 'bg-[#1a1a1a] text-gray-400 hover:text-white' : 'bg-white text-gray-500 hover:text-black'}`}
+                  className={`p-2 transition-colors ${device === 'desktop' ? 'bg-[#FF9F1C] text-white' : 'bg-white text-gray-500 hover:text-black dark:bg-[#1a1a1a] dark:text-gray-400 dark:hover:text-white'}`}
                 >
                   <Monitor className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => setDevice('mobile')}
                   type="button"
-                  title="Mobile"
+                  title={t.modal.mobile}
+                  aria-label={t.modal.mobile}
                   aria-pressed={device === 'mobile'}
-                  className={`p-2 transition-colors ${device === 'mobile' ? 'bg-[#FF9F1C] text-white' : isDark ? 'bg-[#1a1a1a] text-gray-400 hover:text-white' : 'bg-white text-gray-500 hover:text-black'}`}
+                  className={`p-2 transition-colors ${device === 'mobile' ? 'bg-[#FF9F1C] text-white' : 'bg-white text-gray-500 hover:text-black dark:bg-[#1a1a1a] dark:text-gray-400 dark:hover:text-white'}`}
                 >
                   <Smartphone className="w-4 h-4" />
                 </button>
@@ -405,7 +395,7 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
               rel="noopener noreferrer"
               title={t.modal.openInNewTab}
               aria-label={t.modal.openInNewTab}
-              className={`p-2 rounded-lg border transition-colors ${isDark ? 'border-gray-700 text-gray-400 hover:text-white hover:bg-gray-800' : 'border-gray-200 text-gray-500 hover:text-black hover:bg-gray-100'}`}
+              className={`p-2 rounded-lg border transition-colors border-gray-200 text-gray-500 hover:text-black hover:bg-gray-100 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800`}
             >
               <ExternalLink className="w-4 h-4" />
             </a>
@@ -449,19 +439,19 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
 
       {/* Details Panel */}
       <div
-        className={`flex flex-col shrink-0 border-l transition-all duration-300 overflow-hidden ${isDark ? 'bg-[#1a1a1a] border-gray-800' : 'bg-white border-gray-200'}`}
+        className={`flex flex-col shrink-0 border-l transition-all duration-300 overflow-hidden bg-white border-gray-200 dark:bg-[#1a1a1a] dark:border-gray-800`}
         style={{ width: isDetailsPanelCollapsed ? '0px' : '400px', height: '100%' }}
       >
       <div className="w-[400px] h-full flex flex-col shrink-0">
         {/* Header with Rating & Tags */}
-        <div className={`border-b px-4 py-3 flex items-center justify-between shrink-0 ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
+        <div className={`border-b px-4 py-3 flex items-center justify-between shrink-0 border-gray-200 dark:border-gray-800`}>
           <div className="flex items-center gap-3">
             <button
               type="button"
               onClick={toggleDetailsPanel}
               title={language === 'zh' ? '收起详情' : 'Collapse details'}
               aria-label={language === 'zh' ? '收起详情' : 'Collapse details'}
-              className={`shrink-0 p-2 rounded-lg border transition-colors ${isDark ? 'border-gray-700 text-gray-400 hover:text-white hover:bg-gray-800' : 'border-gray-200 text-gray-500 hover:text-black hover:bg-gray-100'}`}
+              className={`shrink-0 p-2 rounded-lg border transition-colors border-gray-200 text-gray-500 hover:text-black hover:bg-gray-100 dark:border-gray-700 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800`}
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -471,7 +461,7 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
             </div>
             <div className="flex gap-1.5">
               {(language === 'zh' ? style.tags : style.tagsEn).slice(0, 2).map((tag, i) => (
-                <span key={i} className={`px-2 py-1 text-[10px] uppercase tracking-wider rounded ${isDark ? 'bg-gray-800 text-gray-300' : 'bg-gray-100 text-gray-600'}`}>
+                <span key={i} className={`px-2 py-1 text-[10px] uppercase tracking-wider rounded bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300`}>
                   {tag}
                 </span>
               ))}
@@ -482,12 +472,12 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
         {/* Scrollable Content */}
         <div className="flex-1 overflow-y-auto px-5 py-5">
           {/* Style Name */}
-          <h3 className={`text-xl font-bold mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
+          <h3 className={`text-xl font-bold mb-2 text-black dark:text-white`}>
             {language === 'zh' ? style.name : style.nameEn}
           </h3>
 
           {/* Description */}
-          <p className={`text-xs leading-relaxed mb-5 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+          <p className={`text-xs leading-relaxed mb-5 text-gray-600 dark:text-gray-400`}>
             {language === 'zh' ? style.description : style.descriptionEn}
           </p>
 
@@ -496,12 +486,12 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
 
           {/* Core Features */}
           <div className="mb-5">
-            <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
+            <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 text-black dark:text-white`}>
               {t.modal.features}
             </h4>
             <div className="flex flex-wrap gap-1.5">
               {(language === 'zh' ? style.features : style.featuresEn).slice(0, 5).map((feature, i) => (
-                <span key={i} className={`px-2.5 py-1 text-[10px] rounded ${isDark ? 'bg-gray-800 text-gray-300' : 'bg-gray-100 text-gray-700'}`}>
+                <span key={i} className={`px-2.5 py-1 text-[10px] rounded bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300`}>
                   {feature.split(' - ')[0]}
                 </span>
               ))}
@@ -510,7 +500,7 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
 
           {/* Use Cases */}
           <div className="mb-5">
-            <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
+            <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 text-black dark:text-white`}>
               {t.modal.useCases}
             </h4>
             <div className="flex flex-wrap gap-1.5">
@@ -525,12 +515,12 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
           {/* Pros & Cons */}
           <div className="grid grid-cols-2 gap-4 mb-5">
             <div>
-              <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-1 ${isDark ? 'text-white' : 'text-black'}`}>
+              <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-1 text-black dark:text-white`}>
                 <span className="text-green-500">✓</span> {t.modal.pros || '优点'}
               </h4>
               <ul className="space-y-1">
                 {(language === 'zh' ? style.pros : style.prosEn).slice(0, 3).map((pro, i) => (
-                  <li key={i} className={`text-[10px] flex items-start gap-1 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                  <li key={i} className={`text-[10px] flex items-start gap-1 text-gray-600 dark:text-gray-400`}>
                     <Check className="w-3 h-3 text-green-500 shrink-0 mt-0.5" />
                     {pro.split(' - ')[0]}
                   </li>
@@ -538,12 +528,12 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
               </ul>
             </div>
             <div>
-              <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-1 ${isDark ? 'text-white' : 'text-black'}`}>
+              <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-1 text-black dark:text-white`}>
                 <span className="text-red-500">✗</span> {t.modal.cons || '缺点'}
               </h4>
               <ul className="space-y-1">
                 {(language === 'zh' ? style.cons : style.consEn).slice(0, 3).map((con, i) => (
-                  <li key={i} className={`text-[10px] flex items-start gap-1 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                  <li key={i} className={`text-[10px] flex items-start gap-1 text-gray-600 dark:text-gray-400`}>
                     <CircleX className="w-3 h-3 text-red-500 shrink-0 mt-0.5" />
                     {con.split(' - ')[0]}
                   </li>
@@ -554,16 +544,16 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
 
           {/* Pitfalls */}
           <div className="mb-5">
-            <h4 className={`text-xs font-bold uppercase tracking-wider mb-1 flex items-center gap-1.5 ${isDark ? 'text-white' : 'text-black'}`}>
+            <h4 className={`text-xs font-bold uppercase tracking-wider mb-1 flex items-center gap-1.5 text-black dark:text-white`}>
               <TriangleAlert className="w-3.5 h-3.5 text-amber-500" />
               {t.modal.pitfalls}
             </h4>
-            <p className={`text-[10px] mb-2 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+            <p className={`text-[10px] mb-2 text-gray-400 dark:text-gray-500`}>
               {t.modal.pitfallsHint}
             </p>
-            <ul className={`space-y-1.5 border rounded-lg p-3 ${isDark ? 'border-amber-500/20 bg-amber-500/5' : 'border-amber-200 bg-amber-50/60'}`}>
+            <ul className={`space-y-1.5 border rounded-lg p-3 border-amber-200 bg-amber-50/60 dark:border-amber-500/20 dark:bg-amber-500/5`}>
               {(language === 'zh' ? style.pitfalls : style.pitfallsEn).map((pitfall, i) => (
-                <li key={i} className={`text-[11px] leading-relaxed flex items-start gap-1.5 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+                <li key={i} className={`text-[11px] leading-relaxed flex items-start gap-1.5 text-gray-700 dark:text-gray-300`}>
                   <span className="text-amber-500 shrink-0">•</span>
                   {pitfall}
                 </li>
@@ -573,7 +563,7 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
 
           {/* Color Palette */}
           <div className="mb-5">
-            <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
+            <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 text-black dark:text-white`}>
               {t.modal.colors || '配色方案'}
             </h4>
             <div className="flex gap-2">
@@ -593,12 +583,12 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
 
           {/* Examples */}
           <div>
-            <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
+            <h4 className={`text-xs font-bold uppercase tracking-wider mb-2 text-black dark:text-white`}>
               {t.modal.examples || '代表案例'}
             </h4>
             <div className="flex flex-wrap gap-1.5">
               {(language === 'zh' ? style.examples : style.examplesEn).slice(0, 4).map((example, i) => (
-                <span key={i} className={`px-2.5 py-1 text-[10px] rounded border ${isDark ? 'border-gray-700 text-gray-400' : 'border-gray-200 text-gray-600'}`}>
+                <span key={i} className={`px-2.5 py-1 text-[10px] rounded border border-gray-200 text-gray-600 dark:border-gray-700 dark:text-gray-400`}>
                   {example}
                 </span>
               ))}

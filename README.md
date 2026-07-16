@@ -14,6 +14,7 @@
 - **Design Tokens**：自动提取 demo 的 `:root` CSS 变量，与实况预览严格一致，可直接复制
 - **避坑指南**：每种风格 3-4 条「AI 生成时最常见的翻车点」
 - **选型指南**：按项目场景 / 技术难度快速圈定候选风格
+- **对比模式**：任意两种风格并排实况对比（`/compare/<a>/<b>`），数据逐项对照
 - **SEO 友好**：构建时为每个风格页生成独立 meta 的静态壳 + sitemap + og:image
 - **中英文双语**、**亮色/暗色主题**、**响应式布局**（桌面 / 移动端）
 
@@ -43,6 +44,9 @@ pnpm build
 # 重新生成社交分享图（demo 有增改时运行，需 macOS + Chrome）
 pnpm og
 
+# 重新生成首页卡片静态缩略图（demo 有增改时运行，需 macOS + Chrome）
+pnpm thumbs
+
 # 预览生产版本
 pnpm preview
 ```
@@ -52,11 +56,13 @@ pnpm preview
 ```
 ├── public/
 │   ├── demos/             # 30 个风格 demo（零依赖单文件 HTML，与风格数据一一对应）
-│   └── og/                # 社交分享图（由 pnpm og 生成）
+│   ├── og/                # 社交分享图（由 pnpm og 生成）
+│   └── thumbs/            # 首页卡片静态缩略图（由 pnpm thumbs 生成，hover 时才挂载实况 iframe）
 ├── scripts/
 │   ├── validate-demos.mjs # 数据一致性与 demo 约定校验（build 前自动执行）
 │   ├── postbuild-seo.mjs  # 为每个风格页生成独立 meta 的静态壳 + sitemap + robots
 │   ├── generate-og.mjs    # 用系统 Chrome headless 截 og:image
+│   ├── generate-thumbs.mjs# 用系统 Chrome headless 截首页卡片缩略图
 │   └── og-home.html       # 首页分享图模板
 ├── src/
 │   ├── data/
@@ -68,7 +74,7 @@ pnpm preview
 │   ├── lib/               # highlightHtml（零依赖语法高亮）
 │   ├── components/        # StyleCard、DemoPreview、DemoCodeView、DesignTokens 等
 │   ├── sections/          # 首页区块（Hero / StylesGrid / SceneGuide / Footer）
-│   └── pages/             # 首页与风格详情页
+│   └── pages/             # 首页、风格详情页与对比页
 └── 网站设计风格大全.md      # 风格资料源文档
 ```
 
@@ -78,7 +84,7 @@ pnpm preview
 2. 在 `src/data/prompts.ts` 中追加同 `id` 的提示词
 3. 在 `public/demos/` 中新增 `<id>.html` demo（单文件、零外链、零 JS、必须有 `:root` CSS 变量）
 4. （可选）在 `src/data/scenes.ts` 的场景/难度中收录该风格
-5. 运行 `pnpm validate` 校验三处对齐，`pnpm og` 重新生成分享图
+5. 运行 `pnpm validate` 校验三处对齐，`pnpm og` 与 `pnpm thumbs` 重新生成分享图和卡片缩略图
 
 首页卡片、侧边栏、详情页、Design Tokens 与 SEO 静态壳都会根据数据自动生成，无需改动组件。
 
