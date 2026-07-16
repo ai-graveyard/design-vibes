@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Design Vibes OG</title>
+<style>
+:root{ --accent:#FF9F1C; --ink:#0a0a0a; --paper:#ffffff; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  width:1200px;height:630px;overflow:hidden;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
+  background:var(--paper);color:var(--ink);
+  display:flex;flex-direction:column;justify-content:space-between;
+  background-image:
+    linear-gradient(rgba(0,0,0,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,0,0,.05) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+.top{display:flex;align-items:center;gap:14px;padding:44px 60px 0}
+.sq{width:20px;height:20px;background:var(--accent)}
+.kicker{font-size:20px;letter-spacing:.25em;color:#666;text-transform:uppercase;font-weight:500}
+.mid{padding:0 56px}
+h1{font-size:150px;font-weight:900;letter-spacing:.01em;line-height:.95}
+h1 .dot{color:var(--accent)}
+.sub{margin-top:26px;display:flex;align-items:center;gap:18px}
+.bar{width:56px;height:6px;background:var(--accent)}
+.sub p{font-size:30px;color:#444}
+.bottom{display:flex;align-items:center;justify-content:space-between;padding:0 60px 44px}
+.count{display:flex;align-items:baseline;gap:14px}
+.count b{font-size:88px;font-weight:900;line-height:1}
+.count span{font-size:22px;letter-spacing:.18em;color:#777;text-transform:uppercase}
+.chips{display:flex;gap:10px}
+.chip{padding:10px 18px;border:2px solid var(--ink);font-size:19px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.chip.hot{background:var(--accent);border-color:var(--accent);color:#fff}
+</style>
+</head>
+<body>
+  <div class="top"><div class="sq"></div><div class="kicker">Vibe Coding Reference</div></div>
+  <div class="mid">
+    <h1>DESIGN VIBES<span class="dot">.</span></h1>
+    <div class="sub"><div class="bar"></div><p>网页设计风格大全 · 实况预览 · 源码 · AI 提示词</p></div>
+  </div>
+  <div class="bottom">
+    <div class="count"><b>30</b><span>Design Styles</span></div>
+    <div class="chips">
+      <div class="chip hot">Live Demos</div>
+      <div class="chip">AI Prompts</div>
+      <div class="chip">Tokens</div>
+    </div>
+  </div>
+</body>
+</html>

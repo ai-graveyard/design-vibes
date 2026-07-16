@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "validate": "node scripts/validate-demos.mjs",
+    "build": "node scripts/validate-demos.mjs && tsc -b && vite build && node scripts/postbuild-seo.mjs",
+    "og": "node scripts/generate-og.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
