@@ -148,6 +148,23 @@ footer .up{float:right}
   .colophon dd{margin-left:0;margin-bottom:6px}
   footer .up{float:none;display:inline-block}
 }
+
+/* motion */
+.masthead h1{animation:flash-in .2s steps(2,jump-none) backwards}
+.masthead .tagline{animation:flash-in .2s steps(2,jump-none) .08s backwards}
+.masthead nav{animation:flash-in .2s steps(2,jump-none) .16s backwards}
+.hero h2{animation:flash-in .2s steps(2,jump-none) .24s backwards}
+.hero .dek{animation:flash-in .2s steps(2,jump-none) .32s backwards}
+.notice{animation:flash-in .2s steps(2,jump-none) .4s backwards}
+a:active{background:var(--fg);color:var(--bg);transition:none}
+@keyframes flash-in{from{opacity:0}}
+@supports (animation-timeline:view()){
+  .sec-label,.sec-title,tbody tr,.rules li,.colophon,.badges{
+    animation:flash-in 1s steps(2,jump-none) both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 40%;
+  }
+}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }

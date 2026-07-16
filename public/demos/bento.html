@@ -144,6 +144,28 @@ footer{border-top:1px solid var(--edge);padding:26px 0 34px;font-size:.8rem;colo
   .grad .sub{margin-top:4px}
   .cell.grad{padding-bottom:14px}
 }
+/* ===== Motion ===== */
+.hero .eyebrow,.hero h1,.hero .tagline,.bento .cell:nth-child(-n+5){
+  animation:rise .6s cubic-bezier(.22,1,.36,1) backwards;
+}
+.hero h1{animation-delay:.08s}
+.hero .tagline{animation-delay:.16s}
+.bento .cell:nth-child(1){animation-delay:.26s}
+.bento .cell:nth-child(2),.bento .cell:nth-child(3){animation-delay:.34s}
+.bento .cell:nth-child(4),.bento .cell:nth-child(5){animation-delay:.42s}
+.pill:active{transform:scale(.98)}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}}
+@supports (animation-timeline:view()){
+  .bento .cell:nth-child(n+6),.specs h2,.spec,.cta h2,.cta p,.cta-row{
+    animation:rise 1s linear both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 50%;
+  }
+  .bento .cell:nth-child(9){animation-range:entry 7% entry 57%}
+  .spec:nth-child(2){animation-range:entry 7% entry 57%}
+  .spec:nth-child(3){animation-range:entry 14% entry 64%}
+}
+
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }

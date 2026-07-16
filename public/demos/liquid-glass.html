@@ -159,6 +159,34 @@ section{padding:56px 0}
 .foot{flex-direction:column;gap:32px}
 .foot-cols{gap:36px}
 }
+/* motion */
+.hero .eyebrow,.hero .lede,.hero .hero-cta,.hero .dock,.hero .note{
+animation:condense .7s cubic-bezier(.33,1,.5,1) backwards;
+}
+.hero h1{animation:condense-soft .7s cubic-bezier(.33,1,.5,1) .08s backwards}
+.hero .lede{animation-delay:.16s}
+.hero .hero-cta{animation-delay:.24s}
+.hero .dock{animation-delay:.32s}
+.hero .note{animation-delay:.4s}
+.btn:active{transform:scale(.97)}
+.feature{overflow:hidden}
+.feature::before{
+content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+background:linear-gradient(105deg,transparent 40%,#ffffff2e 50%,transparent 60%);
+transform:translateX(-120%);transition:transform .8s ease;
+}
+.feature:hover::before{transform:translateX(120%)}
+@keyframes condense{from{opacity:0;transform:scale(.96);filter:blur(3px)}}
+@keyframes condense-soft{from{opacity:0;transform:scale(.96)}}
+@supports (animation-timeline:view()){
+.features .feature,#control .sec-head,.cc,.dev-grid>div{
+animation:condense 1s linear both;
+animation-timeline:view();
+animation-range:entry 0% entry 50%;
+}
+.features .feature:nth-child(2),.dev-grid>div:nth-child(2){animation-range:entry 7% entry 57%}
+.features .feature:nth-child(3){animation-range:entry 14% entry 64%}
+}
 @media (prefers-reduced-motion:reduce){
 *,*::before,*::after{animation:none !important;transition:none !important}
 html{scroll-behavior:auto}

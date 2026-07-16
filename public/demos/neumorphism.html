@@ -36,11 +36,11 @@ body{
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
 }
-.wrap{max-width:1120px;margin:0 auto;padding:0 48px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:48px;padding-right:48px}
 .raised{background:linear-gradient(145deg,var(--bg-hi),var(--bg-lo));box-shadow:var(--raise)}
 .sunken{background:var(--bg);box-shadow:var(--sink)}
 /* ---- header ---- */
-header.wrap{padding:64px 0 30px}
+header.wrap{padding-top:64px;padding-bottom:30px}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);font-weight:700;font-size:1.08rem}
 .logo-mark{
@@ -67,7 +67,7 @@ nav a.active{color:var(--accent-deep);box-shadow:var(--sink-sm)}
 .btn-accent{color:var(--accent-deep)}
 a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 /* ---- hero ---- */
-.hero{padding:64px 0 80px}
+.hero{padding-top:64px;padding-bottom:80px}
 .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:72px;align-items:center}
 .chip{
   display:inline-flex;align-items:center;gap:9px;
@@ -140,7 +140,7 @@ h1 em{font-style:normal;color:var(--accent-deep)}
   content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;
   background:linear-gradient(145deg,var(--bg-hi),var(--bg-lo));
   box-shadow:3px 3px 6px var(--dark),-2px -2px 5px var(--light);
-  transition:left .25s,background .25s;
+  transition:left .25s,background .25s,width .2s;
 }
 .switch.on::after{left:25px;background:linear-gradient(145deg,var(--accent),var(--accent-deep))}
 /* mode buttons */
@@ -197,28 +197,57 @@ footer{padding:40px 0 48px;margin-top:24px}
 .foot-links a:hover{color:var(--ink)}
 /* ---- responsive ---- */
 @media (min-width:1200px){
-  .wrap{padding:0 64px}
+  .wrap{padding-left:64px;padding-right:64px}
 }
 @media (max-width:960px){
   .hero-grid{grid-template-columns:1fr;gap:56px}
-  .rooms{grid-template-columns:1fr;max-width:440px}
+  .rooms{grid-template-columns:1fr;max-width:440px;margin:0 auto}
   .scene-grid{grid-template-columns:1fr}
   nav ul{display:none}
 }
 @media (max-width:560px){
-  .wrap{padding:0 26px}
-  header.wrap{padding:36px 0 18px}
-  .hero{padding:36px 0 60px}
+  .wrap{padding-left:26px;padding-right:26px}
+  header.wrap{padding-top:36px;padding-bottom:18px}
+  .hero{padding-top:36px;padding-bottom:60px}
   section{padding:48px 0}
-  .panel{padding:26px 20px 22px}
+  .panel{padding:26px 20px 22px;border-radius:30px}
   .toggles{grid-template-columns:1fr}
   .modes{flex-wrap:wrap}
   .mode{flex:1 1 40%}
   .dial{width:200px;height:200px}
   .dial-face b{font-size:2.2rem}
-  .facts{gap:26px}
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   .foot{flex-direction:column;text-align:center}
 }
+/* ---- motion ---- */
+.hero-grid>div:first-child>*{animation:soft-rise .7s cubic-bezier(.33,1,.5,1) backwards}
+.hero-grid>div:first-child>*:nth-child(2){animation-delay:.08s}
+.hero-grid>div:first-child>*:nth-child(3){animation-delay:.16s}
+.hero-grid>div:first-child>*:nth-child(4){animation-delay:.24s}
+.hero-grid>div:first-child>*:nth-child(5){animation-delay:.32s}
+.panel{animation:soft-rise .9s cubic-bezier(.33,1,.5,1) .35s backwards}
+.slider-thumb:active{box-shadow:var(--sink-sm)}
+.switch:active::after{width:30px}
+.switch.on:active::after{left:19px}
+@keyframes soft-rise{from{opacity:0;transform:translateY(14px)}}
+@keyframes meter-grow{from{transform:scaleX(0)}}
+@supports (animation-timeline:view()){
+  .sec-head,.room,.scene-card,.foot{
+    animation:soft-rise 1s linear both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 50%;
+  }
+  .room:nth-child(2){animation-range:entry 7% entry 57%}
+  .room:nth-child(3){animation-range:entry 14% entry 64%}
+  .foot{animation-range:entry 0% entry 60%}
+  .room-meter i,.energy-bar i{
+    transform-origin:left;
+    animation:meter-grow 1s linear both;
+    animation-timeline:view();
+    animation-range:entry 0% cover 28%;
+  }
+}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none !important;transition:none !important}
   html{scroll-behavior:auto}

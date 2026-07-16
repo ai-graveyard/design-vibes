@@ -135,6 +135,27 @@ footer .fl .mark .s{width:10px;height:10px;left:10px;bottom:3px}
 footer p{font-size:.8125rem;opacity:.85}
 footer a:hover{color:var(--yellow)}
 
+/* ---------- motion ---------- */
+.hero .kicker{animation:slot-in .4s linear backwards}
+.hero h1{animation:slot-in .4s linear .08s backwards}
+.hero .lead{animation:slot-in .4s linear .16s backwards}
+.btns{animation:slot-in .4s linear .24s backwards}
+.comp{animation:slot-in .4s linear .32s backwards}
+.comp .square{animation:turn-in .4s linear .44s backwards}
+.comp .tri{animation:turn-in .4s linear .52s backwards}
+.btn:active,.btn.solid:active,.btn.line:active{transform:translate(2px,2px)}
+@keyframes slot-in{from{opacity:0;transform:translateY(10px)}}
+@keyframes turn-in{from{opacity:0;transform:rotate(-6deg)}}
+@supports (animation-timeline:view()){
+  .sec-head,.card,.years li,.visit h2,.visit .hours{
+    animation:slot-in 1s linear both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 50%;
+  }
+  .card:nth-child(2){animation-range:entry 7% entry 57%}
+  .card:nth-child(3){animation-range:entry 14% entry 64%}
+}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }

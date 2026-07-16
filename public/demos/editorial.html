@@ -160,6 +160,34 @@ footer .oxr{margin-bottom:1.7rem}
   font-family:var(--sans);font-size:.625rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);
 }
 
+/* ---------- motion ---------- */
+.strip .in{animation:develop .7s ease backwards}
+.mast h1{animation:develop .9s ease .12s backwards}
+.mast .tag{animation:develop .8s ease .3s backwards}
+.ear{animation:develop .8s ease .38s backwards}
+.nav-in{animation:develop .7s ease .45s backwards}
+.lead .story{animation:develop .9s ease .55s backwards}
+.lead .side{animation:develop .9s ease .7s backwards}
+nav a:active{color:var(--ink);border-color:var(--ink)}
+@keyframes develop{from{opacity:0}}
+@keyframes settle{from{opacity:0;transform:translateY(7px)}}
+@keyframes rule-in{from{transform:scaleX(0)}}
+@supports (animation-timeline:view()){
+  .row3 article,.pull,.f-grid>div{
+    animation:settle 1s linear both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 45%;
+  }
+  .row3 article:nth-child(2){animation-range:entry 6% entry 51%}
+  .row3 article:nth-child(3){animation-range:entry 12% entry 57%}
+  .kick::after,.oxr{
+    transform-origin:left;
+    animation:rule-in 1s linear both;
+    animation-timeline:view();
+    animation-range:entry 0% cover 22%;
+  }
+}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }

@@ -29,7 +29,7 @@ header{background:var(--bg);border-bottom:2px solid var(--bg-soft);position:stic
 .links{display:flex;gap:26px;margin-left:auto;font-weight:600;font-size:.95rem;color:var(--muted)}
 .links a{transition:color .2s}
 .links a:hover{color:var(--blue)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;font-weight:700;font-size:.95rem;padding:12px 24px;border-radius:8px;border:0;cursor:pointer;transition:background .2s,transform .2s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;font-weight:700;font-size:.95rem;padding:12px 24px;border-radius:8px;border:0;cursor:pointer;transition:background .2s,transform .2s,filter .2s}
 .btn-blue{background:var(--blue);color:#fff}
 .btn-blue:hover{background:var(--blue-dark);transform:translateY(-2px)}
 .btn-green{background:var(--green);color:#fff}
@@ -136,6 +136,30 @@ footer{background:var(--ink);color:#B0BEC5;padding:60px 0 36px;font-size:.92rem}
   .features,.steps{padding:64px 0}
   .foot-grid{grid-template-columns:1fr;gap:28px}
 }
+/* ===== Motion ===== */
+.hero .chip,.hero h1,.hero .lede,.hero-cta,.hero-note,.mock{
+  animation:rise .45s ease-out backwards;
+}
+.hero h1{animation-delay:.08s}
+.hero .lede{animation-delay:.16s}
+.hero-cta{animation-delay:.24s}
+.hero-note{animation-delay:.32s}
+.mock{animation-delay:.2s}
+.btn:active{transform:scale(.97);filter:brightness(.95)}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}}
+@supports (animation-timeline:view()){
+  .sec-head,.feat-grid .card,.stat,.step{
+    animation:rise 1s linear both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 45%;
+  }
+  .feat-grid .card:nth-child(2),.step:nth-child(2){animation-range:entry 7% entry 52%}
+  .feat-grid .card:nth-child(3),.step:nth-child(3){animation-range:entry 14% entry 59%}
+  .feat-grid .card:nth-child(4){animation-range:entry 21% entry 66%}
+  .stat:nth-child(2){animation-range:entry 7% entry 52%}
+  .stat:nth-child(3){animation-range:entry 14% entry 59%}
+}
+
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }

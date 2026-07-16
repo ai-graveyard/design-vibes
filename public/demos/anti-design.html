@@ -27,7 +27,8 @@ body{
   overflow-x:clip;
 }
 ::selection{background:var(--magenta);color:var(--paper)}
-.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+/* wrap 只管横向、hero/work/process 只管纵向（全部 longhand），避免 padding 简写按优先级互相清零 */
+.wrap{max-width:1080px;margin:0 auto;padding-left:22px;padding-right:22px}
 
 /* ---------- header ---------- */
 .warnbar{
@@ -52,7 +53,7 @@ header nav a:nth-child(5){font-size:12px;transform:rotate(4deg) translateY(-4px)
 header nav a:hover{background:var(--magenta);color:var(--paper);transform:rotate(0deg) scale(1.06)}
 
 /* ---------- hero ---------- */
-.hero{position:relative;padding:44px 0 56px}
+.hero{position:relative;padding-top:44px;padding-bottom:56px}
 .hero h1{font-weight:900;line-height:.82;text-transform:uppercase;letter-spacing:-.04em}
 .hero h1 span{display:block}
 .w1{
@@ -111,7 +112,7 @@ header nav a:hover{background:var(--magenta);color:var(--paper);transform:rotate
 .squiggle{position:absolute;left:2%;top:96px;width:150px;height:36px;transform:rotate(-8deg)}
 
 /* ---------- work ---------- */
-.work{padding:10px 0 60px}
+.work{padding-top:10px;padding-bottom:60px}
 .work h2,.process h2{
   display:inline-block;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;
   font-size:clamp(1.7rem,4.6vw,2.7rem);
@@ -138,7 +139,7 @@ header nav a:hover{background:var(--magenta);color:var(--paper);transform:rotate
 .case-3 .no{color:var(--green)}
 
 /* ---------- process ---------- */
-.process{padding:20px 0 90px;position:relative}
+.process{padding-top:20px;padding-bottom:90px;position:relative}
 .process-box{
   background:var(--paper);border:3px solid var(--ink);max-width:560px;
   padding:30px 30px 34px;transform:rotate(.8deg);position:relative;
@@ -189,6 +190,46 @@ footer .flip{display:inline-block;transform:rotate(180deg);font-size:11px;color:
   .hero-note{margin-top:34px}
   .cur-a,.cur-b{display:none}
   .big-asterisk{font-size:90px}
+}
+/* ---------- motion ---------- */
+/* 进场不排队：有的从左有的从右，延迟故意不等距（--r 抄各自的基础歪度，免得进场站直了） */
+.w1{--r:-4deg;animation:lurch-l .45s ease-out backwards}
+.w2{--r:2.5deg;animation:lurch-r .45s ease-out .05s backwards}
+.w3{--r:-1.5deg;animation:lurch-spin .45s ease-out .17s backwards}
+.footnote{--r:-1deg;animation:lurch-l .45s ease-out .22s backwards}
+.postit{--r:6deg;animation:lurch-spin .45s ease-out .28s backwards}
+.hero-note{--r:1.4deg;animation:lurch-r .45s ease-out .34s backwards}
+header nav a:active{transform:translate(2px,2px);transition:none}
+@keyframes lurch-l{
+  from{opacity:0;transform:rotate(var(--r,0deg)) translateX(-14px)}
+}
+@keyframes lurch-r{
+  from{opacity:0;transform:rotate(var(--r,0deg)) translateX(14px)}
+}
+@keyframes lurch-spin{
+  from{opacity:0;transform:rotate(calc(var(--r,0deg) - 6deg)) translateX(5px)}
+}
+@supports (animation-timeline:view()){
+  .work h2,.process h2{
+    --r:-1.2deg;
+    animation:lurch-l 1s ease-out both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 50%;
+  }
+  .case{
+    animation:lurch-l 1s ease-out both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 50%;
+  }
+  .case-1{--r:-2deg}
+  .case-2{--r:1.6deg;animation-name:lurch-r;animation-range:entry 7% entry 57%}
+  .case-3{--r:-1deg;animation-name:lurch-spin;animation-range:entry 14% entry 64%}
+  .process-box{
+    --r:.8deg;
+    animation:lurch-r 1s ease-out both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 50%;
+  }
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}

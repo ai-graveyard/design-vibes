@@ -165,6 +165,36 @@ footer p{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;margin-le
   .creed svg{width:92px;height:92px}
   footer p{margin-left:0}
 }
+/* ---------- motion ---------- */
+/* 弹跳登场：缩着肩膀微微歪头进门，过冲一下再站直（橡皮糖手感） */
+.eyebrow{animation:pop .5s cubic-bezier(.34,1.56,.64,1) backwards}
+.hero h1{animation:pop .5s cubic-bezier(.34,1.56,.64,1) .08s backwards}
+.hero p.sub{animation:pop .5s cubic-bezier(.34,1.56,.64,1) .16s backwards}
+.hero .row{animation:pop .5s cubic-bezier(.34,1.56,.64,1) .24s backwards}
+.hero .fine{animation:pop .5s cubic-bezier(.34,1.56,.64,1) .32s backwards}
+.hero-art{animation:pop .5s cubic-bezier(.34,1.56,.64,1) .4s backwards}
+.prod:hover figure svg{animation:wiggle .35s ease}
+.pill:active{transform:scale(.95)}
+@keyframes pop{
+  from{opacity:0;transform:scale(.92) rotate(-2deg)}
+}
+@keyframes pop-soft{
+  from{opacity:0;transform:scale(.96) rotate(-1deg)}
+}
+@keyframes wiggle{
+  0%{transform:rotate(0deg)}
+  33%{transform:rotate(1.5deg)}
+  66%{transform:rotate(-1.5deg)}
+}
+@supports (animation-timeline:view()){
+  .k,.products h2,.prod,.creed .wrap{
+    animation:pop-soft 1s cubic-bezier(.34,1.56,.64,1) both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 50%;
+  }
+  .prod:nth-child(2){animation-range:entry 7% entry 57%}
+  .prod:nth-child(3){animation-range:entry 14% entry 64%}
+}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }

@@ -83,7 +83,7 @@ section{border-bottom:1px solid var(--line)}
 .btn{
   display:inline-block;font-size:11px;font-weight:600;letter-spacing:.12em;
   text-transform:uppercase;padding:calc(var(--u)*1.5) calc(var(--u)*3);
-  border:1px solid var(--ink);transition:background .12s linear,color .12s linear;
+  border:1px solid var(--ink);transition:background .12s linear,color .12s linear,transform .12s linear;
 }
 .btn:hover{background:var(--ink);color:#fff}
 .btn.solid{background:var(--ink);color:#fff}
@@ -235,6 +235,36 @@ footer{padding:calc(var(--u)*4) 0 calc(var(--u)*6)}
   .panel{padding:calc(var(--u)*3) calc(var(--u)*2) calc(var(--u)*2)}
   .hero{padding:calc(var(--u)*5) 0 calc(var(--u)*6)}
 }
+/* ---------- Motion ---------- */
+.hero h1,.hero .lede,.hero-cta,.machine{
+  animation:set-in .5s ease-out backwards;
+}
+.hero .lede{animation-delay:.07s}
+.hero-cta{animation-delay:.14s}
+.machine{animation-delay:.21s}
+.controls .dial{animation:dial-set .5s ease-out .42s backwards}
+.dial-unit:nth-child(2) .dial{animation-delay:.49s}
+.dial-unit:nth-child(3) .dial{animation-delay:.56s}
+.btn:active{transform:translateY(1px)}
+@keyframes set-in{from{opacity:0;transform:translateY(8px)}}
+@keyframes dial-set{from{transform:rotate(-8deg)}}
+@keyframes rule-set{from{transform:scaleX(0)}}
+@supports (animation-timeline:view()){
+  .spec-table .row,.quote p,.p-cell{
+    animation:set-in 1s linear both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 45%;
+  }
+  .p-cell:nth-child(2){animation-range:entry 7% entry 52%}
+  .p-cell:nth-child(3){animation-range:entry 14% entry 59%}
+  .quote .rule{
+    animation:rule-set 1s linear both;
+    animation-timeline:view();
+    animation-range:entry 0% cover 25%;
+    transform-origin:left center;
+  }
+}
+
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }

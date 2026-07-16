@@ -70,7 +70,7 @@ header{padding:44px 0 0}
 .cta{
   font-family:var(--sans);font-size:12px;letter-spacing:.26em;text-transform:uppercase;
   color:var(--ink);padding:14px 34px;border:1px solid var(--ink);
-  transition:background .5s,color .5s;
+  transition:background .5s,color .5s,opacity .4s;
 }
 .cta:hover{background:var(--ink);color:var(--paper)}
 .cta-quiet{
@@ -214,6 +214,21 @@ footer{
   .tategaki{right:0;font-size:20px;padding-right:10px}
   .seat{grid-template-columns:40px 1fr 90px;gap:16px}
   .seats,.ma,.vessel{padding-top:80px;padding-bottom:80px}
+}
+/* ---------- Motion ---------- */
+.hero .kicker,.hero h1,.hero .lede,.hero-cta{animation:emerge 1.3s ease backwards}
+.hero h1{animation-delay:.2s}
+.hero .lede{animation-delay:.4s}
+.hero-cta{animation-delay:.6s}
+.tategaki{animation:emerge 1.3s ease 1s backwards}
+.cta:active{opacity:.7}
+@keyframes emerge{from{opacity:0}}
+@supports (animation-timeline:view()){
+  .ma-glyph,.ma h2,.seats h2,.seat,.bowl-stage,.vessel h2,.seal{
+    animation:emerge 1s linear both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 70%;
+  }
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}

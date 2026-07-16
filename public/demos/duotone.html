@@ -36,7 +36,7 @@ nav a{color:var(--orange-pale);text-decoration:none;font-size:.74rem;
 nav a:hover{color:var(--orange);border-color:var(--orange)}
 .pill{padding:.55rem 1.4rem;background:var(--orange);color:var(--navy);
   font-size:.72rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
-  text-decoration:none;transition:background .25s,color .25s,transform .25s}
+  text-decoration:none;transition:background .25s,color .25s,transform .25s,text-shadow .15s}
 .pill:hover{background:var(--orange-pale);transform:translateY(-2px)}
 
 /* ── hero: split blocks ───────────────── */
@@ -156,6 +156,26 @@ footer a:hover{color:var(--orange-pale)}
   .hero-tag{right:1.25rem;bottom:1.6rem}
   .dotfield{display:none}
   .sec-inner{padding:3.2rem 1.25rem}
+}
+
+/* ── motion ───────────────────────────── */
+.hero-kicker{animation:lift .5s ease-out .15s backwards}
+.dotfield{animation:lift .5s ease-out .25s backwards}
+.hero-meta{animation:lift .5s ease-out .35s backwards}
+.hero-tag{animation:lift .5s ease-out .45s backwards}
+.pill:hover,.pill:active{text-shadow:2px 0 var(--navy-light),-2px 0 var(--orange)}
+.pill:active{transform:scale(.98)}
+.tik .go:active{transform:scale(.98)}
+@keyframes lift{from{opacity:0;transform:translateY(12px)}}
+@supports (animation-timeline:view()){
+  .sec-label,.row,.work,.tix-head,.tik{
+    animation:lift 1s ease-out both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 50%;
+  }
+  .work:nth-child(2){animation-range:entry 7% entry 57%}
+  .work:nth-child(3){animation-range:entry 14% entry 64%}
+  .tik:nth-child(2){animation-range:entry 7% entry 57%}
 }
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation:none !important;transition:none !important}

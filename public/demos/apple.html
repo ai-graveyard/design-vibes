@@ -49,7 +49,7 @@ header{
 .nav-buy{
   background:var(--accent);color:#fff;
   padding:5px 14px;border-radius:980px;font-size:12px;
-  transition:background .25s;
+  transition:background .25s,transform .12s;
 }
 .nav-buy:hover{background:var(--accent-hover)}
 
@@ -246,6 +246,37 @@ footer{background:var(--bg-alt);border-top:1px solid var(--hairline);padding:34p
 .foot-row nav{display:flex;gap:24px}
 .foot-row a{transition:color .25s}
 .foot-row a:hover{color:var(--fg)}
+
+/* ---------- Motion ---------- */
+.hero .eyebrow,.hero h1,.hero .sub,.hero .price,.hero .cta-row{
+  animation:rise .8s cubic-bezier(.22,1,.36,1) backwards;
+}
+.hero h1{animation-delay:.08s}
+.hero .sub{animation-delay:.16s}
+.hero .price{animation-delay:.24s}
+.hero .cta-row{animation-delay:.32s}
+.stage{animation:fade-in 1.1s ease .4s backwards}
+.btn:active{transform:scale(.97);transition-duration:.12s}
+.nav-buy:active{transform:scale(.95)}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}}
+@keyframes fade-in{from{opacity:0}}
+@keyframes lume{from{opacity:0;transform:translateY(14px);filter:blur(12px)}}
+@supports (animation-timeline:view()){
+  .dark .eyebrow,.dark .sub,.bento-head,.grid .card{
+    animation:rise 1s linear both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 55%;
+  }
+  .grid .card:nth-child(2),.grid .card:nth-child(4){animation-range:entry 6% entry 61%}
+  .dark h2{
+    animation:lume 1s linear both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 60%;
+  }
+  .stat{animation:rise 1s linear both;animation-timeline:view();animation-range:entry 0% entry 50%}
+  .stat:nth-child(2){animation-range:entry 7% entry 57%}
+  .stat:nth-child(3){animation-range:entry 14% entry 64%}
+}
 
 /* ---------- Responsive ---------- */
 @media(max-width:840px){

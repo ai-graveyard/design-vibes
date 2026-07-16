@@ -341,29 +341,7 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
           </div>
 
           <div className="flex items-center gap-2">
-            {/* View Toggle: Preview / Code */}
-            <div className={`flex items-center gap-0 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700`}>
-              <button
-                onClick={() => setViewMode('preview')}
-                type="button"
-                title={t.modal.previewTab}
-                aria-pressed={viewMode === 'preview'}
-                className={`p-2 transition-colors ${viewMode === 'preview' ? 'bg-[#FF9F1C] text-white' : 'bg-white text-gray-500 hover:text-black dark:bg-[#1a1a1a] dark:text-gray-400 dark:hover:text-white'}`}
-              >
-                <Eye className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => setViewMode('code')}
-                type="button"
-                title={t.modal.codeTab}
-                aria-pressed={viewMode === 'code'}
-                className={`p-2 transition-colors ${viewMode === 'code' ? 'bg-[#FF9F1C] text-white' : 'bg-white text-gray-500 hover:text-black dark:bg-[#1a1a1a] dark:text-gray-400 dark:hover:text-white'}`}
-              >
-                <Code className="w-4 h-4" />
-              </button>
-            </div>
-
-            {/* Device Toggle（仅预览模式） */}
+            {/* Device Toggle（仅预览模式，放最左侧：出现/消失不推动右侧按钮） */}
             {viewMode === 'preview' && (
               <div className={`flex items-center gap-0 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700`}>
                 <button
@@ -388,6 +366,28 @@ export function StyleDetailContent({ style }: StyleDetailContentProps) {
                 </button>
               </div>
             )}
+
+            {/* View Toggle: Preview / Code */}
+            <div className={`flex items-center gap-0 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700`}>
+              <button
+                onClick={() => setViewMode('preview')}
+                type="button"
+                title={t.modal.previewTab}
+                aria-pressed={viewMode === 'preview'}
+                className={`p-2 transition-colors ${viewMode === 'preview' ? 'bg-[#FF9F1C] text-white' : 'bg-white text-gray-500 hover:text-black dark:bg-[#1a1a1a] dark:text-gray-400 dark:hover:text-white'}`}
+              >
+                <Eye className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => setViewMode('code')}
+                type="button"
+                title={t.modal.codeTab}
+                aria-pressed={viewMode === 'code'}
+                className={`p-2 transition-colors ${viewMode === 'code' ? 'bg-[#FF9F1C] text-white' : 'bg-white text-gray-500 hover:text-black dark:bg-[#1a1a1a] dark:text-gray-400 dark:hover:text-white'}`}
+              >
+                <Code className="w-4 h-4" />
+              </button>
+            </div>
 
             <a
               href={demoUrl}

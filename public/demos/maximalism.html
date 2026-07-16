@@ -22,7 +22,8 @@
 body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.5;font-size:16px;overflow-x:hidden}
 a{text-decoration:none;color:inherit}
 svg{display:block}
-.wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+/* wrap 只管横向、nav 只管纵向（全部 longhand），避免 padding 简写按优先级互相清零 */
+.wrap{max-width:1140px;margin:0 auto;padding-left:28px;padding-right:28px}
 
 /* ===== Ticker ===== */
 .ticker{background:var(--ink);color:var(--lime);overflow:hidden;border-bottom:4px solid var(--ink);white-space:nowrap}
@@ -33,7 +34,7 @@ svg{display:block}
 
 /* ===== Header ===== */
 header{background:var(--gold);border-bottom:5px solid var(--ink);position:relative;z-index:10}
-.nav{display:flex;align-items:center;gap:20px;padding:16px 0;flex-wrap:wrap}
+.nav{display:flex;align-items:center;gap:20px;padding-top:16px;padding-bottom:16px;flex-wrap:wrap}
 .logo{font-size:1.7rem;font-weight:900;letter-spacing:-.04em;transform:rotate(-2deg)}
 .logo em{font-style:normal;color:var(--pink);-webkit-text-stroke:1.5px var(--ink)}
 .links{margin-left:auto;display:flex;gap:12px;flex-wrap:wrap}
@@ -121,8 +122,8 @@ footer{background:var(--pink);background-image:radial-gradient(rgba(255,255,255,
   .st-round{display:none}
 }
 @media (max-width:480px){
-  .wrap{padding:0 18px}
-  .nav{gap:10px;padding:14px 0}
+  .wrap{padding-left:18px;padding-right:18px}
+  .nav{gap:10px;padding-top:14px;padding-bottom:14px}
   .logo{font-size:1.4rem}
   .links a{padding:7px 12px;font-size:.74rem;box-shadow:2px 2px 0 var(--ink)}
   .hero{padding:56px 0 84px}
@@ -135,6 +136,44 @@ footer{background:var(--pink);background-image:radial-gradient(rgba(255,255,255,
   .rules{padding:60px 0 72px}
   .big-btn{padding:13px 20px;font-size:.88rem}
   .foot-grid{flex-direction:column;gap:26px}
+}
+/* ===== Motion ===== */
+/* 一浪接一浪：六波元素挤进画面，连开场都要人山人海（--r 抄各自的基础歪度） */
+.eyebrow{--r:-1.5deg;animation:rise-tilt .5s ease-out backwards}
+.h-line.l1{animation:rise .5s ease-out .08s backwards}
+.h-line.l2{animation:rise .5s ease-out .16s backwards}
+.h-line.l3{animation:rise .5s ease-out .24s backwards}
+.h-line.l4{animation:rise .5s ease-out .32s backwards}
+.hero p,.hero-cta{animation:rise .5s ease-out .4s backwards}
+.sticker,.hero-deco-circle,.hero-deco-sq{animation:appear .6s ease-out .4s backwards}
+.big-btn:active,.links a:active{transform:scale(.97)}
+@keyframes rise{
+  from{opacity:0;transform:translateY(14px)}
+}
+@keyframes rise-tilt{
+  from{opacity:0;transform:rotate(var(--r,0deg)) translateY(14px)}
+}
+@keyframes appear{
+  from{opacity:0}
+}
+@supports (animation-timeline:view()){
+  .menu-head,.rules-cta{
+    animation:rise 1s ease-out both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 50%;
+  }
+  .dish{
+    --r:-1.1deg;
+    animation:rise-tilt 1s ease-out both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 50%;
+  }
+  .dish:nth-child(even){--r:1.1deg;animation-range:entry 7% entry 57%}
+  .rules-kicker,.rule{
+    animation:appear 1s ease-out both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 50%;
+  }
 }
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}

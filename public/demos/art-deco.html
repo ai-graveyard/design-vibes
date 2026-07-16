@@ -132,6 +132,41 @@ footer::before{content:"";position:absolute;top:4px;left:0;right:0;border-top:1p
 .foot-in p{font-size:.875rem;color:var(--silver)}
 .foot-end{text-align:center;margin-top:2.2rem;color:var(--gold-dim);font-size:.6875rem;letter-spacing:.3em;text-transform:uppercase}
 
+/* ---------- motion ---------- */
+.crest{animation:deco-in .9s ease backwards}
+.hero-card{animation:deco-in .9s ease .1s backwards}
+.hero h1{animation:deco-in .9s ease .2s backwards}
+.divider{animation:deco-in .9s ease .28s backwards}
+.hero .sub,.hero .est{animation:deco-in .9s ease .36s backwards}
+.hero .note,.hero .btn{animation:deco-in .9s ease .44s backwards}
+.hero .burst{animation:deco-burst .9s ease .55s backwards}
+.btn:active{filter:brightness(.9)}
+@keyframes deco-in{from{opacity:0;transform:scale(1.04)}}
+@keyframes deco-burst{from{opacity:0;transform:translateX(-50%) scale(.9)}}
+@keyframes deco-rule{from{transform:scaleX(0)}}
+@keyframes deco-rail{from{transform:scaleY(0)}}
+@supports (animation-timeline:view()){
+  .sec-title,.bill,.room,.reserve .tel{
+    animation:deco-in 1s ease both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 50%;
+  }
+  .bill:nth-child(2){animation-range:entry 7% entry 57%}
+  .bill:nth-child(3){animation-range:entry 14% entry 64%}
+  .reserve .steps span,footer::before{
+    transform-origin:center;
+    animation:deco-rule 1s ease both;
+    animation-timeline:view();
+    animation-range:entry 0% cover 25%;
+  }
+  .rooms .rail{
+    transform-origin:center;
+    animation:deco-rail 1s ease both;
+    animation-timeline:view();
+    animation-range:entry 0% cover 30%;
+  }
+}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
