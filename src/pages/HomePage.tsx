@@ -10,10 +10,10 @@ export function HomePage() {
   const { language } = useAppStore();
   const count = designStyles.length;
   usePageMeta(
-    'Design Vibes · 网页设计风格大全',
+    language === 'zh' ? 'Design Vibes · 网页改造提示词库' : 'Design Vibes · Web Restyle Prompt Library',
     language === 'zh'
-      ? `Design Vibes — ${count} 种经典网页设计风格的交互式指南：实况预览、单文件源码、Design Tokens、避坑指南与 AI 提示词。`
-      : `Design Vibes — an interactive guide to ${count} classic web design styles: live previews, single-file source, design tokens, pitfalls, and AI prompts.`
+      ? `浏览 ${count} 种网页设计风格的真实效果，复制完整改造提示词，在 Codex、Claude Code 或 Cursor 中直接修改自己的项目。`
+      : `Preview ${count} real web design styles and copy complete restyle prompts for Codex, Claude Code, or Cursor.`
   );
   return (
     <>

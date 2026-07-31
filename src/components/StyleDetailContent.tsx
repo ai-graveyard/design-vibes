@@ -1,6 +1,6 @@
 import { Star, Copy, CheckCheck, Monitor, Smartphone, Sparkles, Check, CircleX, ExternalLink, ChevronLeft, ChevronRight, ChevronDown, Eye, Code, TriangleAlert } from 'lucide-react';
 import type { DesignStyle } from '../data/styles';
-import { getPromptById } from '../data/prompts';
+import { getFullPromptText, getPromptById } from '../data/prompts';
 import { useState } from 'react';
 import { useAppStore } from '../store/appStore';
 import { translations } from '../data/translations';
@@ -12,21 +12,31 @@ interface StyleDetailContentProps {
   style: DesignStyle;
 }
 
-/** AI 提示词区块：展示与复制的都是完整提示词，收起时仅视觉截断 */
+/** AI 提示词区块：简单版讲风格，完整版补齐修改现有项目的执行约束。 */
 function PromptSection({ styleId }: { styleId: string }) {
   const { language } = useAppStore();
   const t = translations[language];
-  const [copied, setCopied] = useState(false);
+  const [promptType, setPromptType] = useState<'simple' | 'full'>('simple');
+  const [copied, setCopied] = useState<'simple' | 'full' | null>(null);
   const [expanded, setExpanded] = useState(false);
   const promptData = getPromptById(styleId);
 
   if (!promptData) return null;
-  const fullPrompt = language === 'zh' ? promptData.prompt : promptData.promptEn;
+  const simplePrompt = language === 'zh' ? promptData.prompt : promptData.promptEn;
+  const selectedPrompt = promptType === 'full'
+    ? getFullPromptText(promptData, language)
+    : simplePrompt;
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(fullPrompt);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    await navigator.clipboard.writeText(selectedPrompt);
+    setCopied(promptType);
+    setTimeout(() => setCopied(null), 2000);
+  };
+
+  const selectPromptType = (type: 'simple' | 'full') => {
+    setPromptType(type);
+    setExpanded(false);
+    setCopied(null);
   };
 
   return (
@@ -37,9 +47,41 @@ function PromptSection({ styleId }: { styleId: string }) {
           {t.modal.aiPrompt}
         </h4>
       </div>
+      <div className="grid grid-cols-2 gap-1 p-1 mb-3 rounded-lg bg-gray-200/70 dark:bg-gray-800">
+        <button
+          type="button"
+          onClick={() => selectPromptType('simple')}
+          aria-pressed={promptType === 'simple'}
+          className={`px-3 py-2 text-[11px] font-medium rounded-md transition-colors ${
+            promptType === 'simple'
+              ? 'bg-white text-black shadow-sm dark:bg-[#1a1a1a] dark:text-white'
+              : 'text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white'
+          }`}
+        >
+          {t.modal.simplePrompt}
+        </button>
+        <button
+          type="button"
+          onClick={() => selectPromptType('full')}
+          aria-pressed={promptType === 'full'}
+          className={`flex items-center justify-center gap-1.5 px-3 py-2 text-[11px] font-medium rounded-md transition-colors ${
+            promptType === 'full'
+              ? 'bg-white text-black shadow-sm dark:bg-[#1a1a1a] dark:text-white'
+              : 'text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white'
+          }`}
+        >
+          {t.modal.fullPrompt}
+          <span className="px-1.5 py-0.5 text-[8px] uppercase tracking-wider rounded bg-[#FF9F1C]/10 text-[#D98200] dark:text-[#FFB340]">
+            {t.modal.recommended}
+          </span>
+        </button>
+      </div>
+      <p className="text-[10px] leading-relaxed mb-2 text-gray-400 dark:text-gray-500">
+        {promptType === 'full' ? t.modal.fullPromptHint : t.modal.simplePromptHint}
+      </p>
       <div className={`border rounded-lg p-3 mb-3 bg-white border-gray-200 dark:bg-[#1a1a1a] dark:border-gray-800`}>
         <pre className={`text-[11px] whitespace-pre-wrap font-mono leading-relaxed ${expanded ? '' : 'line-clamp-4'} text-gray-600 dark:text-gray-400`}>
-          {fullPrompt}
+          {selectedPrompt}
         </pre>
         <button
           type="button"
@@ -54,20 +96,20 @@ function PromptSection({ styleId }: { styleId: string }) {
         onClick={handleCopy}
         type="button"
         className={`w-full flex items-center justify-center gap-2 px-4 py-2.5 text-xs uppercase tracking-wider rounded-lg transition-colors ${
-          copied
+          copied === promptType
             ? 'bg-green-500 text-white'
             : 'bg-[#FF9F1C] text-white hover:bg-[#E8900A]'
         }`}
       >
-        {copied ? (
+        {copied === promptType ? (
           <>
             <CheckCheck className="w-4 h-4" />
-            {t.modal.copiedFull}
+            {promptType === 'full' ? t.modal.copiedFull : t.modal.copiedSimple}
           </>
         ) : (
           <>
             <Copy className="w-4 h-4" />
-            {t.modal.copyFullPrompt}
+            {promptType === 'full' ? t.modal.copyFullPrompt : t.modal.copySimplePrompt}
           </>
         )}
       </button>

@@ -49,6 +49,9 @@ export function StylesGrid() {
               <h2 className="text-2xl sm:text-3xl font-bold mt-1 text-black dark:text-white">
                 {t.grid.title}
               </h2>
+              <p className="text-sm mt-2 text-gray-500 dark:text-gray-400">
+                {t.grid.subtitle}
+              </p>
             </div>
 
             {/* Search */}

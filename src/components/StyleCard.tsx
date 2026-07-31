@@ -13,21 +13,23 @@ interface StyleCardProps {
 export function StyleCard({ style }: StyleCardProps) {
   const { language } = useAppStore();
   const t = translations[language];
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState<'simple' | 'full' | null>(null);
 
-  const handleCopyPrompt = async (e: React.MouseEvent) => {
+  const handleCopyPrompt = async (e: React.MouseEvent, type: 'simple' | 'full') => {
     // 阻止外层 Link 的默认跳转
     e.preventDefault();
     e.stopPropagation();
     // prompts 数据（~40KB 源码）点击时才动态加载，不进首页主包；
     // styles/prompts/demos 三处 id 对齐由构建期 validate-demos.mjs 保证
-    const { getPromptById } = await import('../data/prompts');
+    const { getPromptById, getFullPromptText } = await import('../data/prompts');
     const promptData = getPromptById(style.id);
     if (!promptData) return;
-    const textToCopy = language === 'zh' ? promptData.shortPrompt : promptData.shortPromptEn;
+    const textToCopy = type === 'full'
+      ? getFullPromptText(promptData, language)
+      : language === 'zh' ? promptData.prompt : promptData.promptEn;
     await navigator.clipboard.writeText(textToCopy);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setCopied(type);
+    setTimeout(() => setCopied(null), 2000);
   };
 
   return (
@@ -118,19 +120,34 @@ export function StyleCard({ style }: StyleCardProps) {
             <span className="text-[10px] tabular-nums text-gray-400 dark:text-gray-500">
               {style.useCases.length} {t.card.useCases}
             </span>
-            <button
-              onClick={handleCopyPrompt}
-              type="button"
-              aria-label={t.card.copyPrompt}
-              className={`flex items-center gap-1.5 px-3 py-1.5 text-[10px] uppercase tracking-wider rounded transition-all active:scale-95 ${
-                copied
-                  ? 'bg-green-500 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-[#FF9F1C] hover:text-white dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-[#FF9F1C] dark:hover:text-white'
-              }`}
-            >
-              {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
-              {copied ? t.card.copied : t.card.copyPrompt}
-            </button>
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={(e) => handleCopyPrompt(e, 'simple')}
+                type="button"
+                aria-label={t.card.copySimplePrompt}
+                className={`flex items-center gap-1.5 px-2.5 py-1.5 text-[10px] uppercase tracking-wider rounded transition-all active:scale-95 ${
+                  copied === 'simple'
+                    ? 'bg-green-500 text-white'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-black dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white'
+                }`}
+              >
+                {copied === 'simple' ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                {copied === 'simple' ? t.card.copied : t.card.simplePrompt}
+              </button>
+              <button
+                onClick={(e) => handleCopyPrompt(e, 'full')}
+                type="button"
+                aria-label={t.card.copyFullPrompt}
+                className={`flex items-center gap-1.5 px-2.5 py-1.5 text-[10px] uppercase tracking-wider rounded transition-all active:scale-95 ${
+                  copied === 'full'
+                    ? 'bg-green-500 text-white'
+                    : 'bg-[#FF9F1C] text-white hover:bg-[#E8900A]'
+                }`}
+              >
+                {copied === 'full' ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                {copied === 'full' ? t.card.copied : t.card.fullPrompt}
+              </button>
+            </div>
           </div>
         </div>
       </article>

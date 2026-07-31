@@ -4,8 +4,9 @@ import { translations } from '../data/translations';
 import { designStyles } from '../data/styles';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { LanguageToggle } from '../components/LanguageToggle';
-import { ChevronDown } from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 import { useCountUp } from '../hooks/useCountUp';
+import { Link } from 'react-router-dom';
 
 export function Hero() {
   const { language } = useAppStore();
@@ -82,7 +83,7 @@ export function Hero() {
         <div className="relative z-10 flex-1 px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 flex flex-col justify-center">
           <div className="max-w-7xl mx-auto w-full">
             {/* Large Typography — 字号随视口收缩，保证任何宽度下完整不溢出；逐字入场 */}
-            <div className="mb-8 sm:mb-12">
+            <div className="mb-7 sm:mb-9">
               <h1
                 aria-label={title}
                 className="font-black tracking-[0.02em] leading-none whitespace-nowrap text-black dark:text-white"
@@ -101,28 +102,51 @@ export function Hero() {
               </h1>
             </div>
 
-            {/* Subtitle Row — 跟在标题字符之后淡入 */}
+            {/* Product value — 跟在标题字符之后淡入 */}
             <div
-              className="border-t pt-6 sm:pt-8 border-gray-200 dark:border-gray-800 animate-fade-up"
+              className="pt-4 sm:pt-6 animate-fade-up"
               style={{ animationDelay: '350ms' }}
             >
-              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 lg:gap-12">
-                {/* Left: Description */}
-                <div className="flex items-start gap-4 max-w-xl">
-                  <div className="w-8 h-0.5 bg-[#FF9F1C] mt-3 shrink-0" />
-                  <div>
-                    <p className="text-sm sm:text-base leading-relaxed text-gray-600 dark:text-gray-400">
-                      {t.hero.explore} <strong className="text-black dark:text-white">{styleCount}</strong> {t.hero.designStyles}
-                    </p>
-                    <p className="text-xs sm:text-sm mt-2 text-[#FF9F1C]">
-                      {t.hero.quote}
-                    </p>
+              <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-12">
+                {/* Left: Positioning & actions */}
+                <div className="max-w-2xl">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-6 h-0.5 bg-[#FF9F1C] shrink-0" />
+                    <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.16em] text-[#D98200] dark:text-[#FFB340]">
+                      {t.hero.productLabel}
+                    </span>
                   </div>
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-black dark:text-white">
+                    {t.hero.valueTitle}
+                  </h2>
+                  <p className="mt-3 max-w-xl text-sm sm:text-base leading-relaxed text-gray-600 dark:text-gray-400">
+                    {t.hero.valueDescription}
+                  </p>
+                  <div className="mt-5 flex flex-col sm:flex-row sm:items-center gap-2.5">
+                    <button
+                      onClick={scrollToStyles}
+                      type="button"
+                      className="inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-bold rounded-lg bg-[#FF9F1C] text-white transition-all hover:bg-[#E8900A] active:scale-[0.98]"
+                    >
+                      {t.hero.primaryCta}
+                      <ChevronDown className="w-4 h-4" />
+                    </button>
+                    <Link
+                      to="/style/apple"
+                      className="inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-bold rounded-lg border bg-white border-gray-200 text-gray-700 transition-colors hover:border-[#FF9F1C] hover:text-[#D98200] dark:bg-[#1a1a1a] dark:border-gray-700 dark:text-gray-300 dark:hover:border-[#FF9F1C] dark:hover:text-[#FFB340]"
+                    >
+                      {t.hero.secondaryCta}
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                  <p className="mt-3 text-[10px] sm:text-[11px] tracking-wide text-gray-400 dark:text-gray-500">
+                    {t.hero.trustNote}
+                  </p>
                 </div>
 
-                {/* Right: Stats — 数字从 0 滚动到位 */}
-                <div className="flex items-end gap-2">
-                  <span className="text-6xl sm:text-7xl lg:text-8xl font-black leading-none tabular-nums text-black dark:text-white">
+                {/* Right: Stats — 数字从 0 滚动到位，作为内容规模证明 */}
+                <div className="hidden sm:flex items-end gap-2 shrink-0">
+                  <span className="text-6xl lg:text-8xl font-black leading-none tabular-nums text-black dark:text-white">
                     {displayCount}
                   </span>
                   <div className="pb-2">
@@ -138,11 +162,22 @@ export function Hero() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between border-gray-200 dark:border-gray-800">
-          <div className="flex items-center gap-2">
+        <div className="relative z-10 border-t px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between bg-white border-gray-200 dark:bg-[#1a1a1a] dark:border-gray-800">
+          <div className="hidden sm:flex items-center gap-3 lg:gap-5 text-[10px] lg:text-[11px] uppercase tracking-[0.12em] text-gray-500 dark:text-gray-400">
+            {[t.hero.step1, t.hero.step2, t.hero.step3].map((step, index) => (
+              <div key={step} className="flex items-center gap-3 lg:gap-5">
+                <span className="flex items-center gap-2 whitespace-nowrap">
+                  <span className="font-bold tabular-nums text-[#FF9F1C]">0{index + 1}</span>
+                  {step}
+                </span>
+                {index < 2 && <ArrowRight className="w-3.5 h-3.5 text-gray-300 dark:text-gray-700" />}
+              </div>
+            ))}
+          </div>
+          <div className="flex sm:hidden items-center gap-2">
             <div className="w-1.5 h-1.5 bg-[#FF9F1C]" />
-            <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.15em] text-gray-400 dark:text-gray-500">
-              {t.hero.quote}
+            <span className="text-[10px] tracking-wide text-gray-500 dark:text-gray-400">
+              {t.hero.stepsCompact}
             </span>
           </div>
           <button
@@ -150,7 +185,7 @@ export function Hero() {
             type="button"
             className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.15em] transition-colors cursor-pointer text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white"
           >
-            <span>{t.hero.exploreBtn}</span>
+            <span>{t.hero.primaryCta}</span>
             <ChevronDown className="w-4 h-4 animate-bounce" />
           </button>
         </div>

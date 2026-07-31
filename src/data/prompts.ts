@@ -285,6 +285,64 @@ export function getPromptById(id: string): StylePrompt | undefined {
   return stylePrompts.find(p => p.id === id);
 }
 
+/**
+ * 在风格描述外补齐“修改现有项目”所需的执行边界。
+ * 纯前端字符串拼接，不调用任何模型；用户复制后交给自己的 AI 编程工具执行。
+ */
+export function getFullPromptText(prompt: StylePrompt, language: 'zh' | 'en'): string {
+  if (language === 'zh') {
+    return `请直接修改当前项目中的现有网页，将整体视觉风格调整为「${prompt.name}」。不要新建演示项目，不要只输出建议，请实际完成代码修改。
+
+开始前：
+- 先阅读现有项目结构、页面入口和相关组件，确认当前使用的框架与样式方案。
+- 沿用现有技术栈和组件组织方式，不要无故引入新的框架、组件库或依赖。
+- 识别并保留现有页面的业务目标、信息层级和主要交互流程。
+
+目标风格：
+${prompt.prompt}
+
+改造要求：
+1. 保留现有业务逻辑、接口调用、路由、数据结构和核心文案，不删除已有功能。
+2. 可以调整布局、间距、字号、配色、边框、圆角、阴影和动效，但不要为了套用风格牺牲可读性与可用性。
+3. 风格要覆盖导航栏、Hero、内容区、卡片、按钮、表单和页脚等主要区域，避免只修改背景色或局部装饰。
+4. 优先复用现有组件与 CSS 变量，合并重复样式，保持同类组件的视觉规则一致。
+5. 同时适配桌面端与移动端，检查常见断点下的字号、间距、换行、点击区域和内容顺序。
+6. 保留清晰的 hover、focus、active、disabled 等交互状态，并保证文字与背景有足够对比度。
+7. 不使用与目标风格无关的渐变、发光、玻璃效果或装饰图形；没有明确用途的视觉元素不要添加。
+
+完成标准：
+- 页面形成统一、可辨识的「${prompt.name}」视觉语言，而不是简单替换颜色。
+- 页面无横向滚动、元素遮挡、文字溢出或移动端布局错位。
+- 原有功能和交互可以正常使用。
+- 完成后运行项目已有的检查或构建命令，并简要说明修改了哪些文件、采用了哪些关键视觉规则。`;
+  }
+
+  return `Directly modify the existing pages in the current project to use a ${prompt.nameEn} visual direction. Do not create a separate demo project and do not stop at recommendations—make the code changes.
+
+Before editing:
+- Inspect the existing project structure, page entry points, related components, framework, and styling approach.
+- Keep the current stack and component organization. Do not add a new framework, UI library, or dependency without a clear need.
+- Identify and preserve the page's business goal, information hierarchy, and primary interaction flow.
+
+Target style:
+${prompt.promptEn}
+
+Implementation requirements:
+1. Preserve existing business logic, API calls, routes, data structures, core copy, and working features.
+2. You may refine layout, spacing, typography, color, borders, radii, shadows, and motion, but never sacrifice readability or usability just to match the style.
+3. Apply the visual language consistently across the navigation, hero, content areas, cards, buttons, forms, and footer instead of changing only the background or a few decorations.
+4. Reuse existing components and CSS variables where possible, consolidate duplicated styles, and keep equivalent components visually consistent.
+5. Support both desktop and mobile. Check typography, spacing, wrapping, tap targets, and content order at common breakpoints.
+6. Preserve clear hover, focus, active, and disabled states, with sufficient text/background contrast.
+7. Do not introduce gradients, glow, glass effects, or decorative shapes that do not belong to the target style. Every added visual element should have a purpose.
+
+Definition of done:
+- The page expresses a consistent, recognizable ${prompt.nameEn} system rather than a superficial color swap.
+- There is no horizontal scrolling, overlap, clipped text, or broken mobile layout.
+- Existing functionality and interactions still work.
+- Run the project's existing checks or build command, then briefly summarize the files changed and the key visual rules applied.`;
+}
+
 export function getAllPrompts(): StylePrompt[] {
   return stylePrompts;
 }
