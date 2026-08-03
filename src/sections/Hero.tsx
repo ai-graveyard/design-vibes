@@ -114,19 +114,13 @@ export function Hero() {
               <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-12">
                 {/* Left: Positioning & actions */}
                 <div className="max-w-2xl">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-6 h-0.5 bg-[#FF9F1C] shrink-0" />
-                    <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.16em] text-[#D98200] dark:text-[#FFB340]">
-                      {t.hero.productLabel}
-                    </span>
-                  </div>
                   <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-black dark:text-white">
                     {t.hero.valueTitle}
                   </h2>
                   <p className="mt-3 max-w-xl text-sm sm:text-base leading-relaxed text-gray-600 dark:text-gray-400">
                     {t.hero.valueDescription}
                   </p>
-                  <div className="mt-5 flex flex-col sm:flex-row sm:items-center gap-2.5">
+                  <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-2.5">
                     <button
                       onClick={scrollToStyles}
                       type="button"
