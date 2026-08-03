@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Copy, Check, Sparkles, Terminal, ExternalLink, BadgeCheck } from 'lucide-react';
+import { Copy, Check, Sparkles, Terminal, ExternalLink, BadgeCheck, ArrowRight } from 'lucide-react';
 import { useAppStore } from '../store/appStore';
 import { translations } from '../data/translations';
 import { designStyles } from '../data/styles';
@@ -51,27 +51,67 @@ export function InstallSkill() {
 
   const agentPrompt = language === 'zh' ? AGENT_PROMPT_ZH : AGENT_PROMPT_EN;
   const contains = t.install.contains.replaceAll('{count}', String(designStyles.length));
+  const steps = [
+    { title: t.install.step1, desc: t.install.step1Desc },
+    { title: t.install.step2, desc: t.install.step2Desc },
+    { title: t.install.step3, desc: t.install.step3Desc },
+  ];
 
   return (
     <section
       id="install-skill"
-      className="w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16 transition-colors duration-300 bg-gray-50 dark:bg-[#0f0f0f]"
+      className="w-full px-4 sm:px-6 lg:px-8 py-14 sm:py-20 border-y-2 transition-colors duration-300 border-[#FF9F1C]/35 bg-[#FFF9F0] dark:border-[#FF9F1C]/25 dark:bg-[#14110c]"
     >
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
+        {/* Section Header —— 暖色底 + 橙色描边，从上下两个中性色区块里跳出来 */}
         <div ref={headerRef} className={`mb-8 sm:mb-10 ${headerInView ? 'animate-fade-up' : 'opacity-0'}`}>
-          <span className="text-[10px] uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500">
-            {t.install.kicker}
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-bold mt-1 text-black dark:text-white">
+          <div className="flex items-center gap-2 mb-3">
+            <div className="w-6 h-0.5 bg-[#FF9F1C] shrink-0" />
+            <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.16em] text-[#D98200] dark:text-[#FFB340]">
+              {t.install.kicker}
+            </span>
+            <span className="px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider rounded bg-[#FF9F1C] text-white">
+              {t.install.badge}
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold leading-tight tracking-tight text-black dark:text-white">
             {t.install.title}
           </h2>
-          <p className="text-sm mt-2 max-w-3xl leading-relaxed text-gray-500 dark:text-gray-400">
+          <p className="text-sm sm:text-base mt-3 max-w-3xl leading-relaxed text-gray-600 dark:text-gray-400">
             {t.install.subtitle}
           </p>
           <div className="mt-3 inline-flex items-center gap-1.5 text-[11px] font-medium text-green-700 dark:text-green-400">
             <BadgeCheck className="w-3.5 h-3.5" />
             {t.install.verified}
+          </div>
+        </div>
+
+        {/* 三步引导：先讲清整条路径，再给具体命令 */}
+        <div className="mb-6">
+          <span className="text-[10px] uppercase tracking-[0.18em] text-gray-400 dark:text-gray-500">
+            {t.install.stepsTitle}
+          </span>
+          <div className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {steps.map((step, index) => (
+              <div
+                key={step.title}
+                className={`relative rounded-lg border px-4 py-3 border-[#FF9F1C]/25 bg-white/70 dark:border-[#FF9F1C]/20 dark:bg-white/[0.03] ${
+                  headerInView ? 'animate-fade-up' : 'opacity-0'
+                }`}
+                style={{ animationDelay: `${index * 70}ms` }}
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-black tabular-nums text-[#FF9F1C]">0{index + 1}</span>
+                  <span className="text-[13px] font-bold text-black dark:text-white">{step.title}</span>
+                  {index < 2 && (
+                    <ArrowRight className="hidden sm:block w-3.5 h-3.5 ml-auto text-[#FF9F1C]/50" />
+                  )}
+                </div>
+                <p className="mt-1 text-[11.5px] leading-relaxed text-gray-500 dark:text-gray-400">
+                  {step.desc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
 

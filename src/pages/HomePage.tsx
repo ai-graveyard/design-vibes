@@ -20,8 +20,8 @@ export function HomePage() {
     <>
       <Hero />
       <StylesGrid />
-      <SceneGuide />
       <InstallSkill />
+      <SceneGuide />
       <Footer />
     </>
   );

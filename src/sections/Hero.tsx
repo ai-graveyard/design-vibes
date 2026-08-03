@@ -4,7 +4,7 @@ import { translations } from '../data/translations';
 import { designStyles } from '../data/styles';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { LanguageToggle } from '../components/LanguageToggle';
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import { ArrowRight, ChevronDown, Sparkles } from 'lucide-react';
 import { useCountUp } from '../hooks/useCountUp';
 import { Link } from 'react-router-dom';
 
@@ -44,6 +44,10 @@ export function Hero() {
     if (stylesSection) {
       stylesSection.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const scrollToInstall = () => {
+    document.querySelector('#install-skill')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -142,6 +146,16 @@ export function Hero() {
                   <p className="mt-3 text-[10px] sm:text-[11px] tracking-wide text-gray-400 dark:text-gray-500">
                     {t.hero.trustNote}
                   </p>
+                  {/* 首屏就把安装入口露出来，否则区块在第二屏之后容易被整个滑过去 */}
+                  <button
+                    onClick={scrollToInstall}
+                    type="button"
+                    className="mt-3 inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-bold transition-colors text-[#D98200] hover:text-[#B36A00] dark:text-[#FFB340] dark:hover:text-[#FFC978]"
+                  >
+                    <Sparkles className="w-3.5 h-3.5" />
+                    {t.hero.installLink}
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
                 </div>
 
                 {/* Right: Stats — 数字从 0 滚动到位，作为内容规模证明 */}
