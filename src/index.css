@@ -154,6 +154,14 @@
   }
 }
 
+/* 整屏吸附由 useScrollSnap 用 JS 实现，这里刻意不写 scroll-snap-type。
+   原因：CSS scroll-snap 不暴露动画曲线与时长，Chrome 用自己的曲线（约 300ms、偏线性），
+   要「先慢后快再慢」只能自己 rAF 动画。
+   另外实测 mandatory 会把页面锁在最后一个吸附点：风格网格之后没有吸附目标，
+   scrollY 最多到 6990 而实际可滚到 7976，选型指南尾部和 Footer 直接够不到。
+   .snap-screen 现在纯粹是给 JS 用的标记类，只挂 Hero / 安装区块 / 风格网格顶部三处，
+   网格以下完全自由滚，结构上就不存在被困住的可能。 */
+
 /* Hero 网格背景：颜色随主题切换（内联样式无法用 dark: variant） */
 .hero-grid {
   background-image:

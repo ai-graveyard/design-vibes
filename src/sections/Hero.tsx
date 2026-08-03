@@ -51,7 +51,7 @@ export function Hero() {
   };
 
   return (
-    <section className="w-full min-h-screen flex flex-col transition-colors duration-300 bg-white dark:bg-[#1a1a1a]">
+    <section className="snap-screen w-full min-h-screen flex flex-col transition-colors duration-300 bg-white dark:bg-[#1a1a1a]">
       {/* Top Bar */}
       <div className="border-b px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between transition-colors duration-300 border-gray-200 dark:border-gray-800">
         <div className="flex items-center gap-2">

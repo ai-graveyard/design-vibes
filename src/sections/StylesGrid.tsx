@@ -36,7 +36,7 @@ export function StylesGrid() {
   return (
     <section
       id="styles-grid"
-      className="w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16 transition-colors duration-300 bg-gray-50 dark:bg-[#0f0f0f]"
+      className="snap-screen w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16 transition-colors duration-300 bg-gray-50 dark:bg-[#0f0f0f]"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}

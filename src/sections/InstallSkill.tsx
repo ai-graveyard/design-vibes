@@ -57,12 +57,13 @@ export function InstallSkill() {
     { title: t.install.step3, desc: t.install.step3Desc },
   ];
 
+  // lg:min-h-screen + 垂直居中：吸附到区块顶部后整块正好占满一屏，不会露出半截下一屏
   return (
     <section
       id="install-skill"
-      className="w-full px-4 sm:px-6 lg:px-8 py-14 sm:py-20 border-y-2 transition-colors duration-300 border-[#FF9F1C]/35 bg-[#FFF9F0] dark:border-[#FF9F1C]/25 dark:bg-[#14110c]"
+      className="snap-screen w-full px-4 sm:px-6 lg:px-8 py-14 sm:py-20 border-y-2 transition-colors duration-300 border-[#FF9F1C]/35 bg-[#FFF9F0] dark:border-[#FF9F1C]/25 dark:bg-[#14110c] lg:min-h-screen lg:flex lg:items-center"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto w-full">
         {/* Section Header —— 暖色底 + 橙色描边，从上下两个中性色区块里跳出来 */}
         <div ref={headerRef} className={`mb-8 sm:mb-10 ${headerInView ? 'animate-fade-up' : 'opacity-0'}`}>
           <div className="flex items-center gap-2 mb-3">
