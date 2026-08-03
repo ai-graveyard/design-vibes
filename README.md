@@ -4,6 +4,36 @@
 
 > [预览地址](https://design-vibes.v2ai.org)
 
+## 安装 Skill
+
+网站上的提示词、Design Tokens 和避坑指南，也打包成了一个 Skill，让 AI 直接照着写页面，不用来回复制粘贴。
+
+产物就是 [`skills/design-vibes/`](./skills/design-vibes) 这一个目录：一份 `SKILL.md` 加若干 Markdown 参考文件和 HTML 附件，全部用相对路径互相引用，不含任何工具专有的清单文件。**装法就是把它拷进你的 agent 的 skills 目录**，改 `DIR` 即可换工具：
+
+```bash
+DIR=~/.claude/skills/design-vibes; mkdir -p "$DIR" && curl -fsSL https://github.com/ai-graveyard/design-vibes/archive/refs/heads/main.tar.gz | tar -xz --strip-components=3 -C "$DIR" design-vibes-main/skills/design-vibes
+```
+
+| 工具 | `DIR` |
+| :-- | :-- |
+| Claude Code | `~/.claude/skills/design-vibes` |
+| Codex | `~/.codex/skills/design-vibes` |
+
+两者均已实测通过：agent 会自己加载 `SKILL.md`、按工作流读到 `references/styles/<id>.md`，并取出正确的 tokens。项目级安装把 `~/.claude` 换成项目里的 `.claude` 即可（Codex 同理）。
+
+也可以直接 clone 后 `cp -r skills/design-vibes <你的 skills 目录>/`。
+
+装好后不需要记命令：说「做一个赛博朋克风格的落地页」或「这个首页用什么风格好」，agent 会根据 `description` 自己加载。
+
+Skill 里有什么：
+
+- **30 份风格参考**（`references/styles/<id>.md`）：完整提示词中英双语、从 demo 直接提取的 `:root` tokens、特征 / 适用场景 / 优缺点、避坑清单
+- **选型指南**（`references/picker.md`）：按项目类型和实现难度圈定候选
+- **交付自检清单**（`references/checklist.md`）：375px 无横向滚动、`padding` 简写在复合类上互相清零、`view()` 动画的 fill 陷阱等实测踩过的坑
+- **30 个零依赖单文件 demo**（`assets/demos/<id>.html`）：按需读取，可直接当起点
+
+采用渐进披露：常驻上下文只有约 180 token，选定风格后才读对应的参考文件。
+
 ## 功能特性
 
 - **30 种设计风格详解**：Apple 极简、包豪斯、玻璃拟态、液态玻璃、极光渐变、终端黑客风、像素风等
@@ -38,7 +68,10 @@ pnpm dev
 # 校验数据一致性（styles/prompts/demos 三处对齐 + demo 零依赖约定）
 pnpm validate
 
-# 构建生产版本（含校验与 SEO 后处理）
+# 从 src/data 重新生成 Skill 产物 skills/design-vibes/（需 Node ≥ 22.6）
+pnpm skill
+
+# 构建生产版本（含校验、skill 生成与 SEO 后处理）
 pnpm build
 
 # 重新生成社交分享图（demo 有增改时运行，需 macOS + Chrome）
@@ -54,12 +87,18 @@ pnpm preview
 ## 项目结构
 
 ```
+├── skills/design-vibes/   # Skill 产物（由 pnpm skill 生成，勿手改）
+│   ├── SKILL.md           # skill 本体：工作流 + 30 风格索引表
+│   ├── references/        # 按需读取的风格参考、选型指南、交付自检清单
+│   └── assets/demos/      # 30 个 demo 副本
 ├── public/
 │   ├── demos/             # 30 个风格 demo（零依赖单文件 HTML，与风格数据一一对应）
 │   ├── og/                # 社交分享图（由 pnpm og 生成）
 │   └── thumbs/            # 首页卡片静态缩略图（由 pnpm thumbs 生成，hover 时才挂载实况 iframe）
 ├── scripts/
 │   ├── validate-demos.mjs # 数据一致性与 demo 约定校验（build 前自动执行）
+│   ├── build-skill.mjs    # 从 src/data 生成 skills/design-vibes/
+│   ├── skill-templates/   # SKILL.md 模板与手写的交付自检清单
 │   ├── postbuild-seo.mjs  # 为每个风格页生成独立 meta 的静态壳 + sitemap + robots
 │   ├── generate-og.mjs    # 用系统 Chrome headless 截 og:image
 │   ├── generate-thumbs.mjs# 用系统 Chrome headless 截首页卡片缩略图
@@ -85,8 +124,9 @@ pnpm preview
 3. 在 `public/demos/` 中新增 `<id>.html` demo（单文件、零外链、零 JS、必须有 `:root` CSS 变量）
 4. （可选）在 `src/data/scenes.ts` 的场景/难度中收录该风格
 5. 运行 `pnpm validate` 校验三处对齐，`pnpm og` 与 `pnpm thumbs` 重新生成分享图和卡片缩略图
+6. 运行 `pnpm skill` 重建 Skill 产物，并把 `skills/` 的变更一起提交（CI 会用 `git diff --exit-code` 卡住漏提交）
 
-首页卡片、侧边栏、详情页、Design Tokens 与 SEO 静态壳都会根据数据自动生成，无需改动组件。
+首页卡片、侧边栏、详情页、Design Tokens、SEO 静态壳与 Skill 文档都会根据数据自动生成，无需改动组件。
 
 ## 部署
 

@@ -51,6 +51,17 @@ for (const id of [...new Set(referenced)]) {
   if (!styleIds.includes(id)) errors.push(`scenes.ts 引用了不存在的风格 id："${id}"`);
 }
 
+// skill 产物（skills/design-vibes/）与风格数据对齐；产物本身由 pnpm skill 重建
+const skillDir = path.join(root, 'skills/design-vibes');
+if (existsSync(skillDir)) {
+  for (const id of styleIds) {
+    if (!existsSync(path.join(skillDir, 'references/styles', `${id}.md`)))
+      errors.push(`skill 缺少 references/styles/${id}.md（运行 pnpm skill 重建）`);
+    if (!existsSync(path.join(skillDir, 'assets/demos', `${id}.html`)))
+      errors.push(`skill 缺少 assets/demos/${id}.html（运行 pnpm skill 重建）`);
+  }
+}
+
 if (errors.length) {
   console.error(`✗ 数据一致性校验失败（${errors.length} 个问题）：`);
   for (const e of errors) console.error(`  - ${e}`);

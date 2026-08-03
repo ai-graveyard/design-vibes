@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "validate": "node scripts/validate-demos.mjs",
-    "build": "node scripts/validate-demos.mjs && tsc -b && vite build && node scripts/postbuild-seo.mjs",
+    "skill": "node scripts/build-skill.mjs",
+    "build": "node scripts/validate-demos.mjs && node scripts/build-skill.mjs && tsc -b && vite build && node scripts/postbuild-seo.mjs",
     "og": "node scripts/generate-og.mjs",
     "thumbs": "node scripts/generate-thumbs.mjs",
     "lint": "eslint .",

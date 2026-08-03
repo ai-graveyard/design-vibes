@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pixel Art · Design Vibes</title>
+<style>
+:root{
+  --night:#1A1C2C;   /* bg */
+  --panel:#29366F;   /* surface */
+  --steel:#333C57;   /* border+shadow */
+  --mist:#94B0C2;    /* muted text */
+  --snow:#F4F4F4;    /* text */
+  --tomato:#B13E53;  /* primary */
+  --ember:#EF7D57;   /* warm */
+  --sun:#FFCD75;     /* gold */
+  --lime:#A7F070;    /* green hi */
+  --leaf:#38B764;    /* green lo */
+  --sky:#41A6F6;     /* blue */
+  --ice:#73EFF7;     /* cyan */
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Courier New",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{overflow-x:clip}
+body{
+  background:repeating-conic-gradient(rgba(51,60,87,.14) 0 25%,transparent 0 50%) 0 0/28px 28px var(--night);
+  color:var(--snow);font-family:var(--mono);line-height:1.6;overflow-x:clip;
+}
+::selection{background:var(--sun);color:var(--night)}
+a:focus-visible{outline:4px solid var(--sun);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* keyframes: steps only */
+@keyframes blink{0%,55%{opacity:1}56%,100%{opacity:0}}
+.blink{animation:blink 1.1s steps(1) infinite}
+@keyframes hop{0%,100%{transform:translateY(0)}50%{transform:translateY(-1em)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-1em)}}
+@keyframes flip{0%,100%{transform:scaleX(1)}50%{transform:scaleX(-1)}}
+@keyframes drift{from{transform:translateX(-14em)}to{transform:translateX(56em)}}
+@keyframes tw{0%,100%{opacity:.85}50%{opacity:.3}}
+
+/* box-shadow sprites */
+.spr{display:inline-block;width:1em;height:1em}
+.i-heart{color:var(--tomato);margin:0 6em 5em 0;
+  box-shadow:1em 0,2em 0,4em 0,5em 0,0 1em,1em 1em,2em 1em,3em 1em,4em 1em,5em 1em,6em 1em,0 2em,1em 2em,2em 2em,3em 2em,4em 2em,5em 2em,6em 2em,1em 3em,2em 3em,3em 3em,4em 3em,5em 3em,2em 4em,3em 4em,4em 4em,3em 5em}
+.i-heart.off{color:var(--steel)}
+.i-star{color:var(--sun);margin:0 6em 5em 0;
+  box-shadow:3em 0,2em 1em,3em 1em,4em 1em,0 2em,1em 2em,2em 2em,3em 2em,4em 2em,5em 2em,6em 2em,1em 3em,2em 3em,3em 3em,4em 3em,5em 3em,2em 4em,4em 4em,1em 5em,5em 5em}
+.i-sword{color:var(--ice);margin:0 6em 8em 0;
+  box-shadow:3em 0,2em 1em #F4F4F4,3em 1em,2em 2em #F4F4F4,3em 2em,2em 3em #F4F4F4,3em 3em,2em 4em #F4F4F4,3em 4em,1em 5em #FFCD75,2em 5em #FFCD75,3em 5em #FFCD75,4em 5em #FFCD75,5em 5em #FFCD75,3em 6em #B13E53,3em 7em #B13E53,2em 8em #FFCD75,3em 8em #FFCD75,4em 8em #FFCD75}
+.i-coin{color:var(--sun);margin:0 5em 5em 0;
+  box-shadow:1em 0,2em 0,3em 0,4em 0,0 1em,1em 1em #F4F4F4,2em 1em,3em 1em,4em 1em,5em 1em #EF7D57,0 2em,1em 2em #F4F4F4,2em 2em,3em 2em,4em 2em,5em 2em #EF7D57,0 3em,1em 3em #F4F4F4,2em 3em,3em 3em,4em 3em,5em 3em #EF7D57,0 4em,1em 4em,2em 4em,3em 4em,4em 4em,5em 4em #EF7D57,1em 5em #EF7D57,2em 5em #EF7D57,3em 5em #EF7D57,4em 5em #EF7D57}
+.cloud{color:var(--snow);margin:0 10em 3em 0;
+  box-shadow:3em 0,4em 0,5em 0,6em 0,1em 1em,2em 1em,3em 1em,4em 1em,5em 1em,6em 1em,7em 1em,8em 1em,0 2em,1em 2em,2em 2em,3em 2em,4em 2em,5em 2em,6em 2em,7em 2em,8em 2em,9em 2em,10em 2em,2em 3em,3em 3em,4em 3em,5em 3em,6em 3em,7em 3em,8em 3em,9em 3em}
+.slime{color:var(--lime);
+  box-shadow:3em 0,4em 0,5em 0,6em 0,2em 1em,3em 1em #F4F4F4,4em 1em,5em 1em,6em 1em,7em 1em,1em 2em,2em 2em #F4F4F4,3em 2em,4em 2em,5em 2em,6em 2em,7em 2em,8em 2em,1em 3em,2em 3em,3em 3em #1A1C2C,4em 3em,5em 3em,6em 3em #1A1C2C,7em 3em,8em 3em,0 4em,1em 4em,2em 4em,3em 4em,4em 4em,5em 4em,6em 4em,7em 4em,8em 4em,9em 4em,0 5em #38B764,1em 5em,2em 5em,3em 5em,4em 5em #1A1C2C,5em 5em #1A1C2C,6em 5em,7em 5em,8em 5em,9em 5em #38B764,1em 6em #38B764,2em 6em #38B764,3em 6em #38B764,4em 6em #38B764,5em 6em #38B764,6em 6em #38B764,7em 6em #38B764,8em 6em #38B764}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:30;background:var(--night);border-bottom:4px solid var(--steel)}
+.bar{display:flex;align-items:center;gap:26px;padding-top:14px;padding-bottom:14px}
+.logo{display:inline-flex;align-items:center;gap:12px;color:var(--snow);text-decoration:none;font-weight:700;font-size:15px;letter-spacing:.24em;text-transform:uppercase}
+.mark{display:inline-block;font-size:7px;width:1em;height:1em;margin:0 1em 1em 0;background:var(--tomato);box-shadow:1em 0 var(--sun),0 1em var(--sky),1em 1em var(--lime)}
+.links{display:flex;gap:22px;margin-left:auto}
+.links a{color:var(--mist);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;border-bottom:4px solid transparent;padding:2px 0}
+.links a:hover{color:var(--sun);border-color:var(--sun)}
+
+/* buttons: notched border + 4px hard press */
+.btn{
+  display:inline-block;background:var(--tomato);color:var(--snow);text-decoration:none;
+  font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+  padding:14px 22px;margin:4px 12px 12px 4px;
+  box-shadow:0 -4px 0 var(--snow),0 4px 0 var(--snow),-4px 0 0 var(--snow),4px 0 0 var(--snow),
+    4px 8px 0 var(--steel),8px 4px 0 var(--steel),8px 8px 0 var(--steel);
+}
+.btn:hover{background:var(--sun);color:var(--night)}
+.btn:active{transform:translate(4px,4px);
+  box-shadow:0 -4px 0 var(--snow),0 4px 0 var(--snow),-4px 0 0 var(--snow),4px 0 0 var(--snow)}
+.btn.alt{background:var(--panel)}
+.btn.small{padding:9px 14px;font-size:11px}
+.pk{color:var(--sun)}
+.btn:hover .pk{color:var(--night)}
+
+/* hero */
+.hero{position:relative;overflow:hidden}
+.sky{position:absolute;top:0;left:0;width:4px;height:4px;font-size:4px;color:var(--snow);z-index:0;animation:tw 2.4s steps(1) infinite;
+  box-shadow:18em 22em,55em 60em var(--ice),95em 14em,130em 48em var(--sun),165em 26em,200em 66em var(--ice),235em 12em,268em 40em var(--sun),35em 100em var(--ice),80em 128em,140em 96em,245em 100em}
+.hgrid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;padding-top:60px;padding-bottom:68px}
+.eyebrow{color:var(--ice);font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;margin-bottom:22px}
+h1{font-size:clamp(2.1rem,4.6vw,3.6rem);font-weight:700;line-height:1.12;letter-spacing:.04em;text-transform:uppercase;text-shadow:4px 4px 0 var(--panel)}
+.hl{color:var(--sun)}
+.cur{color:var(--sun);animation:blink 1.1s steps(1) infinite}
+.sub{margin:22px 0 28px;font-size:14.5px;line-height:1.85;color:var(--mist);max-width:46ch}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.fine{margin-top:24px;font-size:11px;font-weight:700;letter-spacing:.24em;color:var(--mist);text-transform:uppercase}
+.fine b{color:var(--lime)}
+
+/* hero scene */
+.scene{position:relative;font-size:9px;height:42em;width:100%;max-width:52em;margin:0 auto;overflow:hidden}
+.scene .cloud{position:absolute}
+.c1{top:0;left:0;animation:drift 26s steps(28) infinite}
+.c2{top:11em;left:0;font-size:.65em;opacity:.75;animation:drift 38s steps(28) infinite;animation-delay:-19s}
+.island{position:absolute;left:1em;right:1em;bottom:0;height:10em;border-top:2em solid var(--lime);
+  background:repeating-conic-gradient(var(--tomato) 0 25%,var(--ember) 0 50%);
+  background-size:4em 4em}
+.pipe{position:absolute;right:6em;bottom:12em;width:9em;height:8em;background:var(--leaf);
+  box-shadow:inset 1.5em 0 0 var(--lime),inset -1.5em 0 0 var(--steel)}
+.pipe::before{content:"";position:absolute;left:-1em;top:-3em;width:11em;height:3em;background:var(--leaf);
+  box-shadow:inset 1.5em 0 0 var(--lime),inset -1.5em 0 0 var(--steel)}
+.qblock{
+  position:absolute;left:22em;top:12em;width:7em;height:7em;display:grid;place-items:center;
+  color:var(--night);font-size:1em;font-weight:700;animation:bob 1.4s steps(1) infinite;
+  background:
+    linear-gradient(var(--night),var(--night)) left .75em top .75em/1em 1em,
+    linear-gradient(var(--night),var(--night)) right .75em top .75em/1em 1em,
+    linear-gradient(var(--night),var(--night)) left .75em bottom .75em/1em 1em,
+    linear-gradient(var(--night),var(--night)) right .75em bottom .75em/1em 1em,
+    var(--sun);
+  background-repeat:no-repeat;
+  box-shadow:inset .75em .75em 0 rgba(244,244,244,.4),inset -.75em -.75em 0 var(--ember);
+}
+.qblock i{font-style:normal;font-size:3.4em;line-height:1}
+.coin{position:absolute;left:22.5em;top:5em;transform-origin:3em 50%;animation:flip .9s steps(1) infinite}
+.slime{position:absolute;left:6em;top:23em;animation:hop .8s steps(1) infinite}
+
+/* HUD band */
+.hud{background:var(--panel);border-top:4px solid var(--steel);border-bottom:4px solid var(--steel)}
+.hudrow{display:flex;flex-wrap:wrap;align-items:center;gap:12px 36px;padding-top:13px;padding-bottom:13px;
+  font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--mist)}
+.hudrow b{color:var(--sun)}
+.lives,.coins{display:inline-flex;align-items:center;gap:9px}
+.lives .i-heart,.coins .i-coin{font-size:3px}
+.ins{margin-left:auto;color:var(--snow)}
+
+/* section bits */
+.k{display:inline-block;background:var(--panel);color:var(--ice);border-left:4px solid var(--ice);
+  font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;padding:6px 12px;margin-bottom:20px}
+h2{font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:700;letter-spacing:.06em;line-height:1.2;
+  text-transform:uppercase;text-shadow:4px 4px 0 var(--panel);margin-bottom:46px}
+
+/* cartridges */
+.games{padding-top:78px;padding-bottom:88px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:38px}
+.cart{--ac:var(--sky);background:var(--panel);margin:4px;
+  box-shadow:0 -4px 0 var(--ac),0 4px 0 var(--ac),-4px 0 0 var(--ac),4px 0 0 var(--ac),
+    4px 8px 0 var(--steel),8px 4px 0 var(--steel),8px 8px 0 var(--steel)}
+.cart:hover{transform:translate(-4px,-4px);
+  box-shadow:0 -4px 0 var(--ac),0 4px 0 var(--ac),-4px 0 0 var(--ac),4px 0 0 var(--ac),
+    8px 12px 0 var(--steel),12px 8px 0 var(--steel),12px 12px 0 var(--steel)}
+.cA{--ac:var(--tomato)}.cB{--ac:var(--sky)}.cC{--ac:var(--lime)}
+.slot{background:var(--ac);color:var(--night);font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;padding:7px 14px}
+.screen{height:120px;background:var(--night);display:grid;place-items:center;border-bottom:4px solid var(--steel)}
+.screen .spr{font-size:6px}
+.cbody{padding:20px 20px 24px}
+.cbody h3{font-size:15px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+.cbody p{font-size:12.5px;line-height:1.75;color:var(--mist)}
+.meta{margin-top:14px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ice)}
+.buy{margin-top:12px;display:flex;align-items:center;gap:14px}
+.buy b{color:var(--sun);font-size:14px;letter-spacing:.1em}
+.buy a{color:var(--snow);text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;border-bottom:4px solid var(--ac);padding:1px 2px}
+.buy a:hover{background:var(--ac);color:var(--night)}
+
+/* forge */
+.forge{background:var(--panel);border-top:4px solid var(--steel);border-bottom:4px solid var(--steel)}
+.forge .k{background:var(--night)}
+.forge h2{text-shadow:4px 4px 0 var(--night);margin-bottom:24px}
+.fgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start;padding-top:74px;padding-bottom:82px}
+.forge p{font-size:13.5px;line-height:1.85;color:var(--mist);max-width:52ch}
+.forge p+p{margin-top:14px}
+.forge p b{color:var(--lime)}
+.skills{margin-top:32px}
+.skill{margin-bottom:20px}
+.skill .lab{display:flex;justify-content:space-between;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:8px}
+.skill .lab span+span{color:var(--sun)}
+.bargap{height:18px;background:var(--night);margin:4px;
+  box-shadow:0 -4px 0 var(--steel),0 4px 0 var(--steel),-4px 0 0 var(--steel),4px 0 0 var(--steel)}
+.bargap i{display:block;height:100%;background:repeating-linear-gradient(90deg,var(--lime) 0 10px,var(--leaf) 10px 14px)}
+.bargap.low i{background:repeating-linear-gradient(90deg,var(--tomato) 0 10px,var(--ember) 10px 14px)}
+.win{background:var(--night);margin:4px;
+  box-shadow:0 -4px 0 var(--sky),0 4px 0 var(--sky),-4px 0 0 var(--sky),4px 0 0 var(--sky),
+    4px 8px 0 var(--steel),8px 4px 0 var(--steel),8px 8px 0 var(--steel)}
+.tbar{display:flex;justify-content:space-between;align-items:center;background:var(--steel);color:var(--ice);
+  font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;padding:9px 16px}
+.lvl{color:var(--sun)}
+.stats{padding:8px 18px 20px}
+.stats div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 0;border-bottom:2px solid var(--steel)}
+.stats div:last-child{border-bottom:0}
+.stats dt{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--mist)}
+.stats dd{font-size:13px;font-weight:700;letter-spacing:.12em;color:var(--sun)}
+
+/* dev log */
+.log{padding-top:80px;padding-bottom:88px;text-align:center}
+.log h2{margin-bottom:18px}
+.log p{font-size:13.5px;line-height:1.85;color:var(--mist);max-width:56ch;margin:0 auto 30px}
+
+/* footer */
+footer{border-top:4px solid var(--steel)}
+.frow{display:flex;flex-wrap:wrap;align-items:center;gap:18px 36px;padding-top:28px;padding-bottom:10px}
+.frow nav{display:flex;gap:20px}
+.frow nav a{color:var(--mist);text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;border-bottom:4px solid var(--steel)}
+.frow nav a:hover{color:var(--sun);border-color:var(--sun)}
+.pads{margin-left:auto;display:inline-flex;align-items:center;gap:12px}
+.dpad{position:relative;width:34px;height:34px}
+.dpad::before{content:"";position:absolute;left:11px;top:0;width:12px;height:34px;background:var(--steel)}
+.dpad::after{content:"";position:absolute;top:11px;left:0;width:34px;height:12px;background:var(--steel)}
+.key{display:inline-grid;place-items:center;width:30px;height:30px;font-size:13px;font-weight:700;font-style:normal;
+  color:var(--snow);background:var(--sky);box-shadow:0 4px 0 var(--steel)}
+.key.ka{background:var(--tomato)}
+.key:hover{transform:translateY(4px);box-shadow:none}
+.legal{padding-top:8px;padding-bottom:32px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mist)}
+.konami{color:var(--sky);letter-spacing:.3em;white-space:nowrap}
+
+/* responsive */
+@media (max-width:940px){
+  .links{display:none}
+  .hgrid{grid-template-columns:1fr;gap:52px;padding-top:44px;padding-bottom:56px}
+  .grid3{grid-template-columns:1fr;gap:42px}
+  .fgrid{grid-template-columns:1fr;gap:48px}
+  .pads{margin-left:0}
+}
+@media (max-width:480px){
+  .wrap{padding-left:18px;padding-right:18px}
+  .scene{font-size:6px}
+  .hudrow{gap:10px 22px}
+  .ins{margin-left:0}
+  .btn{padding:12px 16px;font-size:12px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap bar">
+    <a class="logo" href="#top"><span class="mark" aria-hidden="true"></span>Pixelforge</a>
+    <nav class="links" aria-label="Primary">
+      <a href="#games">Games</a>
+      <a href="#forge">The Forge</a>
+      <a href="#log">Dev Log</a>
+    </nav>
+    <a class="btn small" href="#games">Play now</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <span class="sky" aria-hidden="true"></span>
+    <div class="wrap hgrid">
+      <div>
+        <p class="eyebrow">&gt; Est. 2019 &middot; three humans &middot; one slime</p>
+        <h1>Big adventures,<br>tiny <span class="hl">pixels</span><span class="cur" aria-hidden="true">_</span></h1>
+        <p class="sub">Pixelforge is an independent studio hammering out dense little
+          action games. No borrowed engines, no smoothing filters &mdash; just three
+          humans, one slime, and a tile grid we refuse to apologize for.</p>
+        <div class="row">
+          <a class="btn" href="#games"><span class="pk blink" aria-hidden="true">&#9654;&nbsp;</span>Press start</a>
+          <a class="btn alt" href="#forge">Meet the forge</a>
+        </div>
+        <p class="fine">No engine &middot; no filters &middot; <b>60 fps or bust</b></p>
+      </div>
+
+      <figure class="scene" aria-label="Pixel-art meadow: slime, warp pipe, coin and question block">
+        <span class="spr cloud c1" aria-hidden="true"></span>
+        <span class="spr cloud c2" aria-hidden="true"></span>
+        <span class="island" aria-hidden="true"></span>
+        <span class="pipe" aria-hidden="true"></span>
+        <span class="qblock" aria-hidden="true"><i>?</i></span>
+        <span class="spr i-coin coin" aria-hidden="true"></span>
+        <span class="spr slime" aria-hidden="true"></span>
+      </figure>
+    </div>
+  </section>
+
+  <section class="hud" aria-label="Arcade status bar">
+    <div class="wrap hudrow">
+      <span>Hi-score <b>999999</b></span>
+      <span>World <b>1-3</b></span>
+      <span class="coins">Coins <i class="spr i-coin" aria-hidden="true"></i><b>&times;042</b></span>
+      <span class="lives">Lives
+        <i class="spr i-heart" aria-hidden="true"></i>
+        <i class="spr i-heart" aria-hidden="true"></i>
+        <i class="spr i-heart off" aria-hidden="true"></i>
+      </span>
+      <span class="ins blink">Insert coin</span>
+    </div>
+  </section>
+
+  <section class="wrap games" id="games" aria-labelledby="games-title">
+    <p class="k">Cartridge library</p>
+    <h2 id="games-title">Choose your cartridge</h2>
+    <div class="grid3">
+      <article class="cart cA">
+        <p class="slot">Cart 01 &middot; Action</p>
+        <figure class="screen" aria-label="Pixel sword sprite"><span class="spr i-sword" aria-hidden="true"></span></figure>
+        <div class="cbody">
+          <h3>Mosscrown Keep</h3>
+          <p>Reclaim a moss-eaten castle one screen at a time: 48 rooms, six bosses,
+            and a crown that bites back.</p>
+          <p class="meta">1P &middot; 48 rooms &middot; diff &#9646;&#9646;&#9646;&#9646;&#9647;</p>
+          <p class="buy"><b>$18</b> <a href="#log">&#9654; Play demo</a></p>
+        </div>
+      </article>
+
+      <article class="cart cB">
+        <p class="slot">Cart 02 &middot; Shmup</p>
+        <figure class="screen" aria-label="Pixel star sprite"><span class="spr i-star" aria-hidden="true"></span></figure>
+        <div class="cbody">
+          <h3>Starfall Express</h3>
+          <p>Haul mail across a collapsing galaxy where postage is paid in bullets
+            and every delivery window is on fire.</p>
+          <p class="meta">1-2P &middot; 12 sectors &middot; diff &#9646;&#9646;&#9646;&#9647;&#9647;</p>
+          <p class="buy"><b>$14</b> <a href="#log">&#9654; Play demo</a></p>
+        </div>
+      </article>
+
+      <article class="cart cC">
+        <p class="slot">Cart 03 &middot; Cozy chaos</p>
+        <figure class="screen" aria-label="Pixel heart sprite"><span class="spr i-heart" aria-hidden="true"></span></figure>
+        <div class="cbody">
+          <h3>Potion Panic</h3>
+          <p>Brew cures for a village that will not stop licking cursed frogs.
+            Wholesome, right up until the cauldron unionizes.</p>
+          <p class="meta">1-4P &middot; 99 recipes &middot; diff &#9646;&#9646;&#9647;&#9647;&#9647;</p>
+          <p class="buy"><b>$12</b> <a href="#log">&#9654; Play demo</a></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="forge" id="forge" aria-labelledby="forge-title">
+    <div class="wrap fgrid">
+      <div>
+        <p class="k">Inside the studio</p>
+        <h2 id="forge-title">Forged the hard way</h2>
+        <p>Our toolchain is a tile editor from 1994, a four-channel tracker, and a
+          wall of graph paper. Nothing here is generated and nothing is smoothed;
+          if a pixel ships, somebody placed it on purpose &mdash; and probably
+          defended it in a meeting.</p>
+        <p><b>Glorp</b>, the office slime, handles morale and playtests the water levels.</p>
+        <div class="skills">
+          <div class="skill">
+            <p class="lab"><span>Pixel art</span><span>LV.92</span></p>
+            <div class="bargap"><i style="width:92%"></i></div>
+          </div>
+          <div class="skill">
+            <p class="lab"><span>Chiptune</span><span>LV.88</span></p>
+            <div class="bargap"><i style="width:88%"></i></div>
+          </div>
+          <div class="skill">
+            <p class="lab"><span>Scope control</span><span>LV.12</span></p>
+            <div class="bargap low"><i style="width:12%"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="win">
+        <p class="tbar"><span>guild.stats</span><span class="lvl blink">&#9650; Level up</span></p>
+        <dl class="stats">
+          <div><dt>Founded</dt><dd>2019</dd></div>
+          <div><dt>Carts shipped</dt><dd>03</dd></div>
+          <div><dt>Pixels placed</dt><dd>1,847,203</dd></div>
+          <div><dt>Crunch days</dt><dd>00</dd></div>
+          <div><dt>Office slime</dt><dd>Glorp</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap log" id="log" aria-labelledby="log-title">
+    <p class="k">Fresh off the anvil</p>
+    <h2 id="log-title">The dev log ships monthly</h2>
+    <p>Boss sketches, scrapped mechanics, honest postmortems, and one recipe per
+      issue from the Potion Panic test kitchen. Zero spam, occasional confetti.</p>
+    <a class="btn" href="#top">Read issue 27</a>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap frow">
+    <a class="logo" href="#top"><span class="mark" aria-hidden="true"></span>Pixelforge</a>
+    <nav aria-label="Footer">
+      <a href="#games">Games</a>
+      <a href="#forge">The Forge</a>
+      <a href="#log">Dev Log</a>
+    </nav>
+    <span class="pads" aria-hidden="true">
+      <span class="dpad"></span>
+      <i class="key">B</i>
+      <i class="key ka">A</i>
+    </span>
+  </div>
+  <p class="wrap legal">&copy; 2026 Pixelforge Studio &middot; all pixels placed by hand &middot;
+    <span class="konami" aria-hidden="true">&uarr; &uarr; &darr; &darr; &larr; &rarr; &larr; &rarr; B A</span></p>
+</footer>
+
+</body>
+</html>
