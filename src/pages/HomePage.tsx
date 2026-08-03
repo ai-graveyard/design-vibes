@@ -19,8 +19,8 @@ export function HomePage() {
   return (
     <>
       <Hero />
-      <StylesGrid />
       <InstallSkill />
+      <StylesGrid />
       <SceneGuide />
       <Footer />
     </>
