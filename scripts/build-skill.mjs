@@ -17,6 +17,8 @@ const { stylePrompts } = await import(path.join(root, 'src/data/prompts.ts'));
 const { scenes, difficultyTiers } = await import(path.join(root, 'src/data/scenes.ts'));
 
 const HOMEPAGE = 'https://design-vibes.v2ai.org';
+const REPO = 'https://github.com/ai-graveyard/design-vibes';
+const TARBALL = 'design-vibes-skill.tar.gz';
 
 const promptById = new Map(stylePrompts.map((p) => [p.id, p]));
 const DIFFICULTY_LABEL = { 1: 'Easy', 2: 'Medium', 3: 'Hard', 4: 'Expert' };
@@ -222,6 +224,16 @@ for (const style of designStyles) {
 
 cpSync(path.join(root, 'public/demos'), path.join(out, 'assets/demos'), { recursive: true });
 
+// public/skill.md：给 AI agent 在线读取的安装说明，随站点部署到 <站点>/skill.md
+writeFileSync(
+  path.join(root, 'public/skill.md'),
+  tpl('install.md.tpl')
+    .replaceAll('{{COUNT}}', String(designStyles.length))
+    .replaceAll('{{HOMEPAGE}}', HOMEPAGE)
+    .replaceAll('{{REPO}}', REPO)
+    .replaceAll('{{TARBALL}}', TARBALL)
+);
+
 console.log(
-  `✅ skills/design-vibes/ 已生成：${designStyles.length} 个风格文档 + ${designStyles.length} 个 demo 附件`
+  `✅ skills/design-vibes/ 已生成：${designStyles.length} 个风格文档 + ${designStyles.length} 个 demo 附件；public/skill.md 已更新`
 );

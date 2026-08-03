@@ -8,10 +8,23 @@
 
 网站上的提示词、Design Tokens 和避坑指南，也打包成了一个 Skill，让 AI 直接照着写页面，不用来回复制粘贴。
 
-产物就是 [`skills/design-vibes/`](./skills/design-vibes) 这一个目录：一份 `SKILL.md` 加若干 Markdown 参考文件和 HTML 附件，全部用相对路径互相引用，不含任何工具专有的清单文件。**装法就是把它拷进你的 agent 的 skills 目录**，改 `DIR` 即可换工具：
+产物就是 [`skills/design-vibes/`](./skills/design-vibes) 这一个目录：一份 `SKILL.md` 加若干 Markdown 参考文件和 HTML 附件，全部用相对路径互相引用，不含任何工具专有的清单文件。
+
+### 方式一：让 AI 自己装
+
+把这句话发给 Claude Code、Codex 或任何能联网的 agent：
+
+```
+请阅读 https://design-vibes.v2ai.org/skill.md 并按其中的说明安装这个 skill。
+```
+
+[`/skill.md`](https://design-vibes.v2ai.org/skill.md) 是一份明文安装说明：让 agent 判断自己运行在哪个工具里、选对目标目录、下载解压、验证文件数量。装之前可以自己先点开看它写了什么。
+
+### 方式二：一行命令
 
 ```bash
-DIR=~/.claude/skills/design-vibes; mkdir -p "$DIR" && curl -fsSL https://github.com/ai-graveyard/design-vibes/archive/refs/heads/main.tar.gz | tar -xz --strip-components=3 -C "$DIR" design-vibes-main/skills/design-vibes
+DIR=~/.claude/skills/design-vibes
+mkdir -p "$DIR" && curl -fsSL https://design-vibes.v2ai.org/design-vibes-skill.tar.gz | tar -xz -C "$DIR"
 ```
 
 | 工具 | `DIR` |
@@ -21,9 +34,16 @@ DIR=~/.claude/skills/design-vibes; mkdir -p "$DIR" && curl -fsSL https://github.
 
 两者均已实测通过：agent 会自己加载 `SKILL.md`、按工作流读到 `references/styles/<id>.md`，并取出正确的 tokens。项目级安装把 `~/.claude` 换成项目里的 `.claude` 即可（Codex 同理）。
 
+站点源拉不动时走 GitHub 备用源：
+
+```bash
+DIR=~/.claude/skills/design-vibes
+mkdir -p "$DIR" && curl -fsSL https://github.com/ai-graveyard/design-vibes/archive/refs/heads/main.tar.gz | tar -xz --strip-components=3 -C "$DIR" design-vibes-main/skills/design-vibes
+```
+
 也可以直接 clone 后 `cp -r skills/design-vibes <你的 skills 目录>/`。
 
-装好后不需要记命令：说「做一个赛博朋克风格的落地页」或「这个首页用什么风格好」，agent 会根据 `description` 自己加载。
+装好后不需要记命令：说「做一个赛博朋克风格的落地页」或「这个首页用什么风格好」，agent 会根据 `description` 自己加载。多数工具要新开一个 session 才会加载刚装上的 skill。
 
 Skill 里有什么：
 
@@ -93,12 +113,14 @@ pnpm preview
 │   └── assets/demos/      # 30 个 demo 副本
 ├── public/
 │   ├── demos/             # 30 个风格 demo（零依赖单文件 HTML，与风格数据一一对应）
+│   ├── skill.md           # 给 AI agent 在线读取的安装说明（由 pnpm skill 生成）
 │   ├── og/                # 社交分享图（由 pnpm og 生成）
 │   └── thumbs/            # 首页卡片静态缩略图（由 pnpm thumbs 生成，hover 时才挂载实况 iframe）
 ├── scripts/
 │   ├── validate-demos.mjs # 数据一致性与 demo 约定校验（build 前自动执行）
-│   ├── build-skill.mjs    # 从 src/data 生成 skills/design-vibes/
-│   ├── skill-templates/   # SKILL.md 模板与手写的交付自检清单
+│   ├── build-skill.mjs    # 从 src/data 生成 skills/design-vibes/ 与 public/skill.md
+│   ├── pack-skill.mjs     # 打包 dist/design-vibes-skill.tar.gz（自建安装源，不进 git）
+│   ├── skill-templates/   # SKILL.md 模板、安装说明模板与手写的交付自检清单
 │   ├── postbuild-seo.mjs  # 为每个风格页生成独立 meta 的静态壳 + sitemap + robots
 │   ├── generate-og.mjs    # 用系统 Chrome headless 截 og:image
 │   ├── generate-thumbs.mjs# 用系统 Chrome headless 截首页卡片缩略图
@@ -112,7 +134,7 @@ pnpm preview
 │   ├── hooks/             # useDemoSource（源码获取缓存）、usePageMeta
 │   ├── lib/               # highlightHtml（零依赖语法高亮）
 │   ├── components/        # StyleCard、DemoPreview、DemoCodeView、DesignTokens 等
-│   ├── sections/          # 首页区块（Hero / StylesGrid / SceneGuide / Footer）
+│   ├── sections/          # 首页区块（Hero / StylesGrid / SceneGuide / InstallSkill / Footer）
 │   └── pages/             # 首页、风格详情页与对比页
 └── 网站设计风格大全.md      # 风格资料源文档
 ```

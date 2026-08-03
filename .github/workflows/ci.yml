@@ -31,6 +31,6 @@ jobs:
       - name: Build
         run: pnpm build
 
-      # 改了 src/data 却忘了提交重建后的 skills/，在这里红
+      # 改了 src/data 却忘了提交重建后的 skills/ 或 public/skill.md，在这里红
       - name: Skill 产物已同步
-        run: git diff --exit-code -- skills
+        run: git diff --exit-code -- skills public/skill.md

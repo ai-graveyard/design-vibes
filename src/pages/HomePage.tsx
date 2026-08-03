@@ -1,6 +1,7 @@
 import { Hero } from '../sections/Hero';
 import { StylesGrid } from '../sections/StylesGrid';
 import { SceneGuide } from '../sections/SceneGuide';
+import { InstallSkill } from '../sections/InstallSkill';
 import { Footer } from '../sections/Footer';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { useAppStore } from '../store/appStore';
@@ -20,6 +21,7 @@ export function HomePage() {
       <Hero />
       <StylesGrid />
       <SceneGuide />
+      <InstallSkill />
       <Footer />
     </>
   );
