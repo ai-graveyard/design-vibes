@@ -6,7 +6,6 @@ import { ThemeToggle } from '../components/ThemeToggle';
 import { LanguageToggle } from '../components/LanguageToggle';
 import { ArrowRight, ChevronDown, Sparkles } from 'lucide-react';
 import { useCountUp } from '../hooks/useCountUp';
-import { Link } from 'react-router-dom';
 
 export function Hero() {
   const { language } = useAppStore();
@@ -90,7 +89,7 @@ export function Hero() {
             <div className="mb-7 sm:mb-9">
               <h1
                 aria-label={title}
-                className="font-black tracking-[0.02em] leading-none whitespace-nowrap text-black dark:text-white"
+                className="hero-title font-black tracking-[0.02em] leading-none whitespace-nowrap text-black dark:text-white"
                 style={{ fontSize: 'clamp(2.5rem, 10.6vw, 9rem)' }}
               >
                 {title.split('').map((ch, i) => (
@@ -100,7 +99,8 @@ export function Hero() {
                     className="inline-block animate-letter-in"
                     style={{ animationDelay: `${i * 40}ms` }}
                   >
-                    {ch === ' ' ? '\u00A0' : ch}
+                    {/* 两个 I 做成点亮的橙色灯管，见 index.css .hero-letter-i */}
+                    {ch === ' ' ? '\u00A0' : ch === 'I' ? <span className="hero-letter-i">I</span> : ch}
                   </span>
                 ))}
               </h1>
@@ -120,36 +120,30 @@ export function Hero() {
                   <p className="mt-3 max-w-xl text-sm sm:text-base leading-relaxed text-gray-600 dark:text-gray-400">
                     {t.hero.valueDescription}
                   </p>
+                  {/* 两个出口都指向下面的屏：主按钮去风格库，次按钮直达第二屏的安装区，
+                      否则安装区排在第二屏很容易被整屏滑过去。
+                      主按钮的 border-transparent 只为跟次按钮的 1px 描边等高，否则两者差 2px */}
                   <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-2.5">
                     <button
                       onClick={scrollToStyles}
                       type="button"
-                      className="inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-bold rounded-lg bg-[#FF9F1C] text-white transition-all hover:bg-[#E8900A] active:scale-[0.98]"
+                      className="inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-bold rounded-lg border border-transparent bg-[#FF9F1C] text-white transition-all hover:bg-[#E8900A] active:scale-[0.98]"
                     >
                       {t.hero.primaryCta}
                       <ChevronDown className="w-4 h-4" />
                     </button>
-                    <Link
-                      to="/style/apple"
-                      className="inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-bold rounded-lg border bg-white border-gray-200 text-gray-700 transition-colors hover:border-[#FF9F1C] hover:text-[#D98200] dark:bg-[#1a1a1a] dark:border-gray-700 dark:text-gray-300 dark:hover:border-[#FF9F1C] dark:hover:text-[#FFB340]"
+                    <button
+                      onClick={scrollToInstall}
+                      type="button"
+                      className="inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-bold rounded-lg border bg-white border-gray-200 text-gray-700 transition-colors hover:border-[#FF9F1C] hover:text-[#D98200] active:scale-[0.98] dark:bg-[#1a1a1a] dark:border-gray-700 dark:text-gray-300 dark:hover:border-[#FF9F1C] dark:hover:text-[#FFB340]"
                     >
-                      {t.hero.secondaryCta}
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
+                      <Sparkles className="w-4 h-4" />
+                      {t.hero.installCta}
+                    </button>
                   </div>
                   <p className="mt-3 text-[10px] sm:text-[11px] tracking-wide text-gray-400 dark:text-gray-500">
                     {t.hero.trustNote}
                   </p>
-                  {/* 首屏就把安装入口露出来，否则区块在第二屏之后容易被整个滑过去 */}
-                  <button
-                    onClick={scrollToInstall}
-                    type="button"
-                    className="mt-3 inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-bold transition-colors text-[#D98200] hover:text-[#B36A00] dark:text-[#FFB340] dark:hover:text-[#FFC978]"
-                  >
-                    <Sparkles className="w-3.5 h-3.5" />
-                    {t.hero.installLink}
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
                 </div>
 
                 {/* Right: Stats — 数字从 0 滚动到位，作为内容规模证明 */}

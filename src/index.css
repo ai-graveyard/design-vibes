@@ -200,6 +200,38 @@
   opacity: 1;
 }
 
+/* Hero 大标题里的两个 I：用主题橙实心填充，静止态就是纯 #FF9F1C。
+   hover 整行标题时一道高光从下往上走一次即停 —— 与卡片 .card-sheen 同一套规矩：
+   动效由用户触发、只播一次，首屏不留循环动画。 */
+.hero-letter-i {
+  display: inline-block;
+  color: #ff9f1c;
+  background-image: linear-gradient(
+    180deg,
+    #ff9f1c 0%,
+    #ff9f1c 28%,
+    #ffcf8a 41%,
+    #fffaf0 50%,
+    #ffcf8a 59%,
+    #ff9f1c 72%,
+    #ff9f1c 100%
+  );
+  /* 背景高 3em、首尾同色：位移一个整周期后画面与起点一致，
+     所以离开时不加 transition 直接复位也看不出跳变 */
+  background-size: 100% 300%;
+  background-position-y: 0em;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .hero-title:hover .hero-letter-i {
+    background-position-y: -3em;
+    transition: background-position 1.1s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  }
+}
+
 /* 卡片缩略图 hover 整页下滚：--demo-scale/--demo-pan 由 DemoPreview 写入；
    进入时缓缓下滚 1 屏（约 4s），离开时快速回顶；触屏与减动效环境不启用 */
 .demo-pan-frame {
