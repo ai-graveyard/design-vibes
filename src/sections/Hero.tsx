@@ -108,7 +108,7 @@ export function Hero() {
 
             {/* Product value — 跟在标题字符之后淡入 */}
             <div
-              className="pt-4 sm:pt-6 animate-fade-up"
+              className="pt-4 sm:pt-6 animate-fade-up-blur"
               style={{ animationDelay: '350ms' }}
             >
               <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 lg:gap-12">
@@ -127,10 +127,11 @@ export function Hero() {
                     <button
                       onClick={scrollToStyles}
                       type="button"
-                      className="inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-bold rounded-lg border border-transparent bg-[#FF9F1C] text-white transition-all hover:bg-[#E8900A] active:scale-[0.98]"
+                      className="relative overflow-hidden inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-bold rounded-lg border border-transparent bg-[#FF9F1C] text-white transition-all hover:bg-[#E8900A] active:scale-[0.98]"
                     >
                       {t.hero.primaryCta}
                       <ChevronDown className="w-4 h-4" />
+                      <span className="btn-sheen" aria-hidden="true" />
                     </button>
                     <button
                       onClick={scrollToInstall}

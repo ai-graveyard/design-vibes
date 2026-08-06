@@ -27,7 +27,7 @@ export function SceneGuide() {
     <section className="w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16 transition-colors duration-300 bg-white dark:bg-[#1a1a1a]">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div ref={headerRef} className={`mb-8 sm:mb-10 ${headerInView ? 'animate-fade-up' : 'opacity-0'}`}>
+        <div ref={headerRef} className={`mb-8 sm:mb-10 ${headerInView ? 'animate-fade-up-blur' : 'opacity-0'}`}>
           <span className="text-[10px] uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500">
             {t.guide.kicker}
           </span>
@@ -40,14 +40,14 @@ export function SceneGuide() {
         </div>
 
         {/* By Scenario */}
-        <h3 className={`text-xs font-bold uppercase tracking-wider mb-4 text-gray-700 dark:text-gray-300 ${sceneGridInView ? 'animate-fade-up' : 'opacity-0'}`}>
+        <h3 className={`text-xs font-bold uppercase tracking-wider mb-4 text-gray-700 dark:text-gray-300 ${sceneGridInView ? 'animate-fade-up-blur' : 'opacity-0'}`}>
           {t.guide.byScene}
         </h3>
         <div ref={sceneGridRef} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-10">
           {scenes.map((scene, index) => (
             <div
               key={scene.id}
-              className={`rounded-xl border p-4 transition-colors bg-gray-50 border-gray-200 hover:border-gray-300 dark:bg-[#0f0f0f] dark:border-gray-800 dark:hover:border-gray-700 ${sceneGridInView ? 'animate-fade-up' : 'opacity-0'}`}
+              className={`rounded-xl border p-4 transition-colors bg-gray-50 border-gray-200 hover:border-gray-300 dark:bg-[#0f0f0f] dark:border-gray-800 dark:hover:border-gray-700 ${sceneGridInView ? 'animate-fade-up-blur' : 'opacity-0'}`}
               style={{ animationDelay: `${Math.min(index, 6) * 70}ms` }}
             >
               <div className="flex items-center gap-2 mb-3">
@@ -68,7 +68,7 @@ export function SceneGuide() {
         </div>
 
         {/* By Difficulty */}
-        <div ref={tierListRef} className={tierListInView ? 'animate-fade-up' : 'opacity-0'}>
+        <div ref={tierListRef} className={tierListInView ? 'animate-fade-up-blur' : 'opacity-0'}>
           <h3 className="text-xs font-bold uppercase tracking-wider mb-1 text-gray-700 dark:text-gray-300">
             {t.guide.byDifficulty}
           </h3>

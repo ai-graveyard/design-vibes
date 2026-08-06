@@ -93,7 +93,7 @@ export function InstallSkill() {
     >
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header —— eyebrow 沿用 Hero 的「实心方块 + 大写字距」，全站同一套 */}
-        <div ref={headerRef} className={headerInView ? 'animate-fade-up' : 'opacity-0'}>
+        <div ref={headerRef} className={headerInView ? 'animate-fade-up-blur' : 'opacity-0'}>
           <div className="flex items-center gap-2 mb-3 sm:mb-4">
             <div className="w-2 h-2 bg-[#FF9F1C] shrink-0" />
             <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400">
@@ -112,11 +112,11 @@ export function InstallSkill() {
             竖线上接这里的 border-t、下接参数表的 border-t，两端都落在别的线上；
             交给 grid 自己画（border-l）的话，线长会等于较高那栏的内容高度，
             短的那栏下方就凭空吊一截，看着像没画完 */}
+        {/* 结构线（border-t + 中缝竖线）不参与动画立即就位，内容按 01 → 02 → 参数表
+            三档 90ms 步进落座（对齐 SceneGuide 的 stagger 语法），标题档为 0ms */}
         <div
           ref={bodyRef}
-          className={`relative mt-6 sm:mt-12 pt-6 sm:pt-8 lg:pb-14 border-t border-gray-200 dark:border-gray-800 ${
-            bodyInView ? 'animate-fade-up' : 'opacity-0'
-          }`}
+          className="relative mt-6 sm:mt-12 pt-6 sm:pt-8 lg:pb-14 border-t border-gray-200 dark:border-gray-800"
         >
           <div
             aria-hidden="true"
@@ -124,7 +124,10 @@ export function InstallSkill() {
           />
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* 01 让 AI 自己装 */}
-            <div className="lg:pr-10 xl:pr-14">
+            <div
+              className={`lg:pr-10 xl:pr-14 ${bodyInView ? 'animate-fade-up-blur' : 'opacity-0'}`}
+              style={{ animationDelay: '90ms' }}
+            >
               <div className="flex items-baseline gap-3">
                 <span className="text-[11px] font-bold tabular-nums text-[#FF9F1C]">01</span>
                 <h3 className="text-base font-bold text-black dark:text-white">{t.install.methodALabel}</h3>
@@ -157,7 +160,12 @@ export function InstallSkill() {
             </div>
 
             {/* 02 一行命令 */}
-            <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800 lg:mt-0 lg:pt-0 lg:border-t-0 lg:pl-10 xl:pl-14">
+            <div
+              className={`mt-8 pt-8 border-t border-gray-200 dark:border-gray-800 lg:mt-0 lg:pt-0 lg:border-t-0 lg:pl-10 xl:pl-14 ${
+                bodyInView ? 'animate-fade-up-blur' : 'opacity-0'
+              }`}
+              style={{ animationDelay: '180ms' }}
+            >
               <div className="flex items-baseline gap-3">
                 <span className="text-[11px] font-bold tabular-nums text-[#FF9F1C]">02</span>
                 <h3 className="text-base font-bold text-black dark:text-white">{t.install.methodBLabel}</h3>
@@ -190,7 +198,12 @@ export function InstallSkill() {
             lg 下 mt-0——上面那块用 pb-14 顶住，上边框正好接住竖线的下端。
             border-y 而不是 border-t：下边框把这一栏封口，格子之间的竖线两端才都有着落。
             窄屏排成「标签左 / 数值右」的单行，竖着堆三个 label-over-value 会白吃掉半屏 */}
-        <dl className="mt-8 sm:mt-14 lg:mt-0 grid grid-cols-1 sm:grid-cols-3 border-y border-gray-200 dark:border-gray-800">
+        <dl
+          className={`mt-8 sm:mt-14 lg:mt-0 grid grid-cols-1 sm:grid-cols-3 border-y border-gray-200 dark:border-gray-800 ${
+            bodyInView ? 'animate-fade-up-blur' : 'opacity-0'
+          }`}
+          style={{ animationDelay: '270ms' }}
+        >
           {specs.map((spec, i) => (
             <div
               key={spec.label}

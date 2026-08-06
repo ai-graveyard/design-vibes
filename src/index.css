@@ -38,6 +38,23 @@
     animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
+  /* 区块入场（blur 变体）：从模糊 + 下移「对焦」到位。
+     只写 from 帧 + backwards fill：结束后 filter 彻底回到 none——
+     fill 若停在 blur(0) 仍算 filter，会给后代永久留一个 containing block。
+     不得挂在含 background-clip:text 后代的子树上（hero 标题的 I 字），
+     也不挂风格卡片（30 个 iframe 同帧 blur 的合成开销未验证）。 */
+  @keyframes fade-up-blur {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+      filter: blur(6px);
+    }
+  }
+
+  .animate-fade-up-blur {
+    animation: fade-up-blur 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  }
+
   /* Hero 大标题逐字入场 */
   @keyframes letter-in {
     from {
@@ -75,6 +92,7 @@
       scroll-behavior: auto;
     }
     .animate-fade-up,
+    .animate-fade-up-blur,
     .animate-letter-in,
     .animate-pop-in {
       animation: none;
@@ -269,6 +287,45 @@
 }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
   .group:hover .card-sheen {
+    opacity: 1;
+    transform: translateX(110%) skewX(-12deg);
+    transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.15s;
+  }
+}
+
+/* Hero 主 CTA 扫光：载入后 1.3s 自动扫一次（接在入场编排收束之后），
+   此后仅 hover 再扫——与 .card-sheen 同一套规矩：一次性、不循环。
+   自动那一次不加 fill，播完回到透明基础态，不与 hover 的 transition 抢属性 */
+.btn-sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-110%) skewX(-12deg);
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 60%
+  );
+}
+@keyframes sheen-sweep {
+  from {
+    opacity: 1;
+    transform: translateX(-110%) skewX(-12deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(110%) skewX(-12deg);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn-sheen {
+    animation: sheen-sweep 0.9s cubic-bezier(0.4, 0, 0.2, 1) 1.3s 1;
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  button:hover > .btn-sheen {
     opacity: 1;
     transform: translateX(110%) skewX(-12deg);
     transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.15s;
