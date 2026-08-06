@@ -66,6 +66,7 @@ Skill 里有什么：
 - **选型指南**：按项目场景 / 技术难度快速圈定候选风格
 - **对比模式**：任意两种风格并排实况对比（`/compare/<a>/<b>`），数据逐项对照
 - **SEO 友好**：构建时为每个风格页生成独立 meta 的静态壳 + sitemap + og:image
+- **克制的动效**：滚动 reveal 采用 blur 对焦入场、首页整屏方向性吸附、主题切换从点击处圆形扩散（View Transitions API）、主 CTA 一次性扫光，全部尊重 `prefers-reduced-motion`
 - **中英文双语**、**亮色/暗色主题**、**响应式布局**（桌面 / 移动端）
 
 ## 技术栈
@@ -91,7 +92,7 @@ pnpm validate
 # 从 src/data 重新生成 Skill 产物 skills/design-vibes/（需 Node ≥ 22.6）
 pnpm skill
 
-# 构建生产版本（含校验、skill 生成与 SEO 后处理）
+# 构建生产版本（含校验、skill 生成、SEO 后处理与 skill 安装包打包）
 pnpm build
 
 # 重新生成社交分享图（demo 有增改时运行，需 macOS + Chrome）
@@ -131,8 +132,10 @@ pnpm preview
 │   │   ├── prompts.ts     # 各风格的 AI 提示词
 │   │   ├── scenes.ts      # 选型指南（按场景 / 按难度）
 │   │   └── translations.ts# 界面文案（中/英）
-│   ├── hooks/             # useDemoSource（源码获取缓存）、usePageMeta
-│   ├── lib/               # highlightHtml（零依赖语法高亮）
+│   ├── hooks/             # useDemoSource（源码获取缓存）、useInView（滚动 reveal）、useScrollSnap（整屏吸附）、useCountUp、useIsMobile、usePageMeta
+│   ├── lib/               # highlightHtml（零依赖语法高亮）、themeReveal（主题切换圆形扩散）
+│   ├── store/             # Zustand 全局状态（语言 / 主题 / 预览设备等）
+│   ├── router/            # 路由定义（首页 / style/:id 详情页 / compare/:a/:b 对比页）
 │   ├── components/        # StyleCard、DemoPreview、DemoCodeView、DesignTokens 等
 │   ├── sections/          # 首页区块（Hero / StylesGrid / SceneGuide / InstallSkill / Footer）
 │   └── pages/             # 首页、风格详情页与对比页
@@ -153,6 +156,8 @@ pnpm preview
 ## 部署
 
 `pnpm build` 产物在 `dist/`。每个 `/style/<id>` 都有真实的 `index.html` 静态壳，nginx 无需额外配置即可直访；若希望未知路径也回退到首页，可配置 `try_files $uri $uri/ /index.html;`。
+
+[`deploy.sh`](./deploy.sh) 用 rsync 同步到服务器：逐文件先写临时文件再原子 rename，部署中途的访问不会拿到半截文件；不带 `--delete`，只增不删。
 
 ## 许可证
 
