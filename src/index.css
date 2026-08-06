@@ -308,6 +308,19 @@
   }
 }
 
+/* 主题切换的圆形扩散（View Transitions，见 lib/themeReveal.ts）：
+   关掉默认交叉淡化，改由 JS 给 ::view-transition-new(root) 做 clip-path 圆扩散，
+   旧快照静止垫底；不支持该伪元素的浏览器会整条丢弃规则，无副作用 */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+/* 扩散期间禁全站颜色过渡：让圆边缘就是新旧主题的利落分界 */
+.theme-revealing * {
+  transition: none !important;
+}
+
 /* Hero 主 CTA 扫光：载入后 1.3s 自动扫一次（接在入场编排收束之后），
    此后仅 hover 再扫——与 .card-sheen 同一套规矩：一次性、不循环。
    自动那一次不加 fill，播完回到透明基础态，不与 hover 的 transition 抢属性 */

@@ -1,8 +1,9 @@
 import { Sun, Moon } from 'lucide-react';
 import { useAppStore } from '../store/appStore';
+import { toggleThemeWithReveal } from '../lib/themeReveal';
 
 export function ThemeToggle() {
-  const { theme, language, toggleTheme } = useAppStore();
+  const { theme, language } = useAppStore();
   const label =
     language === 'zh'
       ? theme === 'light' ? '切换为深色模式' : '切换为浅色模式'
@@ -10,7 +11,7 @@ export function ThemeToggle() {
 
   return (
     <button
-      onClick={toggleTheme}
+      onClick={(e) => toggleThemeWithReveal(e)}
       className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-black dark:hover:text-white transition-colors"
       aria-label={label}
       title={label}

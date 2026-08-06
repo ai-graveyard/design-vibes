@@ -63,8 +63,14 @@ export function DesignTokens({ styleId }: DesignTokensProps) {
       </p>
       <div className="border rounded-lg overflow-hidden border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-[#0a0a0a]">
         <div className="max-h-52 overflow-y-auto px-3 py-2">
-          {tokens.map((tk) => (
-            <div key={tk.name} className="flex items-center gap-2 py-1 min-w-0">
+          {/* 逐行 pop-in：父组件按 style.id 重挂载，切换风格时列表重播一遍——
+              这里的重播是内容切换的反馈，与页面级入场「只播一次」不冲突 */}
+          {tokens.map((tk, i) => (
+            <div
+              key={tk.name}
+              className="flex items-center gap-2 py-1 min-w-0 animate-pop-in"
+              style={{ animationDelay: `${Math.min(i, 10) * 25}ms` }}
+            >
               {isColorValue(tk.value) ? (
                 <span
                   className="w-3.5 h-3.5 rounded shrink-0 border border-black/10"

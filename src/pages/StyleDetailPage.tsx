@@ -2,6 +2,7 @@ import { useParams, Navigate, Link } from 'react-router-dom';
 import { ArrowLeft, Sun, Moon, Languages, Columns2 } from 'lucide-react';
 import { designStyles } from '../data/styles';
 import { useAppStore } from '../store/appStore';
+import { toggleThemeWithReveal } from '../lib/themeReveal';
 import { StyleSidebar } from '../components/StyleSidebar';
 import { StyleDetailContent } from '../components/StyleDetailContent';
 import { usePageMeta } from '../hooks/usePageMeta';
@@ -12,7 +13,7 @@ const headerBtnClass =
 
 export function StyleDetailPage() {
   const { styleId } = useParams<{ styleId: string }>();
-  const { theme, language, toggleTheme, toggleLanguage } = useAppStore();
+  const { theme, language, toggleLanguage } = useAppStore();
   const isMobile = useIsMobile();
 
   const style = designStyles.find(s => s.id === styleId);
@@ -75,7 +76,7 @@ export function StyleDetailPage() {
 
           {/* Theme Toggle */}
           <button
-            onClick={toggleTheme}
+            onClick={(e) => toggleThemeWithReveal(e)}
             className={headerBtnClass}
             title={
               language === 'zh'
@@ -95,22 +96,23 @@ export function StyleDetailPage() {
 
       {/* Mobile: Horizontal card list at top */}
       {isMobile && (
-        <div className="shrink-0 border-b border-gray-200 dark:border-gray-800">
+        <div className="shrink-0 border-b border-gray-200 dark:border-gray-800 animate-fade-up-blur">
           <StyleSidebar currentStyleId={style.id} horizontal />
         </div>
       )}
 
-      {/* Main Content */}
+      {/* Main Content —— 入场编排挂在页面级容器（不随 style.id 重挂载）：
+          进入页面时侧栏 → 工作区两档落座，侧栏内切换风格不重播 */}
       <div className="flex-1 flex overflow-hidden">
         {/* Desktop: Left Sidebar */}
         {!isMobile && (
-          <aside className="w-64 shrink-0 border-r border-gray-200 dark:border-gray-800">
+          <aside className="w-64 shrink-0 border-r border-gray-200 dark:border-gray-800 animate-fade-up-blur">
             <StyleSidebar currentStyleId={style.id} />
           </aside>
         )}
 
         {/* Right Content — key 让切换风格时组件本地状态（复制态）自动重置；设备预览是全局状态，切换风格不受影响 */}
-        <main className="flex-1 overflow-hidden">
+        <main className="flex-1 overflow-hidden animate-fade-up-blur" style={{ animationDelay: '90ms' }}>
           <StyleDetailContent key={style.id} style={style} />
         </main>
       </div>

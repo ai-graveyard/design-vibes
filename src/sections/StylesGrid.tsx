@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Search } from 'lucide-react';
 import { designStyles } from '../data/styles';
 import { StyleCard } from '../components/StyleCard';
@@ -32,6 +32,25 @@ export function StylesGrid() {
       style.tagsEn.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesTag && matchesSearch;
   });
+
+  // 筛选反馈：结果集变化时整个网格轻微下沉淡入一次（WAAPI，不重挂载卡片）。
+  // 依赖结果数而不是 searchQuery：逐字输入只在结果真的变了才脉冲一下
+  const gridEl = useRef<HTMLDivElement | null>(null);
+  const isFirstFilter = useRef(true);
+  useEffect(() => {
+    if (isFirstFilter.current) {
+      isFirstFilter.current = false;
+      return;
+    }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    gridEl.current?.animate(
+      [
+        { opacity: 0.4, transform: 'translateY(6px)' },
+        { opacity: 1, transform: 'translateY(0)' },
+      ],
+      { duration: 180, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }
+    );
+  }, [selectedTag, filteredStyles.length]);
 
   return (
     <section
@@ -92,7 +111,13 @@ export function StylesGrid() {
 
         {/* Grid */}
         {filteredStyles.length > 0 ? (
-          <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
+          <div
+            ref={(el) => {
+              gridRef(el);
+              gridEl.current = el;
+            }}
+            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8"
+          >
             {filteredStyles.map((style, index) => (
               <div
                 key={style.id}

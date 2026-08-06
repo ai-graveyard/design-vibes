@@ -173,8 +173,8 @@ export function ComparePage() {
       </header>
 
       <main className="flex-1 px-4 sm:px-6 lg:px-8 py-6 max-w-7xl mx-auto w-full">
-        {/* Style Pickers */}
-        <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 sm:gap-4 mb-4">
+        {/* Style Pickers —— 入场三档落座；选择器换风格只换 URL 参数不重挂载，不重播 */}
+        <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-2 sm:gap-4 mb-4 animate-fade-up-blur">
           <select
             value={styleA.id}
             onChange={(e) => setSide('a', e.target.value)}
@@ -203,7 +203,7 @@ export function ComparePage() {
         </div>
 
         {/* Live Previews */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 animate-fade-up-blur" style={{ animationDelay: '90ms' }}>
           {[styleA, styleB].map((style) => (
             <div key={style.id} className="min-w-0">
               <div className="flex items-center justify-between mb-2">
@@ -243,7 +243,7 @@ export function ComparePage() {
         </div>
 
         {/* Data Comparison */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 pb-10 animate-fade-up-blur" style={{ animationDelay: '180ms' }}>
           <CompareColumn style={styleA} language={language} />
           <CompareColumn style={styleB} language={language} />
         </div>
