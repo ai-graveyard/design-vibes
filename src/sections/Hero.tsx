@@ -99,7 +99,7 @@ export function Hero() {
                     className="inline-block animate-letter-in"
                     style={{ animationDelay: `${i * 40}ms` }}
                   >
-                    {/* 两个 I 做成点亮的橙色灯管，见 index.css .hero-letter-i */}
+                    {/* 两个 I 用主题橙实心填充，见 index.css .hero-letter-i */}
                     {ch === ' ' ? '\u00A0' : ch === 'I' ? <span className="hero-letter-i">I</span> : ch}
                   </span>
                 ))}

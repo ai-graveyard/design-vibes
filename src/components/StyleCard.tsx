@@ -44,9 +44,6 @@ export function StyleCard({ style }: StyleCardProps) {
             <DemoPreview styleId={style.id} placeholderColor={style.colors[0]} scrollOnHover thumbnail />
           </div>
 
-          {/* Hover 扫光（一次性，见 index.css .card-sheen） */}
-          <div className="card-sheen" aria-hidden="true" />
-
           {/* Rating Badge */}
           <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 bg-white/95 backdrop-blur-sm rounded-md shadow-sm">
             <Star className="w-3 h-3 fill-[#FF9F1C] text-[#FF9F1C]" />
