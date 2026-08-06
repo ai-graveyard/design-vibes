@@ -55,6 +55,19 @@
     animation: fade-up-blur 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards;
   }
 
+  /* Footer 巨型水印：从更深处缓缓升起；基础态停在 translateY(30%)（下缘裁掉），
+     基础 transform 写在 .footer-watermark 里，from 帧用同一个函数便于插值 */
+  @keyframes watermark-rise {
+    from {
+      opacity: 0;
+      transform: translateY(55%);
+    }
+  }
+
+  .animate-watermark-rise {
+    animation: watermark-rise 1s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  }
+
   /* Hero 大标题逐字入场 */
   @keyframes letter-in {
     from {
@@ -94,7 +107,8 @@
     .animate-fade-up,
     .animate-fade-up-blur,
     .animate-letter-in,
-    .animate-pop-in {
+    .animate-pop-in,
+    .animate-watermark-rise {
       animation: none;
     }
   }
@@ -330,6 +344,20 @@
     transform: translateX(110%) skewX(-12deg);
     transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.15s;
   }
+}
+
+/* Footer 巨型水印字：整站唯一「放大」的排版签名。
+   基础 transform 放这里（不用 Tailwind translate 工具类）：
+   keyframe 的 from 帧与基础态用同一个 translateY 函数，插值干净 */
+.footer-watermark {
+  font-size: clamp(3rem, 11vw, 11rem);
+  transform: translateY(30%);
+}
+/* 裁切容器：clip 不产生滚动容器（将来升 view() 视差不被劫持），
+   也不把被裁部分算进页面滚动高度；老 Safari（<16）不认 clip 时退回 hidden */
+.footer-watermark-clip {
+  overflow: hidden;
+  overflow: clip;
 }
 
 /* Demo 源码查看器：固定深色底，与站点主题无关 */
