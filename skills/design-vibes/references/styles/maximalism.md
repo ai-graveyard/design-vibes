@@ -1,7 +1,6 @@
 # Maximalism `maximalism`
 
 **Chinese name:** 极繁主义  
-**Rating:** ★★★☆☆ 3/5  
 **Difficulty:** 4 (Expert)  
 **Tags:** Art · Distinctive  
 **Fits:** E-commerce / Retail, Gaming / Entertainment
@@ -85,6 +84,12 @@ The specific ways AI-generated pages in this style go wrong. Check each one befo
    元素之间没有呼应——图案与色彩要成组、成家族地重复出现
 3. Sacrificing all readability — body copy still needs a calmer backing
    可读性牺牲殆尽——正文区仍然需要一块相对安静的底
+4. Density via transparency — layers must collide as solid blocks, patterns, and borders; stacked alpha turns to mud
+   密度靠半透明叠加——层次要用实色块、图案、边框硬碰硬地拼出来，透明度一叠就糊成脏色
+5. Everything animating — element density is already maxed; motion belongs to one or two focal soloists, or it's noise
+   满页都在动——元素密度已经拉满，动效必须只给一两个焦点独舞，全动就是噪音
+6. Font mixing without hierarchy — past 4 typefaces, or with no clear lead, the feast becomes a type specimen sheet
+   字体混搭没有主次——超过 4 种或没有明确主字体，页面就从盛宴变成字体样本册
 
 ## Seen in the wild
 

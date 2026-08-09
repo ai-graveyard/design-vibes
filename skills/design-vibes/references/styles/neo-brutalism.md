@@ -1,7 +1,6 @@
 # Neo-Brutalism `neo-brutalism`
 
 **Chinese name:** 新粗野主义  
-**Rating:** ★★★★☆ 3.9/5  
 **Difficulty:** 1 (Easy)  
 **Tags:** Avant-garde · Trendy · Hot  
 **Fits:** Creative / Design, Personal / Blog

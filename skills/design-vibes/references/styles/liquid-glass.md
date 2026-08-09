@@ -1,7 +1,6 @@
 # Liquid Glass `liquid-glass`
 
 **Chinese name:** 液态玻璃  
-**Rating:** ★★★★☆ 3.8/5  
 **Difficulty:** 3 (Hard)  
 **Tags:** Modern · Hot · Avant-garde  
 **Fits:** SaaS / Tech

@@ -1,8 +1,7 @@
 # Dark Academia `dark-academia`
 
 **Chinese name:** 暗黑学院  
-**Rating:** ★★★☆☆ 3.4/5  
-**Difficulty:** unrated  
+**Difficulty:** 2 (Medium)  
 **Tags:** Classic · Vintage  
 **Fits:** Art / Culture
 

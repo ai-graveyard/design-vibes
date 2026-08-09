@@ -1,7 +1,6 @@
 # Brutalism `brutalism`
 
 **Chinese name:** 粗野主义  
-**Rating:** ★★★★☆ 3.6/5  
 **Difficulty:** 1 (Easy)  
 **Tags:** Avant-garde · Distinctive  
 **Fits:** Art / Culture

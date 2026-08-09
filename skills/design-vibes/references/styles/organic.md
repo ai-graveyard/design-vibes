@@ -1,7 +1,6 @@
 # Organic Design `organic`
 
 **Chinese name:** 有机形态  
-**Rating:** ★★★★☆ 3.8/5  
 **Difficulty:** 4 (Expert)  
 **Tags:** Modern · Playful  
 **Fits:** Kids / Education
@@ -85,6 +84,12 @@ The specific ways AI-generated pages in this style go wrong. Check each one befo
    曲线里混进直角——一处生硬的矩形会打断整个流动感
 3. Fast animations — organic motion should breathe; speed makes it anxious
    动画太快——有机风的动效要像呼吸，快了就焦躁
+4. Decorative blobs bleeding off-canvas — overflowing shapes need a clipping wrapper, or narrow viewports get horizontal scroll
+   装饰 blob 直接伸出画布——溢出的形状要关进裁剪容器，否则窄屏出现横向滚动
+5. Four-value border-radius — organic shapes need the 8-value slash syntax (e.g. 62% 38% 46% 54%/60% 44% 56% 40%); anything less is a squashed ellipse
+   border-radius 只写 4 个值——有机形状需要 8 值斜杠语法（如 62% 38% 46% 54%/60% 44% 56% 40%），否则只是压扁的椭圆
+6. Every blob the same shape — nature doesn't repeat; vary each blob's radii and size
+   所有 blob 复用同一形状——自然界不重复，每个 blob 的圆角参数和尺寸都应各不相同
 
 ## Seen in the wild
 
@@ -92,6 +97,6 @@ Stripe.com · Dropbox · Spotify · Mailchimp · Slack
 
 ## Reference implementation
 
-`assets/demos/organic.html` — a complete single-file page (309 lines, no scripts, no external requests). Read it for layout and composition patterns, or copy it as a starting point.
+`assets/demos/organic.html` — a complete single-file page (310 lines, no scripts, no external requests). Read it for layout and composition patterns, or copy it as a starting point.
 
 Live preview: https://design-vibes.v2ai.org/style/organic

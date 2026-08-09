@@ -1,8 +1,7 @@
 # Art Deco `art-deco`
 
 **Chinese name:** 装饰艺术  
-**Rating:** ★★★★☆ 3.5/5  
-**Difficulty:** unrated  
+**Difficulty:** 3 (Hard)  
 **Tags:** Classic · Vintage  
 **Fits:** Art / Culture
 

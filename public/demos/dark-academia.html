@@ -74,7 +74,7 @@ blockquote cite{display:block;font-style:normal;font-size:.75rem;letter-spacing:
   border:1px solid rgba(234,220,190,.25);box-shadow:0 4px 14px rgba(0,0,0,.45);
   transition:background .2s,transform .2s;
 }
-.btn:hover{background:var(--wine-deep);transform:translateY(-2px)}
+@media (hover:hover){.btn:hover{background:var(--wine-deep);transform:translateY(-2px)}}
 .link{font-style:italic;color:var(--brass);border-bottom:1px dotted var(--brass);transition:color .2s}
 .link:hover{color:var(--candle)}
 
@@ -160,7 +160,7 @@ section{padding:3.6rem 0}
   padding:.6rem 0;box-shadow:inset -3px 0 6px rgba(0,0,0,.35),0 -1px 3px rgba(0,0,0,.3);
   transition:transform .22s ease;cursor:default;white-space:nowrap;overflow:hidden;
 }
-.book:hover{transform:translateY(-8px)}
+@media (hover:hover){.book:hover{transform:translateY(-8px)}}
 .book::before,.book::after{content:"";position:absolute;left:4px;right:4px;height:1px;background:rgba(234,220,190,.4)}
 .book::before{top:8px}.book::after{bottom:8px}
 .b-g{background:linear-gradient(90deg,#2d4438,var(--green-deep))}
@@ -169,7 +169,7 @@ section{padding:3.6rem 0}
 .b-bk{background:linear-gradient(90deg,#26221c,#171410)}
 .h1{height:200px}.h2{height:224px}.h3{height:184px}.h4{height:236px}.h5{height:210px}
 .lean{transform:rotate(7deg) translateY(-4px);transform-origin:bottom right;margin-left:-4px}
-.lean:hover{transform:rotate(7deg) translateY(-12px)}
+@media (hover:hover){.lean:hover{transform:rotate(7deg) translateY(-12px)}}
 .stacks .caption{text-align:center;font-style:italic;margin-top:2.1rem;color:var(--ink)}
 
 /* lectures */

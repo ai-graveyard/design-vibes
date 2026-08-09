@@ -52,7 +52,6 @@ function readDemo(id) {
 }
 
 const list = (items) => items.map((x) => `- ${x}`).join('\n');
-const stars = (n) => '★'.repeat(Math.round(n)) + '☆'.repeat(5 - Math.round(n));
 
 function difficultyCell(id) {
   const level = difficultyById.get(id);
@@ -66,7 +65,6 @@ function styleDoc(style) {
   const level = difficultyById.get(style.id);
   const meta = [
     ...(style.name === style.nameEn ? [] : [`**Chinese name:** ${style.name}`]),
-    `**Rating:** ${stars(style.rating)} ${style.rating}/5`,
     `**Difficulty:** ${level ? `${level} (${DIFFICULTY_LABEL[level]})` : 'unrated'}`,
     `**Tags:** ${style.tagsEn.join(' · ')}`,
     `**Fits:** ${(scenesByStyle.get(style.id) ?? ['—']).join(', ')}`,
@@ -125,7 +123,7 @@ ${list(style.consEn)}
 
 The specific ways AI-generated pages in this style go wrong. Check each one before delivering.
 
-${style.pitfallsEn.map((x, i) => `${i + 1}. ${x}\n   ${style.pitfalls[i] ?? ''}`).join('\n')}
+${style.pitfallsEn.map((x, i) => `${i + 1}. ${x}\n   ${style.pitfalls[i]}`).join('\n')}
 
 ## Seen in the wild
 
@@ -167,8 +165,6 @@ ${difficultyTiers
       `### ${t.level} · ${t.nameEn} / ${t.name}\n\n${t.styleIds.map(line).join('\n')}`
   )
   .join('\n\n')}
-
-Styles not listed above are unrated for difficulty — assume medium and read the reference implementation before promising a timeline.
 
 ## How to recommend
 
@@ -219,6 +215,10 @@ write('references/checklist.md', tpl('checklist.md').replaceAll('{{COUNT}}', Str
 for (const style of designStyles) {
   const p = promptById.get(style.id);
   if (!p) throw new Error(`prompts.ts 缺少 "${style.id}"，先跑 pnpm validate`);
+  if (style.pitfalls.length !== style.pitfallsEn.length)
+    throw new Error(
+      `"${style.id}" 的 pitfalls 中英文数量不一致（中 ${style.pitfalls.length} / 英 ${style.pitfallsEn.length}）`
+    );
   write(`references/styles/${style.id}.md`, styleDoc(style));
 }
 

@@ -1,7 +1,6 @@
 # Flat Design `flat`
 
 **Chinese name:** 扁平化  
-**Rating:** ★★★★☆ 4.1/5  
 **Difficulty:** 1 (Easy)  
 **Tags:** Minimal · Modern · Classic  
 **Fits:** Enterprise / B2B

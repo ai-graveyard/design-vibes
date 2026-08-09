@@ -1,6 +1,5 @@
 # Material Design `material`
 
-**Rating:** ★★★★☆ 4.1/5  
 **Difficulty:** 2 (Medium)  
 **Tags:** Modern · Classic  
 **Fits:** Enterprise / B2B

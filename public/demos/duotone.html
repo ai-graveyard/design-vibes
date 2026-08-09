@@ -37,7 +37,7 @@ nav a:hover{color:var(--orange);border-color:var(--orange)}
 .pill{padding:.55rem 1.4rem;background:var(--orange);color:var(--navy);
   font-size:.72rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
   text-decoration:none;transition:background .25s,color .25s,transform .25s,text-shadow .15s}
-.pill:hover{background:var(--orange-pale);transform:translateY(-2px)}
+@media (hover:hover){.pill:hover{background:var(--orange-pale);transform:translateY(-2px)}}
 
 /* ── hero: split blocks ───────────────── */
 .hero{position:relative;height:78vh;min-height:520px;overflow:hidden}
@@ -92,7 +92,7 @@ section{padding:0}
 .works{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
 .work{position:relative;display:block;text-decoration:none;color:var(--orange-pale);
   transition:transform .35s}
-.work:hover{transform:translateY(-8px)}
+@media (hover:hover){.work:hover{transform:translateY(-8px)}}
 .frame{position:relative;overflow:hidden;border:2px solid var(--orange)}
 .frame svg{display:block;width:100%;height:auto}
 .frame::after{content:"";position:absolute;inset:0;opacity:.35;
@@ -113,7 +113,7 @@ section{padding:0}
 .tix{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;max-width:860px}
 .tik{padding:2rem 1.8rem;display:flex;flex-direction:column;gap:.9rem;
   border:3px solid var(--navy);transition:transform .3s}
-.tik:hover{transform:translateY(-6px)}
+@media (hover:hover){.tik:hover{transform:translateY(-6px)}}
 .tik.dark{background:var(--navy);color:var(--orange-pale)}
 .tik.light{background:var(--orange);color:var(--navy)}
 .tik .kind{font-family:var(--mono);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase}
@@ -126,7 +126,7 @@ section{padding:0}
   padding:.7rem 1.5rem;transition:transform .2s,opacity .2s}
 .tik.dark .go{background:var(--orange);color:var(--navy)}
 .tik.light .go{background:var(--navy);color:var(--orange-pale)}
-.tik .go:hover{transform:translate(3px,-3px)}
+@media (hover:hover){.tik .go:hover{transform:translate(3px,-3px)}}
 
 /* ── footer ───────────────────────────── */
 footer{background:var(--navy-dark);border-top:2px solid var(--orange);

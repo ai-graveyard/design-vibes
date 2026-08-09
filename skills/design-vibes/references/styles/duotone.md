@@ -1,7 +1,6 @@
 # Duotone `duotone`
 
 **Chinese name:** 双色调  
-**Rating:** ★★★★☆ 3.9/5  
 **Difficulty:** 1 (Easy)  
 **Tags:** Art · Vintage  
 **Fits:** Personal / Blog

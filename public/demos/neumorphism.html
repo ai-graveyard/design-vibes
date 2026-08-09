@@ -62,7 +62,7 @@ nav a.active{color:var(--accent-deep);box-shadow:var(--sink-sm)}
   box-shadow:var(--raise-sm);
   transition:box-shadow .25s,transform .25s,color .25s;
 }
-.btn:hover{box-shadow:var(--raise);transform:translateY(-1px)}
+@media (hover:hover){.btn:hover{box-shadow:var(--raise);transform:translateY(-1px)}}
 .btn:active{box-shadow:var(--sink);transform:translateY(0)}
 .btn-accent{color:var(--accent-deep)}
 a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
@@ -165,7 +165,7 @@ section{padding:64px 0}
   background:linear-gradient(145deg,var(--bg-hi),var(--bg-lo));box-shadow:var(--raise);
   transition:box-shadow .3s,transform .3s;
 }
-.room:hover{box-shadow:var(--raise-lg);transform:translateY(-4px)}
+@media (hover:hover){.room:hover{box-shadow:var(--raise-lg);transform:translateY(-4px)}}
 .room-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
 .room-icon{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;box-shadow:var(--sink-sm);color:var(--accent-deep)}
 .room h3{font-size:1.05rem;font-weight:800;margin-bottom:4px}

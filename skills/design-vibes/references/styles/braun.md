@@ -1,10 +1,9 @@
 # Braun / Dieter Rams `braun`
 
 **Chinese name:** 迪特·拉姆斯风  
-**Rating:** ★★★★☆ 4.4/5  
-**Difficulty:** unrated  
+**Difficulty:** 2 (Medium)  
 **Tags:** Minimal · Classic  
-**Fits:** —
+**Fits:** Creative / Design, Enterprise / B2B
 
 Following 'Ten Principles for Good Design', with grid as skeleton and function as soul. Eliminating all decorative elements, every pixel serves a purpose. A digital interpretation of industrial design father Dieter Rams — honest, enduring, less but better.
 

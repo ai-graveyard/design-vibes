@@ -1,10 +1,9 @@
 # Anti-Design `anti-design`
 
 **Chinese name:** 反设计  
-**Rating:** ★★★☆☆ 2.8/5  
-**Difficulty:** unrated  
+**Difficulty:** 2 (Medium)  
 **Tags:** Avant-garde · Distinctive · Trendy  
-**Fits:** —
+**Fits:** E-commerce / Retail
 
 'Rules are made to be broken' — Anti-Design is a total subversion of traditional design principles. Chaotic layouts, clashing colors, distorted typography — every seemingly 'wrong' choice is intentional. This is Gen Z digital natives' visual mother tongue.
 

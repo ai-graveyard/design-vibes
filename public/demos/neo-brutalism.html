@@ -56,7 +56,7 @@ a{color:inherit}
   box-shadow:5px 5px 0 var(--ink);cursor:pointer;font-family:var(--sans);
   transition:transform .12s ease,box-shadow .12s ease,background .12s ease;
 }
-.btn:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--ink)}
+@media (hover:hover){.btn:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 var(--ink)}}
 .btn:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
 .btn.orange{background:var(--orange);color:var(--white)}
 .btn.black{background:var(--ink);color:var(--white)}
@@ -178,7 +178,7 @@ a{color:inherit}
   padding:26px 24px 28px;position:relative;
   transition:transform .14s ease,box-shadow .14s ease;
 }
-.card:hover{transform:translate(-4px,-4px);box-shadow:11px 11px 0 var(--ink)}
+@media (hover:hover){.card:hover{transform:translate(-4px,-4px);box-shadow:11px 11px 0 var(--ink)}}
 .card .tag{
   position:absolute;top:-16px;left:20px;background:var(--white);border:3px solid var(--ink);
   font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;
@@ -245,9 +245,9 @@ footer nav a:hover{background:var(--yellow);color:var(--ink);border-color:var(--
 .hero .fine{animation:stamp .4s steps(3,jump-none) .28s backwards}
 .board-zone{animation:stamp .5s steps(3,jump-none) .3s backwards}
 .sticker{transition:transform .12s ease}
-.sticker:hover{transform:rotate(0deg)}
+@media (hover:hover){.sticker:hover{transform:rotate(0deg)}}
 .card .tag{transition:transform .12s ease}
-.card:hover .tag{transform:rotate(-4deg)}
+@media (hover:hover){.card:hover .tag{transform:rotate(-4deg)}}
 .nav-links a:active{background:var(--ink);color:var(--white);border-color:var(--ink)}
 @keyframes stamp{
   0%{opacity:0;transform:translate(-8px,-8px)}

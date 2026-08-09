@@ -1,8 +1,7 @@
 # Scandinavian `scandinavian`
 
 **Chinese name:** 斯堪的纳维亚  
-**Rating:** ★★★★☆ 3.9/5  
-**Difficulty:** unrated  
+**Difficulty:** 1 (Easy)  
 **Tags:** Minimal · Warm  
 **Fits:** E-commerce / Retail
 
@@ -93,6 +92,6 @@ IKEA · HAY · Muuto · Arket · COS
 
 ## Reference implementation
 
-`assets/demos/scandinavian.html` — a complete single-file page (502 lines, no scripts, no external requests). Read it for layout and composition patterns, or copy it as a starting point.
+`assets/demos/scandinavian.html` — a complete single-file page (504 lines, no scripts, no external requests). Read it for layout and composition patterns, or copy it as a starting point.
 
 Live preview: https://design-vibes.v2ai.org/style/scandinavian

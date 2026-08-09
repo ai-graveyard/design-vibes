@@ -1,7 +1,6 @@
 # Aurora Gradients `aurora`
 
 **Chinese name:** 极光渐变  
-**Rating:** ★★★★☆ 4/5  
 **Difficulty:** 3 (Hard)  
 **Tags:** Modern · Trendy · Hot  
 **Fits:** SaaS / Tech

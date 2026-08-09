@@ -1,7 +1,6 @@
 # Glassmorphism `glassmorphism`
 
 **Chinese name:** 玻璃拟态  
-**Rating:** ★★★☆☆ 3.4/5  
 **Difficulty:** 3 (Hard)  
 **Tags:** Modern · Trendy · Hot  
 **Fits:** SaaS / Tech

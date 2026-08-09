@@ -81,7 +81,7 @@ nav a:hover{color:var(--fg)}
   background:linear-gradient(135deg,rgba(255,255,255,.2),rgba(255,255,255,.08));
   transition:transform .25s,box-shadow .25s,background .25s;
 }
-.btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(4,7,28,.45);background:linear-gradient(135deg,rgba(255,255,255,.26),rgba(255,255,255,.1))}
+@media (hover:hover){.btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(4,7,28,.45);background:linear-gradient(135deg,rgba(255,255,255,.26),rgba(255,255,255,.1))}}
 .btn-primary{
   border:1px solid rgba(255,255,255,.34);
   background:linear-gradient(135deg,rgba(255,107,157,.85),rgba(102,126,234,.85));
@@ -153,7 +153,7 @@ section{padding-top:76px;padding-bottom:76px;scroll-margin-top:96px}
 .sec-head p{color:var(--muted)}
 .features{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .feature{padding:30px 28px;transition:transform .3s,box-shadow .3s}
-.feature:hover{transform:translateY(-6px);box-shadow:0 34px 80px rgba(4,7,28,.6),inset 0 1px 0 rgba(255,255,255,.3)}
+@media (hover:hover){.feature:hover{transform:translateY(-6px);box-shadow:0 34px 80px rgba(4,7,28,.6),inset 0 1px 0 rgba(255,255,255,.3)}}
 .f-icon{
   width:48px;height:48px;border-radius:14px;display:grid;place-items:center;margin-bottom:20px;
   border:1px solid rgba(255,255,255,.28);
@@ -227,7 +227,7 @@ a:focus-visible,.btn:focus-visible{outline:2px solid var(--teal);outline-offset:
   background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.18) 50%,transparent 60%);
   transform:translateX(-120%);transition:transform .8s ease;
 }
-.feature:hover::after{transform:translateX(120%)}
+@media (hover:hover){.feature:hover::after{transform:translateX(120%)}}
 @keyframes glass-focus{from{opacity:0;transform:translateY(18px);filter:blur(4px)}}
 @keyframes glass-rise{from{opacity:0;transform:translateY(18px)}}
 @supports (animation-timeline:view()){

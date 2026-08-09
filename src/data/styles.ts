@@ -1047,12 +1047,18 @@ export const designStyles: DesignStyle[] = [
     pitfalls: [
       "blob 形状太规则——有机形态要像自然生长，接近正圆或椭圆就失去了意义",
       "曲线里混进直角——一处生硬的矩形会打断整个流动感",
-      "动画太快——有机风的动效要像呼吸，快了就焦躁"
+      "动画太快——有机风的动效要像呼吸，快了就焦躁",
+      "装饰 blob 直接伸出画布——溢出的形状要关进裁剪容器，否则窄屏出现横向滚动",
+      "border-radius 只写 4 个值——有机形状需要 8 值斜杠语法（如 62% 38% 46% 54%/60% 44% 56% 40%），否则只是压扁的椭圆",
+      "所有 blob 复用同一形状——自然界不重复，每个 blob 的圆角参数和尺寸都应各不相同"
     ],
     pitfallsEn: [
       "Blobs too regular — organic shapes must feel grown; near-circles defeat the purpose",
       "Hard corners sneaking in — one sharp rectangle interrupts the entire flow",
-      "Fast animations — organic motion should breathe; speed makes it anxious"
+      "Fast animations — organic motion should breathe; speed makes it anxious",
+      "Decorative blobs bleeding off-canvas — overflowing shapes need a clipping wrapper, or narrow viewports get horizontal scroll",
+      "Four-value border-radius — organic shapes need the 8-value slash syntax (e.g. 62% 38% 46% 54%/60% 44% 56% 40%); anything less is a squashed ellipse",
+      "Every blob the same shape — nature doesn't repeat; vary each blob's radii and size"
     ],
     colors: ["#A8E6CF", "#DCEDC1", "#FFD3B6", "#FFAAA5", "#98D8C8"]
   },
@@ -1120,12 +1126,18 @@ export const designStyles: DesignStyle[] = [
     pitfalls: [
       "内阴影丢了——黏土的膨胀感靠外投影与内高光同时存在",
       "圆角不够大——低于 20px 就不像捏出来的",
-      "配色太成人——粘土拟态天生属于高明度的糖果色"
+      "配色太成人——粘土拟态天生属于高明度的糖果色",
+      "投影用纯黑——阴影要带主体色的深色调（粉色物体投玫瑰灰影），黑影像贴在玻璃上",
+      "元素加了描边——粘土没有轮廓线，形体全靠光影塑造，border 一出现就变成扁平贴纸",
+      "底色用纯白——粘土要浮在有色的柔和底（奶油、淡紫）上，纯白背景下像贴纸而不是实体"
     ],
     pitfallsEn: [
       "Missing the inner shadow — clay's puffiness needs the outer drop and inner highlight together",
       "Radii too small — under ~20px it stops looking hand-molded",
-      "Grown-up palettes — clay lives in high-key candy colors"
+      "Grown-up palettes — clay lives in high-key candy colors",
+      "Pure-black drop shadows — shadows must carry the subject's hue (pink objects cast rose-gray); black reads as stickers on glass",
+      "Outlined elements — clay has no contour lines; form comes entirely from light. A border flattens it into a sticker",
+      "Pure-white canvas — clay floats on tinted soft backgrounds (cream, lilac); on white it looks pasted, not molded"
     ],
     colors: ["#FFB6C1", "#87CEEB", "#98FB98", "#DDA0DD", "#FFDAB9"]
   },
@@ -1639,12 +1651,18 @@ export const designStyles: DesignStyle[] = [
     pitfalls: [
       "多而无序——极繁是有层次的丰富而不是随机堆放，要保留视觉动线",
       "元素之间没有呼应——图案与色彩要成组、成家族地重复出现",
-      "可读性牺牲殆尽——正文区仍然需要一块相对安静的底"
+      "可读性牺牲殆尽——正文区仍然需要一块相对安静的底",
+      "密度靠半透明叠加——层次要用实色块、图案、边框硬碰硬地拼出来，透明度一叠就糊成脏色",
+      "满页都在动——元素密度已经拉满，动效必须只给一两个焦点独舞，全动就是噪音",
+      "字体混搭没有主次——超过 4 种或没有明确主字体，页面就从盛宴变成字体样本册"
     ],
     pitfallsEn: [
       "Abundance without order — maximalism is layered richness, not random piles; keep a visual path",
       "No echoing motifs — patterns and colors must repeat in families",
-      "Sacrificing all readability — body copy still needs a calmer backing"
+      "Sacrificing all readability — body copy still needs a calmer backing",
+      "Density via transparency — layers must collide as solid blocks, patterns, and borders; stacked alpha turns to mud",
+      "Everything animating — element density is already maxed; motion belongs to one or two focal soloists, or it's noise",
+      "Font mixing without hierarchy — past 4 typefaces, or with no clear lead, the feast becomes a type specimen sheet"
     ],
     colors: ["#FF1493", "#00FF00", "#FFD700", "#FF4500", "#8B00FF"]
   },
@@ -1935,12 +1953,18 @@ export const designStyles: DesignStyle[] = [
     pitfalls: [
       "做成了磨砂玻璃——Aero 的质感是光泽塑料与水面，高光要锐利清晰",
       "自然元素缺席——没有天空、草地、气泡，就只剩一个过时的渐变按钮",
-      "配色发灰——它的蓝与绿必须干净明亮，像洗过的晴天"
+      "配色发灰——它的蓝与绿必须干净明亮，像洗过的晴天",
+      "光源方向不统一——白色高光永远来自上方：渐变亮部在元素上半，下半收暗，光一乱就是塑料贴纸",
+      "混入现代扁平图标——Aero 时代的图标立体带光泽，一个线性 icon 就能让年代感穿帮",
+      "气泡光斑压住正文——装饰浮层要沉到内容之下并避开文本列，盖住文字就从治愈变成干扰"
     ],
     pitfallsEn: [
       "Frosting instead of gloss — Aero is shiny plastic and water; highlights must be crisp",
       "No nature — without sky, grass, and bubbles it's just a dated gradient button",
-      "Grayish tints — its blues and greens must stay clean and bright, like a washed sky"
+      "Grayish tints — its blues and greens must stay clean and bright, like a washed sky",
+      "Inconsistent light source — white highlights always come from above: bright top half, darker bottom. Scrambled lighting reads as plastic stickers",
+      "Modern flat icons sneaking in — Aero-era icons are dimensional and glossy; one line icon breaks the period illusion",
+      "Bubbles and flares over body copy — decorative layers sit beneath content and clear of text columns, or healing turns into interference"
     ],
     colors: ["#BDE8FF", "#4CA6E8", "#8FD400", "#FFFFFF", "#1B4A6B"]
   },

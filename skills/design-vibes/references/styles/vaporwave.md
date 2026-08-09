@@ -1,8 +1,7 @@
 # Vaporwave `vaporwave`
 
 **Chinese name:** 蒸汽波  
-**Rating:** ★★★☆☆ 3/5  
-**Difficulty:** unrated  
+**Difficulty:** 3 (Hard)  
 **Tags:** Art · Vintage  
 **Fits:** Gaming / Entertainment
 

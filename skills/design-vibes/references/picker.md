@@ -18,6 +18,7 @@ Two ways in: by what the user is building, or by how much implementation budget 
 - `bento` **Bento Grid** (Bento 网格) — Minimal, Hot, Modern
 - `scandinavian` **Scandinavian** (斯堪的纳维亚) — Minimal, Warm
 - `maximalism` **Maximalism** (极繁主义) — Art, Distinctive
+- `anti-design` **Anti-Design** (反设计) — Avant-garde, Distinctive, Trendy
 
 ### 🎨 Creative / Design / 创意 / 设计
 
@@ -26,6 +27,8 @@ Two ways in: by what the user is building, or by how much implementation budget 
 - `kinetic` **Kinetic Typography** (动态字体) — Art, Avant-garde
 - `neo-brutalism` **Neo-Brutalism** (新粗野主义) — Avant-garde, Trendy, Hot
 - `editorial` **Editorial** (报刊编辑风) — Classic, Distinctive, Art
+- `braun` **Braun / Dieter Rams** (迪特·拉姆斯风) — Minimal, Classic
+- `neumorphism` **Neumorphism / Soft UI** (新拟态) — Modern, Minimal
 
 ### 🏢 Enterprise / B2B / 企业 / B2B
 
@@ -33,6 +36,7 @@ Two ways in: by what the user is building, or by how much implementation budget 
 - `flat` **Flat Design** (扁平化) — Minimal, Modern, Classic
 - `swiss` **Swiss Style / International Typographic** (瑞士风格) — Minimal, Classic
 - `apple` **Apple Minimalism** (Apple 风) — Minimal, Modern, Hot
+- `braun` **Braun / Dieter Rams** (迪特·拉姆斯风) — Minimal, Classic
 
 ### 🏛️ Art / Culture / 艺术 / 文化
 
@@ -76,6 +80,7 @@ Cost of faithful reproduction in pure CSS.
 - `brutalism` **Brutalism** (粗野主义) — Avant-garde, Distinctive
 - `neo-brutalism` **Neo-Brutalism** (新粗野主义) — Avant-garde, Trendy, Hot
 - `terminal` **Terminal** (终端黑客风) — Vintage, Distinctive
+- `scandinavian` **Scandinavian** (斯堪的纳维亚) — Minimal, Warm
 
 ### 2 · Medium / 中等
 
@@ -84,6 +89,13 @@ Cost of faithful reproduction in pure CSS.
 - `material` **Material Design** (Material Design) — Modern, Classic
 - `editorial` **Editorial** (报刊编辑风) — Classic, Distinctive, Art
 - `pixel` **Pixel Art** (像素风) — Vintage, Playful, Distinctive
+- `braun` **Braun / Dieter Rams** (迪特·拉姆斯风) — Minimal, Classic
+- `japanese` **Japanese Minimalism** (日式极简) — Minimal, Classic, Warm
+- `bauhaus` **Bauhaus** (包豪斯) — Art, Vintage, Classic
+- `memphis` **Memphis** (孟菲斯) — Art, Playful, Vintage
+- `dark-academia` **Dark Academia** (暗黑学院) — Classic, Vintage
+- `neumorphism` **Neumorphism / Soft UI** (新拟态) — Modern, Minimal
+- `anti-design` **Anti-Design** (反设计) — Avant-garde, Distinctive, Trendy
 
 ### 3 · Hard / 较难
 
@@ -92,6 +104,9 @@ Cost of faithful reproduction in pure CSS.
 - `kinetic` **Kinetic Typography** (动态字体) — Art, Avant-garde
 - `aurora` **Aurora Gradients** (极光渐变) — Modern, Trendy, Hot
 - `liquid-glass` **Liquid Glass** (液态玻璃) — Modern, Hot, Avant-garde
+- `art-deco` **Art Deco** (装饰艺术) — Classic, Vintage
+- `cyberpunk` **Cyberpunk** (赛博朋克) — Avant-garde, Distinctive
+- `vaporwave` **Vaporwave** (蒸汽波) — Art, Vintage
 
 ### 4 · Expert / 困难
 
@@ -99,8 +114,6 @@ Cost of faithful reproduction in pure CSS.
 - `claymorphism` **Claymorphism** (粘土拟态) — Modern, Playful
 - `maximalism` **Maximalism** (极繁主义) — Art, Distinctive
 - `frutiger-aero` **Frutiger Aero** (Frutiger Aero) — Vintage, Playful, Trendy
-
-Styles not listed above are unrated for difficulty — assume medium and read the reference implementation before promising a timeline.
 
 ## How to recommend
 

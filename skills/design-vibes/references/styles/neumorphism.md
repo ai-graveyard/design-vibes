@@ -1,10 +1,9 @@
 # Neumorphism / Soft UI `neumorphism`
 
 **Chinese name:** 新拟态  
-**Rating:** ★★☆☆☆ 2.3/5  
-**Difficulty:** unrated  
+**Difficulty:** 2 (Medium)  
 **Tags:** Modern · Minimal  
-**Fits:** —
+**Fits:** Creative / Design
 
 A briefly viral 2020 design trend, simulating real-world embossed textures through dual soft shadows (one light, one dark). Soft monochrome palettes create unique tactile experiences, but severe accessibility issues caused its rapid fade from mainstream.
 

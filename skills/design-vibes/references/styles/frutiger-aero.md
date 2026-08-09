@@ -1,6 +1,5 @@
 # Frutiger Aero `frutiger-aero`
 
-**Rating:** ★★★☆☆ 3.3/5  
 **Difficulty:** 4 (Expert)  
 **Tags:** Vintage · Playful · Trendy  
 **Fits:** Kids / Education
@@ -86,6 +85,12 @@ The specific ways AI-generated pages in this style go wrong. Check each one befo
    自然元素缺席——没有天空、草地、气泡，就只剩一个过时的渐变按钮
 3. Grayish tints — its blues and greens must stay clean and bright, like a washed sky
    配色发灰——它的蓝与绿必须干净明亮，像洗过的晴天
+4. Inconsistent light source — white highlights always come from above: bright top half, darker bottom. Scrambled lighting reads as plastic stickers
+   光源方向不统一——白色高光永远来自上方：渐变亮部在元素上半，下半收暗，光一乱就是塑料贴纸
+5. Modern flat icons sneaking in — Aero-era icons are dimensional and glossy; one line icon breaks the period illusion
+   混入现代扁平图标——Aero 时代的图标立体带光泽，一个线性 icon 就能让年代感穿帮
+6. Bubbles and flares over body copy — decorative layers sit beneath content and clear of text columns, or healing turns into interference
+   气泡光斑压住正文——装饰浮层要沉到内容之下并避开文本列，盖住文字就从治愈变成干扰
 
 ## Seen in the wild
 

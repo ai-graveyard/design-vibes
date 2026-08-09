@@ -1,7 +1,6 @@
 # Editorial `editorial`
 
 **Chinese name:** 报刊编辑风  
-**Rating:** ★★★★☆ 3.8/5  
 **Difficulty:** 2 (Medium)  
 **Tags:** Classic · Distinctive · Art  
 **Fits:** Creative / Design, Art / Culture, Personal / Blog

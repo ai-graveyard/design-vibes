@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "validate": "node scripts/validate-demos.mjs",
+    "validate:render": "node scripts/validate-render.mjs",
     "skill": "node scripts/build-skill.mjs",
     "build": "node scripts/validate-demos.mjs && node scripts/build-skill.mjs && tsc -b && vite build && node scripts/postbuild-seo.mjs && node scripts/pack-skill.mjs",
     "og": "node scripts/generate-og.mjs",

@@ -135,7 +135,7 @@ section{max-width:1180px;margin:0 auto;padding:3.6rem 1.5rem 3rem}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
 .card{border:1px solid var(--line);background:var(--bg-panel);padding:1.5rem 1.4rem 1.4rem;
   transition:transform .25s,border-color .25s,box-shadow .25s}
-.card:hover{transform:translateY(-5px);border-color:var(--fg-dim);box-shadow:0 0 26px rgba(51,255,102,.14)}
+@media (hover:hover){.card:hover{transform:translateY(-5px);border-color:var(--fg-dim);box-shadow:0 0 26px rgba(51,255,102,.14)}}
 .cmeta{display:flex;justify-content:space-between;color:var(--fg-faint);font-size:.62rem;
   letter-spacing:.22em;text-transform:uppercase;margin-bottom:1rem}
 .card h3{color:var(--fg-bright);font-size:.92rem;font-weight:700;letter-spacing:.14em;
@@ -167,7 +167,7 @@ section{max-width:1180px;margin:0 auto;padding:3.6rem 1.5rem 3rem}
 /* pricing */
 .plan{position:relative;border:1px solid var(--line);background:var(--bg-panel);
   padding:1.6rem 1.5rem 1.5rem;transition:transform .25s,border-color .25s,box-shadow .25s}
-.plan:hover{transform:translateY(-5px);border-color:var(--fg-dim);box-shadow:0 0 26px rgba(51,255,102,.14)}
+@media (hover:hover){.plan:hover{transform:translateY(-5px);border-color:var(--fg-dim);box-shadow:0 0 26px rgba(51,255,102,.14)}}
 .plan.pop{border-color:var(--warn);box-shadow:0 0 32px rgba(255,176,0,.1)}
 .plan.pop:hover{border-color:var(--warn);box-shadow:0 0 40px rgba(255,176,0,.2)}
 .tag{position:absolute;top:-.72em;right:1rem;background:var(--bg);color:var(--warn);

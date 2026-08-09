@@ -36,13 +36,14 @@ header{padding:20px 0;position:relative;z-index:5}
 .links a:hover{color:var(--coral-deep)}
 .btn{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-weight:700;font-size:.95rem;padding:13px 26px;border-radius:999px;border:0;cursor:pointer;transition:transform .3s ease,background .3s,box-shadow .3s}
 .btn-coral{background:var(--coral);color:#fff}
-.btn-coral:hover{background:var(--coral-deep);transform:translateY(-3px);box-shadow:0 10px 22px rgba(240,138,132,.35)}
+@media (hover:hover){.btn-coral:hover{background:var(--coral-deep);transform:translateY(-3px);box-shadow:0 10px 22px rgba(240,138,132,.35)}}
 .btn-line{background:transparent;color:var(--deep);box-shadow:inset 0 0 0 2px var(--sea)}
-.btn-line:hover{background:var(--sea);color:#fff;transform:translateY(-3px)}
+@media (hover:hover){.btn-line:hover{background:var(--sea);color:#fff;transform:translateY(-3px)}}
 
 /* ===== Hero ===== */
 .hero{position:relative;padding:52px 0 110px}
-.hero-bg{position:absolute;top:-160px;right:-140px;width:560px;height:560px;background:var(--leaf);opacity:.55;border-radius:62% 38% 46% 54%/60% 44% 56% 40%;animation:breathe 9s ease-in-out infinite}
+.hero-veil{position:absolute;inset:-200px 0 0 0;overflow:clip;pointer-events:none}
+.hero-bg{position:absolute;top:40px;right:-140px;width:560px;height:560px;background:var(--leaf);opacity:.55;border-radius:62% 38% 46% 54%/60% 44% 56% 40%;animation:breathe 9s ease-in-out infinite}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;position:relative}
 .tag{display:inline-flex;align-items:center;gap:8px;background:var(--leaf);color:var(--deep);font-weight:700;font-size:.82rem;padding:8px 18px;border-radius:999px;margin-bottom:22px}
 h1{font-size:clamp(2.3rem,4.6vw,3.6rem);line-height:1.15;color:var(--deep);margin-bottom:20px}
@@ -76,7 +77,7 @@ h2{font-size:clamp(1.8rem,3.2vw,2.5rem);color:var(--deep);margin-bottom:12px}
 .sec-head p{color:var(--ink-soft)}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px}
 .card{background:#fff;border-radius:34px;padding:36px 30px;text-align:center;transition:transform .35s ease,box-shadow .35s ease}
-.card:hover{transform:translateY(-8px);box-shadow:0 18px 36px rgba(51,84,74,.12)}
+@media (hover:hover){.card:hover{transform:translateY(-8px);box-shadow:0 18px 36px rgba(51,84,74,.12)}}
 .card-blob{width:86px;height:86px;margin:0 auto 22px;display:grid;place-items:center;border-radius:56% 44% 50% 50%/48% 56% 44% 52%;transition:border-radius .5s ease}
 .card:hover .card-blob{border-radius:48% 52% 42% 58%/56% 44% 58% 42%}
 .card h3{font-family:var(--serif);font-size:1.3rem;color:var(--deep);margin-bottom:10px}
@@ -90,7 +91,7 @@ h2{font-size:clamp(1.8rem,3.2vw,2.5rem);color:var(--deep);margin-bottom:12px}
 .stat{background:rgba(255,255,255,.75);border-radius:60% 40% 55% 45%/45% 55% 40% 60%;padding:30px 34px;min-width:150px;transition:transform .35s ease}
 .stat:nth-child(2){border-radius:45% 55% 42% 58%/58% 42% 60% 40%}
 .stat:nth-child(3){border-radius:52% 48% 60% 40%/44% 60% 40% 56%}
-.stat:hover{transform:scale(1.06)}
+@media (hover:hover){.stat:hover{transform:scale(1.06)}}
 .stat b{display:block;font-family:var(--serif);font-size:1.7rem;color:var(--deep);line-height:1.2}
 .stat span{font-size:.83rem;font-weight:600;color:var(--ink-soft)}
 
@@ -114,7 +115,7 @@ footer{background:var(--deep);color:#CFE3D8;padding:0 0 40px}
 @media (max-width:480px){
   .wrap{padding:0 20px}
   .hero{padding:24px 0 64px}
-  .hero-bg{width:380px;height:380px;top:-120px;right:-160px}
+  .hero-bg{width:380px;height:380px;top:80px;right:-160px}
   .scene{min-height:300px}
   .blob-peach{width:76px;height:76px}
   .blob-coral{width:56px;height:56px}
@@ -176,7 +177,7 @@ h1{animation-delay:.12s}
 
 <main id="top">
   <section class="hero">
-    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-veil" aria-hidden="true"><div class="hero-bg"></div></div>
     <div class="wrap hero-grid">
       <div>
         <span class="tag">Small-batch botanicals</span>

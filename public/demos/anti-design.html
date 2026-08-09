@@ -50,7 +50,7 @@ header nav a:nth-child(2){font-family:var(--serif);font-style:italic;transform:r
 header nav a:nth-child(3){font-weight:900;text-transform:uppercase;transform:rotate(1deg);color:var(--blue)}
 header nav a:nth-child(4){font-family:var(--mono);text-decoration:line-through;transform:rotate(-1deg)}
 header nav a:nth-child(5){font-size:12px;transform:rotate(4deg) translateY(-4px);color:var(--red)}
-header nav a:hover{background:var(--magenta);color:var(--paper);transform:rotate(0deg) scale(1.06)}
+@media (hover:hover){header nav a:hover{background:var(--magenta);color:var(--paper);transform:rotate(0deg) scale(1.06)}}
 
 /* ---------- hero ---------- */
 .hero{position:relative;padding-top:44px;padding-bottom:56px}
@@ -125,7 +125,7 @@ header nav a:hover{background:var(--magenta);color:var(--paper);transform:rotate
   border:3px solid var(--ink);padding:22px 20px 26px;position:relative;
   transition:transform .15s ease,box-shadow .15s ease;
 }
-.case:hover{transform:rotate(0deg) translateY(-6px);box-shadow:0 10px 0 var(--ink)}
+@media (hover:hover){.case:hover{transform:rotate(0deg) translateY(-6px);box-shadow:0 10px 0 var(--ink)}}
 .case .no{font-family:var(--mono);font-size:11px;letter-spacing:.12em;display:block;margin-bottom:12px}
 .case h3{font-size:21px;line-height:1.15;margin-bottom:10px}
 .case p{font-size:14.5px}

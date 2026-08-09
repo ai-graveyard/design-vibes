@@ -29,11 +29,11 @@ header{position:sticky;top:0;z-index:30;display:flex;align-items:center;
 nav{display:flex;gap:1.6rem;align-items:center}
 nav a{color:var(--gray);text-decoration:none;font-size:.74rem;font-weight:700;
   letter-spacing:.2em;text-transform:uppercase;transition:color .2s,transform .2s}
-nav a:hover{color:var(--fg);transform:skewX(-8deg)}
+@media (hover:hover){nav a:hover{color:var(--fg);transform:skewX(-8deg)}}
 .btn{padding:.6rem 1.4rem;background:var(--accent);color:#fff;font-weight:800;
   font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;
   transition:transform .2s,background .2s}
-.btn:hover{transform:translate(2px,-2px) rotate(-1deg);background:#fff;color:var(--bg)}
+@media (hover:hover){.btn:hover{transform:translate(2px,-2px) rotate(-1deg);background:#fff;color:var(--bg)}}
 .btn:active{transform:scale(.97)}
 
 /* ── hero ─────────────────────────────── */
@@ -46,8 +46,10 @@ nav a:hover{color:var(--fg);transform:skewX(-8deg)}
   text-transform:uppercase;letter-spacing:-.015em;display:flex;flex-wrap:wrap}
 .wf span{display:inline-block;animation:wave 5.2s ease-in-out infinite;
   animation-delay:calc(var(--i)*.16s);transition:transform .25s,color .25s}
-.wf span:hover{transform:translateY(-6%) scaleY(1.08);color:var(--accent);
-  -webkit-text-stroke:0;animation-play-state:paused}
+@media (hover:hover){
+  .wf span:hover{transform:translateY(-6%) scaleY(1.08);color:var(--accent);
+    -webkit-text-stroke:0;animation-play-state:paused}
+}
 .wf .o{color:transparent;-webkit-text-stroke:3px var(--fg)}
 .wf .r{color:var(--accent)}
 @keyframes wave{0%,100%{transform:translateY(0)}50%{transform:translateY(-.09em)}}
@@ -101,11 +103,11 @@ section{border-top:1px solid var(--line)}
   color:var(--gray);text-transform:uppercase;text-align:right;transition:color .3s}
 .spec .meta b{display:block;color:var(--fg);font-weight:400;margin-bottom:.2rem;transition:color .3s}
 .spec:hover{background:#0a0a0a}
-.spec:hover .name{transform:translateX(18px) skewX(-6deg);color:var(--accent);-webkit-text-stroke:0}
+@media (hover:hover){.spec:hover .name{transform:translateX(18px) skewX(-6deg);color:var(--accent);-webkit-text-stroke:0}}
 .spec:hover .meta,.spec:hover .meta b{color:var(--accent)}
 .spec.mono-face .name{font-family:var(--mono);letter-spacing:-.06em}
 .spec.squish .name{transform:scaleY(1.3);transform-origin:bottom}
-.spec.squish:hover .name{transform:scaleY(1.3) translateX(18px) skewX(-6deg)}
+@media (hover:hover){.spec.squish:hover .name{transform:scaleY(1.3) translateX(18px) skewX(-6deg)}}
 .spec.wide .name{letter-spacing:.18em}
 
 /* ── manifesto ────────────────────────── */
@@ -129,7 +131,7 @@ section{border-top:1px solid var(--line)}
 .big-btn{display:inline-block;padding:1.2rem 2.6rem;background:var(--accent);color:#fff;
   font-weight:900;font-size:1rem;letter-spacing:.22em;text-transform:uppercase;
   text-decoration:none;transition:transform .25s,background .25s,color .25s}
-.big-btn:hover{transform:rotate(-2deg) scale(1.06);background:var(--fg);color:var(--bg)}
+@media (hover:hover){.big-btn:hover{transform:rotate(-2deg) scale(1.06);background:var(--fg);color:var(--bg)}}
 
 /* ── footer ───────────────────────────── */
 footer{border-top:1px solid var(--line);padding:2rem 1.6rem;

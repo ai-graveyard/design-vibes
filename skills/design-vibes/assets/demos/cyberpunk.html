@@ -137,7 +137,7 @@ h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:800;letter-spacing:.14em;
 .card{--edge:var(--cyan);position:relative;padding:1px;background:linear-gradient(160deg,var(--edge),transparent 55%,var(--edge));
   clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px));
   transition:transform .3s,filter .3s}
-.card:hover{transform:translateY(-8px);filter:drop-shadow(0 0 16px rgba(0,255,255,.35))}
+@media (hover:hover){.card:hover{transform:translateY(-8px);filter:drop-shadow(0 0 16px rgba(0,255,255,.35))}}
 .card.m{--edge:var(--magenta)}
 .card.m:hover{filter:drop-shadow(0 0 16px rgba(255,0,255,.35))}
 .card.y{--edge:var(--yellow)}

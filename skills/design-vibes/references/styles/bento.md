@@ -1,7 +1,6 @@
 # Bento Grid `bento`
 
 **Chinese name:** Bento 网格  
-**Rating:** ★★★★☆ 4/5  
 **Difficulty:** 2 (Medium)  
 **Tags:** Minimal · Hot · Modern  
 **Fits:** SaaS / Tech, E-commerce / Retail

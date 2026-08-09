@@ -1,6 +1,7 @@
 ---
 name: design-vibes
 description: {{DESCRIPTION}}
+license: MIT
 ---
 
 # Design Vibes
@@ -25,7 +26,7 @@ If the user named one, map it to an `id` in the index below. If they didn't, rea
 This is mandatory even for styles you think you know. The file holds the exact hex values, the prompt, and the pitfalls. Reproducing a style from memory is the single biggest cause of output that is "sort of" the style but reads as generic.
 
 **3. Read `assets/demos/<id>.html` when you need structure, not just surface.**
-Each demo is a complete single-file page (~600 lines, zero external requests) in that style. Read it when:
+Each demo is a complete single-file page (roughly 250–500 lines, zero external requests) in that style. Read it when:
 - the user wants a full page rather than a section;
 - you need real layout/spacing/composition patterns, not just colors;
 - the style is Difficulty 3–4, where the look lives in the technique (blur stacks, gradients, mesh, clay shadows) rather than in the palette.
@@ -48,7 +49,7 @@ You may copy a demo wholesale as a starting point and rewrite its content. Say s
 
 ## Style index
 
-Difficulty is the cost of reproducing the style in pure CSS: 1 Easy → 4 Expert. `—` means unrated.
+Difficulty is the cost of reproducing the style in pure CSS: 1 Easy → 4 Expert.
 
 {{STYLE_INDEX}}
 

@@ -143,9 +143,11 @@ h2{font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:700;letter-spacing:.06em;lin
 .cart{--ac:var(--sky);background:var(--panel);margin:4px;
   box-shadow:0 -4px 0 var(--ac),0 4px 0 var(--ac),-4px 0 0 var(--ac),4px 0 0 var(--ac),
     4px 8px 0 var(--steel),8px 4px 0 var(--steel),8px 8px 0 var(--steel)}
-.cart:hover{transform:translate(-4px,-4px);
-  box-shadow:0 -4px 0 var(--ac),0 4px 0 var(--ac),-4px 0 0 var(--ac),4px 0 0 var(--ac),
-    8px 12px 0 var(--steel),12px 8px 0 var(--steel),12px 12px 0 var(--steel)}
+@media (hover:hover){
+  .cart:hover{transform:translate(-4px,-4px);
+    box-shadow:0 -4px 0 var(--ac),0 4px 0 var(--ac),-4px 0 0 var(--ac),4px 0 0 var(--ac),
+      8px 12px 0 var(--steel),12px 8px 0 var(--steel),12px 12px 0 var(--steel)}
+}
 .cA{--ac:var(--tomato)}.cB{--ac:var(--sky)}.cC{--ac:var(--lime)}
 .slot{background:var(--ac);color:var(--night);font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;padding:7px 14px}
 .screen{height:120px;background:var(--night);display:grid;place-items:center;border-bottom:4px solid var(--steel)}
@@ -205,7 +207,7 @@ footer{border-top:4px solid var(--steel)}
 .key{display:inline-grid;place-items:center;width:30px;height:30px;font-size:13px;font-weight:700;font-style:normal;
   color:var(--snow);background:var(--sky);box-shadow:0 4px 0 var(--steel)}
 .key.ka{background:var(--tomato)}
-.key:hover{transform:translateY(4px);box-shadow:none}
+@media (hover:hover){.key:hover{transform:translateY(4px);box-shadow:none}}
 .legal{padding-top:8px;padding-bottom:32px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mist)}
 .konami{color:var(--sky);letter-spacing:.3em;white-space:nowrap}
 

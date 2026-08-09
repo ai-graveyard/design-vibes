@@ -1,7 +1,6 @@
 # Swiss Style / International Typographic `swiss`
 
 **Chinese name:** 瑞士风格  
-**Rating:** ★★★★☆ 4/5  
 **Difficulty:** 2 (Medium)  
 **Tags:** Minimal · Classic  
 **Fits:** E-commerce / Retail, Creative / Design, Enterprise / B2B

@@ -1,8 +1,7 @@
 # Memphis `memphis`
 
 **Chinese name:** 孟菲斯  
-**Rating:** ★★★★☆ 3.5/5  
-**Difficulty:** unrated  
+**Difficulty:** 2 (Medium)  
 **Tags:** Art · Playful · Vintage  
 **Fits:** Art / Culture, Kids / Education
 

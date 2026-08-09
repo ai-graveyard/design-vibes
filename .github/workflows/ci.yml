@@ -27,6 +27,10 @@ jobs:
       - name: Lint
         run: pnpm lint
 
+      # headless Chrome 打开每个 demo，断言 375px 视口无横向滚动（checklist「Layout」第一条）
+      - name: Demo 375px 渲染校验
+        run: pnpm validate:render
+
       # build 内含数据一致性校验（validate-demos）、skill 产物生成、tsc、vite build 与 SEO 后处理
       - name: Build
         run: pnpm build

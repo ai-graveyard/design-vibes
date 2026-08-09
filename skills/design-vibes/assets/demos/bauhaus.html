@@ -62,8 +62,8 @@ nav a:nth-of-type(4):hover{border-color:var(--black)}
 .btns{display:flex;gap:1rem;flex-wrap:wrap}
 .btn{display:inline-block;padding:1rem 1.9rem;font-size:.8125rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;border:3px solid var(--black);transition:transform .15s,background .15s,color .15s}
 .btn.solid{background:var(--black);color:var(--paper)}
-.btn.solid:hover{background:var(--red);border-color:var(--red);transform:translate(-3px,-3px)}
-.btn.line:hover{background:var(--yellow);transform:translate(-3px,-3px)}
+@media (hover:hover){.btn.solid:hover{background:var(--red);border-color:var(--red);transform:translate(-3px,-3px)}}
+@media (hover:hover){.btn.line:hover{background:var(--yellow);transform:translate(-3px,-3px)}}
 
 /* geometric composition */
 .comp{position:relative;height:430px}
@@ -92,7 +92,7 @@ section{padding:3.25rem 0 3.75rem}
 .works{background:var(--white);border-top:7px solid var(--black);border-bottom:7px solid var(--black)}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
 .card{border:3px solid var(--black);padding:1.8rem;background:var(--paper);transition:transform .18s,box-shadow .18s}
-.card:hover{transform:translate(-5px,-5px);box-shadow:8px 8px 0 var(--black)}
+@media (hover:hover){.card:hover{transform:translate(-5px,-5px);box-shadow:8px 8px 0 var(--black)}}
 .card .shape{height:78px;display:flex;align-items:flex-end;margin-bottom:1.3rem}
 .card .sh-tri{width:0;height:0;border-left:39px solid transparent;border-right:39px solid transparent;border-bottom:68px solid var(--yellow)}
 .card .sh-sq{width:64px;height:64px;background:var(--red)}

@@ -32,14 +32,47 @@ for (const id of missingIn(demoIds, styleIds)) errors.push(`孤儿 demo（styles
 for (const id of missingIn(styleIds, thumbIds))
   errors.push(`缺少卡片缩略图：public/thumbs/${id}.jpg（运行 pnpm thumbs 生成）`);
 
+// 返回所有 @media (hover: hover) 块的 [start, end) 字符区间（花括号配对）
+function hoverMediaRanges(css) {
+  const ranges = [];
+  const re = /@media[^{]*\bhover:\s*hover[^{]*\{/g;
+  let m;
+  while ((m = re.exec(css))) {
+    let depth = 1;
+    let i = re.lastIndex;
+    while (i < css.length && depth > 0) {
+      if (css[i] === '{') depth++;
+      else if (css[i] === '}') depth--;
+      i++;
+    }
+    ranges.push([m.index, i]);
+  }
+  return ranges;
+}
+
 for (const f of demoFiles) {
   const where = `public/demos/${f}`;
+  const raw = read(where);
   // 内联 SVG 的 xmlns 命名空间不算外部引用
-  const html = read(where).replace(/xmlns(:[\w-]+)?="[^"]*"/g, '');
+  const html = raw.replace(/xmlns(:[\w-]+)?="[^"]*"/g, '');
   if (/<script[\s>]/i.test(html)) errors.push(`${where} 含 <script>，违反零 JS 约定`);
   if (/https?:\/\//i.test(html)) errors.push(`${where} 含外部 URL，违反零依赖约定`);
   if (!/:root\s*\{/.test(html)) errors.push(`${where} 缺少 :root CSS 变量（design tokens 来源）`);
   if (!/<title>[^<]+<\/title>/i.test(html)) errors.push(`${where} 缺少 <title>`);
+  if (!/prefers-reduced-motion/.test(raw)) errors.push(`${where} 缺少 prefers-reduced-motion 降级规则`);
+
+  // 移动型 :hover（带 transform/translate）必须包在 @media (hover: hover) 内，
+  // 否则触屏上点一下 hover 位移会卡住（checklist.md「Interaction」第一条）
+  const ranges = hoverMediaRanges(raw);
+  const ruleRe = /[^{}]*:hover[^{]*\{[^{}]*(?:transform|translate)[^{}]*\}/g;
+  let rule;
+  while ((rule = ruleRe.exec(raw))) {
+    const pos = rule.index + rule[0].indexOf(':hover');
+    if (!ranges.some(([a, b]) => pos >= a && pos < b)) {
+      const line = raw.slice(0, pos).split('\n').length;
+      errors.push(`${where}:${line} 移动型 :hover 未包在 @media (hover: hover) 内`);
+    }
+  }
 }
 
 // scenes.ts（选型指南）的 styleIds 引用校验

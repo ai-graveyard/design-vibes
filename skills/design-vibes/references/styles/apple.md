@@ -1,7 +1,6 @@
 # Apple Minimalism `apple`
 
 **Chinese name:** Apple 风  
-**Rating:** ★★★★★ 4.5/5  
 **Difficulty:** 3 (Hard)  
 **Tags:** Minimal · Modern · Hot  
 **Fits:** SaaS / Tech, Enterprise / B2B
@@ -91,6 +90,6 @@ Apple.com · Linear.app · Notion.so · Stripe.com · Vercel.com
 
 ## Reference implementation
 
-`assets/demos/apple.html` — a complete single-file page (400 lines, no scripts, no external requests). Read it for layout and composition patterns, or copy it as a starting point.
+`assets/demos/apple.html` — a complete single-file page (402 lines, no scripts, no external requests). Read it for layout and composition patterns, or copy it as a starting point.
 
 Live preview: https://design-vibes.v2ai.org/style/apple

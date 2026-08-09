@@ -55,7 +55,7 @@ header{padding:26px 0}
   padding:9px 20px;border-radius:999px;
   transition:box-shadow .3s,transform .3s;
 }
-.cart:hover{box-shadow:0 8px 20px rgba(62,58,51,.10);transform:translateY(-1px)}
+@media (hover:hover){.cart:hover{box-shadow:0 8px 20px rgba(62,58,51,.10);transform:translateY(-1px)}}
 
 /* ---------- Hero ---------- */
 .hero{
@@ -82,7 +82,7 @@ header{padding:26px 0}
   box-shadow:0 10px 24px -8px rgba(139,154,124,.55);
   transition:background .3s,transform .3s,box-shadow .3s;
 }
-.btn:hover{background:#7c8b6e;transform:translateY(-2px);box-shadow:0 14px 28px -8px rgba(139,154,124,.6)}
+@media (hover:hover){.btn:hover{background:#7c8b6e;transform:translateY(-2px);box-shadow:0 14px 28px -8px rgba(139,154,124,.6)}}
 .quiet{
   font-size:15px;font-weight:600;color:var(--ink);
   border-bottom:2px solid var(--wood);padding-bottom:2px;
@@ -198,9 +198,11 @@ header{padding:26px 0}
   box-shadow:0 2px 6px rgba(62,58,51,.05),0 16px 32px -18px rgba(62,58,51,.18);
   transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;
 }
-.card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 4px 10px rgba(62,58,51,.06),0 26px 44px -18px rgba(62,58,51,.26);
+@media (hover:hover){
+  .card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 4px 10px rgba(62,58,51,.06),0 26px 44px -18px rgba(62,58,51,.26);
+  }
 }
 .thumb{
   border-radius:20px;height:210px;position:relative;overflow:hidden;
@@ -275,7 +277,7 @@ header{padding:26px 0}
   box-shadow:0 2px 6px rgba(62,58,51,.05);
   transition:transform .35s cubic-bezier(.22,1,.36,1);
 }
-.v-cell:hover{transform:translateY(-4px)}
+@media (hover:hover){.v-cell:hover{transform:translateY(-4px)}}
 .v-cell .dot{
   width:42px;height:42px;border-radius:14px;margin-bottom:20px;
   display:flex;align-items:center;justify-content:center;

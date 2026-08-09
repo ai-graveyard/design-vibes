@@ -1,8 +1,7 @@
 # Japanese Minimalism `japanese`
 
 **Chinese name:** 日式极简  
-**Rating:** ★★★★☆ 3.8/5  
-**Difficulty:** unrated  
+**Difficulty:** 2 (Medium)  
 **Tags:** Minimal · Classic · Warm  
 **Fits:** Personal / Blog
 

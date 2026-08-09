@@ -42,7 +42,7 @@ nav ul a:hover{background:#FFFe;color:var(--aqua-deep);box-shadow:0 4px 10px #4C
 /* gel buttons */
 .btn{position:relative;z-index:0;display:inline-block;padding:14px 30px;border-radius:999px;text-decoration:none;font-weight:700;font-size:1rem;color:#fff;text-shadow:0 1px 2px #2E600A73;background:linear-gradient(180deg,var(--accent-soft) 0%,var(--accent) 48%,var(--accent-deep) 100%);box-shadow:0 12px 26px #7ABF2E73,inset 0 1px 1px #FFFd,inset 0 -7px 12px #427C0A52;transition:transform .25s,filter .25s}
 .btn::before{content:"";position:absolute;z-index:-1;left:6px;right:6px;top:2px;height:52%;border-radius:999px;background:linear-gradient(180deg,#FFFe,#FFF1);pointer-events:none}
-.btn:hover{transform:translateY(-2px);filter:brightness(1.05) saturate(1.05)}
+@media (hover:hover){.btn:hover{transform:translateY(-2px);filter:brightness(1.05) saturate(1.05)}}
 .btn:active{transform:translateY(1px);filter:none}
 .btn-aqua{background:linear-gradient(180deg,#8ED0F8 0%,var(--aqua) 48%,var(--aqua-deep) 100%);text-shadow:0 1px 2px #124A7480;box-shadow:0 12px 26px #4CA6E873,inset 0 1px 1px #FFFd,inset 0 -7px 12px #15548459}
 .btn-small{padding:9px 22px;font-size:.88rem}
@@ -94,7 +94,7 @@ h1,.sec-head h2{text-wrap:balance}
 .mornings{background:#F7FCFF;padding-top:78px}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 .card{border-radius:26px;padding:30px 28px;background:linear-gradient(180deg,#fff 0%,#EAF6FF 100%);border:1px solid #fff;box-shadow:0 20px 44px #4CA6E838,0 2px 6px #4CA6E81F;transition:transform .3s,box-shadow .3s}
-.card:hover{transform:translateY(-8px);box-shadow:0 30px 56px #4CA6E852,0 2px 6px #4CA6E81F}
+@media (hover:hover){.card:hover{transform:translateY(-8px);box-shadow:0 30px 56px #4CA6E852,0 2px 6px #4CA6E81F}}
 .card h3{font-size:1.16rem;font-weight:700;margin-bottom:8px}
 .card p{font-size:.92rem;color:var(--fg-soft)}
 .icon-orb{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;margin-bottom:18px}

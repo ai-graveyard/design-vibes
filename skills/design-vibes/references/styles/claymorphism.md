@@ -1,7 +1,6 @@
 # Claymorphism `claymorphism`
 
 **Chinese name:** 粘土拟态  
-**Rating:** ★★★☆☆ 3/5  
 **Difficulty:** 4 (Expert)  
 **Tags:** Modern · Playful  
 **Fits:** Gaming / Entertainment, Kids / Education
@@ -93,6 +92,12 @@ The specific ways AI-generated pages in this style go wrong. Check each one befo
    圆角不够大——低于 20px 就不像捏出来的
 3. Grown-up palettes — clay lives in high-key candy colors
    配色太成人——粘土拟态天生属于高明度的糖果色
+4. Pure-black drop shadows — shadows must carry the subject's hue (pink objects cast rose-gray); black reads as stickers on glass
+   投影用纯黑——阴影要带主体色的深色调（粉色物体投玫瑰灰影），黑影像贴在玻璃上
+5. Outlined elements — clay has no contour lines; form comes entirely from light. A border flattens it into a sticker
+   元素加了描边——粘土没有轮廓线，形体全靠光影塑造，border 一出现就变成扁平贴纸
+6. Pure-white canvas — clay floats on tinted soft backgrounds (cream, lilac); on white it looks pasted, not molded
+   底色用纯白——粘土要浮在有色的柔和底（奶油、淡紫）上，纯白背景下像贴纸而不是实体
 
 ## Seen in the wild
 

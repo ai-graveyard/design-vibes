@@ -1,7 +1,6 @@
 # Pixel Art `pixel`
 
 **Chinese name:** 像素风  
-**Rating:** ★★★☆☆ 3.4/5  
 **Difficulty:** 2 (Medium)  
 **Tags:** Vintage · Playful · Distinctive  
 **Fits:** Gaming / Entertainment
@@ -81,6 +80,6 @@ Celeste · Stardew Valley · itch.io · Poolsuite.net
 
 ## Reference implementation
 
-`assets/demos/pixel.html` — a complete single-file page (400 lines, no scripts, no external requests). Read it for layout and composition patterns, or copy it as a starting point.
+`assets/demos/pixel.html` — a complete single-file page (402 lines, no scripts, no external requests). Read it for layout and composition patterns, or copy it as a starting point.
 
 Live preview: https://design-vibes.v2ai.org/style/pixel

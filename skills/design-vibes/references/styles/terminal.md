@@ -1,7 +1,6 @@
 # Terminal `terminal`
 
 **Chinese name:** 终端黑客风  
-**Rating:** ★★★★☆ 3.6/5  
 **Difficulty:** 1 (Easy)  
 **Tags:** Vintage · Distinctive  
 **Fits:** Personal / Blog

@@ -1,8 +1,7 @@
 # Bauhaus `bauhaus`
 
 **Chinese name:** 包豪斯  
-**Rating:** ★★★★☆ 3.9/5  
-**Difficulty:** unrated  
+**Difficulty:** 2 (Medium)  
 **Tags:** Art · Vintage · Classic  
 **Fits:** Creative / Design
 

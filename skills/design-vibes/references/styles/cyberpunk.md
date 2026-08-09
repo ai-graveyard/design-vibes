@@ -1,8 +1,7 @@
 # Cyberpunk `cyberpunk`
 
 **Chinese name:** 赛博朋克  
-**Rating:** ★★★☆☆ 3.3/5  
-**Difficulty:** unrated  
+**Difficulty:** 3 (Hard)  
 **Tags:** Avant-garde · Distinctive  
 **Fits:** Gaming / Entertainment
 

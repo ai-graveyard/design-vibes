@@ -1,7 +1,6 @@
 # Kinetic Typography `kinetic`
 
 **Chinese name:** 动态字体  
-**Rating:** ★★★☆☆ 2.9/5  
 **Difficulty:** 3 (Hard)  
 **Tags:** Art · Avant-garde  
 **Fits:** Creative / Design
@@ -88,6 +87,6 @@ Apple keynotes · Active Theory works · Awwwards winners · KIKK Festival
 
 ## Reference implementation
 
-`assets/demos/kinetic.html` — a complete single-file page (258 lines, no scripts, no external requests). Read it for layout and composition patterns, or copy it as a starting point.
+`assets/demos/kinetic.html` — a complete single-file page (260 lines, no scripts, no external requests). Read it for layout and composition patterns, or copy it as a starting point.
 
 Live preview: https://design-vibes.v2ai.org/style/kinetic

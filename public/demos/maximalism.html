@@ -42,7 +42,7 @@ header{background:var(--gold);border-bottom:5px solid var(--ink);position:relati
 .links a:nth-child(1){background:var(--pink);color:#fff}
 .links a:nth-child(2){background:var(--lime)}
 .links a:nth-child(3){background:var(--orange);color:#fff}
-.links a:hover{transform:rotate(-3deg) scale(1.06)}
+@media (hover:hover){.links a:hover{transform:rotate(-3deg) scale(1.06)}}
 
 /* ===== Hero ===== */
 .hero{background:var(--violet);background-image:radial-gradient(rgba(255,215,0,.28) 2.5px,transparent 2.5px);background-size:26px 26px;color:#fff;padding:74px 0 90px;position:relative;overflow:hidden;border-bottom:5px solid var(--ink)}
@@ -59,7 +59,7 @@ header{background:var(--gold);border-bottom:5px solid var(--ink);position:relati
 .hero p{max-width:34em;font-size:1.05rem;font-weight:500;color:rgba(255,255,255,.92);margin-bottom:34px}
 .hero-cta{display:flex;gap:16px;flex-wrap:wrap}
 .big-btn{display:inline-block;font-weight:900;font-size:1rem;letter-spacing:.06em;padding:16px 30px;border:4px solid var(--ink);background:var(--gold);color:var(--ink);box-shadow:7px 7px 0 var(--pink);transition:transform .2s,box-shadow .2s}
-.big-btn:hover{transform:translate(-3px,-3px);box-shadow:11px 11px 0 var(--pink)}
+@media (hover:hover){.big-btn:hover{transform:translate(-3px,-3px);box-shadow:11px 11px 0 var(--pink)}}
 .big-btn.ghost{background:transparent;color:#fff;border-color:#fff;box-shadow:7px 7px 0 var(--lime)}
 .big-btn.ghost:hover{box-shadow:11px 11px 0 var(--lime)}
 
@@ -82,7 +82,7 @@ h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--ora
 .dish{border:4px solid var(--ink);padding:32px 28px;position:relative;box-shadow:9px 9px 0 var(--ink);transition:transform .25s,box-shadow .25s}
 .dish:nth-child(odd){transform:rotate(-1.1deg)}
 .dish:nth-child(even){transform:rotate(1.1deg)}
-.dish:hover{transform:rotate(0) translateY(-6px);box-shadow:13px 13px 0 var(--ink)}
+@media (hover:hover){.dish:hover{transform:rotate(0) translateY(-6px);box-shadow:13px 13px 0 var(--ink)}}
 .dish.gold{background:var(--gold);background-image:radial-gradient(var(--ink) 1.6px,transparent 1.6px);background-size:20px 20px}
 .dish.pink{background:var(--pink);background-image:repeating-linear-gradient(45deg,transparent 0 14px,rgba(255,255,255,.25) 14px 28px);color:#fff}
 .dish.lime{background:var(--lime);background-image:repeating-linear-gradient(0deg,transparent 0 16px,rgba(18,0,25,.08) 16px 32px),repeating-linear-gradient(90deg,transparent 0 16px,rgba(18,0,25,.08) 16px 32px)}
