@@ -8,6 +8,7 @@ import { ThemeToggle } from '../components/ThemeToggle';
 import { LanguageToggle } from '../components/LanguageToggle';
 import { DemoViewport } from '../components/DemoViewport';
 import { PreviewToolbar } from '../components/PreviewToolbar';
+import { StyleSelect } from '../components/StyleSelect';
 import { StyleNotes } from '../components/StyleNotes';
 import { usePageMeta } from '../hooks/usePageMeta';
 
@@ -62,7 +63,7 @@ export function ComparePage() {
         <p className="compare-hint">{zh ? '两侧使用相同的演示视口。滚动任一画布，按页面进度比较完整作品。' : 'Both studies use the same layout viewport. Scroll either canvas to compare each page at the same progress.'}</p>
         <div className="compare-grid">
           {[a, b].map((style, index) => <section key={index} className="compare-study">
-            <label className="compare-picker"><span>{index === 0 ? 'A' : 'B'}</span><select aria-label={zh ? `风格 ${index === 0 ? 'A' : 'B'}` : `Style ${index === 0 ? 'A' : 'B'}`} value={style.id} onChange={event => pick(index === 0 ? 'a' : 'b', event.target.value)}>{designStyles.map(option => <option value={option.id} key={option.id}>{zh ? option.name : option.nameEn}</option>)}</select><Link to={`/style/${style.id}`}>{zh ? '打开' : 'Open'} ↗</Link></label>
+            <div className="compare-picker"><span>{index === 0 ? 'A' : 'B'}</span><StyleSelect label={zh ? `风格 ${index === 0 ? 'A' : 'B'}` : `Style ${index === 0 ? 'A' : 'B'}`} value={style.id} onChange={value => pick(index === 0 ? 'a' : 'b', value)} options={designStyles.map(option => ({ value: option.id, label: zh ? option.name : option.nameEn }))} /><Link to={`/style/${style.id}`}>{zh ? '打开' : 'Open'} ↗</Link></div>
             <DemoViewport styleId={style.id} device={device} onReady={index === 0 ? onReadyA : onReadyB} />
             <StyleNotes styleId={style.id} language={language} />
           </section>)}

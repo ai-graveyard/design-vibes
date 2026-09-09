@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { StyleSelect } from '../components/StyleSelect';
 import { Search } from 'lucide-react';
 import { designStyles } from '../data/styles';
 import { scenes, difficultyTiers } from '../data/scenes';
@@ -99,20 +100,14 @@ export function StylesGrid() {
           </div>
 
           <div className="mb-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:max-w-2xl">
-            <label className="flex min-w-0 items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 text-xs dark:border-gray-800 dark:bg-[#1a1a1a]">
-              <span className="shrink-0 text-gray-500 dark:text-gray-400">{t.grid.scene}</span>
-              <select value={selectedSceneId} onChange={(event) => setSelectedSceneId(event.target.value)} className="min-h-11 min-w-0 flex-1 bg-transparent text-sm text-black dark:text-white dark:[color-scheme:dark]">
-                <option value="">{t.grid.allScenes}</option>
-                {scenes.map(scene => <option key={scene.id} value={scene.id}>{language === 'zh' ? scene.name : scene.nameEn}</option>)}
-              </select>
-            </label>
-            <label className="flex min-w-0 items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 text-xs dark:border-gray-800 dark:bg-[#1a1a1a]">
-              <span className="shrink-0 text-gray-500 dark:text-gray-400">{t.grid.difficulty}</span>
-              <select value={selectedDifficulty} onChange={(event) => setSelectedDifficulty(event.target.value)} aria-describedby="difficulty-hint" className="min-h-11 min-w-0 flex-1 bg-transparent text-sm text-black dark:text-white dark:[color-scheme:dark]">
-                <option value="">{t.grid.allDifficulties}</option>
-                {difficultyTiers.map(tier => <option key={tier.level} value={tier.level}>{language === 'zh' ? tier.name : tier.nameEn}</option>)}
-              </select>
-            </label>
+            <StyleSelect label={t.grid.scene} showLabel value={selectedSceneId} onChange={setSelectedSceneId} options={[
+              { value: '', label: t.grid.allScenes },
+              ...scenes.map(scene => ({ value: scene.id, label: language === 'zh' ? scene.name : scene.nameEn })),
+            ]} />
+            <StyleSelect label={t.grid.difficulty} showLabel value={selectedDifficulty} onChange={setSelectedDifficulty} describedBy="difficulty-hint" options={[
+              { value: '', label: t.grid.allDifficulties },
+              ...difficultyTiers.map(tier => ({ value: String(tier.level), label: language === 'zh' ? tier.name : tier.nameEn })),
+            ]} />
           </div>
           <p id="difficulty-hint" className="mb-4 text-[11px] text-gray-500 dark:text-gray-400">{t.guide.difficultyNote}</p>
 
