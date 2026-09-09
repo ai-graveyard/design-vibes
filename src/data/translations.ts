@@ -1,5 +1,9 @@
 export const translations = {
   zh: {
+    nav: {
+      label: '首页导航',
+      styles: '风格库',
+    },
     hero: {
       subtitle: '为 Vibe Coding 提供的快速风格参考',
       explore: '探索',
@@ -27,6 +31,11 @@ export const translations = {
       count: '个风格',
       noResults: '无结果',
       noResultsDesc: '尝试调整搜索词或筛选条件',
+      scene: '按场景选',
+      allScenes: '全部场景',
+      difficulty: '实现难度',
+      allDifficulties: '不限难度',
+      reset: '清除筛选',
     },
     card: {
       copyPrompt: '复制提示词',
@@ -69,7 +78,7 @@ export const translations = {
       codeLoadError: '源码加载失败',
       desktop: '桌面端',
       mobile: '移动端',
-      htmlCssOnly: '纯 HTML + CSS',
+      htmlCssOnly: '独立 HTML 演示',
       designTokens: 'Design Tokens',
       copyTokens: '复制',
       tokensHint: '提取自 demo 源码的 :root 变量，与实况预览完全一致',
@@ -91,10 +100,12 @@ export const translations = {
       subtitle: '按项目场景快速圈定候选风格，或按实现难度评估成本',
       byScene: '按场景推荐',
       byDifficulty: '按技术难度',
-      difficultyNote: '难度指纯 CSS 复现该风格的实现成本，星越多越难',
+      difficultyNote: '难度指用纯 CSS 复现该风格的实现成本。',
     },
     install: {
       kicker: '安装 Skill',
+      close: '关闭安装说明',
+      copyFailed: '复制失败，请选中文字手动复制。',
       title: '把整个风格库装进你的 AI',
       subtitle: '装一次，以后直接说「做一个赛博朋克风格的落地页」，AI 自己查配色和 Design Tokens。',
       methodALabel: '让 AI 自己装',
@@ -124,6 +135,10 @@ export const translations = {
     },
   },
   en: {
+    nav: {
+      label: 'Home navigation',
+      styles: 'Styles',
+    },
     hero: {
       subtitle: 'Quick style reference for Vibe Coding',
       explore: 'Explore',
@@ -151,6 +166,11 @@ export const translations = {
       count: 'styles',
       noResults: 'No results',
       noResultsDesc: 'Try adjusting your search or filters',
+      scene: 'Choose by scene',
+      allScenes: 'All scenes',
+      difficulty: 'Build difficulty',
+      allDifficulties: 'Any difficulty',
+      reset: 'Clear filters',
     },
     card: {
       copyPrompt: 'Copy Prompt',
@@ -193,7 +213,7 @@ export const translations = {
       codeLoadError: 'Failed to load source',
       desktop: 'Desktop',
       mobile: 'Mobile',
-      htmlCssOnly: 'HTML + CSS only',
+      htmlCssOnly: 'Self-contained HTML',
       designTokens: 'Design Tokens',
       copyTokens: 'Copy',
       tokensHint: 'Parsed from the demo\'s :root variables — exactly what the live preview uses',
@@ -215,10 +235,12 @@ export const translations = {
       subtitle: 'Shortlist styles by project scenario, or gauge cost by implementation difficulty',
       byScene: 'By Scenario',
       byDifficulty: 'By Difficulty',
-      difficultyNote: 'Difficulty = cost of recreating the style in pure CSS; more stars, harder',
+      difficultyNote: 'Difficulty describes the effort to recreate the style in pure CSS.',
     },
     install: {
       kicker: 'Install the Skill',
+      close: 'Close installation guide',
+      copyFailed: 'Could not copy. Select the text and copy it manually.',
       title: 'Put the whole catalog inside your AI',
       subtitle: 'Install once, then just say "build me a cyberpunk landing page" — your agent looks up the palette and design tokens itself.',
       methodALabel: 'Let your AI install it',

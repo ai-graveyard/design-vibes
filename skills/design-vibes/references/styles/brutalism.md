@@ -1,11 +1,24 @@
 # Brutalism `brutalism`
 
-**Chinese name:** 粗野主义  
-**Difficulty:** 1 (Easy)  
-**Tags:** Avant-garde · Distinctive  
+**Chinese name:** 粗野主义
+
+**Type:** Visual aesthetic
+
+**Study version:** 2026.09
+
+**Difficulty:** 1 (Easy)
+
+**Tags:** Avant-garde · Distinctive
+
 **Fits:** Art / Culture
 
-An extreme expression of architectural 'New Brutalism' in web design — refusing beautification, exposing structure, returning to raw. System fonts, default link styles, undecorated tables — a powerful rebellion against over-design.
+Use direct document structure, emphatic type and visible links for a raw web character. This study uses browser-like serif type, square corners, fine rules and link blue with dense content.
+
+## Study boundaries and references
+
+An original web interpretation. Palette, assets and dimensions describe this example, not a universal definition of the style.
+
+The composition below is an authored study; historical inspiration names are not certified reproductions.
 
 ## Prompt
 
@@ -13,20 +26,20 @@ Hand this to any AI coding tool, or use it as your own build brief.
 
 **English**
 
-> Brutalism style — looks like raw, unstyled HTML on purpose. Palette is web-safe primaries: classic hyperlink blue (#0000EE), red (#FF0000), yellow (#FFFF00), purple (#551A8B), on plain white. Use browser-default typefaces — Times-like serif for body, monospace for code-ish bits. Keep borders thin (1-3px solid, zero radius), leave links underlined in default blue, and pack text into dense, deliberately un-designed blocks.
+> Brutalism. Use direct document structure, emphatic type and visible links for a raw web character. This study uses browser-like serif type, square corners, fine rules and link blue with dense content. Deliberate roughness still needs navigation and readability; broken layout is not a design principle. Adapt palette and dimensions to the content; use the current demo reference brief for an exact reproduction.
 
 **中文**
 
-> 粗野主义风格——刻意做出未经样式化的原始 HTML 观感。配色用浏览器安全色：经典超链接蓝（#0000EE）、红（#FF0000）、黄（#FFFF00）、紫（#551A8B），底色纯白。字体用浏览器默认字体——衬线体（类 Times）做正文，等宽体做代码感区块。边框保持细窄（1-3px 实线，零圆角），链接保留默认蓝色下划线，文字密集堆叠，刻意不做排版设计。
+> 粗野主义。用直接的文档结构、强文字层级与显露的链接建立原始网页感。本例使用浏览器式衬线体、直角、细线与链接蓝，保留内容密度。刻意粗粝也需要清楚的导航和可读性，不要把损坏布局当成风格。配色与尺寸可根据内容调整；精确复现请使用当前演示的参考包。
 
 **Short form** — when you only need one line:
 
-- EN: Brutalism, web-safe colors with default blue links, zero-radius raw-HTML look
-- 中文: 粗野主义，浏览器安全色+默认蓝链接，零圆角原始HTML感
+- EN: Brutalism: Use direct document structure, emphatic type and visible links for a raw web character.
+- 中文: 粗野主义：用直接的文档结构、强文字层级与显露的链接建立原始网页感。
 
 ## Design tokens
 
-Lifted verbatim from the reference implementation. Use these exact values.
+Parsed from this reference implementation. Preserve these values when matching this demo; adapt them deliberately when applying the broader style.
 
 ```css
 :root {
@@ -44,11 +57,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 ## Signature traits
 
-- Unstyled HTML default styles
-- Oversized bold headings - 72px+
-- High-contrast black-white/neon colors
-- Exposed code structure and grid
-- System default fonts - Times/Arial
+- Composition - Use direct document structure, emphatic type and visible links for a raw web character.
+- Signature - This study uses browser-like serif type, square corners, fine rules and link blue with dense content.
 
 ## Where it works
 
@@ -76,12 +86,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 The specific ways AI-generated pages in this style go wrong. Check each one before delivering.
 
-1. Sneaking in polish — rounded corners, shadows, gradients all betray the point
-   偷偷做了美化——加圆角、加阴影、加渐变，那就不再是粗野主义
-2. Swapping in refined sans-serifs — default Times and monospace carry the rawness
-   字体换成精致无衬线——浏览器默认的 Times 与等宽体才有生猛感
-3. Layouts too tidy — deliberate density and misalignment are the attitude
-   排版太规整——刻意的密集堆叠与错位才是态度本身
+1. Deliberate roughness still needs navigation and readability; broken layout is not a design principle.
+   刻意粗粝也需要清楚的导航和可读性，不要把损坏布局当成风格。
 
 ## Seen in the wild
 

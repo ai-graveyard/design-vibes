@@ -4,10 +4,10 @@ Run through this before handing a styled page back to the user. Most items come 
 
 ## Style fidelity
 
-- [ ] Every `:root` token matches `references/styles/<id>.md` exactly — no "improved" hex values, no swapped font stack.
+- [ ] When reproducing the demo, tokens match the reference. When adapting the style, retain the defining principles and explain deliberate token changes.
 - [ ] Every pitfall listed for this style has been explicitly addressed.
 - [ ] The style's signature move is actually present. A Bauhaus page without thick-outlined geometric shapes doing structural work is not a Bauhaus page.
-- [ ] Only one style is in play, unless the user asked for a mix.
+- [ ] The composition is coherent; a layout pattern can complement a design language.
 
 ## Layout
 
@@ -19,7 +19,7 @@ Run through this before handing a styled page back to the user. Most items come 
 ## Motion
 
 - [ ] Entrance animation `delay + duration` totals ≤ 2.5s. Anything slower and the page reads as broken on first paint.
-- [ ] Keyframes define `from` (or `0%`/`50%`) only — **never** an explicit `to`/`100%` frame. A `to` frame locks the element's `transform` during fill and kills hover states.
+- [ ] Entrance animation fill must not override interactive transforms. An explicit end frame is valid when needed, particularly for continuous motion; separate animation and hover transforms when they conflict.
 - [ ] Scroll-driven reveals are declared in this exact order: `animation: <name> 1s linear` (**no fill**) → `animation-timeline: view()` → `animation-range`. The `animation` shorthand resets `animation-timeline`, so order matters.
 - [ ] No `both`/`backwards` fill on `view()` animations. In a short viewport or an embedded container that never scrolls, backwards fill pins below-the-fold elements at the `from` frame — `opacity: 0`, permanently invisible.
 - [ ] Stagger by shifting only the *end* of `animation-range` (`0% 50%`, `0% 64%`, `0% 78%`). `animation-delay` does nothing under a scroll timeline, and a non-zero start leaves an un-animated sliver visible at the viewport edge.
@@ -36,6 +36,6 @@ Run through this before handing a styled page back to the user. Most items come 
 
 ## Delivery
 
-- [ ] If the deliverable is a single-file HTML page: no `<script>`, no external URLs, no CDN fonts, no remote images. Every reference demo holds to this and it is why they open instantly and work offline.
+- [ ] If the deliverable is a single-file HTML page: no external requests, no CDN fonts or remote images. Embed assets and their license notices. Local interaction scripts are allowed, with no service calls or persistence. Every reference demo holds to this and it is why they open instantly and work offline.
 - [ ] Text contrast is legible. Several of these styles (vaporwave, cyberpunk, dark academia) trend toward low contrast — keep body copy readable even when the style pushes the other way.
 - [ ] Dark mode either genuinely works or is deliberately out of scope and you said so.

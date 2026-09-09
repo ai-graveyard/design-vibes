@@ -1,11 +1,24 @@
 # Duotone `duotone`
 
-**Chinese name:** 双色调  
-**Difficulty:** 1 (Easy)  
-**Tags:** Art · Vintage  
+**Chinese name:** 双色调
+
+**Type:** Visual aesthetic
+
+**Study version:** 2026.09
+
+**Difficulty:** 1 (Easy)
+
+**Tags:** Art · Vintage
+
 **Fits:** Personal / Blog
 
-Simplifying complex images to stark contrast of two colors, creating silkscreen-like artistic effects. Spotify Wrapped made this style universally known. Bold color choices are a weapon for brand recognition.
+Carry two tonal families through type, regions and images, controlling the mapping between shadows and highlights. This study maps shadows to deep navy and highlights to orange, including image treatment.
+
+## Study boundaries and references
+
+An original web interpretation. Palette, assets and dimensions describe this example, not a universal definition of the style.
+
+The composition below is an authored study; historical inspiration names are not certified reproductions.
 
 ## Prompt
 
@@ -13,20 +26,20 @@ Hand this to any AI coding tool, or use it as your own build brief.
 
 **English**
 
-> Duotone style built from two color families, not two flat hex values. Cool family: deep navy (#1A1A2E, #2A2A4A). Warm family: burnt orange (#FF6B35, #FF8F66, #C9481A) with a cream highlight (#FFE1D2). Use a monospace for labels and sans-serif for body. Alternate full-bleed sections between the two families, and where there is imagery, tint it through a duotone filter (navy shadows, orange highlights) rather than using full color.
+> Duotone. Carry two tonal families through type, regions and images, controlling the mapping between shadows and highlights. This study maps shadows to deep navy and highlights to orange, including image treatment. Two background blocks alone do not demonstrate the treatment; tonal ranges need not be only two discrete values. Adapt palette and dimensions to the content; use the current demo reference brief for an exact reproduction.
 
 **中文**
 
-> 双色调风格，用两个色系构建，而不是字面意义上的“只有两个色值”。冷色系：深藏青（#1A1A2E、#2A2A4A）。暖色系：焦橙（#FF6B35、#FF8F66、#C9481A）配奶橙高光（#FFE1D2）。等宽体做标签，无衬线体做正文。整屏分区块交替使用这两个色系，如果有图片素材，用双色调滤镜处理（暗部藏青、亮部橙色）而不是保留原色。
+> 双色调。让两组色调贯穿文字、分区与图像，控制明暗的对应关系。本例的暗部是深藏青、亮部是橙色；图像要呈现相同的色调映射。不要把两块背景色当成完整示范，也不要要求整个页面只能有两个离散色值。配色与尺寸可根据内容调整；精确复现请使用当前演示的参考包。
 
 **Short form** — when you only need one line:
 
-- EN: Duotone, navy-cool vs orange-warm sections, imagery tinted through a duotone filter
-- 中文: 双色调，藏青冷调+焦橙暖调交替分区，图片走双色滤镜
+- EN: Duotone: Carry two tonal families through type, regions and images, controlling the mapping between shadows and highlights.
+- 中文: 双色调：让两组色调贯穿文字、分区与图像，控制明暗的对应关系。
 
 ## Design tokens
 
-Lifted verbatim from the reference implementation. Use these exact values.
+Parsed from this reference implementation. Preserve these values when matching this demo; adapt them deliberately when applying the broader style.
 
 ```css
 :root {
@@ -44,11 +57,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 ## Signature traits
 
-- Only two colors used
-- Duotone image treatment
-- Strong visual contrast
-- CSS filter/blend mode implementation
-- Fusion of retro and modern
+- Composition - Carry two tonal families through type, regions and images, controlling the mapping between shadows and highlights.
+- Signature - This study maps shadows to deep navy and highlights to orange, including image treatment.
 
 ## Where it works
 
@@ -75,12 +85,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 The specific ways AI-generated pages in this style go wrong. Check each one before delivering.
 
-1. A third hue sneaks in — the discipline is two hues plus their tints
-   第三种颜色混进来——双色调的纪律就是两个色相（加各自深浅）
-2. Weak contrast between the two — pick hues far apart on the wheel
-   两色对比不足——要选色相环上距离足够远的对撞色
-3. Full-color photos — imagery must be duotone-mapped or the spell breaks
-   照片保持全彩——图片必须做双色映射，否则立刻出戏
+1. Two background blocks alone do not demonstrate the treatment; tonal ranges need not be only two discrete values.
+   不要把两块背景色当成完整示范，也不要要求整个页面只能有两个离散色值。
 
 ## Seen in the wild
 

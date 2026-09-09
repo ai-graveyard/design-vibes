@@ -17,7 +17,7 @@ export function DemoCodeView({ styleId }: DemoCodeViewProps) {
   const [copied, setCopied] = useState(false);
 
   const html = useMemo(
-    () => (source ? renderCodeLines(highlightDemoHtml(source)) : ''),
+    () => (source ? renderCodeLines(highlightDemoHtml(source.replace(/data:((?:image|font)\/[\w.+-]+);base64,([A-Za-z0-9+/=]+)/g, (_, type: string, data: string) => `data:${type};base64,[embedded asset · ${Math.round(data.length * .75 / 1024)} KB]`))) : ''),
     [source]
   );
 
@@ -76,6 +76,7 @@ export function DemoCodeView({ styleId }: DemoCodeViewProps) {
         </div>
       </div>
 
+      {source?.includes(';base64,') && <p className="px-3 py-2 text-[10px] text-gray-400 border-b border-white/10">{language === 'zh' ? '内嵌素材在阅读视图中折叠；复制和下载保留完整文件。' : 'Embedded assets are collapsed for reading. Copy and download include the complete file.'}</p>}
       {/* Code */}
       <div className="flex-1 overflow-auto">
         {error ? (

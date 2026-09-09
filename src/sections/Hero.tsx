@@ -2,17 +2,13 @@ import { useEffect, useRef } from 'react';
 import { useAppStore } from '../store/appStore';
 import { translations } from '../data/translations';
 import { designStyles } from '../data/styles';
-import { ThemeToggle } from '../components/ThemeToggle';
-import { LanguageToggle } from '../components/LanguageToggle';
 import { ArrowRight, ChevronDown, Sparkles } from 'lucide-react';
-import { useCountUp } from '../hooks/useCountUp';
+import { Link } from 'react-router-dom';
 
-export function Hero() {
+export function Hero({ onInstall }: { onInstall: () => void }) {
   const { language } = useAppStore();
   const t = translations[language];
   const title = "DESIGN VIBES";
-  const styleCount = designStyles.length;
-  const displayCount = useCountUp(styleCount);
 
   const spotlightRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef(0);
@@ -41,36 +37,12 @@ export function Hero() {
   const scrollToStyles = () => {
     const stylesSection = document.querySelector('#styles-grid');
     if (stylesSection) {
-      stylesSection.scrollIntoView({ behavior: 'smooth' });
+      stylesSection.scrollIntoView({ behavior: 'auto' });
     }
   };
 
-  const scrollToInstall = () => {
-    document.querySelector('#install-skill')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
-    <section className="snap-screen w-full min-h-screen flex flex-col transition-colors duration-300 bg-white dark:bg-[#1a1a1a]">
-      {/* Top Bar */}
-      <div className="border-b px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between transition-colors duration-300 border-gray-200 dark:border-gray-800">
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 bg-[#FF9F1C]" />
-          <span className="text-[11px] uppercase tracking-[0.2em] font-medium tabular-nums text-gray-500 dark:text-gray-400">
-            {styleCount} {t.hero.designStylesCount}
-          </span>
-        </div>
-        <div className="flex items-center gap-4">
-          <span className="hidden sm:block text-[11px] font-medium tracking-[0.2em] uppercase text-gray-500 dark:text-gray-400">
-            {t.hero.tagline}
-          </span>
-          <div className="hidden sm:block w-2 h-2 bg-[#FF9F1C]" />
-          <div className="flex items-center gap-2 sm:ml-4 sm:pl-4 sm:border-l border-gray-300 dark:border-gray-700">
-            <LanguageToggle />
-            <ThemeToggle />
-          </div>
-        </div>
-      </div>
-
+    <section id="home" className="w-full min-h-[calc(100svh-4rem)] scroll-mt-16 flex flex-col transition-colors duration-300 bg-white dark:bg-[#1a1a1a]">
       {/* Main Content - Grid Background */}
       <div
         className="flex-1 relative overflow-hidden flex flex-col"
@@ -83,14 +55,14 @@ export function Hero() {
         <div ref={spotlightRef} className="hero-spotlight" aria-hidden="true" />
 
         {/* Content */}
-        <div className="relative z-10 flex-1 px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 flex flex-col justify-center">
+        <div className="relative z-10 flex-1 px-4 sm:px-6 lg:px-8 py-8 sm:py-10 flex flex-col justify-center">
           <div className="max-w-7xl mx-auto w-full">
             {/* Large Typography — 字号随视口收缩，保证任何宽度下完整不溢出；逐字入场 */}
             <div className="mb-7 sm:mb-9">
               <h1
                 aria-label={title}
                 className="hero-title font-black tracking-[0.02em] leading-none whitespace-nowrap text-black dark:text-white"
-                style={{ fontSize: 'clamp(2.5rem, 10.6vw, 9rem)' }}
+                style={{ fontSize: 'clamp(2.2rem, 9.4vw, 8rem)' }}
               >
                 {title.split('').map((ch, i) => (
                   <span
@@ -120,22 +92,21 @@ export function Hero() {
                   <p className="mt-3 max-w-xl text-sm sm:text-base leading-relaxed text-gray-600 dark:text-gray-400">
                     {t.hero.valueDescription}
                   </p>
-                  {/* 两个出口都指向下面的屏：主按钮去风格库，次按钮直达第二屏的安装区，
-                      否则安装区排在第二屏很容易被整屏滑过去。
-                      主按钮的 border-transparent 只为跟次按钮的 1px 描边等高，否则两者差 2px */}
+                  {/* 浏览按钮定位到风格库；安装按需打开，关闭后继续原位置浏览。 */}
                   <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-2.5">
                     <button
                       onClick={scrollToStyles}
                       type="button"
-                      className="relative overflow-hidden inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-bold rounded-lg border border-transparent bg-[#FF9F1C] text-white transition-all hover:bg-[#E8900A] active:scale-[0.98]"
+                      className="relative overflow-hidden inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-bold rounded-lg border border-transparent bg-[#FF9F1C] text-[#2d1b06] transition-all hover:bg-[#E8900A] active:scale-[0.98]"
                     >
                       {t.hero.primaryCta}
                       <ChevronDown className="w-4 h-4" />
                       <span className="btn-sheen" aria-hidden="true" />
                     </button>
                     <button
-                      onClick={scrollToInstall}
+                      onClick={onInstall}
                       type="button"
+                      aria-haspopup="dialog"
                       className="inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-bold rounded-lg border bg-white border-gray-200 text-gray-700 transition-colors hover:border-[#FF9F1C] hover:text-[#D98200] active:scale-[0.98] dark:bg-[#1a1a1a] dark:border-gray-700 dark:text-gray-300 dark:hover:border-[#FF9F1C] dark:hover:text-[#FFB340]"
                     >
                       <Sparkles className="w-4 h-4" />
@@ -147,19 +118,17 @@ export function Hero() {
                   </p>
                 </div>
 
-                {/* Right: Stats — 数字从 0 滚动到位，作为内容规模证明 */}
-                <div className="hidden sm:flex items-end gap-2 shrink-0">
-                  <span className="text-6xl lg:text-8xl font-black leading-none tabular-nums text-black dark:text-white">
-                    {displayCount}
-                  </span>
-                  <div className="pb-2">
-                    <span className="text-[11px] uppercase tracking-[0.15em] block text-gray-400 dark:text-gray-500">
-                      {t.hero.designStylesCount}
-                    </span>
-                    <div className="w-full h-0.5 bg-[#FF9F1C] mt-1" />
-                  </div>
-                </div>
+
               </div>
+            </div>
+            <div className="hero-studies" aria-label={language === 'zh' ? '精选演示' : 'Featured studies'}>
+              {['neo-brutalism', 'braun', 'liquid-glass'].map((id, index) => {
+                const style = designStyles.find(item => item.id === id)!;
+                return <Link to={`/style/${id}`} key={id} className="hero-study">
+                  <div className="hero-study-image"><img src={`/thumbs/${id}.jpg`} alt={language === 'zh' ? `${style.name}真实页面预览` : `${style.nameEn} page preview`} width="1280" height="800" decoding="async" /></div>
+                  <div><span>0{index + 1} / {language === 'zh' ? style.name : style.nameEn}</span><ArrowRight size={14} /></div>
+                </Link>;
+              })}
             </div>
           </div>
         </div>

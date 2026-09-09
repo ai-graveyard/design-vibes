@@ -13,6 +13,8 @@ const out = path.join(root, 'skills/design-vibes');
 const tpl = (name) => readFileSync(path.join(root, 'scripts/skill-templates', name), 'utf8');
 
 const { designStyles } = await import(path.join(root, 'src/data/styles.ts'));
+const { parseDemoTokens } = await import(path.join(root, 'src/lib/demoSource.ts'));
+const { styleSpecs, specVersion, kindNames } = await import(path.join(root, 'src/data/styleSpecs.ts'));
 const { stylePrompts } = await import(path.join(root, 'src/data/prompts.ts'));
 const { scenes, difficultyTiers } = await import(path.join(root, 'src/data/scenes.ts'));
 
@@ -37,17 +39,7 @@ for (const s of scenes) {
 function readDemo(id) {
   const file = path.join(root, 'public/demos', `${id}.html`);
   const source = readFileSync(file, 'utf8');
-  const m = /:root\s*\{([^}]*)\}/.exec(source);
-  const tokens = m
-    ? m[1]
-        .split(';')
-        .map((line) => line.trim())
-        .filter((line) => line.startsWith('--'))
-        .map((line) => {
-          const i = line.indexOf(':');
-          return { name: line.slice(0, i).trim(), value: line.slice(i + 1).trim() };
-        })
-    : [];
+  const tokens = parseDemoTokens(source);
   return { source, tokens, lines: source.split('\n').length };
 }
 
@@ -65,16 +57,24 @@ function styleDoc(style) {
   const level = difficultyById.get(style.id);
   const meta = [
     ...(style.name === style.nameEn ? [] : [`**Chinese name:** ${style.name}`]),
+    `**Type:** ${kindNames[styleSpecs[style.id].kind].en}`,
+    `**Study version:** ${specVersion}`,
     `**Difficulty:** ${level ? `${level} (${DIFFICULTY_LABEL[level]})` : 'unrated'}`,
     `**Tags:** ${style.tagsEn.join(' · ')}`,
     `**Fits:** ${(scenesByStyle.get(style.id) ?? ['—']).join(', ')}`,
-  ].join('  \n');
+  ].join('\n\n');
 
   return `# ${style.nameEn} \`${style.id}\`
 
 ${meta}
 
 ${style.descriptionEn}
+
+## Study boundaries and references
+
+${styleSpecs[style.id].approximation?.en ?? 'An original web interpretation. Palette, assets and dimensions describe this example, not a universal definition of the style.'}
+
+${(styleSpecs[style.id].references ?? []).map(ref => `- [${ref.title}](${ref.url})`).join('\n') || 'The composition below is an authored study; historical inspiration names are not certified reproductions.'}
 
 ## Prompt
 
@@ -95,7 +95,7 @@ Hand this to any AI coding tool, or use it as your own build brief.
 
 ## Design tokens
 
-Lifted verbatim from the reference implementation. Use these exact values.
+Parsed from this reference implementation. Preserve these values when matching this demo; adapt them deliberately when applying the broader style.
 
 \`\`\`css
 :root {

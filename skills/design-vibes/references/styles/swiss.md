@@ -1,11 +1,24 @@
 # Swiss Style / International Typographic `swiss`
 
-**Chinese name:** 瑞士风格  
-**Difficulty:** 2 (Medium)  
-**Tags:** Minimal · Classic  
+**Chinese name:** 瑞士风格
+
+**Type:** Design movement
+
+**Study version:** 2026.09
+
+**Difficulty:** 2 (Medium)
+
+**Tags:** Minimal · Classic
+
 **Fits:** E-commerce / Retail, Creative / Design, Enterprise / B2B
 
-A design revolution born in 1950s Zurich, advocating 'objectivity' and 'universality'. Breaking monotony through asymmetric layouts, building visual order with Helvetica, using typography itself as the primary graphic element — pure typographic art.
+Build an asymmetric grid with shared axes for headlines, rules, numbers and body copy. Use neo-grotesque type weight, spacing and scale to establish order; red carries emphasis in this study.
+
+## Study boundaries and references
+
+An original web interpretation. Palette, assets and dimensions describe this example, not a universal definition of the style.
+
+- [MoMA · Josef Müller-Brockmann](https://www.moma.org/artists/4154-josef-muller-brockmann)
 
 ## Prompt
 
@@ -13,20 +26,20 @@ Hand this to any AI coding tool, or use it as your own build brief.
 
 **English**
 
-> Swiss International Style with a strict asymmetric grid. Palette is black and white with sparing primary-color blocks (red #FF0000, yellow #FFD700, blue #0000FF) used only as accents, never decoration. Use a wide-tracked monospace for kicker labels and a Helvetica-like sans-serif for oversized numerals and body copy. Keep every corner square — no border-radius — and let column alignment and whitespace carry the objective, neutral tone.
+> Swiss Style / International Typographic. Build an asymmetric grid with shared axes for headlines, rules, numbers and body copy. Use neo-grotesque type weight, spacing and scale to establish order; red carries emphasis in this study. A large headline alone is insufficient. Column measure, baselines and whitespace matter; primary colors are optional. Adapt palette and dimensions to the content; use the current demo reference brief for an exact reproduction.
 
 **中文**
 
-> 瑞士国际主义风格，严格的非对称网格布局。配色以黑白为主，红（#FF0000）、黄（#FFD700）、蓝（#0000FF）三原色只作为局部强调块出现，不做装饰。等宽字体、宽字距用于小标签，Helvetica 风格无衬线体用于超大号数字和正文。所有元素都不设圆角，靠栏线对齐和大量留白传达客观中立的气质。
+> 瑞士风格。建立非对称网格，标题、栏线、编号和正文共享对齐轴。用新怪诞体的字重、字距和比例建立秩序；红色在本例中承担信息强调。不要只放一个超大标题；正文栏宽、基线和留白同样重要，红黄蓝并非强制色盘。配色与尺寸可根据内容调整；精确复现请使用当前演示的参考包。
 
 **Short form** — when you only need one line:
 
-- EN: Swiss Style, black-white with primary color accents, square-cornered grid layout
-- 中文: 瑞士风格，黑白+三原色点缀，无圆角网格排版
+- EN: Swiss Style / International Typographic: Build an asymmetric grid with shared axes for headlines, rules, numbers and body copy.
+- 中文: 瑞士风格：建立非对称网格，标题、栏线、编号和正文共享对齐轴。
 
 ## Design tokens
 
-Lifted verbatim from the reference implementation. Use these exact values.
+Parsed from this reference implementation. Preserve these values when matching this demo; adapt them deliberately when applying the broader style.
 
 ```css
 :root {
@@ -36,18 +49,15 @@ Lifted verbatim from the reference implementation. Use these exact values.
   --gold: #FFD700;
   --blue: #0000FF;
   --hair: #000000;
-  --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+  --sans: "Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;
   --mono: ui-monospace,"SF Mono",Menlo,Consolas,monospace;
 }
 ```
 
 ## Signature traits
 
-- Asymmetric dynamic layouts - breaking visual inertia
-- Helvetica/Neue Haas Grotesk typography
-- High-contrast black & white - primary color accents
-- Mathematical whitespace ratios - golden ratio
-- Type as image - typographic sculpture
+- Composition - Build an asymmetric grid with shared axes for headlines, rules, numbers and body copy.
+- Signature - Use neo-grotesque type weight, spacing and scale to establish order; red carries emphasis in this study.
 
 ## Where it works
 
@@ -74,12 +84,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 The specific ways AI-generated pages in this style go wrong. Check each one before delivering.
 
-1. Primary colors as decoration — red/yellow/blue are small functional accents; large fields turn it into poster paint
-   三原色当装饰铺满——红黄蓝只做小面积功能强调，大面积使用就成了海报涂鸦
-2. Rounded corners — border-radius does not exist in Swiss style
-   用了圆角——瑞士风的世界里没有 border-radius
-3. Centered symmetric layouts — the asymmetric grid is the soul; centering makes it generic
-   居中对称布局——非对称网格才是灵魂，居中就平庸了
+1. A large headline alone is insufficient. Column measure, baselines and whitespace matter; primary colors are optional.
+   不要只放一个超大标题；正文栏宽、基线和留白同样重要，红黄蓝并非强制色盘。
 
 ## Seen in the wild
 
@@ -87,6 +93,6 @@ Josef Müller-Brockmann works · Emil Ruder works · Neue Haas Grotesk site · T
 
 ## Reference implementation
 
-`assets/demos/swiss.html` — a complete single-file page (324 lines, no scripts, no external requests). Read it for layout and composition patterns, or copy it as a starting point.
+`assets/demos/swiss.html` — a complete single-file page (428 lines, no scripts, no external requests). Read it for layout and composition patterns, or copy it as a starting point.
 
 Live preview: https://design-vibes.v2ai.org/style/swiss

@@ -34,7 +34,7 @@ export function StyleDetailPage() {
   const compareWith = designStyles[(currentIndex + 1) % designStyles.length];
 
   return (
-    <div className="h-screen flex flex-col bg-white dark:bg-[#1a1a1a]">
+    <div className="h-dvh flex flex-col bg-white dark:bg-[#1a1a1a]">
       {/* Header */}
       <header className="shrink-0 border-b px-4 py-3 flex items-center justify-between bg-white border-gray-200 dark:bg-[#0f0f0f] dark:border-gray-800">
         <div className="flex items-center gap-2 md:gap-4">
@@ -106,13 +106,13 @@ export function StyleDetailPage() {
       <div className="flex-1 flex overflow-hidden">
         {/* Desktop: Left Sidebar */}
         {!isMobile && (
-          <aside className="w-64 shrink-0 border-r border-gray-200 dark:border-gray-800 animate-fade-up-blur">
+          <aside className="w-48 shrink-0 border-r border-gray-200 dark:border-gray-800 animate-fade-up-blur">
             <StyleSidebar currentStyleId={style.id} />
           </aside>
         )}
 
         {/* Right Content — key 让切换风格时组件本地状态（复制态）自动重置；设备预览是全局状态，切换风格不受影响 */}
-        <main className="flex-1 overflow-hidden animate-fade-up-blur" style={{ animationDelay: '90ms' }}>
+        <main className="flex-1 min-w-0 overflow-hidden animate-fade-up-blur" style={{ animationDelay: '90ms' }}>
           <StyleDetailContent key={style.id} style={style} />
         </main>
       </div>

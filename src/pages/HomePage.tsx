@@ -1,17 +1,17 @@
+import { useState } from 'react';
 import { Hero } from '../sections/Hero';
 import { StylesGrid } from '../sections/StylesGrid';
-import { SceneGuide } from '../sections/SceneGuide';
 import { InstallSkill } from '../sections/InstallSkill';
 import { Footer } from '../sections/Footer';
+import { HomeNav } from '../components/HomeNav';
 import { usePageMeta } from '../hooks/usePageMeta';
-import { useScrollSnap } from '../hooks/useScrollSnap';
 import { useAppStore } from '../store/appStore';
 import { designStyles } from '../data/styles';
 
 export function HomePage() {
   const { language } = useAppStore();
+  const [installOpen, setInstallOpen] = useState(false);
   const count = designStyles.length;
-  useScrollSnap();
   usePageMeta(
     language === 'zh' ? 'Design Vibes · 网页改造提示词库' : 'Design Vibes · Web Restyle Prompt Library',
     language === 'zh'
@@ -20,11 +20,13 @@ export function HomePage() {
   );
   return (
     <>
-      <Hero />
-      <InstallSkill />
-      <StylesGrid />
-      <SceneGuide />
+      <HomeNav onInstall={() => setInstallOpen(true)} />
+      <main>
+        <Hero onInstall={() => setInstallOpen(true)} />
+        <StylesGrid />
+      </main>
       <Footer />
+      {installOpen && <InstallSkill onClose={() => setInstallOpen(false)} />}
     </>
   );
 }

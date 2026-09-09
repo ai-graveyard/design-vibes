@@ -1,3 +1,4 @@
+import { parseDemoTokens } from '../lib/demoSource';
 import { useMemo, useState } from 'react';
 import { Copy, Check, Braces } from 'lucide-react';
 import { useDemoSource } from '../hooks/useDemoSource';
@@ -19,13 +20,7 @@ export function DesignTokens({ styleId }: DesignTokensProps) {
   const [copied, setCopied] = useState(false);
 
   const tokens = useMemo(() => {
-    if (!source) return [];
-    const m = /:root\s*\{([^}]*)\}/.exec(source);
-    if (!m) return [];
-    return [...m[1].matchAll(/--([-\w]+)\s*:\s*([^;]+);/g)].map((mm) => ({
-      name: `--${mm[1]}`,
-      value: mm[2].trim().replace(/\s+/g, ' '),
-    }));
+    return source ? parseDemoTokens(source) : [];
   }, [source]);
 
   if (tokens.length === 0) return null;

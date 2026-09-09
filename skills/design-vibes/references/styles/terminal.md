@@ -1,11 +1,24 @@
 # Terminal `terminal`
 
-**Chinese name:** 终端黑客风  
-**Difficulty:** 1 (Easy)  
-**Tags:** Vintage · Distinctive  
+**Chinese name:** 终端黑客风
+
+**Type:** Visual aesthetic
+
+**Study version:** 2026.09
+
+**Difficulty:** 1 (Easy)
+
+**Tags:** Vintage · Distinctive
+
 **Fits:** Personal / Blog
 
-The green phosphor glow, scanlines, and command-line grammar of CRT screens brought to the web. Monospace is the only typeface; commands and output are the only narrative. Native tongue for developers, hacker-movie mystique for everyone else.
+Organize content as commands, output, logs and status in a terminal reading sequence. Monospace type, a limited palette, cursor and explicit success/error states.
+
+## Study boundaries and references
+
+An original web interpretation. Palette, assets and dimensions describe this example, not a universal definition of the style.
+
+The composition below is an authored study; historical inspiration names are not certified reproductions.
 
 ## Prompt
 
@@ -13,20 +26,20 @@ Hand this to any AI coding tool, or use it as your own build brief.
 
 **English**
 
-> Terminal hacker style. Near-black green base (#0A0F0B), phosphor green text (#33FF66) with a subtle text-shadow glow, amber (#FFB000) for warnings, monospace only (ui-monospace stack) everywhere. Overlay full-screen CRT scanlines (3px repeating-linear-gradient stripes) plus a corner vignette. Narrate in terminal grammar: $ prompt command lines, output logs with [ok]/[warn] prefixes, box-drawing characters (┌─┐) as borders, and a blinking block cursor (step animation). Man-page section titles in wide-tracked uppercase. Radii never exceed 4px.
+> Terminal. Organize content as commands, output, logs and status in a terminal reading sequence. Monospace type, a limited palette, cursor and explicit success/error states. Avoid meaningless code and persistent blinking; commands should be readable and purposeful. Adapt palette and dimensions to the content; use the current demo reference brief for an exact reproduction.
 
 **中文**
 
-> 终端黑客风格。近黑绿底（#0A0F0B），磷光绿主文字（#33FF66）带轻微 text-shadow 辉光，琥珀色（#FFB000）做警示强调，全站只用等宽字体（ui-monospace 栈）。全屏叠加 CRT 扫描线（repeating-linear-gradient 3px 半透明横纹）和四角暗角。内容用终端语法叙事：$ 提示符命令行、[ok]/[warn] 前缀的输出日志、box-drawing 字符（┌─┐）画边框、闪烁块状光标（step 动画）。man page 式区块标题全大写宽字距。圆角不超过 4px。
+> 终端黑客风。按命令、输出、日志与状态组织内容，保留终端的阅读顺序。等宽字、有限色盘、光标与清楚的成功/失败状态。避免满屏无意义代码和持续闪烁；命令示例要可读且说明用途。配色与尺寸可根据内容调整；精确复现请使用当前演示的参考包。
 
 **Short form** — when you only need one line:
 
-- EN: Terminal style, phosphor green on near-black with amber, monospace with scanlines and blinking cursor
-- 中文: 终端黑客风，黑绿底磷光绿+琥珀，等宽字体+扫描线+闪烁光标
+- EN: Terminal: Organize content as commands, output, logs and status in a terminal reading sequence.
+- 中文: 终端黑客风：按命令、输出、日志与状态组织内容，保留终端的阅读顺序。
 
 ## Design tokens
 
-Lifted verbatim from the reference implementation. Use these exact values.
+Parsed from this reference implementation. Preserve these values when matching this demo; adapt them deliberately when applying the broader style.
 
 ```css
 :root {
@@ -45,11 +58,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 ## Signature traits
 
-- Monospace everywhere - ui-monospace stack
-- Phosphor green glow - text-shadow halos
-- CRT scanlines - repeating-gradient overlay
-- Blinking block cursor - step animation
-- Terminal chrome with $ prompts
+- Composition - Organize content as commands, output, logs and status in a terminal reading sequence.
+- Signature - Monospace type, a limited palette, cursor and explicit success/error states.
 
 ## Where it works
 
@@ -76,12 +86,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 The specific ways AI-generated pages in this style go wrong. Check each one before delivering.
 
-1. A non-monospace font sneaks in — one sans-serif breaks character
-   混进了非等宽字体——一处 sans-serif 就足以出戏
-2. Single-shade green — phosphor needs bright, dim, and glow tiers
-   绿色只有一档——磷光绿需要亮、暗、辉光多档层次
-3. Scanlines too heavy — overlay opacity beyond ~10% kills readability
-   扫描线太重——叠加层透明度超过 10% 会杀死可读性
+1. Avoid meaningless code and persistent blinking; commands should be readable and purposeful.
+   避免满屏无意义代码和持续闪烁；命令示例要可读且说明用途。
 
 ## Seen in the wild
 

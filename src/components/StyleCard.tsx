@@ -1,4 +1,5 @@
-import { Star, Copy, Check, ArrowUpRight } from 'lucide-react';
+import { kindNames, styleSpecs } from '../data/styleSpecs';
+import { Copy, Check, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import type { DesignStyle } from '../data/styles';
 import { DemoPreview } from './DemoPreview';
@@ -13,6 +14,7 @@ interface StyleCardProps {
 export function StyleCard({ style }: StyleCardProps) {
   const { language } = useAppStore();
   const t = translations[language];
+  const [copyError, setCopyError] = useState(false);
   const [copied, setCopied] = useState<'simple' | 'full' | null>(null);
 
   const handleCopyPrompt = async (e: React.MouseEvent, type: 'simple' | 'full') => {
@@ -21,15 +23,18 @@ export function StyleCard({ style }: StyleCardProps) {
     e.stopPropagation();
     // prompts 数据（~40KB 源码）点击时才动态加载，不进首页主包；
     // styles/prompts/demos 三处 id 对齐由构建期 validate-demos.mjs 保证
-    const { getPromptById, getFullPromptText } = await import('../data/prompts');
+    setCopyError(false);
+    try {
+    const { getPromptById, getReproductionPrompt } = await import('../data/prompts');
     const promptData = getPromptById(style.id);
     if (!promptData) return;
     const textToCopy = type === 'full'
-      ? getFullPromptText(promptData, language)
+      ? getReproductionPrompt(promptData, language, await (await import('../lib/demoSource')).loadDemoSource(style.id), window.location.origin)
       : language === 'zh' ? promptData.prompt : promptData.promptEn;
     await navigator.clipboard.writeText(textToCopy);
     setCopied(type);
     setTimeout(() => setCopied(null), 2000);
+    } catch { setCopyError(true); }
   };
 
   return (
@@ -41,13 +46,12 @@ export function StyleCard({ style }: StyleCardProps) {
         {/* 真实 demo 的缩放预览 */}
         <div className="relative aspect-[16/10] overflow-hidden border-b bg-gray-50 border-gray-100 dark:bg-[#0a0a0a] dark:border-gray-800">
           <div className="absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-[1.02]">
-            <DemoPreview styleId={style.id} placeholderColor={style.colors[0]} scrollOnHover thumbnail />
+            <DemoPreview styleId={style.id} placeholderColor={style.colors[0]} thumbnail />
           </div>
 
           {/* Rating Badge */}
           <div className="absolute top-3 right-3 flex items-center gap-1 px-2 py-1 bg-white/95 backdrop-blur-sm rounded-md shadow-sm">
-            <Star className="w-3 h-3 fill-[#FF9F1C] text-[#FF9F1C]" />
-            <span className="text-xs font-bold text-black tabular-nums">{style.rating.toFixed(1)}</span>
+            <span className="text-xs font-bold text-black tabular-nums">{kindNames[styleSpecs[style.id].kind][language]}</span>
           </div>
 
           {/* Hover Hint */}
@@ -71,30 +75,11 @@ export function StyleCard({ style }: StyleCardProps) {
 
           {/* Description */}
           <p className="text-xs leading-relaxed mb-3 line-clamp-2 text-gray-600 dark:text-gray-400">
-            {language === 'zh' ? style.description : style.descriptionEn}
+            {styleSpecs[style.id].composition[language]}
           </p>
 
-          {/* Core Features */}
-          <div className="mb-3">
-            <span className="text-[10px] uppercase tracking-wider mb-1.5 block text-gray-400 dark:text-gray-500">
-              {t.card.coreFeatures}
-            </span>
-            <div className="flex flex-wrap gap-1.5">
-              {(language === 'zh' ? style.features : style.featuresEn).slice(0, 4).map((feature, i) => (
-                <span
-                  key={i}
-                  className="inline-block max-w-36 truncate px-2 py-1 text-[10px] rounded bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300"
-                >
-                  {feature.split(' - ')[0]}
-                </span>
-              ))}
-              {style.features.length > 4 && (
-                <span className="px-2 py-1 text-[10px] rounded text-gray-400 dark:text-gray-500">
-                  +{style.features.length - 4}
-                </span>
-              )}
-            </div>
-          </div>
+          <p className="text-[11px] leading-relaxed mb-4 line-clamp-2 text-gray-500 dark:text-gray-400">{styleSpecs[style.id].signature[language]}</p>
+          {copyError && <p role="status" className="text-xs text-amber-700 mb-3">{language === 'zh' ? '复制暂不可用，请进入详情下载参考资料。' : 'Could not copy. Open the study to download the brief.'}</p>}
 
           {/* Tags */}
           <div className="flex flex-wrap gap-1.5 mb-4">
@@ -103,7 +88,7 @@ export function StyleCard({ style }: StyleCardProps) {
                 key={i}
                 className={`px-2 py-0.5 text-[10px] uppercase tracking-wider rounded ${
                   i === 0
-                    ? 'bg-[#FF9F1C] text-white'
+                    ? 'bg-[#FF9F1C] text-[#2d1b06]'
                     : 'bg-black text-white'
                 }`}
               >

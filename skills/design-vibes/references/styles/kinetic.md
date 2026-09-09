@@ -1,11 +1,24 @@
 # Kinetic Typography `kinetic`
 
-**Chinese name:** 动态字体  
-**Difficulty:** 3 (Hard)  
-**Tags:** Art · Avant-garde  
+**Chinese name:** 动态字体
+
+**Type:** Motion approach
+
+**Study version:** 2026.09
+
+**Difficulty:** 3 (Hard)
+
+**Tags:** Art · Avant-garde
+
 **Fits:** Creative / Design
 
-Transforming text from static reading objects to dynamic visual experiences. Scroll-triggered typography animations, text deconstruction and reassembly, font movement in 3D space. The favorite digital expression of creative agencies and directors.
+Use moving type for rhythm and storytelling while preserving a complete static reading structure. Choreograph speed, displacement, spacing and weight; provide pause and respect reduced motion.
+
+## Study boundaries and references
+
+An original web interpretation. Palette, assets and dimensions describe this example, not a universal definition of the style.
+
+The composition below is an authored study; historical inspiration names are not certified reproductions.
 
 ## Prompt
 
@@ -13,20 +26,20 @@ Hand this to any AI coding tool, or use it as your own build brief.
 
 **English**
 
-> Kinetic Typography style — text as the animation, not decoration on top of it. Keep color almost grayscale (#0A0A0A, #2B2B2B, #8A8A8A) with a single red accent (#FF0000) used sparingly, so motion — not color — carries the energy. Pair a wide-tracked monospace for small kicker labels with a heavy sans-serif for oversized headlines. Implementation: smooth scroll-behavior plus scroll-triggered keyframe animations that make letters wave, spin, slide, or jump as the user scrolls — describe the specific motion per section (e.g. letters wave in on scroll, or slide horizontally) rather than leaving it generic.
+> Kinetic Typography. Use moving type for rhythm and storytelling while preserving a complete static reading structure. Choreograph speed, displacement, spacing and weight; provide pause and respect reduced motion. Do not replace content with endless marquees or trap important copy inside unpausable motion. Adapt palette and dimensions to the content; use the current demo reference brief for an exact reproduction.
 
 **中文**
 
-> 动态字体风格——文字本身就是动画，而不是给文字加装饰动画。配色几乎只用灰阶（#0A0A0A、#2B2B2B、#8A8A8A），只留一处红色强调（#FF0000）少量使用，让动效而不是色彩来承载张力。宽字距等宽体用于小标签，加粗无衬线体用于超大号标题。实现上：用平滑滚动（scroll-behavior: smooth）配合滚动触发的关键帧动画，让文字随滚动产生波动、旋转、滑动或跳动——需要具体描述每一段的动效方式（比如某段文字滚动进入时逐字波动，某段整体横向滑出），不要只写“滚动触发动效”这种笼统说法。
+> 动态字体。让文字运动承担节奏与叙事，静止时仍保留完整阅读结构。速度、位移、字距与字重有明确编排，提供暂停并尊重减弱动态效果。避免持续跑马灯代替内容；不要把关键文案放在无法停下的动画里。配色与尺寸可根据内容调整；精确复现请使用当前演示的参考包。
 
 **Short form** — when you only need one line:
 
-- EN: Kinetic Typography, grayscale with red accent, scroll-triggered letter wave/slide animation
-- 中文: 动态字体，灰阶+红色点缀，滚动触发的逐字波动/滑动动效
+- EN: Kinetic Typography: Use moving type for rhythm and storytelling while preserving a complete static reading structure.
+- 中文: 动态字体：让文字运动承担节奏与叙事，静止时仍保留完整阅读结构。
 
 ## Design tokens
 
-Lifted verbatim from the reference implementation. Use these exact values.
+Parsed from this reference implementation. Preserve these values when matching this demo; adapt them deliberately when applying the broader style.
 
 ```css
 :root {
@@ -42,11 +55,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 ## Signature traits
 
-- GSAP/Framer Motion typography animation
-- Scroll-triggered progressive reveals
-- Text particle dissolution and reassembly
-- 3D CSS transform effects
-- Variable fonts animation
+- Composition - Use moving type for rhythm and storytelling while preserving a complete static reading structure.
+- Signature - Choreograph speed, displacement, spacing and weight; provide pause and respect reduced motion.
 
 ## Where it works
 
@@ -74,12 +84,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 The specific ways AI-generated pages in this style go wrong. Check each one before delivering.
 
-1. Everything animating at once — kinetic type needs choreography; simultaneous motion means no focus
-   所有文字同时在动——动态字体需要编排节奏，全部一起动等于没有焦点
-2. Relentless loops — keep cycles slow with resting beats, or it's nauseating
-   循环不停不歇——动画要慢、要留静止段，否则让人头晕
-3. Ignoring prefers-reduced-motion — the accessibility red line of motion-heavy styles
-   忽略 prefers-reduced-motion——动效风格的可访问性红线
+1. Do not replace content with endless marquees or trap important copy inside unpausable motion.
+   避免持续跑马灯代替内容；不要把关键文案放在无法停下的动画里。
 
 ## Seen in the wild
 

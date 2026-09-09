@@ -1,11 +1,24 @@
 # Anti-Design `anti-design`
 
-**Chinese name:** 反设计  
-**Difficulty:** 2 (Medium)  
-**Tags:** Avant-garde · Distinctive · Trendy  
+**Chinese name:** 反设计
+
+**Type:** Visual aesthetic
+
+**Study version:** 2026.09
+
+**Difficulty:** 2 (Medium)
+
+**Tags:** Avant-garde · Distinctive · Trendy
+
 **Fits:** E-commerce / Retail
 
-'Rules are made to be broken' — Anti-Design is a total subversion of traditional design principles. Chaotic layouts, clashing colors, distorted typography — every seemingly 'wrong' choice is intentional. This is Gen Z digital natives' visual mother tongue.
+Break selected alignment and typographic conventions while keeping navigation and content order understandable. Clashing primaries, displaced labels and mixed type create controlled tension in this study.
+
+## Study boundaries and references
+
+An original web interpretation. Palette, assets and dimensions describe this example, not a universal definition of the style.
+
+The composition below is an authored study; historical inspiration names are not certified reproductions.
 
 ## Prompt
 
@@ -13,20 +26,20 @@ Hand this to any AI coding tool, or use it as your own build brief.
 
 **English**
 
-> Anti-Design style, deliberately breaking every convention. Palette clashes on purpose: pure blue (#0000FF), magenta (#FF00FF), yellow (#FFFF00) against stark white and black. Mix monospace, sans-serif, and serif fonts inconsistently within the same page — no single typographic system. Give different elements mismatched thick borders (2-5px, different colors and widths), scatter circular badges, and misalign the grid on purpose, while keeping text still legible.
+> Anti-Design. Break selected alignment and typographic conventions while keeping navigation and content order understandable. Clashing primaries, displaced labels and mixed type create controlled tension in this study. Occlusion, unusable controls and illegibility are not design goals. Adapt palette and dimensions to the content; use the current demo reference brief for an exact reproduction.
 
 **中文**
 
-> 反设计风格，故意打破常规。配色刻意冲突：纯蓝（#0000FF）、品红（#FF00FF）、黄（#FFFF00），底色是硬朗的黑白。同一页面里混用等宽体、无衬线体、衬线体，不统一字体系统。不同元素配不匹配的粗边框（2-5px，颜色宽度都不同），散布圆形徽标，网格故意错位——但文字仍要保持可读。
+> 反设计。有意打破局部对齐和字体惯例，同时让导航与内容顺序可理解。本例用冲突原色、错位标签和字体混搭，形成有控制的反差。不要把遮挡、不可点击或不可读当成设计目标。配色与尺寸可根据内容调整；精确复现请使用当前演示的参考包。
 
 **Short form** — when you only need one line:
 
-- EN: Anti-Design, clashing primary colors with mixed fonts, mismatched misaligned borders
-- 中文: 反设计，冲突原色+混搭字体，粗细不一的错位边框
+- EN: Anti-Design: Break selected alignment and typographic conventions while keeping navigation and content order understandable.
+- 中文: 反设计：有意打破局部对齐和字体惯例，同时让导航与内容顺序可理解。
 
 ## Design tokens
 
-Lifted verbatim from the reference implementation. Use these exact values.
+Parsed from this reference implementation. Preserve these values when matching this demo; adapt them deliberately when applying the broader style.
 
 ```css
 :root {
@@ -45,11 +58,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 ## Signature traits
 
-- Intentionally breaking alignment and spacing
-- Clashing color combos - green-red, pink-orange
-- Distorted and stretched typography
-- Randomized element positions
-- Low-quality/glitch aesthetic elements
+- Composition - Break selected alignment and typographic conventions while keeping navigation and content order understandable.
+- Signature - Clashing primaries, displaced labels and mixed type create controlled tension in this study.
 
 ## Where it works
 
@@ -77,12 +87,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 The specific ways AI-generated pages in this style go wrong. Check each one before delivering.
 
-1. Chaos without curation — anti-design is engineered loss of control; random mess is just mess
-   乱得没有秩序——反设计是精心策划的失控，随机堆砌只是真的乱
-2. Breaking usability too — buttons must still be findable and clickable
-   把可用性也一起反掉——按钮仍要能找到、能点击
-3. Half-hearted rebellion — mild clashes read as mistakes, not statements
-   叛逆得不够彻底——半吊子的冲突看起来像失误而不是宣言
+1. Occlusion, unusable controls and illegibility are not design goals.
+   不要把遮挡、不可点击或不可读当成设计目标。
 
 ## Seen in the wild
 

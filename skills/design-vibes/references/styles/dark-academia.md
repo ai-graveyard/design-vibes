@@ -1,11 +1,24 @@
 # Dark Academia `dark-academia`
 
-**Chinese name:** 暗黑学院  
-**Difficulty:** 2 (Medium)  
-**Tags:** Classic · Vintage  
+**Chinese name:** 暗黑学院
+
+**Type:** Visual aesthetic
+
+**Study version:** 2026.09
+
+**Difficulty:** 2 (Medium)
+
+**Tags:** Classic · Vintage
+
 **Fits:** Art / Culture
 
-An aesthetic subculture from Tumblr and TikTok, a romanticized imagination of classical education and knowledge pursuit. Dark leather and wood tones, classical literature imagery, mysterious academic atmosphere. Like entering Hogwarts or Oxford's ancient libraries.
+Organize content around books, scholarship and reading, with a long-form typographic hierarchy. Dark wood, forest green, wine and parchment with restrained serif type and material detail.
+
+## Study boundaries and references
+
+An original web interpretation. Palette, assets and dimensions describe this example, not a universal definition of the style.
+
+The composition below is an authored study; historical inspiration names are not certified reproductions.
 
 ## Prompt
 
@@ -13,20 +26,20 @@ Hand this to any AI coding tool, or use it as your own build brief.
 
 **English**
 
-> Dark Academia style, moody and literary. Palette: aged parchment (#FFF3C4, #F7ECC9, #F0E3BD) grounded by deep espresso brown (#3A2A17), warm gold (#F5C85C), and tan (#C9B489) — like candlelight on old leather and paper. Use a classic literary serif throughout, headlines and body alike. Give frames and cards slightly irregular, worn-edge border-radius (asymmetric values, not a clean rectangle) to suggest an aged book cover, and use warm candlelight-toned shadows instead of cool gray ones.
+> Dark Academia. Organize content around books, scholarship and reading, with a long-form typographic hierarchy. Dark wood, forest green, wine and parchment with restrained serif type and material detail. Do not sacrifice body contrast to darkness or merely pile on vintage ornament. Adapt palette and dimensions to the content; use the current demo reference brief for an exact reproduction.
 
 **中文**
 
-> 暗黑学院风格，忧郁又书卷气。配色：陈旧羊皮纸色（#FFF3C4、#F7ECC9、#F0E3BD），配深咖啡棕（#3A2A17）、暖金（#F5C85C）、茶褐（#C9B489）——像烛光打在旧皮革和纸张上。标题和正文统一用经典文学感衬线字体。画框和卡片用略不规则的“磨损边缘”圆角（数值不对称，不是干净的矩形），暗示旧书封面的质感，阴影用暖烛光色调而不是冷灰色。
+> 暗黑学院。以书籍、知识与阅读场景组织内容，采用适合长文的文字层级。深木色、墨绿、酒红和纸色，搭配克制的衬线体与材质细节。不要把背景压黑到看不清正文，也不要只堆叠复古装饰。配色与尺寸可根据内容调整；精确复现请使用当前演示的参考包。
 
 **Short form** — when you only need one line:
 
-- EN: Dark Academia, parchment with espresso-brown and gold, worn-edge radius with candlelight shadows
-- 中文: 暗黑学院，羊皮纸+咖啡棕暖金，磨损边缘圆角+烛光暖阴影
+- EN: Dark Academia: Organize content around books, scholarship and reading, with a long-form typographic hierarchy.
+- 中文: 暗黑学院：以书籍、知识与阅读场景组织内容，采用适合长文的文字层级。
 
 ## Design tokens
 
-Lifted verbatim from the reference implementation. Use these exact values.
+Parsed from this reference implementation. Preserve these values when matching this demo; adapt them deliberately when applying the broader style.
 
 ```css
 :root {
@@ -46,11 +59,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 ## Signature traits
 
-- Dark tones - brown/forest green/burgundy/black
-- Vintage textures - leather/old paper/wax seals
-- Serif fonts - Garamond/Baskerville
-- Classical decorative elements - quills/books
-- Moody atmospheric lighting
+- Composition - Organize content around books, scholarship and reading, with a long-form typographic hierarchy.
+- Signature - Dark wood, forest green, wine and parchment with restrained serif type and material detail.
 
 ## Where it works
 
@@ -78,12 +88,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 The specific ways AI-generated pages in this style go wrong. Check each one before delivering.
 
-1. Cold blackness — dark academia is warm candlelit brown-black; cool grays turn it cyber-goth
-   黑得没有暖光——暗黑学院是烛光下的暖棕黑，冷灰黑就成了赛博哥特
-2. No texture — parchment, leather, and wood grain carry half the mood
-   材质缺席——羊皮纸、皮革、木纹的质感是氛围的一半
-3. Modern serifs — it needs old-print flavor (the Garamond family)
-   衬线字体太现代——要有旧印刷的味道（Garamond 一系）
+1. Do not sacrifice body contrast to darkness or merely pile on vintage ornament.
+   不要把背景压黑到看不清正文，也不要只堆叠复古装饰。
 
 ## Seen in the wild
 

@@ -1,11 +1,24 @@
 # Bento Grid `bento`
 
-**Chinese name:** Bento 网格  
-**Difficulty:** 2 (Medium)  
-**Tags:** Minimal · Hot · Modern  
+**Chinese name:** Bento 网格
+
+**Type:** Layout pattern
+
+**Study version:** 2026.09
+
+**Difficulty:** 2 (Medium)
+
+**Tags:** Minimal · Hot · Modern
+
 **Fits:** SaaS / Tech, E-commerce / Retail
 
-A modular layout system inspired by Japanese bento boxes, popularized by Apple product pages. Different-sized card units like carefully arranged ingredients create rich visual rhythm. A perfect combination of information organization and visual aesthetics.
+Arrange different amounts of information in a hierarchical modular grid; spanning cells carry the main story. This study uses 24px desktop card corners, white-gray surfaces and selective blue-violet accents, reordered for mobile.
+
+## Study boundaries and references
+
+An original web interpretation. Palette, assets and dimensions describe this example, not a universal definition of the style.
+
+The composition below is an authored study; historical inspiration names are not certified reproductions.
 
 ## Prompt
 
@@ -13,20 +26,20 @@ Hand this to any AI coding tool, or use it as your own build brief.
 
 **English**
 
-> Bento Grid layout, like a compartmentalized lunchbox. Palette: neutral card surfaces (#F5F5F7, warm beige #E8DCC8) accented with a purple-to-blue gradient (#7D4CFF, #B48CFF, #6EC1FF, #3A6FF7). Use a clean sans-serif. Arrange content into a modular grid of rounded cards (20px radius) in varying sizes — 1x1, 2x1, 2x2 — each zoned for one piece of information, with an occasional backdrop-filter blur(12px) accent card.
+> Bento Grid. Arrange different amounts of information in a hierarchical modular grid; spanning cells carry the main story. This study uses 24px desktop card corners, white-gray surfaces and selective blue-violet accents, reordered for mobile. Bento is a composable layout, not a fixed palette. Avoid giving every tile equal visual weight. Adapt palette and dimensions to the content; use the current demo reference brief for an exact reproduction.
 
 **中文**
 
-> Bento 网格布局，像便当盒一样分格。配色：中性卡片底色（#F5F5F7、暖米 #E8DCC8），搭配紫到蓝的渐变强调色（#7D4CFF、#B48CFF、#6EC1FF、#3A6FF7）。字体用简洁无衬线体。内容排布成模块化圆角卡片网格（圆角 20px），大小不一（1x1、2x1、2x2），每格只装一类信息，偶尔用毛玻璃 blur(12px) 卡片作点缀。
+> Bento 网格。把不同体量的信息放入有主次的模块网格，跨列卡片承担重点内容。本例桌面卡片采用 24px 圆角、白灰表面和少量蓝紫强调，手机按内容顺序重排。不要把它理解成固定配色的独立风格；它可以与设计语言组合，避免每张卡片同等抢眼。配色与尺寸可根据内容调整；精确复现请使用当前演示的参考包。
 
 **Short form** — when you only need one line:
 
-- EN: Bento Grid, neutral cards with purple-blue gradient accents, varied-size rounded modules
-- 中文: Bento网格，中性卡片+紫蓝渐变，大小不一的圆角模块
+- EN: Bento Grid: Arrange different amounts of information in a hierarchical modular grid; spanning cells carry the main story.
+- 中文: Bento 网格：把不同体量的信息放入有主次的模块网格，跨列卡片承担重点内容。
 
 ## Design tokens
 
-Lifted verbatim from the reference implementation. Use these exact values.
+Parsed from this reference implementation. Preserve these values when matching this demo; adapt them deliberately when applying the broader style.
 
 ```css
 :root {
@@ -48,11 +61,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 ## Signature traits
 
-- Modular card system - 1:1, 2:1, 1:2 ratios
-- Varying cell size combinations
-- Unified 16-24px border radius
-- Clear functional sections
-- Responsive grid reflow
+- Composition - Arrange different amounts of information in a hierarchical modular grid; spanning cells carry the main story.
+- Signature - This study uses 24px desktop card corners, white-gray surfaces and selective blue-violet accents, reordered for mobile.
 
 ## Where it works
 
@@ -79,12 +89,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 The specific ways AI-generated pages in this style go wrong. Check each one before delivering.
 
-1. No size rhythm — bento charm lives in varied cell sizes; uniform cells are just a grid
-   格子大小没有节奏——bento 的魅力在大小格的韵律，全部等大就成了普通网格
-2. Overstuffed cells — each box tells exactly one thing
-   单个格子信息过载——每格只讲一件事
-3. Freestyle radius and gaps — every cell must share one radius and gap to read as one box
-   圆角与间距各自为政——所有格子共享同一套 radius 和 gap 才像一个便当盒
+1. Bento is a composable layout, not a fixed palette. Avoid giving every tile equal visual weight.
+   不要把它理解成固定配色的独立风格；它可以与设计语言组合，避免每张卡片同等抢眼。
 
 ## Seen in the wild
 

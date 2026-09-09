@@ -1,11 +1,24 @@
 # Neo-Brutalism `neo-brutalism`
 
-**Chinese name:** 新粗野主义  
-**Difficulty:** 1 (Easy)  
-**Tags:** Avant-garde · Trendy · Hot  
+**Chinese name:** 新粗野主义
+
+**Type:** Visual aesthetic
+
+**Study version:** 2026.09
+
+**Difficulty:** 1 (Easy)
+
+**Tags:** Avant-garde · Trendy · Hot
+
 **Fits:** Creative / Design, Personal / Blog
 
-A modern evolution of traditional brutalism, keeping raw visual impact while adding usability considerations. Thick black borders, vibrant color blocks, hard-edge shadows — like interfaces sketched with markers. Favorite of Figma community and indie developers.
+Organize content with clear regions, heavy borders and emphatic hierarchy. This study uses black hard-edged shadows, bold color blocks and heavy headings; shadows contract on press.
+
+## Study boundaries and references
+
+An original web interpretation. Palette, assets and dimensions describe this example, not a universal definition of the style.
+
+The composition below is an authored study; historical inspiration names are not certified reproductions.
 
 ## Prompt
 
@@ -13,20 +26,20 @@ Hand this to any AI coding tool, or use it as your own build brief.
 
 **English**
 
-> Neo-Brutalism style — loud, flat, and confident. Palette: hot pink (#FF8FD4) and mustard yellow (#F7C548) blocks against black (#000) on a cream base. Mix a bold monospace with a heavy sans-serif. The core technique: thick solid black borders (2-3px) paired with a hard offset drop shadow (no blur, just an opaque shape offset 4-8px) — and contrast sharp square corners on some elements against a big 40px radius on others.
+> Neo-Brutalism. Organize content with clear regions, heavy borders and emphatic hierarchy. This study uses black hard-edged shadows, bold color blocks and heavy headings; shadows contract on press. Avoid blurring hard shadows or letting ornament obscure text and targets. Adapt palette and dimensions to the content; use the current demo reference brief for an exact reproduction.
 
 **中文**
 
-> 新粗野主义风格——张扬、扁平、态度鲜明。配色：亮粉（#FF8FD4）和芥末黄（#F7C548）色块，配黑色（#000），底色米白。等宽体加粗体无衬线体混搭。核心技法：粗实心黑边框（2-3px）配硬边偏移投影（不做模糊，就是一个实色形状偏移 4-8px）——部分元素用尖锐直角，部分用大圆角（40px）形成对比。
+> 新粗野主义。用清晰的信息分区、粗边框和强烈层级组织内容。本例用黑色硬边阴影、鲜明色块和粗体标题，按下时阴影收缩。避免给硬阴影加模糊，也不要让强装饰压过文字与点击目标。配色与尺寸可根据内容调整；精确复现请使用当前演示的参考包。
 
 **Short form** — when you only need one line:
 
-- EN: Neo-Brutalism, hot pink and mustard with black borders, hard offset shadow with mixed corner styles
-- 中文: 新粗野主义，亮粉芥末黄+黑边，硬边偏移投影+直角圆角对比
+- EN: Neo-Brutalism: Organize content with clear regions, heavy borders and emphatic hierarchy.
+- 中文: 新粗野主义：用清晰的信息分区、粗边框和强烈层级组织内容。
 
 ## Design tokens
 
-Lifted verbatim from the reference implementation. Use these exact values.
+Parsed from this reference implementation. Preserve these values when matching this demo; adapt them deliberately when applying the broader style.
 
 ```css
 :root {
@@ -46,11 +59,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 ## Signature traits
 
-- 3-5px thick black borders
-- Solid color fills - no gradients
-- Hard-edge offset shadows - 4-8px
-- System fonts + bold weights
-- High-contrast color schemes
+- Composition - Organize content with clear regions, heavy borders and emphatic hierarchy.
+- Signature - This study uses black hard-edged shadows, bold color blocks and heavy headings; shadows contract on press.
 
 ## Where it works
 
@@ -77,12 +87,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 The specific ways AI-generated pages in this style go wrong. Check each one before delivering.
 
-1. Blurred shadows — they must be hard, zero-blur solid offsets of 4-8px
-   阴影做了模糊——必须是 0 模糊的硬实体投影，位移 4-8px
-2. Borders thinner than 2px — the thick black outline is the ID card
-   描边细于 2px——粗黑描边就是它的身份证
-3. No press displacement — on :active the card should physically slam into its shadow
-   按下去没有位移——active 时卡片要真的「怼」进阴影的位置
+1. Avoid blurring hard shadows or letting ornament obscure text and targets.
+   避免给硬阴影加模糊，也不要让强装饰压过文字与点击目标。
 
 ## Seen in the wild
 

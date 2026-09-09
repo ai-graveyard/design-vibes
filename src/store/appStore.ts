@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware';
 
 export type Language = 'zh' | 'en';
 export type Theme = 'light' | 'dark';
-export type PreviewDevice = 'desktop' | 'mobile';
+export type PreviewDevice = 'desktop' | 'tablet' | 'mobile' | 'responsive';
 
 interface AppState {
   language: Language;

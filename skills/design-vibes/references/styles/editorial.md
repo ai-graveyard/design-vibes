@@ -1,11 +1,24 @@
 # Editorial `editorial`
 
-**Chinese name:** 报刊编辑风  
-**Difficulty:** 2 (Medium)  
-**Tags:** Classic · Distinctive · Art  
+**Chinese name:** 报刊编辑风
+
+**Type:** Layout pattern
+
+**Study version:** 2026.09
+
+**Difficulty:** 2 (Medium)
+
+**Tags:** Classic · Distinctive · Art
+
 **Fits:** Creative / Design, Art / Culture, Personal / Blog
 
-A century of newspaper typographic craft brought to the browser: serif mastheads, hairline rules, multi-column text flows, drop caps and pull quotes. Design serves reading rhythm entirely — ink, rules, and whitespace are the only ornaments. The most enduring information aesthetic of the digital age.
+Masthead, article hierarchy, column measure, captions and fine rules establish reading order. Serif headlines, compact body copy, a drop cap and a lead image set the reading rhythm in this study.
+
+## Study boundaries and references
+
+An original web interpretation. Palette, assets and dimensions describe this example, not a universal definition of the style.
+
+- [The Guardian · Digital design guide](https://design.theguardian.com/)
 
 ## Prompt
 
@@ -13,20 +26,20 @@ Hand this to any AI coding tool, or use it as your own build brief.
 
 **English**
 
-> Editorial newspaper typography style. Paper cream base (#FAF7F0), ink black text (#141414), one newspaper red accent (#C8102E). Oversized serif masthead (Georgia/Didone flavor), 1px hairline rules dividing the layout, body copy flowing in three CSS columns, ::first-letter drop caps on lead paragraphs, red uppercase kickers, italic bylines and datelines, and a large pull quote spanning columns. Zero radius, zero shadows — nothing but ink, rules, and whitespace on paper.
+> Editorial. Masthead, article hierarchy, column measure, captions and fine rules establish reading order. Serif headlines, compact body copy, a drop cap and a lead image set the reading rhythm in this study. Avoid making every sentence a display headline; retain paragraphs, attribution and captions. Adapt palette and dimensions to the content; use the current demo reference brief for an exact reproduction.
 
 **中文**
 
-> 报刊编辑排版风格。纸感米白底（#FAF7F0）、墨黑文字（#141414）、一处报刊红强调（#C8102E）。超大衬线报头（Georgia/Didone 气质），1px 细规则线纵横分割版面，正文用 CSS columns 排成三栏，首段用 ::first-letter 首字下沉，红色 uppercase kicker 小标签，byline 与 dateline 用斜体小字，跨栏 pull quote 大号引文。零圆角零阴影——纸面上只有墨、线与留白。
+> 报刊编辑风。报头、文章层级、正文栏宽、图片说明和细栏线共同建立阅读顺序。本例用衬线标题、紧凑正文、首字下沉和一幅主图；重点是长文阅读的节奏。避免所有文案都变成超大标题，保留完整段落、出处和图片说明。配色与尺寸可根据内容调整；精确复现请使用当前演示的参考包。
 
 **Short form** — when you only need one line:
 
-- EN: Editorial style, cream and ink with newspaper red, serif masthead, hairline rules, columns and drop caps
-- 中文: 报刊编辑风，米白底墨黑字+报刊红，衬线报头+细规则线+三栏首字下沉
+- EN: Editorial: Masthead, article hierarchy, column measure, captions and fine rules establish reading order.
+- 中文: 报刊编辑风：报头、文章层级、正文栏宽、图片说明和细栏线共同建立阅读顺序。
 
 ## Design tokens
 
-Lifted verbatim from the reference implementation. Use these exact values.
+Parsed from this reference implementation. Preserve these values when matching this demo; adapt them deliberately when applying the broader style.
 
 ```css
 :root {
@@ -36,19 +49,16 @@ Lifted verbatim from the reference implementation. Use these exact values.
   --accent: #C8102E;
   --grey: #8A857C;
   --hairline: #DCD5C6;
-  --serif: Georgia,"Iowan Old Style","Times New Roman",Times,serif;
+  --serif: "Source Serif 4",Georgia,"Iowan Old Style","Times New Roman",Times,serif;
   --display: Didot,"Bodoni 72","Didot LT STD",Georgia,serif;
-  --sans: -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  --sans: "Inter",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
 }
 ```
 
 ## Signature traits
 
-- Oversized serif masthead - Didone flavor
-- Hairline column rules - 1px
-- Multi-column text flow - CSS columns
-- Drop caps - ::first-letter
-- Full editorial kit - kickers/bylines/pull quotes
+- Composition - Masthead, article hierarchy, column measure, captions and fine rules establish reading order.
+- Signature - Serif headlines, compact body copy, a drop cap and a lead image set the reading rhythm in this study.
 
 ## Where it works
 
@@ -75,12 +85,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 The specific ways AI-generated pages in this style go wrong. Check each one before delivering.
 
-1. Heavy rules — editorial lines are 0.5-1px hairlines; thicker reads as spreadsheet
-   规则线太粗——报刊的线是 0.5-1px 的 hairline，粗了就成了表格
-2. Runaway measure — 45-75 characters per column is the iron law
-   栏宽失控——每栏 45-75 字符是可读性铁律
-3. Missing editorial furniture — without kickers, bylines, and drop caps it's just a blog in columns
-   编辑元素缺席——没有 kicker、byline、首字下沉，就只是分了栏的博客
+1. Avoid making every sentence a display headline; retain paragraphs, attribution and captions.
+   避免所有文案都变成超大标题，保留完整段落、出处和图片说明。
 
 ## Seen in the wild
 
@@ -88,6 +94,6 @@ NYTimes.com · The New Yorker · Monocle · The Economist
 
 ## Reference implementation
 
-`assets/demos/editorial.html` — a complete single-file page (385 lines, no scripts, no external requests). Read it for layout and composition patterns, or copy it as a starting point.
+`assets/demos/editorial.html` — a complete single-file page (595 lines, no scripts, no external requests). Read it for layout and composition patterns, or copy it as a starting point.
 
 Live preview: https://design-vibes.v2ai.org/style/editorial

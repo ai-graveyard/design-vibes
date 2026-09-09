@@ -27,13 +27,32 @@ jobs:
       - name: Lint
         run: pnpm lint
 
-      # headless Chrome 打开每个 demo，断言 375px 视口无横向滚动（checklist「Layout」第一条）
-      - name: Demo 375px 渲染校验
-        run: pnpm validate:render
+      - name: Reference consistency tests
+        run: pnpm test
 
       # build 内含数据一致性校验（validate-demos）、skill 产物生成、tsc、vite build 与 SEO 后处理
       - name: Build
         run: pnpm build
+
+      - name: Studio viewport and embedded interaction tests
+        run: pnpm validate:studio
+
+      - name: Four-viewport visual gates and local demo interactions
+        run: pnpm visual
+
+      - name: Upload visual review artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: design-vibes-visual-review
+          path: |
+            output/visual/
+            output/studio/
+          retention-days: 14
+
+      # headless Chrome 打开每个 demo，断言 375px 视口无横向滚动（checklist「Layout」第一条）
+      - name: Demo 375px 渲染校验
+        run: pnpm validate:render
 
       # 改了 src/data 却忘了提交重建后的 skills/ 或 public/skill.md，在这里红
       - name: Skill 产物已同步

@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
-import { Star } from 'lucide-react';
 import { designStyles } from '../data/styles';
 import { DemoPreview } from './DemoPreview';
 import { useAppStore } from '../store/appStore';
@@ -85,9 +84,8 @@ export function StyleHoverChip({ styleId, className, children }: StyleHoverChipP
                 {language === 'zh' ? style.name : style.nameEn}
               </span>
               <span className="flex items-center gap-1 shrink-0">
-                <Star className="w-2.5 h-2.5 fill-[#FF9F1C] text-[#FF9F1C]" />
                 <span className="text-[10px] font-bold tabular-nums text-black dark:text-white">
-                  {style.rating.toFixed(1)}
+                  {language === 'zh' ? '查看演示' : 'View study'}
                 </span>
               </span>
             </div>

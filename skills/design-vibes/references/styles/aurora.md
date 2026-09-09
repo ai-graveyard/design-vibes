@@ -1,11 +1,24 @@
 # Aurora Gradients `aurora`
 
-**Chinese name:** 极光渐变  
-**Difficulty:** 3 (Hard)  
-**Tags:** Modern · Trendy · Hot  
+**Chinese name:** 极光渐变
+
+**Type:** Visual aesthetic
+
+**Study version:** 2026.09
+
+**Difficulty:** 3 (Hard)
+
+**Tags:** Modern · Trendy · Hot
+
 **Fits:** SaaS / Tech
 
-The dominant aesthetic of modern SaaS marketing: over a clean white canvas and restrained typography, one slowly flowing aurora gradient serves as the sole emotional outlet. Born from Stripe's iconic hero animation, it's now shorthand for 'professional but not boring'.
+Use broad soft gradients as atmosphere while keeping copy and product areas stable. Blend warm and cool bands smoothly; control blur and luminance and carry accent color into select actions.
+
+## Study boundaries and references
+
+An original web interpretation. Palette, assets and dimensions describe this example, not a universal definition of the style.
+
+The composition below is an authored study; historical inspiration names are not certified reproductions.
 
 ## Prompt
 
@@ -13,20 +26,20 @@ Hand this to any AI coding tool, or use it as your own build brief.
 
 **English**
 
-> Aurora gradient style (Stripe-school SaaS aesthetic). Near-white base (#FAFAFC), near-black text (#0A0A14), generous whitespace. Build a flowing aurora in the hero: layered radial-gradients of blurple (#635BFF), cyan (#00D4FF), and pink (#FF80BF) blurred ~100px, drifting slowly via CSS animation and dissolving into the white base. Apply aurora gradient text to key headline words with background-clip: text. Everything else stays restrained: 1px hairline gray cards (#E6E6EE) and small uppercase kicker labels. Let gradients bloom only in the hero and CTA bands — keep the rest clean.
+> Aurora Gradients. Use broad soft gradients as atmosphere while keeping copy and product areas stable. Blend warm and cool bands smoothly; control blur and luminance and carry accent color into select actions. Do not turn every card into a gradient; keep a stable contrast behind text. Adapt palette and dimensions to the content; use the current demo reference brief for an exact reproduction.
 
 **中文**
 
-> 极光渐变风格（Stripe 式 SaaS 美学）。近白底色（#FAFAFC）配近黑文字（#0A0A14），大量留白。hero 区做一片流动极光：蓝紫（#635BFF）、青（#00D4FF）、粉（#FF80BF）多层 radial-gradient 色块经 blur(100px) 交叠，用 CSS 动画缓慢位移，边缘自然消散进白底。标题关键词用 background-clip: text 的极光渐变文字。其余部分极度克制：1px 细灰边框卡片（#E6E6EE）、小号 uppercase kicker 标签。渐变只在 hero 和 CTA 区绽放，别处保持干净。
+> 极光渐变。用大范围柔和渐变组织背景，保留稳定的文字和产品展示区域。让冷暖色带平滑交汇，控制模糊半径与亮度，强调色延续到少量操作。不要把所有卡片都变成渐变；文字背景需要稳定对比。配色与尺寸可根据内容调整；精确复现请使用当前演示的参考包。
 
 **Short form** — when you only need one line:
 
-- EN: Aurora gradients, white base with near-black text, diffused hero aurora and gradient headlines, hairline cards
-- 中文: 极光渐变，白底近黑字，hero 弥散极光+渐变标题字，细灰边框卡片
+- EN: Aurora Gradients: Use broad soft gradients as atmosphere while keeping copy and product areas stable.
+- 中文: 极光渐变：用大范围柔和渐变组织背景，保留稳定的文字和产品展示区域。
 
 ## Design tokens
 
-Lifted verbatim from the reference implementation. Use these exact values.
+Parsed from this reference implementation. Preserve these values when matching this demo; adapt them deliberately when applying the broader style.
 
 ```css
 :root {
@@ -61,11 +74,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 ## Signature traits
 
-- Diffused aurora gradients - layered blurred color fields
-- Clean white base - gradients bloom only at key moments
-- Gradient text - background-clip: text
-- Hairline gray cards - 1px borders
-- Slow drifting animation - 8s+ loops
+- Composition - Use broad soft gradients as atmosphere while keeping copy and product areas stable.
+- Signature - Blend warm and cool bands smoothly; control blur and luminance and carry accent color into select actions.
 
 ## Where it works
 
@@ -92,12 +102,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 The specific ways AI-generated pages in this style go wrong. Check each one before delivering.
 
-1. Gradients everywhere — the aurora blooms only in hero and CTA bands; keep the rest plain
-   渐变铺满全页——极光只在 hero 与 CTA 绽放，其余保持素净
-2. Muddy hue transitions — blends must stay clean and luminous or it cheapens fast
-   相邻色相脏了——过渡必须干净通透，混浊立刻显得廉价
-3. No motion — a static aurora is just colored blur
-   忘了动起来——静止的极光只是一团彩色模糊
+1. Do not turn every card into a gradient; keep a stable contrast behind text.
+   不要把所有卡片都变成渐变；文字背景需要稳定对比。
 
 ## Seen in the wild
 

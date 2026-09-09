@@ -1,11 +1,24 @@
 # Neumorphism / Soft UI `neumorphism`
 
-**Chinese name:** 新拟态  
-**Difficulty:** 2 (Medium)  
-**Tags:** Modern · Minimal  
+**Chinese name:** 新拟态
+
+**Type:** Material treatment
+
+**Study version:** 2026.09
+
+**Difficulty:** 2 (Medium)
+
+**Tags:** Modern · Minimal
+
 **Fits:** Creative / Design
 
-A briefly viral 2020 design trend, simulating real-world embossed textures through dual soft shadows (one light, one dark). Soft monochrome palettes create unique tactile experiences, but severe accessibility issues caused its rapid fade from mainstream.
+Organize a small number of controls through raised and inset forms on one base material. Paired light and dark shadows share a lighting direction; labels and selection need explicit clarity.
+
+## Study boundaries and references
+
+An original web interpretation. Palette, assets and dimensions describe this example, not a universal definition of the style.
+
+The composition below is an authored study; historical inspiration names are not certified reproductions.
 
 ## Prompt
 
@@ -13,20 +26,20 @@ Hand this to any AI coding tool, or use it as your own build brief.
 
 **English**
 
-> Neumorphism style — everything carved from one material. Palette stays almost monochrome: a soft blue-gray base (#E0E5EC) with matching light and dark shadow tones (#8296C4, #7A8CA5). Use a plain sans-serif. The defining technique: pair a light shadow (top-left, near-white) with a dark shadow (bottom-right, around #8296C4) on the same background color to fake embossed or pressed extrusion — never use a border. Corners stay large and soft (13-36px, up to a full 999px pill).
+> Neumorphism / Soft UI. Organize a small number of controls through raised and inset forms on one base material. Paired light and dark shadows share a lighting direction; labels and selection need explicit clarity. Do not rely solely on low-contrast shadows for state; retain keyboard focus and usable touch targets. Adapt palette and dimensions to the content; use the current demo reference brief for an exact reproduction.
 
 **中文**
 
-> 新拟态风格——所有元素像从同一块材质上雕出来的。配色几乎单色：柔和蓝灰底色（#E0E5EC），配同色系的亮阴影和暗阴影（#8296C4、#7A8CA5）。字体用普通无衬线体。核心技法：在同一底色上同时叠加左上方亮阴影（近白）和右下方暗阴影（#8296C4 附近），做出浮雕或凹陷的挤压感——不要用描边。圆角要大而柔和（13-36px，甚至到 999px 的完全胶囊形）。
+> 新拟态。用同一基底上的凸起与凹陷组织少量控件。成对明暗阴影共享光照方向；选中状态与标签需要额外清楚。不要仅靠低对比阴影区分状态，保持键盘焦点和触控可用。配色与尺寸可根据内容调整；精确复现请使用当前演示的参考包。
 
 **Short form** — when you only need one line:
 
-- EN: Neumorphism, monochrome blue-gray with dual soft shadows, large-radius embossed look
-- 中文: 新拟态，单色蓝灰+双向柔和阴影，大圆角浮雕感
+- EN: Neumorphism / Soft UI: Organize a small number of controls through raised and inset forms on one base material.
+- 中文: 新拟态：用同一基底上的凸起与凹陷组织少量控件。
 
 ## Design tokens
 
-Lifted verbatim from the reference implementation. Use these exact values.
+Parsed from this reference implementation. Preserve these values when matching this demo; adapt them deliberately when applying the broader style.
 
 ```css
 :root {
@@ -54,11 +67,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 ## Signature traits
 
-- Dual soft shadows - highlight + drop
-- Monochrome/low-saturation color schemes
-- 8-16px blur radius rounded elements
-- Pressed/inset interaction states
-- Extremely low visual contrast
+- Composition - Organize a small number of controls through raised and inset forms on one base material.
+- Signature - Paired light and dark shadows share a lighting direction; labels and selection need explicit clarity.
 
 ## Where it works
 
@@ -86,12 +96,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 The specific ways AI-generated pages in this style go wrong. Check each one before delivering.
 
-1. Elements a different color than the background — everything must be carved from one material
-   元素和背景不同色——新拟态的一切必须从同一块底色里长出来
-2. Adding borders — the extrusion illusion lives in the dual shadows; a border breaks the spell
-   加了描边——挤压感全靠双向阴影，一条 border 就穿帮
-3. Tiny low-contrast text — in an inherently soft style, body text needs extra size and darkness
-   弱对比还堆小字——本就低对比的风格，正文要更大更深才能读
+1. Do not rely solely on low-contrast shadows for state; retain keyboard focus and usable touch targets.
+   不要仅靠低对比阴影区分状态，保持键盘焦点和触控可用。
 
 ## Seen in the wild
 

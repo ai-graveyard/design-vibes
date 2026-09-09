@@ -1,43 +1,15 @@
 import { useEffect, useState } from 'react';
+import { loadDemoSource } from '../lib/demoSource';
 
-// demo 源码按 styleId 全局缓存，Code 标签与 Design Tokens 共用同一次请求
-const cache = new Map<string, Promise<string>>();
-
-interface DemoSourceState {
-  source: string | null;
-  error: boolean;
-}
-
-export function useDemoSource(styleId: string): DemoSourceState {
-  const [state, setState] = useState<DemoSourceState>({ source: null, error: false });
-
+export function useDemoSource(styleId: string) {
+  const [state, setState] = useState<{ id: string; source: string | null; error: boolean }>({ id: '', source: null, error: false });
   useEffect(() => {
     let alive = true;
-
-    if (!cache.has(styleId)) {
-      cache.set(
-        styleId,
-        fetch(`/demos/${styleId}.html`).then((res) => {
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          return res.text();
-        })
-      );
-    }
-
-    cache.get(styleId)!.then(
-      (source) => {
-        if (alive) setState({ source, error: false });
-      },
-      () => {
-        cache.delete(styleId);
-        if (alive) setState({ source: null, error: true });
-      }
+    loadDemoSource(styleId).then(
+      source => { if (alive) setState({ id: styleId, source, error: false }); },
+      () => { if (alive) setState({ id: styleId, source: null, error: true }); },
     );
-
-    return () => {
-      alive = false;
-    };
+    return () => { alive = false; };
   }, [styleId]);
-
-  return state;
+  return state.id === styleId ? state : { source: null, error: false };
 }

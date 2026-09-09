@@ -1,11 +1,24 @@
 # Cyberpunk `cyberpunk`
 
-**Chinese name:** 赛博朋克  
-**Difficulty:** 3 (Hard)  
-**Tags:** Avant-garde · Distinctive  
+**Chinese name:** 赛博朋克
+
+**Type:** Visual aesthetic
+
+**Study version:** 2026.09
+
+**Difficulty:** 3 (Hard)
+
+**Tags:** Avant-garde · Distinctive
+
 **Fits:** Gaming / Entertainment
 
-'High tech, low life' digital aesthetics — neon lights pierce through night rain, glitch art flickers on abandoned screens. Neon magenta, cyan, yellow combination against deep black, constructing a dystopian future world.
+Use strong light-dark contrast, technical labeling and asymmetric information regions for a futuristic urban character. Use cyan, magenta and warning colors selectively over dark surfaces; clipped corners and brief glitches support hierarchy.
+
+## Study boundaries and references
+
+An original web interpretation. Palette, assets and dimensions describe this example, not a universal definition of the style.
+
+The composition below is an authored study; historical inspiration names are not certified reproductions.
 
 ## Prompt
 
@@ -13,20 +26,20 @@ Hand this to any AI coding tool, or use it as your own build brief.
 
 **English**
 
-> Cyberpunk style, neon-soaked and glitchy. Background is black (#000), lit by neon cyan (around #00CCCC), magenta (#FF00FF), hot pink (#FF1493), and yellow (#FFFF00) glow accents. Use a monospace font for HUD-style status labels and a sans-serif for headlines. Give panels a backdrop-filter blur(6px) glass effect with a thin 1px neon-cyan glowing border, and layer glitch-style overlapping or misaligned text on key headlines for a broken-signal feel.
+> Cyberpunk. Use strong light-dark contrast, technical labeling and asymmetric information regions for a futuristic urban character. Use cyan, magenta and warning colors selectively over dark surfaces; clipped corners and brief glitches support hierarchy. Avoid neon on all text and persistent glitches that interrupt reading or interaction. Adapt palette and dimensions to the content; use the current demo reference brief for an exact reproduction.
 
 **中文**
 
-> 赛博朋克风格，霓虹感和故障感并存。背景纯黑（#000），用青色霓虹（约 #00CCCC）、品红（#FF00FF）、亮粉（#FF1493）、黄（#FFFF00）做发光点缀。等宽体做 HUD 风格状态标签，无衬线体做标题。面板做毛玻璃效果（backdrop-filter blur(6px)），配细青色霓虹描边（1px）加发光效果，关键标题用故障风格的重叠/错位文字制造信号损坏感。
+> 赛博朋克。用强烈的明暗对比、技术标识和非对称信息区营造未来城市感。深色基底上有限使用青、品红与警示色，切角和短暂故障动效服务层级。不要给所有文字加霓虹光，避免持续故障影响阅读与操作。配色与尺寸可根据内容调整；精确复现请使用当前演示的参考包。
 
 **Short form** — when you only need one line:
 
-- EN: Cyberpunk, black background with neon cyan-magenta glow, glass panels with glitch text
-- 中文: 赛博朋克，纯黑底+青品红霓虹，毛玻璃面板+故障错位文字
+- EN: Cyberpunk: Use strong light-dark contrast, technical labeling and asymmetric information regions for a futuristic urban character.
+- 中文: 赛博朋克：用强烈的明暗对比、技术标识和非对称信息区营造未来城市感。
 
 ## Design tokens
 
-Lifted verbatim from the reference implementation. Use these exact values.
+Parsed from this reference implementation. Preserve these values when matching this demo; adapt them deliberately when applying the broader style.
 
 ```css
 :root {
@@ -47,11 +60,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 ## Signature traits
 
-- Neon glow effects - text-shadow/box-shadow
-- Deep black #0a0a0a backgrounds
-- Glitch art effects
-- Sci-fi sans-serif typography
-- Scanlines and CRT textures
+- Composition - Use strong light-dark contrast, technical labeling and asymmetric information regions for a futuristic urban character.
+- Signature - Use cyan, magenta and warning colors selectively over dark surfaces; clipped corners and brief glitches support hierarchy.
 
 ## Where it works
 
@@ -79,12 +89,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 The specific ways AI-generated pages in this style go wrong. Check each one before delivering.
 
-1. Every neon at max — glow needs hierarchy; all-bright reads as flat gray
-   霓虹全都开到最亮——霓虹要有主次层级，全亮等于全灰
-2. Constant glitching — glitch is punctuation, not prose
-   故障效果太频繁——glitch 是标点符号不是正文
-3. Text straight on noise — even cyberpunk needs readable backing
-   文字直接压在噪点上——赛博朋克也需要可读性的底垫
+1. Avoid neon on all text and persistent glitches that interrupt reading or interaction.
+   不要给所有文字加霓虹光，避免持续故障影响阅读与操作。
 
 ## Seen in the wild
 

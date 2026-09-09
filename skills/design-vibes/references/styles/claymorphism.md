@@ -1,11 +1,24 @@
 # Claymorphism `claymorphism`
 
-**Chinese name:** 粘土拟态  
-**Difficulty:** 4 (Expert)  
-**Tags:** Modern · Playful  
+**Chinese name:** 粘土拟态
+
+**Type:** Material treatment
+
+**Study version:** 2026.09
+
+**Difficulty:** 4 (Expert)
+
+**Tags:** Modern · Playful
+
 **Fits:** Gaming / Entertainment, Kids / Education
 
-A frontier trend of 3D rendering entering UI design. Rounded fluffy clay textures, soft inner shadows, pastel candy colors. Like molding a cute cartoon world on screen, full of touchable appeal.
+Focus on a few voluminous characters or controls with space around them. Soft corners, inset highlights and tinted cast shadows create an inflated volume under consistent lighting.
+
+## Study boundaries and references
+
+An original web interpretation. Palette, assets and dimensions describe this example, not a universal definition of the style.
+
+The composition below is an authored study; historical inspiration names are not certified reproductions.
 
 ## Prompt
 
@@ -13,20 +26,20 @@ Hand this to any AI coding tool, or use it as your own build brief.
 
 **English**
 
-> Claymorphism style — soft 3D clay toys. Palette: candy-pastel mango (#F7B94F), pink (#F79CAC), mint (#C9FDC9), orchid (#C98BD1), and green (#7FE39C) over cream (#FFF9F4). Use a rounded, friendly sans-serif. Push border-radius very large (30-38px, some elements fully pill-shaped at 999px) and layer a puffy dual-tone soft shadow (light highlight plus soft colored shadow) so every element looks inflated and squeezable, like modeling clay.
+> Claymorphism. Focus on a few voluminous characters or controls with space around them. Soft corners, inset highlights and tinted cast shadows create an inflated volume under consistent lighting. A drop shadow on a flat card is not clay; keep characters away from controls. Adapt palette and dimensions to the content; use the current demo reference brief for an exact reproduction.
 
 **中文**
 
-> 粘土拟态风格——像柔软的 3D 粘土玩具。配色：糖果色芒果黄（#F7B94F）、粉（#F79CAC）、薄荷绿（#C9FDC9）、兰紫（#C98BD1）、绿（#7FE39C），底色奶油白（#FFF9F4）。字体用圆润友好的无衬线体。圆角要非常大（30-38px，部分元素做成完全胶囊形 999px），叠加蓬松的双色柔和阴影（亮部高光+柔和彩色阴影），让每个元素看起来鼓鼓的、像可以捏一下的粘土。
+> 粘土拟态。以少量体积饱满的角色或控件为视觉重点，留出呼吸空间。柔软圆角、内高光与带色外阴影形成膨胀感，光照保持统一。避免用普通卡片加投影冒充粘土；避免装饰角色遮挡操作。配色与尺寸可根据内容调整；精确复现请使用当前演示的参考包。
 
 **Short form** — when you only need one line:
 
-- EN: Claymorphism, candy pastel on cream, very large radius with puffy dual-tone shadow
-- 中文: 粘土拟态，糖果色+奶油底，超大圆角+蓬松双色阴影
+- EN: Claymorphism: Focus on a few voluminous characters or controls with space around them.
+- 中文: 粘土拟态：以少量体积饱满的角色或控件为视觉重点，留出呼吸空间。
 
 ## Design tokens
 
-Lifted verbatim from the reference implementation. Use these exact values.
+Parsed from this reference implementation. Preserve these values when matching this demo; adapt them deliberately when applying the broader style.
 
 ```css
 :root {
@@ -55,11 +68,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 ## Signature traits
 
-- 3D clay texture simulation
-- Rounded blob shapes - border-radius: 50%
-- Soft inner shadows + ambient light
-- Pastel low-saturation candy colors
-- Subtle highlights and reflections
+- Composition - Focus on a few voluminous characters or controls with space around them.
+- Signature - Soft corners, inset highlights and tinted cast shadows create an inflated volume under consistent lighting.
 
 ## Where it works
 
@@ -86,18 +96,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 The specific ways AI-generated pages in this style go wrong. Check each one before delivering.
 
-1. Missing the inner shadow — clay's puffiness needs the outer drop and inner highlight together
-   内阴影丢了——黏土的膨胀感靠外投影与内高光同时存在
-2. Radii too small — under ~20px it stops looking hand-molded
-   圆角不够大——低于 20px 就不像捏出来的
-3. Grown-up palettes — clay lives in high-key candy colors
-   配色太成人——粘土拟态天生属于高明度的糖果色
-4. Pure-black drop shadows — shadows must carry the subject's hue (pink objects cast rose-gray); black reads as stickers on glass
-   投影用纯黑——阴影要带主体色的深色调（粉色物体投玫瑰灰影），黑影像贴在玻璃上
-5. Outlined elements — clay has no contour lines; form comes entirely from light. A border flattens it into a sticker
-   元素加了描边——粘土没有轮廓线，形体全靠光影塑造，border 一出现就变成扁平贴纸
-6. Pure-white canvas — clay floats on tinted soft backgrounds (cream, lilac); on white it looks pasted, not molded
-   底色用纯白——粘土要浮在有色的柔和底（奶油、淡紫）上，纯白背景下像贴纸而不是实体
+1. A drop shadow on a flat card is not clay; keep characters away from controls.
+   避免用普通卡片加投影冒充粘土；避免装饰角色遮挡操作。
 
 ## Seen in the wild
 

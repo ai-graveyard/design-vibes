@@ -44,3 +44,5 @@ next-env.d.ts
 deploy.sh
 dist/
 .claude/
+# Local browser evidence
+/output/

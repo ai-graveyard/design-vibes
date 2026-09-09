@@ -1,11 +1,24 @@
 # Pixel Art `pixel`
 
-**Chinese name:** 像素风  
-**Difficulty:** 2 (Medium)  
-**Tags:** Vintage · Playful · Distinctive  
+**Chinese name:** 像素风
+
+**Type:** Visual aesthetic
+
+**Study version:** 2026.09
+
+**Difficulty:** 2 (Medium)
+
+**Tags:** Vintage · Playful · Distinctive
+
 **Fits:** Gaming / Entertainment
 
-The limited palettes and mosaic-block aesthetic of 8-bit consoles. Every graphic is built from visible pixel cells, animations jump frame-by-frame instead of easing, and the interface feels like an old console boot screen. Roughness is the charm; nostalgia is the language.
+Build on a consistent pixel unit and arrange information like a game HUD. Limited palette, stepped edges, hard shadows and stepped motion; type and sprites share a pixel rhythm.
+
+## Study boundaries and references
+
+An original web interpretation. Palette, assets and dimensions describe this example, not a universal definition of the style.
+
+The composition below is an authored study; historical inspiration names are not certified reproductions.
 
 ## Prompt
 
@@ -13,34 +26,43 @@ Hand this to any AI coding tool, or use it as your own build brief.
 
 **English**
 
-> Pixel art 8-bit game aesthetic. Limited palette: midnight blue base (#1A1C2C) with tomato red (#B13E53), orange (#EF7D57), sun yellow (#FFCD75), neon green (#A7F070), sky blue (#41A6F6). Zero radius, zero blur, zero easing: build pixel borders with stacked box-shadow stair-step corners; give buttons 4px hard offset shadows that translate on press; draw tiny icons (hearts, stars, coins) cell by cell with multi box-shadow on single divs; animate everything with steps() frame jumps. Headlines in bold uppercase monospace with 4px hard text-shadows, plus HUD elements (SCORE counter, ♥♥♥ lives, blinking PRESS START).
+> Pixel Art. Build on a consistent pixel unit and arrange information like a game HUD. Limited palette, stepped edges, hard shadows and stepped motion; type and sprites share a pixel rhythm. Avoid soft focus, arbitrary fractional scaling and rounded corners; monospace is not automatically pixel type. Adapt palette and dimensions to the content; use the current demo reference brief for an exact reproduction.
 
 **中文**
 
-> 像素风 8-bit 游戏美学。限定色盘：深夜蓝底（#1A1C2C）配番茄红（#B13E53）、橙（#EF7D57）、日光黄（#FFCD75）、荧光绿（#A7F070）、天蓝（#41A6F6）。零圆角零模糊零平滑：像素边框用多层 box-shadow 做阶梯锯齿角；按钮用 4px 硬位移阴影、按下时 translate 位移；小图标（心、星、金币）用单个 div 的多重 box-shadow 逐格画出；动画一律 steps() 跳帧。标题用等宽粗体全大写+4px 硬 text-shadow，配 HUD 元素（SCORE 计数、♥♥♥ 生命、闪烁的 PRESS START）。
+> 像素风。将界面建立在统一像素单位上，按游戏 HUD 的信息层级布局。有限色盘、阶梯边缘、硬阴影和 steps 跳帧动效；标题与图形共享像素节奏。避免柔焦、任意小数缩放和圆角；普通等宽字体不自动成为像素字体。配色与尺寸可根据内容调整；精确复现请使用当前演示的参考包。
 
 **Short form** — when you only need one line:
 
-- EN: Pixel art, limited palette with box-shadow sprites, hard-shadow buttons and steps() animations
-- 中文: 像素风，限定色盘+box-shadow 像素画，硬阴影按钮+steps() 跳帧动画
+- EN: Pixel Art: Build on a consistent pixel unit and arrange information like a game HUD.
+- 中文: 像素风：将界面建立在统一像素单位上，按游戏 HUD 的信息层级布局。
 
 ## Design tokens
 
-Lifted verbatim from the reference implementation. Use these exact values.
+Parsed from this reference implementation. Preserve these values when matching this demo; adapt them deliberately when applying the broader style.
 
 ```css
 :root {
   --night: #1A1C2C;
+  --panel: #29366F;
+  --steel: #333C57;
+  --mist: #94B0C2;
+  --snow: #F4F4F4;
+  --tomato: #B13E53;
+  --ember: #EF7D57;
+  --sun: #FFCD75;
+  --lime: #A7F070;
+  --leaf: #38B764;
+  --sky: #41A6F6;
+  --ice: #73EFF7;
+  --mono: ui-monospace,"SF Mono",Menlo,Consolas,"Courier New",monospace;
 }
 ```
 
 ## Signature traits
 
-- Limited palettes - NES/PICO-8 style 8-16 colors
-- Box-shadow pixel art - icons drawn cell by cell
-- Zero radius, zero blur - hard edges everywhere
-- Frame-stepped animations - steps()
-- HUD elements - SCORE/hearts/PRESS START
+- Composition - Build on a consistent pixel unit and arrange information like a game HUD.
+- Signature - Limited palette, stepped edges, hard shadows and stepped motion; type and sprites share a pixel rhythm.
 
 ## Where it works
 
@@ -67,12 +89,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 The specific ways AI-generated pages in this style go wrong. Check each one before delivering.
 
-1. Smooth easing curves — all motion must jump via steps()
-   用了平滑缓动曲线——一切运动必须 steps() 跳帧
-2. Rounded corners or blur creeping in — the pixel world has no anti-aliasing
-   圆角和模糊混进来——像素世界里没有抗锯齿
-3. Palette sprawl — beyond 16 colors the 8-bit flavor is gone
-   色盘失控——超过 16 色就没有 8-bit 的味道了
+1. Avoid soft focus, arbitrary fractional scaling and rounded corners; monospace is not automatically pixel type.
+   避免柔焦、任意小数缩放和圆角；普通等宽字体不自动成为像素字体。
 
 ## Seen in the wild
 

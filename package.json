@@ -8,11 +8,16 @@
     "validate": "node scripts/validate-demos.mjs",
     "validate:render": "node scripts/validate-render.mjs",
     "skill": "node scripts/build-skill.mjs",
-    "build": "node scripts/validate-demos.mjs && node scripts/build-skill.mjs && tsc -b && vite build && node scripts/postbuild-seo.mjs && node scripts/pack-skill.mjs",
+    "build": "node scripts/embed-demo-assets.mjs && node scripts/validate-demos.mjs && node scripts/build-skill.mjs && tsc -b && vite build && node scripts/postbuild-seo.mjs && node scripts/pack-skill.mjs",
     "og": "node scripts/generate-og.mjs",
     "thumbs": "node scripts/generate-thumbs.mjs",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "assets": "node scripts/embed-demo-assets.mjs",
+    "validate:visual": "node scripts/validate-visual.mjs",
+    "visual": "node scripts/validate-visual.mjs --capture",
+    "test": "node --test scripts/tests/*.test.mjs",
+    "validate:studio": "node scripts/validate-studio.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -24,6 +29,10 @@
     "zustand": "^5.0.10"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-decorators": "7.29.0",
+    "@babel/preset-env": "7.29.0",
+    "@babel/preset-react": "7.28.5",
+    "@babel/preset-typescript": "7.28.5",
     "@eslint/js": "^9.39.1",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",

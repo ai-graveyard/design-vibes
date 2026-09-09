@@ -1,11 +1,24 @@
 # Vaporwave `vaporwave`
 
-**Chinese name:** 蒸汽波  
-**Difficulty:** 3 (Hard)  
-**Tags:** Art · Vintage  
+**Chinese name:** 蒸汽波
+
+**Type:** Visual aesthetic
+
+**Study version:** 2026.09
+
+**Difficulty:** 3 (Hard)
+
+**Tags:** Art · Vintage
+
 **Fits:** Gaming / Entertainment
 
-A subculture aesthetic born from 2010s internet, a satirical nostalgia for 80s/90s consumerism. Pink-purple gradients, classical sculptures, Japanese katakana, Windows 95 interface elements mixed into an eerie dreamlike feeling.
+Combine retro windows, perspective grids and surreal imagery into a nostalgic scene. This study uses pink, cyan and violet while retaining a distinct foreground text layer.
+
+## Study boundaries and references
+
+An original web interpretation. Palette, assets and dimensions describe this example, not a universal definition of the style.
+
+The composition below is an authored study; historical inspiration names are not certified reproductions.
 
 ## Prompt
 
@@ -13,20 +26,20 @@ Hand this to any AI coding tool, or use it as your own build brief.
 
 **English**
 
-> Vaporwave style, 80s/90s retro-futurist nostalgia. Palette: deep indigo (#12032B) fading into purple (#7E5FAE, #8A6BB8) on black, with crisp white 1-2px outlines for contrast. Use a monospace for retro computer-style labels and a sans-serif for headlines. Layer backdrop-filter blur(8px) glass panels over a gradient sky, and include a white-outlined grid or sun-silhouette motif to nail the classic vaporwave horizon look.
+> Vaporwave. Combine retro windows, perspective grids and surreal imagery into a nostalgic scene. This study uses pink, cyan and violet while retaining a distinct foreground text layer. Avoid losing text in fluorescent backgrounds or packing every retro motif into one screen. Adapt palette and dimensions to the content; use the current demo reference brief for an exact reproduction.
 
 **中文**
 
-> 蒸汽波风格，80/90 年代复古未来主义的怀旧感。配色：深靛紫（#12032B）过渡到紫色（#7E5FAE、#8A6BB8），底色黑，用白色细描边（1-2px）做清晰对比。等宽体做复古电脑感标签，无衬线体做标题。渐变天空之上叠加毛玻璃面板（backdrop-filter blur(8px)），加入白色描边的网格线或落日剪影，还原经典蒸汽波地平线画面。
+> 蒸汽波。用复古窗口、空间网格与超现实图像形成怀旧场景。本例采用粉、青、紫的色调关系，保留明确的前景文字层。避免荧光背景吞掉文字，不要把所有复古元素都塞进同一屏。配色与尺寸可根据内容调整；精确复现请使用当前演示的参考包。
 
 **Short form** — when you only need one line:
 
-- EN: Vaporwave, indigo-purple gradient with white outlines, glass panels with grid/sun silhouette
-- 中文: 蒸汽波，靛紫渐变+白色描边，毛玻璃面板+网格落日剪影
+- EN: Vaporwave: Combine retro windows, perspective grids and surreal imagery into a nostalgic scene.
+- 中文: 蒸汽波：用复古窗口、空间网格与超现实图像形成怀旧场景。
 
 ## Design tokens
 
-Lifted verbatim from the reference implementation. Use these exact values.
+Parsed from this reference implementation. Preserve these values when matching this demo; adapt them deliberately when applying the broader style.
 
 ```css
 :root {
@@ -46,11 +59,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 ## Signature traits
 
-- Pink-purple-cyan gradient palette
-- Classical marble sculpture collages
-- Japanese katakana/Chinese decorations
-- Checkerboard and 3D grid floors
-- Pixelation and lo-fi processing
+- Composition - Combine retro windows, perspective grids and surreal imagery into a nostalgic scene.
+- Signature - This study uses pink, cyan and violet while retaining a distinct foreground text layer.
 
 ## Where it works
 
@@ -78,12 +88,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 The specific ways AI-generated pages in this style go wrong. Check each one before delivering.
 
-1. Gradient without iconography — vaporwave narrates through statues, palms, grid horizons
-   只有粉紫渐变没有符号——蒸汽波靠雕像、棕榈、网格地平线这些符号叙事
-2. Too-modern typefaces — it wants italic serifs or wide-tracked retro faces (plus katakana accents)
-   字体太现代——需要衬线斜体或全角宽字距的复古味（还有日文假名点缀）
-3. Full saturation — vaporwave is a faded dream; keep a hazy wash over it
-   饱和度拉满——蒸汽波是褪色的梦，要带一层雾感
+1. Avoid losing text in fluorescent backgrounds or packing every retro motif into one screen.
+   避免荧光背景吞掉文字，不要把所有复古元素都塞进同一屏。
 
 ## Seen in the wild
 

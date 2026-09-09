@@ -1,11 +1,24 @@
 # Maximalism `maximalism`
 
-**Chinese name:** 极繁主义  
-**Difficulty:** 4 (Expert)  
-**Tags:** Art · Distinctive  
+**Chinese name:** 极繁主义
+
+**Type:** Visual aesthetic
+
+**Study version:** 2026.09
+
+**Difficulty:** 4 (Expert)
+
+**Tags:** Art · Distinctive
+
 **Fits:** E-commerce / Retail, Gaming / Entertainment
 
-'More is more, less is bore' — Maximalism is direct opposition to minimalism. Layered patterns, rich colors, multiple font combinations, like a visual carnival party. Gucci and Valentino pushed it to luxury's pinnacle.
+Establish a dominant visual, then enrich it with secondary type, patterns and layered content. High density, multiple scales and vivid colors coexist with hierarchy, repetition and echoes.
+
+## Study boundaries and references
+
+An original web interpretation. Palette, assets and dimensions describe this example, not a universal definition of the style.
+
+The composition below is an authored study; historical inspiration names are not certified reproductions.
 
 ## Prompt
 
@@ -13,20 +26,20 @@ Hand this to any AI coding tool, or use it as your own build brief.
 
 **English**
 
-> Maximalism style — more is more, on purpose. Palette throws everything at once: gold (#FFD700), orange-red (#FF4500), hot pink (#FF1493), violet (#8B00FF), on a cream base (#FFF3D6). Mix monospace, sans-serif, and serif fonts within the same layout for a scrapbook energy. Stack overlapping circular and pill badges (border-radius 50%, 999px), outline key elements with thick gold or ink borders (2-3px), and let sections layer and overlap like a dense collage rather than align to a clean grid.
+> Maximalism. Establish a dominant visual, then enrich it with secondary type, patterns and layered content. High density, multiple scales and vivid colors coexist with hierarchy, repetition and echoes. Disorder alone is not maximalism; reserve clear space for primary actions and body copy. Adapt palette and dimensions to the content; use the current demo reference brief for an exact reproduction.
 
 **中文**
 
-> 极繁主义风格——多即是多，而且是刻意的多。配色一次性用尽：金黄（#FFD700）、橙红（#FF4500）、亮粉（#FF1493）、紫罗兰（#8B00FF），底色奶油黄（#FFF3D6）。同一版面混用等宽体、无衬线体、衬线体，制造剪贴画式的热闹感。圆形和胶囊徽标层层叠加（圆角 50%、999px），关键元素用粗金色或墨色边框（2-3px）勾边，各区块像拼贴一样互相重叠，而不是对齐在干净的网格上。
+> 极繁主义。建立一个强主视觉，再用次级文字、图案与层叠内容丰富节奏。高密度、多尺度与鲜明色彩同时存在，仍有主次、重复和呼应。不要把无序堆叠当作极繁；需要给主操作和正文留下明确位置。配色与尺寸可根据内容调整；精确复现请使用当前演示的参考包。
 
 **Short form** — when you only need one line:
 
-- EN: Maximalism, gold-orange-pink-violet clash with mixed fonts, overlapping collage-style badges
-- 中文: 极繁主义，金橙粉紫撞色+多字体混搭，层叠拼贴式徽标
+- EN: Maximalism: Establish a dominant visual, then enrich it with secondary type, patterns and layered content.
+- 中文: 极繁主义：建立一个强主视觉，再用次级文字、图案与层叠内容丰富节奏。
 
 ## Design tokens
 
-Lifted verbatim from the reference implementation. Use these exact values.
+Parsed from this reference implementation. Preserve these values when matching this demo; adapt them deliberately when applying the broader style.
 
 ```css
 :root {
@@ -46,11 +59,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 ## Signature traits
 
-- Rich saturated color layering
-- Multiple pattern and texture mixing
-- 2-4 fonts freely combined
-- Dense visual element arrangement
-- Decorative borders and dividers
+- Composition - Establish a dominant visual, then enrich it with secondary type, patterns and layered content.
+- Signature - High density, multiple scales and vivid colors coexist with hierarchy, repetition and echoes.
 
 ## Where it works
 
@@ -78,18 +88,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 The specific ways AI-generated pages in this style go wrong. Check each one before delivering.
 
-1. Abundance without order — maximalism is layered richness, not random piles; keep a visual path
-   多而无序——极繁是有层次的丰富而不是随机堆放，要保留视觉动线
-2. No echoing motifs — patterns and colors must repeat in families
-   元素之间没有呼应——图案与色彩要成组、成家族地重复出现
-3. Sacrificing all readability — body copy still needs a calmer backing
-   可读性牺牲殆尽——正文区仍然需要一块相对安静的底
-4. Density via transparency — layers must collide as solid blocks, patterns, and borders; stacked alpha turns to mud
-   密度靠半透明叠加——层次要用实色块、图案、边框硬碰硬地拼出来，透明度一叠就糊成脏色
-5. Everything animating — element density is already maxed; motion belongs to one or two focal soloists, or it's noise
-   满页都在动——元素密度已经拉满，动效必须只给一两个焦点独舞，全动就是噪音
-6. Font mixing without hierarchy — past 4 typefaces, or with no clear lead, the feast becomes a type specimen sheet
-   字体混搭没有主次——超过 4 种或没有明确主字体，页面就从盛宴变成字体样本册
+1. Disorder alone is not maximalism; reserve clear space for primary actions and body copy.
+   不要把无序堆叠当作极繁；需要给主操作和正文留下明确位置。
 
 ## Seen in the wild
 

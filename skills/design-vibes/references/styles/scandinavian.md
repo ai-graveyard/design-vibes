@@ -1,11 +1,24 @@
 # Scandinavian `scandinavian`
 
-**Chinese name:** 斯堪的纳维亚  
-**Difficulty:** 1 (Easy)  
-**Tags:** Minimal · Warm  
+**Chinese name:** 斯堪的纳维亚
+
+**Type:** Visual aesthetic
+
+**Study version:** 2026.09
+
+**Difficulty:** 1 (Easy)
+
+**Tags:** Minimal · Warm
+
 **Fits:** E-commerce / Retail
 
-Digital continuation of Nordic design, centered on 'Hygge' — comfort, warmth, intimacy. Perfect balance of functionality and aesthetics, soft quality of natural light, warm earth-tone palette. Design that makes you want to curl up on the sofa.
+Center everyday settings and natural materials, with clear product information and generous space. Warm white, wood and sage, soft lighting and textile detail, with modern warm typography.
+
+## Study boundaries and references
+
+An original web interpretation. Palette, assets and dimensions describe this example, not a universal definition of the style.
+
+The composition below is an authored study; historical inspiration names are not certified reproductions.
 
 ## Prompt
 
@@ -13,20 +26,20 @@ Hand this to any AI coding tool, or use it as your own build brief.
 
 **English**
 
-> Scandinavian style with a cozy, natural mood. Palette: muted tan (#8F7350), sage green (#7E8D6F), and warm cream (#F0E6CF, #F0E2C4) — like light through a window onto raw wood. Mix a plain sans-serif with a light serif for warmth. Give corners a soft, slightly irregular radius (roughly 12-16px, feels hand-cut rather than machine-perfect) and let wood-toned textures or accents carry the hygge comfort.
+> Scandinavian. Center everyday settings and natural materials, with clear product information and generous space. Warm white, wood and sage, soft lighting and textile detail, with modern warm typography. Go beyond beige cards; wood, textiles, proportions and lived-in context matter more than a fixed radius. Adapt palette and dimensions to the content; use the current demo reference brief for an exact reproduction.
 
 **中文**
 
-> 斯堪的纳维亚风格，温暖自然的氛围。配色：低饱和茶褐（#8F7350）、鼠尾草绿（#7E8D6F）、暖米色（#F0E6CF、#F0E2C4）——像阳光透过窗户洒在原木上。无衬线体搭配轻衬线体，增加一点温度。圆角要柔和且略带手工感（约 12-16px，不追求机械式精确），用木质色调的纹理或点缀传递 Hygge 式的舒适感。
+> 斯堪的纳维亚。以生活场景和自然材质为中心，清晰的商品信息搭配舒展留白。暖白、木色与鼠尾草绿，轻柔光照和织物细节；字体现代而温暖。不要只剩米色卡片；木纹、织物、物体比例和生活感比固定圆角重要。配色与尺寸可根据内容调整；精确复现请使用当前演示的参考包。
 
 **Short form** — when you only need one line:
 
-- EN: Scandinavian, muted tan-sage-cream palette, soft hand-cut radius with wood-toned accents
-- 中文: 斯堪的纳维亚，茶褐鼠尾草绿暖米色，手工感柔角+木质点缀
+- EN: Scandinavian: Center everyday settings and natural materials, with clear product information and generous space.
+- 中文: 斯堪的纳维亚：以生活场景和自然材质为中心，清晰的商品信息搭配舒展留白。
 
 ## Design tokens
 
-Lifted verbatim from the reference implementation. Use these exact values.
+Parsed from this reference implementation. Preserve these values when matching this demo; adapt them deliberately when applying the broader style.
 
 ```css
 :root {
@@ -48,11 +61,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 ## Signature traits
 
-- Hygge cozy atmosphere creation
-- Soft natural light rendering
-- Earth tones + muted green palette
-- Natural material textures - linen/wool/wood
-- Rounded soft geometric forms
+- Composition - Center everyday settings and natural materials, with clear product information and generous space.
+- Signature - Warm white, wood and sage, soft lighting and textile detail, with modern warm typography.
 
 ## Where it works
 
@@ -79,12 +89,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 The specific ways AI-generated pages in this style go wrong. Check each one before delivering.
 
-1. Cold sterile white — Nordic white is warm, paired with wood tones and textile texture for hygge
-   白得发冷——北欧的白是暖白，要配原木色与织物质感才有 hygge
-2. Cramming product shots — the relaxed spacing and large imagery are the whole point
-   版面塞满产品图——留白与大图的松弛感正是核心卖点
-3. High-saturation accents — desaturated natural hues are the register
-   用了高饱和强调色——低饱和的自然色系才是这个味
+1. Go beyond beige cards; wood, textiles, proportions and lived-in context matter more than a fixed radius.
+   不要只剩米色卡片；木纹、织物、物体比例和生活感比固定圆角重要。
 
 ## Seen in the wild
 

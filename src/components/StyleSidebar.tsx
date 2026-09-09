@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { Star } from 'lucide-react';
+
 import { designStyles, type DesignStyle } from '../data/styles';
 import { useAppStore } from '../store/appStore';
 import { DemoPreview } from './DemoPreview';
@@ -92,7 +92,7 @@ const StyleSidebarItem = forwardRef<HTMLAnchorElement, StyleSidebarItemProps>(
         ref={ref}
         to={`/style/${style.id}`}
         aria-current={isActive ? 'page' : undefined}
-        className={`block rounded-lg overflow-hidden border-2 transition-all duration-200 ${
+        className={`group block rounded-lg overflow-hidden border-2 transition-all duration-200 ${
           isActive
             ? 'border-[#FF9F1C] shadow-lg'
             : 'border-gray-200 hover:border-gray-300 dark:border-gray-800 dark:hover:border-gray-600'
@@ -100,7 +100,7 @@ const StyleSidebarItem = forwardRef<HTMLAnchorElement, StyleSidebarItemProps>(
       >
         {/* Mini Preview */}
         <div className="relative aspect-[16/10] overflow-hidden bg-white dark:bg-[#1a1a1a]">
-          <DemoPreview styleId={style.id} placeholderColor={style.colors[0]} />
+          <DemoPreview styleId={style.id} placeholderColor={style.colors[0]} thumbnail />
         </div>
 
         {/* Info */}
@@ -109,12 +109,7 @@ const StyleSidebarItem = forwardRef<HTMLAnchorElement, StyleSidebarItemProps>(
             <h3 className="text-sm font-bold truncate text-black dark:text-white">
               {language === 'zh' ? style.name : style.nameEn}
             </h3>
-            <div className="flex items-center gap-1 shrink-0 px-1.5 py-0.5 rounded bg-gray-100 dark:bg-gray-800">
-              <Star className="w-3.5 h-3.5 text-[#FF9F1C] fill-[#FF9F1C]" />
-              <span className="text-xs font-bold tabular-nums text-black dark:text-white">
-                {style.rating.toFixed(1)}
-              </span>
-            </div>
+
           </div>
         </div>
       </NavLink>
@@ -124,42 +119,11 @@ const StyleSidebarItem = forwardRef<HTMLAnchorElement, StyleSidebarItemProps>(
 
 StyleSidebarItem.displayName = 'StyleSidebarItem';
 
-// Horizontal sidebar item (for mobile)
+// Mobile navigation stays compact so the actual design gets the screen.
 const StyleSidebarItemHorizontal = forwardRef<HTMLAnchorElement, StyleSidebarItemProps>(
-  ({ style, isActive, language }, ref) => {
-    return (
-      <NavLink
-        ref={ref}
-        to={`/style/${style.id}`}
-        aria-current={isActive ? 'page' : undefined}
-        className={`block w-36 shrink-0 rounded-lg overflow-hidden border-2 transition-all duration-200 ${
-          isActive
-            ? 'border-[#FF9F1C] shadow-lg'
-            : 'border-gray-200 dark:border-gray-800'
-        }`}
-      >
-        {/* Mini Preview */}
-        <div className="relative aspect-[16/10] overflow-hidden bg-white dark:bg-[#1a1a1a]">
-          <DemoPreview styleId={style.id} placeholderColor={style.colors[0]} />
-        </div>
-
-        {/* Info */}
-        <div className="px-2 py-1.5 border-t bg-white border-gray-100 dark:bg-[#1a1a1a] dark:border-gray-800">
-          <div className="flex items-center justify-between gap-1">
-            <h3 className="text-[11px] font-bold truncate text-black dark:text-white">
-              {language === 'zh' ? style.name : style.nameEn}
-            </h3>
-            <div className="flex items-center gap-0.5 shrink-0 px-1 py-0.5 rounded bg-gray-100 dark:bg-gray-800">
-              <Star className="w-2.5 h-2.5 text-[#FF9F1C] fill-[#FF9F1C]" />
-              <span className="text-[10px] font-bold tabular-nums text-black dark:text-white">
-                {style.rating.toFixed(1)}
-              </span>
-            </div>
-          </div>
-        </div>
-      </NavLink>
-    );
-  }
+  ({ style, isActive, language }, ref) => <NavLink ref={ref} to={`/style/${style.id}`} aria-current={isActive ? 'page' : undefined}
+    className={`shrink-0 px-3 py-2.5 rounded-lg text-xs font-medium border ${isActive ? 'border-[#d99431] bg-[#fff1db] text-[#774607]' : 'border-transparent text-gray-600 dark:text-gray-300'}`}>
+    {language === 'zh' ? style.name : style.nameEn}
+  </NavLink>
 );
-
 StyleSidebarItemHorizontal.displayName = 'StyleSidebarItemHorizontal';

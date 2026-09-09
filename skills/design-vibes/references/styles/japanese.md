@@ -1,11 +1,24 @@
 # Japanese Minimalism `japanese`
 
-**Chinese name:** 日式极简  
-**Difficulty:** 2 (Medium)  
-**Tags:** Minimal · Classic · Warm  
+**Chinese name:** 日式极简
+
+**Type:** Visual aesthetic
+
+**Study version:** 2026.09
+
+**Difficulty:** 2 (Medium)
+
+**Tags:** Minimal · Classic · Warm
+
 **Fits:** Personal / Blog
 
-A design philosophy rooted in Zen aesthetics, centered on 'Ma' (間) — the art of space where emptiness is not void but meaningful existence. Natural material textures, asymmetric karesansui balance, seasonal color use — this is Eastern wisdom in digital form.
+Use negative space, natural rhythm and careful content proportions. This study pairs paper tones, fine rules, serif headings and small vermilion accents; copy length sets the rhythm.
+
+## Study boundaries and references
+
+An original web interpretation. Palette, assets and dimensions describe this example, not a universal definition of the style.
+
+The composition below is an authored study; historical inspiration names are not certified reproductions.
 
 ## Prompt
 
@@ -13,20 +26,20 @@ Hand this to any AI coding tool, or use it as your own build brief.
 
 **English**
 
-> Japanese Minimalism style. Palette: washi-paper cream (#F6F2E6, #EFE9D8) grounded by tan (#C4A77D), ochre (#B08D3F), vermillion red (#A63A2B), and walnut brown (#8B7355). Pair a mincho-like serif for headings with a light sans-serif for body text. Keep borders hairline-thin (1px), corners barely rounded (2px), and use a soft vermillion-tinted shadow instead of a gray one — restraint and warmth over minimal-cold whitespace.
+> Japanese Minimalism. Use negative space, natural rhythm and careful content proportions. This study pairs paper tones, fine rules, serif headings and small vermilion accents; copy length sets the rhythm. Avoid reducing the aesthetic to an accumulation of seals, vertical text and empty space. Adapt palette and dimensions to the content; use the current demo reference brief for an exact reproduction.
 
 **中文**
 
-> 日式极简风格。配色：和纸米白底（#F6F2E6、#EFE9D8），搭配茶褐（#C4A77D）、赭石（#B08D3F）、朱红（#A63A2B）、胡桃棕（#8B7355）。标题用明朝体风格衬线字，正文用轻盈无衬线体。边框要细如发丝（1px），圆角极小（2px），阴影用带朱红色调的暖阴影而不是灰色阴影——克制中带着温度，而不是冷淡的极简。
+> 日式极简。用留白、自然节奏和细致的内容比例组织页面。本例采用和纸色、细线、衬线标题与小面积朱红；文字长度决定排版节奏。避免把文化风格简化为印章、竖排与空白的堆砌。配色与尺寸可根据内容调整；精确复现请使用当前演示的参考包。
 
 **Short form** — when you only need one line:
 
-- EN: Japanese Minimalism, washi cream with tan-vermillion accents, hairline borders and warm-tinted shadow
-- 中文: 日式极简，和纸米白+茶褐朱红，细边框朱红暖阴影
+- EN: Japanese Minimalism: Use negative space, natural rhythm and careful content proportions.
+- 中文: 日式极简：用留白、自然节奏和细致的内容比例组织页面。
 
 ## Design tokens
 
-Lifted verbatim from the reference implementation. Use these exact values.
+Parsed from this reference implementation. Preserve these values when matching this demo; adapt them deliberately when applying the broader style.
 
 ```css
 :root {
@@ -46,11 +59,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 ## Signature traits
 
-- 'Ma' whitespace art - 60%+ empty space
-- Natural material textures - washi/wood/stone
-- Asymmetric dynamic balance
-- Handwritten calligraphy accents
-- Seasonal color transitions
+- Composition - Use negative space, natural rhythm and careful content proportions.
+- Signature - This study pairs paper tones, fine rules, serif headings and small vermilion accents; copy length sets the rhythm.
 
 ## Where it works
 
@@ -77,12 +87,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 The specific ways AI-generated pages in this style go wrong. Check each one before delivering.
 
-1. Whitespace as mere emptiness — Japanese ma is compositional, distributed with asymmetric intent
-   把留白当成空白——日式的「间」是构图的一部分，要有意图地不对称分布
-2. Western-loud typography — restraint via small sizes and wide tracking carries the mood; shouting headlines break it
-   排印西式化——小字号、宽字距的克制才是气质来源，大标题一喊就破功
-3. More than three colors — ink, paper, and one touch of vermilion or indigo suffice
-   颜色超过三种——墨、纸，加一点朱或蓝就足够
+1. Avoid reducing the aesthetic to an accumulation of seals, vertical text and empty space.
+   避免把文化风格简化为印章、竖排与空白的堆砌。
 
 ## Seen in the wild
 

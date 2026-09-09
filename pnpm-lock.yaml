@@ -30,6 +30,18 @@ importers:
         specifier: ^5.0.10
         version: 5.0.11(@types/react@19.2.11)(react@19.2.4)
     devDependencies:
+      '@babel/plugin-proposal-decorators':
+        specifier: 7.29.0
+        version: 7.29.0(@babel/core@7.29.0)
+      '@babel/preset-env':
+        specifier: 7.29.0
+        version: 7.29.0(@babel/core@7.29.0)
+      '@babel/preset-react':
+        specifier: 7.28.5
+        version: 7.28.5(@babel/core@7.29.0)
+      '@babel/preset-typescript':
+        specifier: 7.28.5
+        version: 7.28.5(@babel/core@7.29.0)
       '@eslint/js':
         specifier: ^9.39.1
         version: 9.39.2

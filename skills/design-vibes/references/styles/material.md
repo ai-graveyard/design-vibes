@@ -1,10 +1,23 @@
 # Material Design `material`
 
-**Difficulty:** 2 (Medium)  
-**Tags:** Modern · Classic  
+**Type:** Design language
+
+**Study version:** 2026.09
+
+**Difficulty:** 2 (Medium)
+
+**Tags:** Modern · Classic
+
 **Fits:** Enterprise / B2B
 
-Google's design system released in 2014, built on the 'digital paper' metaphor. Expressing Z-axis depth through shadow hierarchy, conveying interaction feedback with meaningful motion. The most complete and thoroughly documented design specification system.
+Organize UI around Material 3 color roles, type scale, shape and state. This study uses a purple primary, tonal surfaces and Roboto; its 56px FAB has 16px corners with clear hover and pressed feedback.
+
+## Study boundaries and references
+
+A Material 3 web study. Task interactions are local to this page, without services or saved data.
+
+- [Material 3 · Theme, type & shape](https://developer.android.com/codelabs/m3-design-theming?hl=en)
+- [Material 3 · Floating action button](https://developer.android.com/develop/ui/compose/components/fab)
 
 ## Prompt
 
@@ -12,20 +25,20 @@ Hand this to any AI coding tool, or use it as your own build brief.
 
 **English**
 
-> Material Design (Material You era) with a pastel tonal palette — blush pink (#FFD8E4), lavender (#EADDFF, #E8DEF8), near-white (#FEF7FF), accented with Google yellow (#FBBC05) and red (#EA4335). Use a Roboto-like grotesque sans-serif. Stack layered elevation shadows to imply a paper-like z-axis, keep corners generously rounded (16-28px), and give primary actions a filled circular FAB (border-radius 50%).
+> Material Design. Organize UI around Material 3 color roles, type scale, shape and state. This study uses a purple primary, tonal surfaces and Roboto; its 56px FAB has 16px corners with clear hover and pressed feedback. Google brand colors are not a required Material palette, and circular FABs are not a rule for every version. Adapt palette and dimensions to the content; use the current demo reference brief for an exact reproduction.
 
 **中文**
 
-> Material Design（Material You 时代）风格，柔和色调层次配色——浅粉（#FFD8E4）、薰衣草紫（#EADDFF、#E8DEF8）、近白（#FEF7FF），点缀 Google 黄（#FBBC05）和红（#EA4335）。字体用类 Roboto 无衬线体。用层叠的高度阴影模拟纸张的 z 轴层级，圆角要大方（16-28px），主操作按钮用实心圆形 FAB（圆角 50%）。
+> Material Design。按 Material 3 的色彩角色、字号层级、形状与状态组织界面。本例采用紫色主色、调性表面与 Roboto；56px FAB 使用 16px 圆角，悬浮与按下状态有明确反馈。不要把 Google 品牌四色当成 Material 的必选配色，或把圆形 FAB 当作所有版本的规范。配色与尺寸可根据内容调整；精确复现请使用当前演示的参考包。
 
 **Short form** — when you only need one line:
 
-- EN: Material Design, pastel pink-lavender with Google yellow/red accents, large radius with elevation shadows
-- 中文: Material Design，粉紫柔色调+Google黄红点缀，大圆角+层级阴影
+- EN: Material Design: Organize UI around Material 3 color roles, type scale, shape and state.
+- 中文: Material Design：按 Material 3 的色彩角色、字号层级、形状与状态组织界面。
 
 ## Design tokens
 
-Lifted verbatim from the reference implementation. Use these exact values.
+Parsed from this reference implementation. Preserve these values when matching this demo; adapt them deliberately when applying the broader style.
 
 ```css
 :root {
@@ -55,17 +68,14 @@ Lifted verbatim from the reference implementation. Use these exact values.
   --e2: 0 1px 2px rgba(0,0,0,.3), 0 2px 6px 2px rgba(0,0,0,.15);
   --e3: 0 1px 3px rgba(0,0,0,.3), 0 4px 8px 3px rgba(0,0,0,.15);
   --e4: 0 2px 3px rgba(0,0,0,.3), 0 6px 10px 4px rgba(0,0,0,.15);
-  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  --sans: "Roboto",-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 ```
 
 ## Signature traits
 
-- Paper metaphor - card-based UI
-- Shadow hierarchy - 1dp to 24dp
-- Meaningful motion transitions - 300-500ms
-- Bold and vibrant brand color use
-- Responsive touch feedback - ripple effects
+- Composition - Organize UI around Material 3 color roles, type scale, shape and state.
+- Signature - This study uses a purple primary, tonal surfaces and Roboto; its 56px FAB has 16px corners with clear hover and pressed feedback.
 
 ## Where it works
 
@@ -92,12 +102,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 The specific ways AI-generated pages in this style go wrong. Check each one before delivering.
 
-1. Random elevation — shadow depth encodes hierarchy in Material; it's not ad-hoc decoration
-   海拔乱用——Material 的阴影深度对应层级语义，不是随手的装饰
-2. Freestyle corner radii — radii follow tokens; don't invent per card
-   圆角刻度各自为政——圆角有 token 体系，别每张卡片自创一套
-3. No motion — ripples and transitions are the soul; without them it's just colored cards
-   动效缺席——涟漪反馈与转场是 Material 的灵魂，静态的只是彩色卡片
+1. Google brand colors are not a required Material palette, and circular FABs are not a rule for every version.
+   不要把 Google 品牌四色当成 Material 的必选配色，或把圆形 FAB 当作所有版本的规范。
 
 ## Seen in the wild
 
@@ -105,6 +111,6 @@ All Google products · Android system UI · Flutter apps · YouTube
 
 ## Reference implementation
 
-`assets/demos/material.html` — a complete single-file page (474 lines, no scripts, no external requests). Read it for layout and composition patterns, or copy it as a starting point.
+`assets/demos/material.html` — a complete single-file page (626 lines, no scripts, no external requests). Read it for layout and composition patterns, or copy it as a starting point.
 
 Live preview: https://design-vibes.v2ai.org/style/material

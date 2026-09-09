@@ -1,11 +1,24 @@
 # Organic Design `organic`
 
-**Chinese name:** 有机形态  
-**Difficulty:** 4 (Expert)  
-**Tags:** Modern · Playful  
+**Chinese name:** 有机形态
+
+**Type:** Visual aesthetic
+
+**Study version:** 2026.09
+
+**Difficulty:** 4 (Expert)
+
+**Tags:** Modern · Playful
+
 **Fits:** Kids / Education
 
-Farewell to rigid right angles and grids, embracing nature's flowing curves. Irregular blob shapes, soft gradient color transitions, breathing-like dynamic effects. The humanized expression design language of tech companies like Stripe and Dropbox.
+Create a flowing composition with asymmetric curves and natural imagery while keeping text clear. Shapes share a coherent curvature; gentle colors and forms guide reading.
+
+## Study boundaries and references
+
+An original web interpretation. Palette, assets and dimensions describe this example, not a universal definition of the style.
+
+The composition below is an authored study; historical inspiration names are not certified reproductions.
 
 ## Prompt
 
@@ -13,20 +26,20 @@ Hand this to any AI coding tool, or use it as your own build brief.
 
 **English**
 
-> Organic Design style, nature-inspired and flowing. Palette: deep forest green (#33544A), sage (#A9C7B9), and mid green (#63A375) over a soft off-white (#F3F7E9, #FFF9F0). Mix a serif for warmth with a plain sans-serif. The signature technique: give cards and shapes heavily asymmetric blob border-radius (e.g. 42% 58% 37% 63% / 60% 41% 59% 40%) instead of rectangles, so every container looks hand-drawn and flowing rather than geometric.
+> Organic Design. Create a flowing composition with asymmetric curves and natural imagery while keeping text clear. Shapes share a coherent curvature; gentle colors and forms guide reading. Do not squeeze every text container into a blob; organic form still needs layout discipline. Adapt palette and dimensions to the content; use the current demo reference brief for an exact reproduction.
 
 **中文**
 
-> 有机形态风格，自然流动的气质。配色：深森林绿（#33544A）、鼠尾草绿（#A9C7B9）、中绿（#63A375），底色柔和米白（#F3F7E9、#FFF9F0）。衬线体增加温度，搭配简洁无衬线体。标志性技法：卡片和形状用高度不对称的“水滴形”圆角（例如 42% 58% 37% 63% / 60% 41% 59% 40%）代替矩形，让每个容器看起来像手绘流动的形状，而不是几何直角。
+> 有机形态。以不对称的曲线和自然图像形成流动构图，文字保持清晰。形状之间有连续的曲率关系，色彩温和，图形帮助引导阅读。不要把所有文字容器都挤进水滴；自然感不等于失去网格。配色与尺寸可根据内容调整；精确复现请使用当前演示的参考包。
 
 **Short form** — when you only need one line:
 
-- EN: Organic Design, forest green on off-white, asymmetric blob-shaped containers
-- 中文: 有机形态，森林绿+米白底，不对称水滴形圆角容器
+- EN: Organic Design: Create a flowing composition with asymmetric curves and natural imagery while keeping text clear.
+- 中文: 有机形态：以不对称的曲线和自然图像形成流动构图，文字保持清晰。
 
 ## Design tokens
 
-Lifted verbatim from the reference implementation. Use these exact values.
+Parsed from this reference implementation. Preserve these values when matching this demo; adapt them deliberately when applying the broader style.
 
 ```css
 :root {
@@ -47,11 +60,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 ## Signature traits
 
-- SVG blob organic shapes
-- Soft CSS gradient transitions
-- Nature-inspired color combinations
-- Soft edges and rounded corners
-- Micro-animation breathing effects
+- Composition - Create a flowing composition with asymmetric curves and natural imagery while keeping text clear.
+- Signature - Shapes share a coherent curvature; gentle colors and forms guide reading.
 
 ## Where it works
 
@@ -78,18 +88,8 @@ Lifted verbatim from the reference implementation. Use these exact values.
 
 The specific ways AI-generated pages in this style go wrong. Check each one before delivering.
 
-1. Blobs too regular — organic shapes must feel grown; near-circles defeat the purpose
-   blob 形状太规则——有机形态要像自然生长，接近正圆或椭圆就失去了意义
-2. Hard corners sneaking in — one sharp rectangle interrupts the entire flow
-   曲线里混进直角——一处生硬的矩形会打断整个流动感
-3. Fast animations — organic motion should breathe; speed makes it anxious
-   动画太快——有机风的动效要像呼吸，快了就焦躁
-4. Decorative blobs bleeding off-canvas — overflowing shapes need a clipping wrapper, or narrow viewports get horizontal scroll
-   装饰 blob 直接伸出画布——溢出的形状要关进裁剪容器，否则窄屏出现横向滚动
-5. Four-value border-radius — organic shapes need the 8-value slash syntax (e.g. 62% 38% 46% 54%/60% 44% 56% 40%); anything less is a squashed ellipse
-   border-radius 只写 4 个值——有机形状需要 8 值斜杠语法（如 62% 38% 46% 54%/60% 44% 56% 40%），否则只是压扁的椭圆
-6. Every blob the same shape — nature doesn't repeat; vary each blob's radii and size
-   所有 blob 复用同一形状——自然界不重复，每个 blob 的圆角参数和尺寸都应各不相同
+1. Do not squeeze every text container into a blob; organic form still needs layout discipline.
+   不要把所有文字容器都挤进水滴；自然感不等于失去网格。
 
 ## Seen in the wild
 

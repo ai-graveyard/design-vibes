@@ -58,7 +58,7 @@ Skill 里有什么：
 
 - **30 种设计风格详解**：Apple 极简、包豪斯、玻璃拟态、液态玻璃、极光渐变、终端黑客风、像素风等
 - **实况预览**：每种风格配有一个纯手写的迷你落地页 demo，首页卡片即真实页面的等比缩略图
-- **零依赖 demo**：所有 demo 为单文件 HTML + 纯 CSS，无 CDN、无外部字体、无 JavaScript，秒开
+- **离线单文件 demo**：HTML 内嵌 CSS、图片和字体，重点演示包含本地交互脚本；无 CDN、无服务请求，下载后可以独立打开
 - **源码即教程**：详情页可直接查看 demo 源码（语法高亮），一键复制/下载整个 HTML
 - **AI 提示词**：每种风格附带可一键复制的完整提示词（中英），用于 AI 编程工具快速复现该风格
 - **Design Tokens**：自动提取 demo 的 `:root` CSS 变量，与实况预览严格一致，可直接复制
@@ -95,10 +95,10 @@ pnpm skill
 # 构建生产版本（含校验、skill 生成、SEO 后处理与 skill 安装包打包）
 pnpm build
 
-# 重新生成社交分享图（demo 有增改时运行，需 macOS + Chrome）
+# 重新生成社交分享图（demo 有增改时运行，需 Chrome / Chromium）
 pnpm og
 
-# 重新生成首页卡片静态缩略图（demo 有增改时运行，需 macOS + Chrome）
+# 重新生成首页卡片静态缩略图（demo 有增改时运行，需 Chrome / Chromium）
 pnpm thumbs
 
 # 预览生产版本
@@ -146,12 +146,12 @@ pnpm preview
 
 1. 在 `src/data/styles.ts` 中追加风格条目（`id` 为唯一标识，含 `pitfalls` 避坑指南）
 2. 在 `src/data/prompts.ts` 中追加同 `id` 的提示词
-3. 在 `public/demos/` 中新增 `<id>.html` demo（单文件、零外链、零 JS、必须有 `:root` CSS 变量）
+3. 在 `public/demos/` 中新增 `<id>.html` demo（单文件、零外部请求、必须有 `:root` CSS 变量；可包含内嵌素材和本地交互）
 4. （可选）在 `src/data/scenes.ts` 的场景/难度中收录该风格
 5. 运行 `pnpm validate` 校验三处对齐，`pnpm og` 与 `pnpm thumbs` 重新生成分享图和卡片缩略图
 6. 运行 `pnpm skill` 重建 Skill 产物，并把 `skills/` 的变更一起提交（CI 会用 `git diff --exit-code` 卡住漏提交）
 
-首页卡片、侧边栏、详情页、Design Tokens、SEO 静态壳与 Skill 文档都会根据数据自动生成，无需改动组件。
+新增风格还需在 `src/data/styleSpecs.ts` 中补齐类型、构图、关键手法、误用说明与可用的参考来源。首页卡片、侧边栏、详情页、Design Tokens、SEO 静态壳与 Skill 文档根据数据生成。
 
 ## 部署
 
@@ -162,3 +162,27 @@ pnpm preview
 ## 许可证
 
 [MIT](./LICENSE)
+
+
+## 设计准确度与演示工作流
+
+- 详情和对比采用固定的桌面 1280×800、平板 768×1024、手机 390×844 视口，显示缩放与响应式断点分离；另有自适应和全屏浏览。
+- 首页直接展示精选作品；风格卡片显示设计类型，替代没有公开分项依据的总评分。
+- `src/data/styleSpecs.ts` 记录 30 种风格的构图、关键手法、误用说明、示例版本及参考依据。颜色和圆角属于具体示例，不作为所有同类设计的硬规则。
+- “应用这种风格”保留业务内容并使用风格原则；“复现当前演示”额外提供实际 Token、参考地址和四种尺寸的视觉验收要求，可复制或下载 Markdown。
+- Apple、瑞士、报刊、Material、玻璃拟态、液态玻璃为本轮重点演示。图片来源与生成提示词见 `assets/demo-media/README.md`，字体和许可见 `assets/fonts/README.md`。液态玻璃标明 CSS 近似范围。
+- Material 任务操作、玻璃材质滑条、液态玻璃播放器只改变页面内状态，刷新即可复位。
+
+更新演示后运行：
+
+```bash
+pnpm assets           # 将原始素材与字体重新嵌入独立 HTML
+pnpm test             # Token 解析、参考包完整性、风格原则一致性
+pnpm visual           # 30 个演示 × 4 个尺寸 + 交互门禁，保存截图与报告
+pnpm thumbs           # 重建卡片截图与源文件指纹
+pnpm og               # 重建分享图
+pnpm build            # 校验指纹、生成 Skill 与生产构建
+pnpm validate:studio  # 验证生产版的视口、全屏、嵌入表单与同步滚动
+```
+
+`output/visual/index.html` 提供 120 张截图供人工并排复核，`report.json` 包含可见标题、字体/图像加载、溢出与交互结果。截图采用加载完成后的 reduced-motion 状态，动效本身仍须单独实测。CI 执行同一检查并上传截图供审阅；自动门禁不能替代设计判断。`public/thumbs/manifest.json` 把截图与演示源码绑定，源码改动却没有刷新预览时构建会失败。

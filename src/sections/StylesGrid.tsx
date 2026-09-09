@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Search } from 'lucide-react';
 import { designStyles } from '../data/styles';
+import { scenes, difficultyTiers } from '../data/scenes';
 import { StyleCard } from '../components/StyleCard';
 import { useAppStore } from '../store/appStore';
 import { translations } from '../data/translations';
@@ -11,8 +12,9 @@ const allTagsEn = ['All', 'Minimal', 'Modern', 'Classic', 'Art', 'Vintage', 'Pla
 
 export function StylesGrid() {
   const { language } = useAppStore();
-  const defaultTag = language === 'zh' ? '全部' : 'All';
-  const [selectedTag, setSelectedTag] = useState<string>(defaultTag);
+  const [selectedTagIndex, setSelectedTagIndex] = useState(0);
+  const [selectedSceneId, setSelectedSceneId] = useState('');
+  const [selectedDifficulty, setSelectedDifficulty] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const t = translations[language];
   // 卡片入场动画等网格进入视口才播，避免从 Hero 滚下来时早已播完
@@ -20,17 +22,26 @@ export function StylesGrid() {
 
   const tags = language === 'zh' ? allTags : allTagsEn;
 
-  // 判断是否选择了"全部"标签（中文或英文）
-  const isAllSelected = selectedTag === '全部' || selectedTag === 'All';
+  const selectedScene = scenes.find(scene => scene.id === selectedSceneId);
+  const selectedTier = difficultyTiers.find(tier => String(tier.level) === selectedDifficulty);
+  const hasFilters = selectedTagIndex !== 0 || selectedSceneId !== '' || selectedDifficulty !== '' || searchQuery !== '';
+  const resetFilters = () => {
+    setSelectedTagIndex(0);
+    setSelectedSceneId('');
+    setSelectedDifficulty('');
+    setSearchQuery('');
+  };
 
   const filteredStyles = designStyles.filter((style) => {
-    const matchesTag = isAllSelected || style.tags.includes(selectedTag) || style.tagsEn.includes(selectedTag);
+    const matchesTag = selectedTagIndex === 0 || style.tags.includes(allTags[selectedTagIndex]) || style.tagsEn.includes(allTagsEn[selectedTagIndex]);
+    const matchesScene = !selectedScene || selectedScene.styleIds.includes(style.id);
+    const matchesDifficulty = !selectedTier || selectedTier.styleIds.includes(style.id);
     const matchesSearch = searchQuery === '' ||
       style.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       style.nameEn.toLowerCase().includes(searchQuery.toLowerCase()) ||
       style.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())) ||
       style.tagsEn.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-    return matchesTag && matchesSearch;
+    return matchesTag && matchesScene && matchesDifficulty && matchesSearch;
   });
 
   // 筛选反馈：结果集变化时整个网格轻微下沉淡入一次（WAAPI，不重挂载卡片）。
@@ -50,12 +61,12 @@ export function StylesGrid() {
       ],
       { duration: 180, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }
     );
-  }, [selectedTag, filteredStyles.length]);
+  }, [selectedTagIndex, selectedSceneId, selectedDifficulty, filteredStyles.length]);
 
   return (
     <section
       id="styles-grid"
-      className="snap-screen w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16 transition-colors duration-300 bg-gray-50 dark:bg-[#0f0f0f]"
+      className="scroll-mt-16 w-full px-4 sm:px-6 lg:px-8 py-12 sm:py-16 transition-colors duration-300 bg-gray-50 dark:bg-[#0f0f0f]"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
@@ -78,6 +89,7 @@ export function StylesGrid() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 dark:text-gray-500" />
               <input
                 type="text"
+                aria-label={t.grid.searchPlaceholder}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={t.grid.searchPlaceholder}
@@ -86,15 +98,35 @@ export function StylesGrid() {
             </div>
           </div>
 
+          <div className="mb-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:max-w-2xl">
+            <label className="flex min-w-0 items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 text-xs dark:border-gray-800 dark:bg-[#1a1a1a]">
+              <span className="shrink-0 text-gray-500 dark:text-gray-400">{t.grid.scene}</span>
+              <select value={selectedSceneId} onChange={(event) => setSelectedSceneId(event.target.value)} className="min-h-11 min-w-0 flex-1 bg-transparent text-sm text-black dark:text-white dark:[color-scheme:dark]">
+                <option value="">{t.grid.allScenes}</option>
+                {scenes.map(scene => <option key={scene.id} value={scene.id}>{language === 'zh' ? scene.name : scene.nameEn}</option>)}
+              </select>
+            </label>
+            <label className="flex min-w-0 items-center gap-3 rounded-lg border border-gray-200 bg-white px-3 text-xs dark:border-gray-800 dark:bg-[#1a1a1a]">
+              <span className="shrink-0 text-gray-500 dark:text-gray-400">{t.grid.difficulty}</span>
+              <select value={selectedDifficulty} onChange={(event) => setSelectedDifficulty(event.target.value)} aria-describedby="difficulty-hint" className="min-h-11 min-w-0 flex-1 bg-transparent text-sm text-black dark:text-white dark:[color-scheme:dark]">
+                <option value="">{t.grid.allDifficulties}</option>
+                {difficultyTiers.map(tier => <option key={tier.level} value={tier.level}>{language === 'zh' ? tier.name : tier.nameEn}</option>)}
+              </select>
+            </label>
+          </div>
+          <p id="difficulty-hint" className="mb-4 text-[11px] text-gray-500 dark:text-gray-400">{t.guide.difficultyNote}</p>
+
           {/* Filter Tags */}
           <div className="flex flex-wrap gap-2">
-            {tags.map((tag) => (
+            {tags.map((tag, index) => (
               <button
                 key={tag}
-                onClick={() => setSelectedTag(tag)}
+                type="button"
+                aria-pressed={selectedTagIndex === index}
+                onClick={() => setSelectedTagIndex(index)}
                 className={`px-4 py-2 text-xs uppercase tracking-wider rounded-full transition-all active:scale-95 ${
-                  selectedTag === tag
-                    ? 'bg-[#FF9F1C] text-white'
+                  selectedTagIndex === index
+                    ? 'bg-[#FF9F1C] text-[#2d1b06]'
                     : 'bg-white text-gray-600 hover:text-black hover:bg-gray-100 border border-gray-200 dark:bg-[#1a1a1a] dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800 dark:border-transparent'
                 }`}
               >
@@ -104,8 +136,11 @@ export function StylesGrid() {
           </div>
 
           {/* Results count */}
-          <div className="mt-4 text-sm text-gray-400 dark:text-gray-500">
-            <span className="font-bold text-[#FF9F1C]">{filteredStyles.length}</span> {t.grid.count}
+          <div className="mt-4 flex min-h-8 items-center justify-between gap-4 text-sm text-gray-500 dark:text-gray-400">
+            <span role="status" aria-live="polite" aria-atomic="true">
+              <span className="font-bold text-[#FF9F1C]">{filteredStyles.length}</span> {t.grid.count}
+            </span>
+            {hasFilters && <button type="button" onClick={resetFilters} className="min-h-8 text-xs underline underline-offset-4 hover:text-black dark:hover:text-white">{t.grid.reset}</button>}
           </div>
         </div>
 
@@ -132,6 +167,7 @@ export function StylesGrid() {
           <div className="text-center py-16 rounded-xl bg-white dark:bg-[#1a1a1a]">
             <p className="text-lg mb-2 text-gray-600 dark:text-gray-400">{t.grid.noResults}</p>
             <p className="text-sm text-gray-400 dark:text-gray-500">{t.grid.noResultsDesc}</p>
+            <button type="button" onClick={resetFilters} className="mt-4 rounded-lg bg-[#FF9F1C] px-4 py-3 text-sm font-semibold text-[#2d1b06]">{t.grid.reset}</button>
           </div>
         )}
       </div>
