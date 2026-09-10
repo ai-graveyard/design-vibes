@@ -34,7 +34,7 @@ export function StyleDetailPage() {
   const compareWith = designStyles[(currentIndex + 1) % designStyles.length];
 
   return (
-    <div className="h-dvh flex flex-col bg-white dark:bg-[#1a1a1a]">
+    <div className="style-detail-page h-dvh flex flex-col bg-white dark:bg-[#1a1a1a]">
       {/* Header */}
       <header className="shrink-0 border-b px-4 py-3 flex items-center justify-between bg-white border-gray-200 dark:bg-[#0f0f0f] dark:border-gray-800">
         <div className="flex items-center gap-2 md:gap-4">

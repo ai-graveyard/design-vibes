@@ -5,6 +5,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        action: {
+          DEFAULT: "var(--action)",
+          foreground: "var(--action-foreground)",
+          hover: "var(--action-hover)",
+          active: "var(--action-active)",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

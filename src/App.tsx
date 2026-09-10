@@ -14,7 +14,7 @@ function App() {
   }, [theme]);
 
   return (
-    <div className="min-h-screen transition-colors duration-300 bg-white dark:bg-[#1a1a1a]">
+    <div className="site-shell min-h-screen transition-colors duration-300 bg-white dark:bg-[#1a1a1a]">
       <Outlet />
     </div>
   );

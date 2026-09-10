@@ -9,7 +9,7 @@ export function Footer() {
   const [watermarkRef, watermarkInView] = useInView<HTMLDivElement>();
 
   return (
-    <footer className="w-full border-t px-4 sm:px-6 lg:px-8 py-6 transition-colors duration-300 bg-white border-gray-200 dark:bg-[#0f0f0f] dark:border-gray-800">
+    <footer className="site-footer w-full border-t px-4 sm:px-6 lg:px-8 py-6 transition-colors duration-300 bg-white border-gray-200 dark:bg-[#0f0f0f] dark:border-gray-800">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Row */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">

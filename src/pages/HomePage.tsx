@@ -4,13 +4,16 @@ import { StylesGrid } from '../sections/StylesGrid';
 import { InstallSkill } from '../sections/InstallSkill';
 import { Footer } from '../sections/Footer';
 import { HomeNav } from '../components/HomeNav';
+import { BackToTop } from '../components/BackToTop';
 import { usePageMeta } from '../hooks/usePageMeta';
+import { useHeroSnap } from '../hooks/useHeroSnap';
 import { useAppStore } from '../store/appStore';
 import { designStyles } from '../data/styles';
 
 export function HomePage() {
   const { language } = useAppStore();
   const [installOpen, setInstallOpen] = useState(false);
+  useHeroSnap(installOpen);
   const count = designStyles.length;
   usePageMeta(
     language === 'zh' ? 'Design Vibes · 网页改造提示词库' : 'Design Vibes · Web Restyle Prompt Library',
@@ -26,6 +29,7 @@ export function HomePage() {
         <StylesGrid />
       </main>
       <Footer />
+      <BackToTop disabled={installOpen} />
       {installOpen && <InstallSkill onClose={() => setInstallOpen(false)} />}
     </>
   );

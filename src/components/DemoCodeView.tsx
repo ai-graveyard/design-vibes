@@ -58,7 +58,7 @@ export function DemoCodeView({ styleId }: DemoCodeViewProps) {
             onClick={handleCopy}
             disabled={!source}
             className={`flex items-center gap-1.5 px-2.5 py-1.5 text-[10px] uppercase tracking-wider rounded transition-colors disabled:opacity-40 ${
-              copied ? 'bg-green-500 text-white' : 'bg-white/10 text-gray-300 hover:bg-[#FF9F1C] hover:text-white'
+              copied ? 'bg-green-500 text-white' : 'bg-white/10 text-gray-300 hover:bg-action hover:text-action-foreground active:bg-action-active active:text-action-foreground'
             }`}
           >
             {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
@@ -68,7 +68,7 @@ export function DemoCodeView({ styleId }: DemoCodeViewProps) {
             type="button"
             onClick={handleDownload}
             disabled={!source}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 text-[10px] uppercase tracking-wider rounded bg-white/10 text-gray-300 hover:bg-[#FF9F1C] hover:text-white transition-colors disabled:opacity-40"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 text-[10px] uppercase tracking-wider rounded bg-white/10 text-gray-300 hover:bg-action hover:text-action-foreground active:bg-action-active active:text-action-foreground transition-colors disabled:opacity-40"
           >
             <Download className="w-3 h-3" />
             {t.modal.downloadCode}

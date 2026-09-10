@@ -113,13 +113,13 @@ These are the complete CSS variables from the current demo. Preserve them for a 
   const acceptance = language === 'zh'
     ? '视觉验收：分别在 390×844、768×1024、1280×800 和 1440×900 视口检查。并排核对字体、字重、网格、留白、图像裁切、材质与操作状态；加载字体及素材后截图；额外检查减弱动态效果。不要只以构建通过作为还原完成。参考的图片、字体、SVG 与内联交互脚本均在演示 HTML 内，复用时保留来源与许可说明。'
     : 'Visual acceptance: check 390×844, 768×1024, 1280×800 and 1440×900. Compare type, weight, grid, spacing, image crop, material and interaction states side by side. Capture after fonts and assets load, and check reduced motion separately. A passing build alone is not visual acceptance. Images, fonts, SVG and inline interactions are contained in the demo HTML; preserve source and license notices when reusing them.';
-  return `${getFullPromptText(prompt, language)}
-
-${study}
+  return `${study}
 
 \`\`\`css
 ${css}
 \`\`\`
+
+${getFullPromptText(prompt, language)}
 
 ${acceptance}`;
 }

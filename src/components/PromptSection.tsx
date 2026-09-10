@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Check, Copy, Download, Sparkles } from 'lucide-react';
+import { useId, useState } from 'react';
+import { Check, ChevronDown, Copy, Download, Sparkles } from 'lucide-react';
 import { getFullPromptText, getPromptById, getReproductionPrompt } from '../data/prompts';
 import { useDemoSource } from '../hooks/useDemoSource';
 import { useAppStore } from '../store/appStore';
@@ -9,6 +9,8 @@ export function PromptSection({ styleId }: { styleId: string }) {
   const zh = language === 'zh';
   const [mode, setMode] = useState<'style' | 'reference'>('reference');
   const [status, setStatus] = useState<'idle' | 'copied' | 'error'>('idle');
+  const [expanded, setExpanded] = useState(false);
+  const previewId = useId();
   const { source, error } = useDemoSource(styleId);
   const prompt = getPromptById(styleId);
   if (!prompt) return null;
@@ -35,7 +37,14 @@ export function PromptSection({ styleId }: { styleId: string }) {
       <p>{mode === 'reference'
         ? zh ? '包含参考页面、完整变量、构图说明和视觉验收要求。' : 'Includes the reference, full tokens, composition and visual checks.'
         : zh ? '保留你的业务内容，按照风格原则调整布局与视觉。' : 'Keep your content and adapt the layout and visual principles.'}</p>
-      <details><summary>{zh ? '阅读提示词' : 'Read the brief'}</summary><pre>{text || (error ? (zh ? '参考加载失败，请刷新重试。' : 'Reference could not load. Please refresh.') : (zh ? '正在读取参考…' : 'Loading reference…'))}</pre></details>
+      <div className="prompt-preview">
+        <p>{zh ? '阅读提示词' : 'Read the brief'}</p>
+        <pre id={previewId} className={expanded ? 'is-expanded' : 'is-collapsed'}><span>{text || (error ? (zh ? '参考加载失败，请刷新重试。' : 'Reference could not load. Please refresh.') : (zh ? '正在读取参考…' : 'Loading reference…'))}</span></pre>
+        {text && <button className="prompt-expand" aria-expanded={expanded} aria-controls={previewId} onClick={() => setExpanded(!expanded)}>
+          {expanded ? (zh ? '收起' : 'Show less') : (zh ? '展开全文' : 'Read more')}
+          <ChevronDown size={14} />
+        </button>}
+      </div>
       <div className="prompt-buttons">
         <button className="studio-primary" disabled={!text} onClick={copy}>{status === 'copied' ? <Check size={15} /> : <Copy size={15} />}{status === 'copied' ? (zh ? '已复制' : 'Copied') : (zh ? '复制提示词' : 'Copy brief')}</button>
         <button disabled={!text} onClick={download} aria-label={zh ? '下载参考资料' : 'Download brief'}><Download size={16} /></button>

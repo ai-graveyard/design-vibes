@@ -53,7 +53,7 @@ function CopyButton({
           copied
             ? 'bg-black text-white dark:bg-white dark:text-black'
             : primary
-              ? 'bg-[#FF9F1C] text-[#2d1b06] hover:bg-[#E8900A]'
+              ? 'bg-action text-action-foreground hover:bg-action-hover active:bg-action-active'
               : 'border border-gray-200 text-gray-600 hover:border-gray-400 hover:text-black dark:border-gray-700 dark:text-gray-300 dark:hover:border-gray-500 dark:hover:text-white'
         }`}
       >
@@ -65,10 +65,10 @@ function CopyButton({
   );
 }
 
-/** 两种装法共用同一个容器：一条 label 行（内容类型 + 复制）+ 内容体，只有 hairline，没有填色 */
+/** 两种装法共用同一个容器：一条 label 行（内容类型 + 复制）+ 内容体，用浅底色区分可复制内容 */
 function CopyBox({ label, action, children }: { label: string; action: ReactNode; children: ReactNode }) {
   return (
-    <div className="rounded-[2px] border border-gray-200 dark:border-gray-800">
+    <div className="install-copy-box rounded-[2px] border border-gray-200 dark:border-gray-800">
       <div className="flex items-center justify-between gap-2 px-3 py-2 border-b border-gray-200 dark:border-gray-800">
         <span className="text-[10px] uppercase tracking-[0.15em] text-gray-500 dark:text-gray-400">{label}</span>
         {action}

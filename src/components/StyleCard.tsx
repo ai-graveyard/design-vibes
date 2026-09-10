@@ -40,7 +40,7 @@ export function StyleCard({ style }: StyleCardProps) {
   return (
     <Link
       to={`/style/${style.id}`}
-      className="group block rounded-xl overflow-hidden border transition-all duration-300 hover:-translate-y-1 hover:border-[#FF9F1C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF9F1C] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 bg-white border-gray-200 hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.15)] dark:bg-[#1a1a1a] dark:border-gray-800 dark:hover:border-[#FF9F1C] dark:hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.6)] dark:focus-visible:ring-offset-[#0f0f0f]"
+      className="style-card group block rounded-xl overflow-hidden border transition-all duration-300 hover:-translate-y-1 hover:border-[#FF9F1C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF9F1C] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-50 bg-white border-gray-200 hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.15)] dark:bg-[#1a1a1a] dark:border-gray-800 dark:hover:border-[#FF9F1C] dark:hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.6)] dark:focus-visible:ring-offset-[#0f0f0f]"
     >
       <article>
         {/* 真实 demo 的缩放预览 */}
@@ -88,7 +88,7 @@ export function StyleCard({ style }: StyleCardProps) {
                 key={i}
                 className={`px-2 py-0.5 text-[10px] uppercase tracking-wider rounded ${
                   i === 0
-                    ? 'bg-[#FF9F1C] text-[#2d1b06]'
+                    ? 'bg-action text-action-foreground'
                     : 'bg-black text-white'
                 }`}
               >
@@ -123,7 +123,7 @@ export function StyleCard({ style }: StyleCardProps) {
                 className={`flex items-center gap-1.5 px-2.5 py-1.5 text-[10px] uppercase tracking-wider rounded transition-all active:scale-95 ${
                   copied === 'full'
                     ? 'bg-green-500 text-white'
-                    : 'bg-[#FF9F1C] text-white hover:bg-[#E8900A]'
+                    : 'bg-action text-action-foreground hover:bg-action-hover active:bg-action-active'
                 }`}
               >
                 {copied === 'full' ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}

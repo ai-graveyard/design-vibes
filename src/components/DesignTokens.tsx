@@ -46,7 +46,7 @@ export function DesignTokens({ styleId }: DesignTokensProps) {
           className={`flex items-center gap-1 px-2 py-1 text-[10px] uppercase tracking-wider rounded transition-colors ${
             copied
               ? 'bg-green-500 text-white'
-              : 'bg-gray-100 text-gray-600 hover:bg-[#FF9F1C] hover:text-white dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-[#FF9F1C] dark:hover:text-white'
+              : 'bg-gray-100 text-gray-600 hover:bg-action hover:text-action-foreground active:bg-action-active active:text-action-foreground dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-action dark:hover:text-action-foreground dark:active:bg-action-active dark:active:text-action-foreground'
           }`}
         >
           {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}

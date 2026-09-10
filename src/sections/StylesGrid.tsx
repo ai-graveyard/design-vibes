@@ -121,7 +121,7 @@ export function StylesGrid() {
                 onClick={() => setSelectedTagIndex(index)}
                 className={`px-4 py-2 text-xs uppercase tracking-wider rounded-full transition-all active:scale-95 ${
                   selectedTagIndex === index
-                    ? 'bg-[#FF9F1C] text-[#2d1b06]'
+                    ? 'bg-action text-action-foreground'
                     : 'bg-white text-gray-600 hover:text-black hover:bg-gray-100 border border-gray-200 dark:bg-[#1a1a1a] dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-800 dark:border-transparent'
                 }`}
               >
@@ -162,7 +162,7 @@ export function StylesGrid() {
           <div className="text-center py-16 rounded-xl bg-white dark:bg-[#1a1a1a]">
             <p className="text-lg mb-2 text-gray-600 dark:text-gray-400">{t.grid.noResults}</p>
             <p className="text-sm text-gray-400 dark:text-gray-500">{t.grid.noResultsDesc}</p>
-            <button type="button" onClick={resetFilters} className="mt-4 rounded-lg bg-[#FF9F1C] px-4 py-3 text-sm font-semibold text-[#2d1b06]">{t.grid.reset}</button>
+            <button type="button" onClick={resetFilters} className="mt-4 rounded-lg bg-action px-4 py-3 text-sm font-semibold text-action-foreground hover:bg-action-hover active:bg-action-active">{t.grid.reset}</button>
           </div>
         )}
       </div>

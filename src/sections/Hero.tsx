@@ -97,7 +97,7 @@ export function Hero({ onInstall }: { onInstall: () => void }) {
                     <button
                       onClick={scrollToStyles}
                       type="button"
-                      className="relative overflow-hidden inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-bold rounded-lg border border-transparent bg-[#FF9F1C] text-[#2d1b06] transition-all hover:bg-[#E8900A] active:scale-[0.98]"
+                      className="relative overflow-hidden inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-bold rounded-lg border border-transparent bg-action text-action-foreground transition-all hover:bg-action-hover active:bg-action-active active:scale-[0.98]"
                     >
                       {t.hero.primaryCta}
                       <ChevronDown className="w-4 h-4" />

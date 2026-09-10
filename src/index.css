@@ -116,7 +116,15 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    /* Filled brand controls: keep background and label paired in each theme.
+       Light uses a slightly deeper orange / white; dark uses bright orange / dark ink.
+       The light-theme white label is a visual preference, below WCAG AA contrast. */
+    --action: #eb8f12;
+    --action-foreground: #ffffff;
+    --action-hover: #df8308;
+    --action-active: #d47b06;
+    --action-sheen: 0 0 0 / 12%;
+    --background: 48 20% 96%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
@@ -147,6 +155,11 @@
   }
 
   .dark {
+    --action: #ff9f1c;
+    --action-foreground: #2d1b06;
+    --action-hover: #ffb340;
+    --action-active: #f3a43b;
+    --action-sheen: 255 255 255 / 35%;
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
@@ -272,7 +285,7 @@
   background: linear-gradient(
     105deg,
     transparent 40%,
-    rgba(255, 255, 255, 0.35) 50%,
+    rgb(var(--action-sheen)) 50%,
     transparent 60%
   );
 }
@@ -347,7 +360,7 @@
 .device-switcher{display:flex;flex-shrink:0;align-items:center;gap:2px;padding:3px;border-radius:999px;background:var(--studio-bg);box-shadow:inset 0 0 0 1px var(--studio-line)}
 .device-switcher button{display:grid;place-items:center;width:32px;height:28px;border-radius:999px;color:var(--studio-muted);transition:background-color .15s,color .15s,box-shadow .15s}
 .device-switcher button:hover{background:var(--studio-paper);color:var(--studio-ink)}
-.device-switcher button[aria-pressed=true]{background:#f3a43b;color:#251a0b;box-shadow:0 1px 3px #00000014}
+.device-switcher button[aria-pressed=true]{background:var(--action);color:var(--action-foreground);box-shadow:0 1px 3px #00000014}
 .preview-size{font:11px/16px ui-monospace,monospace;color:var(--studio-muted);white-space:nowrap;font-variant-numeric:tabular-nums}.preview-size>span{opacity:.8}
 .preview-actions{margin-left:auto;display:flex;flex-shrink:0;align-items:center;gap:2px}.preview-actions>button,.preview-actions>a{display:grid;place-items:center;width:32px;height:34px;border-radius:6px;color:var(--studio-muted);transition:background-color .15s,color .15s}
 .preview-action-divider{height:16px;width:1px;background:var(--studio-line);margin:0 5px}
@@ -365,8 +378,8 @@
 .prompt-panel{margin-bottom:30px}.prompt-panel h3{display:flex;gap:8px;align-items:center;font-size:15px;font-weight:650;margin-bottom:14px}.prompt-panel h3 svg{color:#be760e}
 .prompt-tabs{display:grid;grid-template-columns:1fr 1fr;padding:4px;background:var(--studio-bg);border-radius:9px;gap:2px}
 .prompt-tabs button{padding:11px 3px;font-size:11px;border-radius:6px;color:var(--studio-muted)}.prompt-tabs [aria-pressed=true]{background:var(--studio-paper);box-shadow:0 1px 4px #0000000d;color:var(--studio-ink);font-weight:650}
-.prompt-panel>p{margin:12px 0;color:var(--studio-muted);font-size:12px;line-height:1.65}.prompt-panel details{font-size:12px;margin:12px 0}.prompt-panel summary{cursor:pointer;min-height:36px;padding:8px 0}.prompt-panel pre{font:11px/1.7 ui-monospace,monospace;white-space:pre-wrap;max-height:320px;overflow:auto;padding:12px;background:var(--studio-bg);border-radius:8px;overflow-wrap:anywhere}
-.prompt-buttons{display:flex;gap:8px}.prompt-buttons button{min-height:44px;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;font-size:12px;border:1px solid var(--studio-line);border-radius:8px}.prompt-buttons button:disabled{opacity:.4}.prompt-buttons .studio-primary{flex:1;background:#f3a43b;color:#251a0b;border-color:transparent;font-weight:650}
+.prompt-panel>p{margin:12px 0;color:var(--studio-muted);font-size:12px;line-height:1.65}.prompt-preview{font-size:12px;margin:12px 0}.prompt-preview>p{padding:8px 0}.prompt-panel pre{font:11px/1.7 ui-monospace,monospace;white-space:pre-wrap;max-height:320px;overflow:auto;padding:12px;background:var(--studio-bg);border-radius:8px;overflow-wrap:anywhere}.prompt-panel pre.is-collapsed{overflow:hidden}.prompt-panel pre.is-collapsed>span{display:block;max-height:17em;overflow:hidden}.prompt-expand{display:flex;align-items:center;gap:5px;min-height:36px;color:var(--studio-muted)}.prompt-expand:hover{color:var(--studio-ink)}.prompt-expand[aria-expanded=true] svg{transform:rotate(180deg)}
+.prompt-buttons{display:flex;gap:8px}.prompt-buttons button{min-height:44px;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;font-size:12px;border:1px solid var(--studio-line);border-radius:8px}.prompt-buttons button:disabled{opacity:.4}.prompt-buttons .studio-primary{flex:1;background:var(--action);color:var(--action-foreground);border-color:transparent;font-weight:650}
 .study-meta{display:flex;justify-content:space-between;gap:8px;color:var(--studio-muted);font-size:10px;letter-spacing:.04em;margin-bottom:12px}.style-notes{border-top:1px solid var(--studio-line);padding-top:20px;margin-bottom:26px}.style-notes h3{font-size:15px;font-weight:650;margin-bottom:20px}.style-note{display:flex;gap:12px;margin-bottom:19px}.style-note>span{font:11px ui-monospace,monospace;color:#b77a27;padding-top:3px}.style-note h4,.study-references h4,.study-more h4{font-size:12px;font-weight:650;margin-bottom:5px}.style-note p,.study-boundary{font-size:12px;color:var(--studio-muted);line-height:1.75}.study-boundary{padding:12px;background:var(--studio-bg);border-radius:8px}.study-references{margin-top:18px}.study-references a{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:9px 0;font-size:11px;border-bottom:1px solid var(--studio-line);color:var(--studio-muted)}
 .study-more{font-size:12px;border-top:1px solid var(--studio-line);padding:12px 0}.study-more summary{font-weight:650;cursor:pointer;padding:10px 0}.study-more ul{padding-left:16px;list-style:disc;line-height:1.8;color:var(--studio-muted);margin-bottom:16px}.study-tags{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 20px}.study-tags span{padding:5px 8px;background:var(--studio-bg);color:var(--studio-muted);border-radius:5px;font-size:11px}
 .compare-page{min-height:100vh;background:var(--studio-paper)}.compare-header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 28px;border-bottom:1px solid var(--studio-line)}.compare-header>a,.compare-header>div{display:flex;align-items:center;gap:8px;font-size:12px}.compare-header h1{font-size:16px;font-weight:650}.compare-main{max-width:1600px;margin:auto;padding:24px 32px}.compare-controls{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.compare-controls .preview-toolbar{padding:0;border:0}.sync-control{display:flex;align-items:center;gap:8px;min-height:44px;font-size:12px;color:var(--studio-muted)}.sync-control input{accent-color:#bd791c}.swap-button{display:flex;gap:8px;align-items:center;margin-left:auto;font-size:12px;padding:12px}.compare-hint{font-size:12px;color:var(--studio-muted);margin:14px 0 24px}.compare-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}.compare-study{min-width:0}.compare-picker{display:flex;align-items:center;gap:12px;margin-bottom:18px}.compare-picker>span{font:12px ui-monospace,monospace;color:var(--studio-muted)}.compare-picker .style-select{flex:1;min-width:0}.compare-picker .style-select-trigger{font-size:16px;font-weight:650}.compare-picker>a{font-size:12px;color:var(--studio-muted)}.compare-study .style-notes{margin-top:24px;padding-top:24px}.compare-study .style-note p{max-width:48em}
@@ -395,3 +408,98 @@
 .style-select-option.is-active{background:var(--select-hover)}
 .style-select-option[aria-selected=true]{font-weight:600}.style-select-option>svg{flex-shrink:0;color:#c77b0c}
 @media(prefers-reduced-motion:reduce){.style-select-trigger,.style-select-trigger>svg{transition:none}}
+
+/* Light surfaces: quiet canvas, raised content, and a warm accent for primary tasks.
+   Scoped to site chrome so embedded design examples keep their original palettes. */
+:root:not(.dark) {
+  --site-canvas: #f5f4f0;
+  --site-surface: #fcfbf8;
+  --site-recessed: #eeede8;
+  --site-line: #d9d8d1;
+  --site-highlight: #fff0d9;
+  --site-highlight-line: #e6c58f;
+  --site-highlight-ink: #87520d;
+}
+
+:root:not(.dark) :is(.site-shell, #home, .site-footer, .style-detail-page) {
+  background-color: var(--site-canvas);
+}
+:root:not(.dark) .home-nav {
+  background-color: rgb(245 244 240 / 95%);
+  border-color: var(--site-line);
+}
+:root:not(.dark) .hero-grid {
+  background-image:
+    linear-gradient(rgb(70 65 50 / 4%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(70 65 50 / 4%) 1px, transparent 1px);
+}
+:root:not(.dark) #styles-grid {
+  background-color: var(--site-recessed);
+  border-top: 1px solid var(--site-line);
+}
+:root:not(.dark) :is(.style-card, .hero-study, .install-dialog) {
+  background-color: var(--site-surface);
+  border-color: var(--site-line);
+}
+:root:not(.dark) :is(.style-card, .hero-study) {
+  box-shadow: 0 2px 5px rgb(55 47 29 / 4%);
+}
+:root:not(.dark) :is(.style-card, .hero-study):hover {
+  border-color: #ce963f;
+  box-shadow: 0 8px 22px rgb(55 47 29 / 10%);
+}
+:root:not(.dark) :is(.site-footer, .style-detail-page > header, .style-detail-page > div > aside) {
+  border-color: var(--site-line);
+}
+:root:not(.dark) .style-detail-page > header {
+  background-color: var(--site-surface);
+}
+:root:not(.dark) .style-sidebar {
+  background-color: var(--site-recessed);
+}
+:root:not(.dark) .sidebar-card-label {
+  background-color: var(--site-surface);
+}
+:root:not(.dark) [aria-current=page] > .sidebar-card-label {
+  background-color: var(--site-highlight);
+  border-color: var(--site-highlight-line);
+}
+:root:not(.dark) :is(.style-detail-content, .compare-page) {
+  --studio-bg: var(--site-recessed);
+  --studio-paper: var(--site-surface);
+  --studio-ink: #252722;
+  --studio-muted: #63665f;
+  --studio-line: var(--site-line);
+}
+:root:not(.dark) .prompt-panel {
+  padding: 14px;
+  border: 1px solid var(--site-highlight-line);
+  border-radius: 10px;
+  background-color: var(--site-highlight);
+}
+:root:not(.dark) .prompt-tabs {
+  background-color: #efdfc4;
+}
+:root:not(.dark) .prompt-tabs [aria-pressed=true] {
+  color: var(--site-highlight-ink);
+}
+:root:not(.dark) .prompt-panel pre {
+  background-color: var(--site-surface);
+  border: 1px solid var(--site-highlight-line);
+}
+:root:not(.dark) .prompt-buttons button:not(.studio-primary) {
+  background-color: var(--site-surface);
+  border-color: var(--site-highlight-line);
+}
+:root:not(.dark) .install-copy-box {
+  background-color: var(--site-highlight);
+  border-color: var(--site-highlight-line);
+}
+:root:not(.dark) .install-copy-box > div:first-child {
+  background-color: rgb(255 255 255 / 45%);
+  border-color: var(--site-highlight-line);
+}
+
+/* Shared interaction colors also apply to selected studio controls. */
+:is(.prompt-buttons .studio-primary,.device-switcher button[aria-pressed=true]):hover:not(:disabled){background:var(--action-hover)}
+:is(.prompt-buttons .studio-primary,.device-switcher button[aria-pressed=true]):active:not(:disabled){background:var(--action-active)}

@@ -41,7 +41,7 @@ export function StyleSidebar({ currentStyleId, horizontal = false }: StyleSideba
     return (
       <div
         ref={containerRef}
-        className="w-full overflow-x-auto bg-gray-50 dark:bg-[#0f0f0f]"
+        className="style-sidebar w-full overflow-x-auto bg-gray-50 dark:bg-[#0f0f0f]"
       >
         <div className="flex gap-2 p-3 min-w-max">
           {designStyles.map((style) => (
@@ -61,7 +61,7 @@ export function StyleSidebar({ currentStyleId, horizontal = false }: StyleSideba
   return (
     <div
       ref={containerRef}
-      className="h-full overflow-y-auto bg-gray-50 dark:bg-[#0f0f0f]"
+      className="style-sidebar h-full overflow-y-auto bg-gray-50 dark:bg-[#0f0f0f]"
     >
       <div className="p-3 space-y-2">
         {designStyles.map((style) => (
@@ -104,7 +104,7 @@ const StyleSidebarItem = forwardRef<HTMLAnchorElement, StyleSidebarItemProps>(
         </div>
 
         {/* Info */}
-        <div className="px-3 py-2.5 border-t bg-white border-gray-100 dark:bg-[#1a1a1a] dark:border-gray-800">
+        <div className="sidebar-card-label px-3 py-2.5 border-t bg-white border-gray-100 dark:bg-[#1a1a1a] dark:border-gray-800">
           <div className="flex items-center justify-between gap-2">
             <h3 className="text-sm font-bold truncate text-black dark:text-white">
               {language === 'zh' ? style.name : style.nameEn}
